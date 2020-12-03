@@ -1011,9 +1011,7 @@ kbd {
   overflow: auto;
   position: relative;
   max-height: 70vh;
-  white-space: normal;
-  word-wrap: break-word;
-  word-break: break-word;
+  white-space: nowrap;
 }
 .sidebar-toc .active > a,
 .sidebar-toc .current > a {
