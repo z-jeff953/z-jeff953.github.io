@@ -5,14 +5,16 @@
 <meta property="og:site_name" content="Zjeff&#39;blog">
 <meta property="og:description" content="微机原理 汇编和接口技术">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201204183615.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209101001.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209112651.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209165349.png">
 <meta property="article:published_time" content="2020-11-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-12-04T11:16:43.225Z">
+<meta property="article:modified_time" content="2020-12-09T10:32:08.577Z">
 <meta property="article:author" content="Jeffords zuo">
 <meta property="article:tag" content="微机原理和接口技术">
 <meta property="article:tag" content="计算机体系结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201204183615.png"><title>汇编与接口 - 03 指令系统和寻址方式 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209101001.png"><title>汇编与接口 - 03 指令系统和寻址方式 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -36,28 +38,30 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">汇编与接口 - 03 指令系统和寻址方式</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-04</span></span></div></header><div class="post-body">
-        <h1 id="汇编与接口-03-指令系统和寻址方式"   >
-          <a href="#汇编与接口-03-指令系统和寻址方式" class="heading-link"><i class="fas fa-link"></i></a>汇编与接口 - 03 指令系统和寻址方式</h1>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">汇编与接口 - 03 指令系统和寻址方式</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-09</span></span></div></header><div class="post-body">
+        <h1><span id="汇编与接口-03-指令系统和寻址方式">
+          汇编与接口 - 03 指令系统和寻址方式</span></h1>
+      
+<p>计算机通过一条一条的指令完成任务, 8086模型模型机的指令系统是我们进行汇编编程的基础, 指令由操作码和操作数组成, 找到操作数的过程叫做寻址, 指令有各种不同的寻址方式, 了解寻址方式能够帮助我们更好的编写指令, 更进一步的, 我们需要认识各种不同的指令来帮助我们进行汇编编程.</p>
+<a id="more"></a>
+
+        <h2><span id="1-指令系统简介">
+          1. 指令系统简介</span></h2>
       
 
-        <h2 id="1-指令系统简介"   >
-          <a href="#1-指令系统简介" class="heading-link"><i class="fas fa-link"></i></a>1. 指令系统简介</h2>
-      
-
-        <h3 id="11-概念"   >
-          <a href="#11-概念" class="heading-link"><i class="fas fa-link"></i></a>1.1 概念</h3>
+        <h3><span id="11-概念">
+          1.1 概念</span></h3>
       
 <p>指令 : 控制计算机完成某种操作的命令</p>
 <p>指令系统 : 处理器所能识别的所有<strong>指令的集合</strong></p>
 <p>指令的兼容性 : 同一系列机的指令都是兼容的</p>
 
-        <h3 id="12-指令格式"   >
-          <a href="#12-指令格式" class="heading-link"><i class="fas fa-link"></i></a>1.2 指令格式</h3>
+        <h3><span id="12-指令格式">
+          1.2 指令格式</span></h3>
       
 
-        <h4 id="121-指令应该包含什么"   >
-          <a href="#121-指令应该包含什么" class="heading-link"><i class="fas fa-link"></i></a>1.2.1 指令应该包含什么 ?</h4>
+        <h4><span id="121-指令应该包含什么">
+          1.2.1 指令应该包含什么 ?</span></h4>
       
 <ol>
 <li>
@@ -79,29 +83,29 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 </li>
 </ol>
 
-        <h4 id="122-指令的一般格式"   >
-          <a href="#122-指令的一般格式" class="heading-link"><i class="fas fa-link"></i></a>1.2.2 指令的一般格式 :</h4>
+        <h4><span id="122-指令的一般格式">
+          1.2.2 指令的一般格式 :</span></h4>
       
 <p><strong>操作码  [操作数]，[操作数]</strong></p>
-<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201204183615.png" alt="image-20201204183615286" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209101001.png" alt="image-20201209101001291"></p>
 
-        <h4 id="123-指令格式按操作数数量分类"   >
-          <a href="#123-指令格式按操作数数量分类" class="heading-link"><i class="fas fa-link"></i></a>1.2.3 指令格式按操作数数量分类</h4>
+        <h4><span id="123-指令格式按操作数数量分类">
+          1.2.3 指令格式按操作数数量分类</span></h4>
       
 <p>零操作数指令： 操作码</p>
 <p><strong>单操作数指令： 操作码 操作数</strong></p>
 <p><strong>双操作数指令：操作码 操作数，操作数</strong></p>
 <p>多操作数指令： 三操作数及以上</p>
 
-        <h3 id="13-指令中操作数的类型"   >
-          <a href="#13-指令中操作数的类型" class="heading-link"><i class="fas fa-link"></i></a>1.3 指令中操作数的类型</h3>
+        <h3><span id="13-指令中操作数的类型">
+          1.3 指令中操作数的类型</span></h3>
       
 <p>操作数可以分为 : 立即数 , 寄存器 , 存储器</p>
 <p>立即数表示参加操作的数据本身</p>
 <p>寄存器 , 存储器表示数据存放的地址</p>
 
-        <h4 id="131-立即数-操作数"   >
-          <a href="#131-立即数-操作数" class="heading-link"><i class="fas fa-link"></i></a>1.3.1 立即数 操作数</h4>
+        <h4><span id="131-立即数">
+          1.3.1 立即数</span></h4>
       
 <p>本身参加操作 , 8位 / 16位</p>
 <p>例子 :  MOV BL，22H</p>
@@ -113,64 +117,295 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 </li>
 </ul>
 
-        <h4 id="132-寄存器-操作数"   >
-          <a href="#132-寄存器-操作数" class="heading-link"><i class="fas fa-link"></i></a>1.3.2 寄存器 操作数</h4>
+        <h4><span id="132-寄存器">
+          1.3.2 寄存器</span></h4>
       
 <p>参加运算的数放在寄存器中 , 8位 / 16位</p>
 <p>例子 : MOV  DL，CH</p>
 
-        <h4 id="133-存储器-操作数"   >
-          <a href="#133-存储器-操作数" class="heading-link"><i class="fas fa-link"></i></a>1.3.3 存储器 操作数</h4>
+        <h4><span id="133-存储器">
+          1.3.3 存储器</span></h4>
       
 <p>参加运算的数放在存储器的某个单元内</p>
 <p>[寄存器名 / 常数]</p>
 <p>例子 : MOV AX，[1200H]</p>
 
-        <h3 id="14-指令执行速度"   >
-          <a href="#14-指令执行速度" class="heading-link"><i class="fas fa-link"></i></a>1.4 指令执行速度</h3>
+        <h3><span id="14-指令执行速度">
+          1.4 指令执行速度</span></h3>
       
 
-        <h4 id="141-指令字长与机器字长"   >
-          <a href="#141-指令字长与机器字长" class="heading-link"><i class="fas fa-link"></i></a>1.4.1 指令字长与机器字长</h4>
+        <h4><span id="141-指令字长与机器字长">
+          1.4.1 指令字长与机器字长</span></h4>
       
 <p>指令字长决定因素 : 由操作码的长度 , 操作数地址长度 , 操作数个数</p>
 <p>机器字长 : <strong>计算机</strong>进行<strong>一次</strong>整数运算所能处理的二进制数据的位数</p>
 
-        <h4 id="142-影响指令执行速度因素"   >
-          <a href="#142-影响指令执行速度因素" class="heading-link"><i class="fas fa-link"></i></a>1.4.2 影响指令执行速度因素</h4>
+        <h4><span id="142-影响指令执行速度因素">
+          1.4.2 影响指令执行速度因素</span></h4>
       
 <p>机器字长</p>
 <p>指令的执行时间</p>
 <p>操作数的的类型</p>
 
-        <h4 id="143-不同操作数的执行速度排序"   >
-          <a href="#143-不同操作数的执行速度排序" class="heading-link"><i class="fas fa-link"></i></a>1.4.3 不同操作数的执行速度排序</h4>
+        <h4><span id="143-不同操作数的执行速度排序">
+          1.4.3 不同操作数的执行速度排序</span></h4>
       
 <p>存储器   <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⩽</mo></mrow><annotation encoding="application/x-tex">\leqslant</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733399999999999em;vertical-align:-0.13667em;"></span><span class="mrel amsrm">⩽</span></span></span></span>  立即数(立即数在存储器中)  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⩽</mo></mrow><annotation encoding="application/x-tex">\leqslant</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7733399999999999em;vertical-align:-0.13667em;"></span><span class="mrel amsrm">⩽</span></span></span></span> 寄存器</p>
 
-        <h2 id="2-操作数寻址方式"   >
-          <a href="#2-操作数寻址方式" class="heading-link"><i class="fas fa-link"></i></a>2. 操作数寻址方式</h2>
+        <h2><span id="2-操作数寻址方式">
+          2. 操作数寻址方式</span></h2>
       
-<p>操作数的寻址方式有 : 立即寻址 , 寄存器直接寻址 , 寄存器间接寻址 , 寄存器相对寻址 , 基址 - 变址寻址 , 基址 - 变址 - 相对寻址 , 隐含寻址.</p>
 
-        <h2 id="3-指令操作介绍"   >
-          <a href="#3-指令操作介绍" class="heading-link"><i class="fas fa-link"></i></a>3. 指令操作介绍</h2>
+        <h3><span id="概述">
+          概述</span></h3>
       
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/">http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/">微机原理和接口技术</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/28/Flutter%20-%2001%20Flutter%E5%85%A5%E9%97%A8/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Flutter - 01 Flutter入门</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2001%20%E5%BE%AE%E5%9E%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E8%AE%BA/"><span class="paginator-prev__text">汇编与接口 - 01 微型计算机基础概论</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3-03-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-text">
-          汇编与接口 - 03 指令系统和寻址方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"><span class="toc-text">
-          1. 指令系统简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%A6%82%E5%BF%B5"><span class="toc-text">
-          1.1 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-text">
-          1.2 指令格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#121-%E6%8C%87%E4%BB%A4%E5%BA%94%E8%AF%A5%E5%8C%85%E5%90%AB%E4%BB%80%E4%B9%88"><span class="toc-text">
-          1.2.1 指令应该包含什么 ?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#122-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F"><span class="toc-text">
-          1.2.2 指令的一般格式 :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#123-%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E6%8C%89%E6%93%8D%E4%BD%9C%E6%95%B0%E6%95%B0%E9%87%8F%E5%88%86%E7%B1%BB"><span class="toc-text">
-          1.2.3 指令格式按操作数数量分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E6%8C%87%E4%BB%A4%E4%B8%AD%E6%93%8D%E4%BD%9C%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">
-          1.3 指令中操作数的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#131-%E7%AB%8B%E5%8D%B3%E6%95%B0-%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="toc-text">
-          1.3.1 立即数 操作数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#132-%E5%AF%84%E5%AD%98%E5%99%A8-%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="toc-text">
-          1.3.2 寄存器 操作数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#133-%E5%AD%98%E5%82%A8%E5%99%A8-%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="toc-text">
-          1.3.3 存储器 操作数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6"><span class="toc-text">
-          1.4 指令执行速度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#141-%E6%8C%87%E4%BB%A4%E5%AD%97%E9%95%BF%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%97%E9%95%BF"><span class="toc-text">
-          1.4.1 指令字长与机器字长</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#142-%E5%BD%B1%E5%93%8D%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E5%9B%A0%E7%B4%A0"><span class="toc-text">
-          1.4.2 影响指令执行速度因素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#143-%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E6%8E%92%E5%BA%8F"><span class="toc-text">
-          1.4.3 不同操作数的执行速度排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%95%B0%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-text">
-          2. 操作数寻址方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C%E4%BB%8B%E7%BB%8D"><span class="toc-text">
-          3. 指令操作介绍</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">20</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">17</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
+<ol>
+<li>
+<p>操作数可能的来源或存放处：</p>
+<ol>
+<li>由指令直接给出</li>
+<li>寄存器</li>
+<li>内存单元</li>
+</ol>
+</li>
+<li>
+<p>寻找操作数所在地址的方法可以有四种大类型</p>
+<ol>
+<li>指令直接给出的方式</li>
+<li>存放于寄存器中的寻址方式</li>
+<li>存放于存储器中的寻址方式</li>
+<li>隐含给出方式</li>
+</ol>
+</li>
+</ol>
+<p>操作数的寻址方式介绍有7种方式 :</p>
+<p>立即寻址 , 寄存器直接寻址 , 寄存器间接寻址 , 寄存器相对寻址 , 基址 - 变址寻址 , 基址 - 变址 - 相对寻址 , 隐含寻址.</p>
+
+        <h3><span id="总结">
+          总结</span></h3>
+      
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>寻址方式</th>
+<th>指令格式</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>立即寻址</td>
+<td>MOV AX，<strong>1200H</strong></td>
+<td>不能做目的操作数</td>
+</tr>
+<tr>
+<td>寄存器(直接)寻址</td>
+<td>MOV <strong>AX</strong>，<strong>BX</strong></td>
+<td><strong>不含控制寄存器，段寄存器限制使用</strong><br></td>
+</tr>
+<tr>
+<td>寄存器间接寻址</td>
+<td>MOV  <strong>[BX]</strong>，1200H<br>MOV  AX，<strong>[BX]</strong></td>
+<td>只能存放在规定的寄存器中间址寄存器：BX，BP，SI，DI<br>段地址（数据处于哪个段）取决于选择哪一个间址寄存器<br>BP:堆栈段, 其他数据段<br>偏移地址字长均为16位，故间址寄存器必须是16位寄存器<br></td>
+</tr>
+<tr>
+<td>(存储器)直接寻址</td>
+<td>MOV AX，<strong>[1200H]</strong><br>MOV <strong>[1234H]</strong>，CX<br>MOV CL， <strong>[1234H]</strong></td>
+<td>指令中只给出偏移地址, 默认在数据段, 可以段重设<br>存储器操作数的字长由指令中另一个操作数的字长决定</td>
+</tr>
+<tr>
+<td>寄存器相对寻址</td>
+<td>MOV  AX，[BX+DATA]<br>MOV  AX，[BX]DATA<br>MOV  AX，[BX]+DATA<br>以上三种格式等价</td>
+<td>只能存放在规定的寄存器中间址寄存器：BX，BP，SI，DI<br></td>
+</tr>
+<tr>
+<td>基址-变址寻址</td>
+<td>MOV AX，[SI+BX]</td>
+<td>一个基址寄存器的内容(BX,BP) + 一个变址寄存器的内容(SI,DI)<br><br>基址寄存器为BX，默认在数据段<br>基址寄存器为BP，默认在堆栈段<br>基址变址寻址方式与相对寻址方式一样，主要用于一维数组操作。</td>
+</tr>
+<tr>
+<td>基址-变址-相对寻址</td>
+<td>MOV  AL，[BP][DI]5</td>
+<td>基址寄存器内容+变址寄存器内容+位移量<br>基址变址相对寻址方式主要用于二维表格操作<br>操作数的段地址由选择的基址寄存器决定。</td>
+</tr>
+<tr>
+<td>隐含寻址</td>
+<td>MUL  BL</td>
+<td>指令中隐含了一个或两个操作数的地址，即操作数在默认的地址中。</td>
+</tr>
+</tbody>
+</table></div>
+<ol>
+<li>立即寻址只适合于源操作数；</li>
+<li>指令中的操作数若为[   ]形式，则表示操作数为存储器操作数。即：<br>
+要寻找的数据在内存中<br>
+该数据在内存中的存放地址为按寻址方式计算</li>
+<li>使用寄存器来指示存储器单元的寄存器只有4个<br>
+BX，SI，DI，BP<br>
+只有使用BP时默认的段为堆栈段，其他为数据段，可以使用段前缀来改变默认的段。</li>
+</ol>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209112651.png" alt></p>
+
+        <h3><span id="常用寻址方式的应用">
+          常用寻址方式的应用</span></h3>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201209165349.png" alt="image-20201209165349485"></p>
+
+        <h2><span id="3-8086指令系统">
+          3. 8086指令系统</span></h2>
+      
+<p><strong>对于每个指令需要了解 :</strong></p>
+<ol>
+<li>指令码的含义</li>
+<li>指令对操作数的要求</li>
+<li>指令对标志位的影响
+<ul>
+<li>指令执行是否影响标志位</li>
+<li>对加、减运算，需明确指令执行如何影响标志位</li>
+</ul>
+</li>
+<li>指令的功能</li>
+</ol>
+<p><strong>指令系统可以分为六大类</strong></p>
+<ol>
+<li>数据传送</li>
+<li>算术运算</li>
+<li>逻辑运算和移位</li>
+<li>串操作</li>
+<li>程序控制</li>
+<li>处理器控制</li>
+</ol>
+
+        <h3><span id="31-数据传送指令">
+          3.1 数据传送指令</span></h3>
+      
+<p>这类指令进行数据的传送, 不对标志位产生影响</p>
+
+        <h3><span id="32-算术运算指令">
+          3.2 算术运算指令</span></h3>
+      
+
+        <h3><span id="33-逻辑运算和移位指令">
+          3.3 逻辑运算和移位指令</span></h3>
+      
+
+        <h3><span id="34-串操作指令">
+          3.4 串操作指令</span></h3>
+      
+
+        <h4><span id="341-串操作指令概述">
+          3.4.1 串操作指令概述:</span></h4>
+      
+
+        <h5><span id="1-串操作指令是什么">
+          ① 串操作指令是什么?</span></h5>
+      
+<p>针对<strong>数据块</strong>或<strong>字符串</strong>的操作；<br>
+可实现存储器到存储器的数据传送；</p>
+<p>待操作的数据串称为源串，目标地址称为目标串。</p>
+
+        <h5><span id="2-串操作指令的共同特点">
+          ② 串操作指令的共同特点</span></h5>
+      
+<ol>
+<li>
+<p>串所在区域及首地址：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>特点</th>
+<th>源串</th>
+<th>目的串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认段基地址</td>
+<td>DS</td>
+<td>ES</td>
+</tr>
+<tr>
+<td>允许段重设?</td>
+<td>允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>偏移地址</td>
+<td>SI</td>
+<td>DI</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<p>串长度 : 放在CX里</p>
+</li>
+<li>
+<p>串的操作会自动修改地址指针, 修改方向由DF决定：<br>
+DF=0 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span> 增地址方向</p>
+<p>DF=1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span> 减地址方向</p>
+</li>
+<li>
+<p>串操作的地址指针一次的修改量会根据字/字节</p>
+</li>
+<li>
+<p>可以使用重复前缀, 使用了重复前缀, 每重复一次CX-1</p>
+</li>
+</ol>
+
+        <h4><span id="342-串操作的使用">
+          3.4.2 串操作的使用:</span></h4>
+      
+<p>串操作一般用老操作一串数据</p>
+<p>一般流程是</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">;用DS和SI设置源串</span><br><span class="line">;用ES和DI设置目的串位置</span><br><span class="line">;确定串长度送入CX</span><br><span class="line">;修改DF数值来确定串操作的方向</span><br><span class="line">;前缀+串操作指令</span><br></pre></td></tr></table></div></figure>
+
+        <h5><span id="用法一-将一串数据传入另一个地方">
+          用法一: 将一串数据传入另一个地方</span></h5>
+      
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">MOV AX,2000H</span><br><span class="line">MOV DS,AX</span><br><span class="line">MOV SI,1200H</span><br><span class="line">;用DS和SI设置源串</span><br><span class="line">MOV AX 6000H</span><br><span class="line">MOV ES,AX</span><br><span class="line">MOV DI,0</span><br><span class="line">;用ES和DI设置目的串位置</span><br><span class="line">MOV CX,100</span><br><span class="line">;确定串长度送入CX</span><br><span class="line">CLD;修改DF数值来确定串操作的方向</span><br><span class="line">REP MOVSB;前缀+串操作指令</span><br></pre></td></tr></table></div></figure>
+
+        <h5><span id="用法二-将串">
+          用法二: 将串</span></h5>
+      
+
+        <h3><span id="35-程序控制指令">
+          3.5 程序控制指令</span></h3>
+      
+
+        <h3><span id="36-处理器控制指令">
+          3.6 处理器控制指令</span></h3>
+      
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/">http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/">微机原理和接口技术</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2001%20%E5%BE%AE%E5%9E%8B%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%A6%82%E8%AE%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">汇编与接口 - 01 微型计算机基础概论</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/"><span class="paginator-prev__text">汇编与接口 - 02 微处理器</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">
+          汇编与接口 - 03 指令系统和寻址方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          1. 指令系统简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          1.1 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          1.2 指令格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.2.1 指令应该包含什么 ?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.2.2 指令的一般格式 :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.2.3 指令格式按操作数数量分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          1.3 指令中操作数的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.3.1 立即数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.3.2 寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.3.3 存储器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          1.4 指令执行速度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.4.1 指令字长与机器字长</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.4.2 影响指令执行速度因素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.4.3 不同操作数的执行速度排序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          2. 操作数寻址方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          常用寻址方式的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          3. 8086指令系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.1 数据传送指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.2 算术运算指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.3 逻辑运算和移位指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.4 串操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          3.4.1 串操作指令概述:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          ① 串操作指令是什么?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          ② 串操作指令的共同特点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          3.4.2 串操作的使用:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          用法一: 将一串数据传入另一个地方</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          用法二: 将串</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.5 程序控制指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.6 处理器控制指令</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">8</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

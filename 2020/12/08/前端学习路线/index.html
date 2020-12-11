@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="涉及知识点        命令行、Git、HTML5、CSS3、BFC、定位、层叠上下文、边距折叠、浮动布局、flex布局、grid布局、兼容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zjeff&#39;blog">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/08/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html">
+<meta property="og:site_name" content="Zjeff&#39;blog">
+<meta property="og:description" content="涉及知识点        命令行、Git、HTML5、CSS3、BFC、定位、层叠上下文、边距折叠、浮动布局、flex布局、grid布局、兼容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201208165746.png">
+<meta property="article:published_time" content="2020-12-08T08:55:13.886Z">
+<meta property="article:modified_time" content="2020-12-10T11:52:46.115Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201208165746.png"><title>[ 文章无标题 ] | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/08/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">[ 文章无标题 ]</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-08</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-10</span></span></div></header><div class="post-body">
+        <h3><span id="涉及知识点">
+          涉及知识点</span></h3>
+      
+<p>命令行、Git、HTML5、CSS3、BFC、定位、层叠上下文、边距折叠、浮动布局、flex布局、grid布局、兼容</p>
+<a id="more"></a>
+<p>渲染机制、白屏、FOUC、异步加载、重绘与回流、8种数据类型、运算符优先级、箭头函数、声明前置、函数作用域、块级作用域、作用域链、IIFE、递归、递归优化、柯里化、字符串数组方法（ES5/6）、引用类型、深浅拷贝、正则表达式（贪婪、分组、前瞻）、同步与异步、任务队列、微任务与宏任务、节流、防抖、原型、class、原型链、Object.create、组合继承、class继承、call/apply/bind、Object.assign、Mixin、Getter/Setter、闭包、模块封装、高阶函数、DOM操作、DOM事件流（冒泡、捕获、阻止默认、passive、事件代理）、URL编码解码、Cookie/Session鉴权机制、XMLHttpRequest2、fetch、Ajax封装、Comet、Websocket、Mock、Curl、Http状态码、缓存、Session、JWT、Auth2机制、XSS、CSRF原理、异步、回调、Promise、async/await、同源策略、JSONP、CORS、服务器中转、CommonJS规范、NPM、Yarn、开发Package、模块化价值、IIFE、Parcel.js、ES6的原生Module、NPM Scripts与工程化、Webpack、手写loader与Plugin、React、Babel、create-react-app、css modules、styled-component、React Hooks、React Router、Mobx、Antd、网站性能优化、构建优化</p>
+
+        <h2><span id="系统任务中的项目">
+          系统任务中的项目</span></h2>
+      
+<ol>
+<li>实现选项卡、实现手风琴</li>
+<li>实现Tabs标签页、Collapse折叠面版</li>
+<li>封装Message消息提示组件、Tooltip文字提示组件</li>
+<li>封装Dialog组件、Carousel走马灯组件</li>
+<li>结合设计模式与动画实现多特效轮播</li>
+<li>原生JS实现在线PPT生成平台</li>
+<li>手写Promise</li>
+<li>Node手写Server</li>
+<li>手写Promise</li>
+<li>开发Node.js 命令行工具</li>
+<li>开发Webpack oader与plugin（replace-loader、markdown-loader、webpack-clean-plugin）</li>
+<li>手写React</li>
+<li>手写React Hooks</li>
+<li>React 函数组件 、react-router、mobx 、leancloud 实现图床</li>
+</ol>
+
+        <h2><span id="可选项目53">
+          可选项目（5+3）</span></h2>
+      
+
+        <h3><span id="应用类项目">
+          应用类项目</span></h3>
+      
+<ol>
+<li>vue 实现技术社区</li>
+<li>vue 实现共享博客平台</li>
+<li>vue 实现商城</li>
+<li>vue 实现记账应用</li>
+<li>react 实现图床网站</li>
+<li>react 实现记账应用</li>
+<li>react 实现番茄工作管理应用</li>
+<li>原生JS实现移动端华为音乐</li>
+<li>原生JS实现在线Slides应用</li>
+<li>原生JS实现画板</li>
+<li>JQuery实现电视FM</li>
+<li>Node.js 搭建在线便利贴</li>
+<li>翻译小程序</li>
+<li>云开发实现聊天小程序</li>
+</ol>
+
+        <h3><span id="造轮子项目">
+          造轮子项目</span></h3>
+      
+<ol>
+<li>手写Vue</li>
+<li>手写MVC</li>
+<li>手写Express.js</li>
+<li>手写Webpack</li>
+<li>手写Redux</li>
+<li>手写Vue UI组件库</li>
+<li>手写React UI组件库</li>
+<li>手写DOM库</li>
+</ol>
+
+        <h2><span id="学习模式">
+          学习模式</span></h2>
+      
+<p>任务+直播+项目</p>
+
+        <h2><span id="答疑">
+          答疑</span></h2>
+      
+<p>（一）学习方法</p>
+<p>1、对于零基础跨行业学习前端的人来说，应该如何去学习以及学习的侧重点、切入点</p>
+<p>2、比较适合小白的学习方法；除了跟着录屏学习以外，其他方面还有哪些是需要关注和学习的？</p>
+<p>3、0基础学习感觉学完全忘了，新手的恐惧</p>
+<p>4、0基础新手如何高效学习，学习的方法以及技巧等</p>
+<p>5、没有任何计算机基础的小白，希望老师讲的更细节一些，多讲讲基础</p>
+<p>6、高效学习方法？JS是不是很难？</p>
+<p>7、对于课程中的项目，需要做到能自己敲出代码的程度吗，还是说只要跟着敲一遍，到最后再查漏补缺吗？</p>
+<p>8、老师建议按照什么样的一个速度来学习?</p>
+<p>9、想问问老师除了平时上课的学习之外，自己学习需要注意什么，有什么好的方法？</p>
+<p>10、老师是怎么学习一个新框架的？</p>
+<p>11、老师以前和现在是通过什么途径学习的？</p>
+<p>12、博客老是感觉在抄ppt，怎么写好博客？</p>
+<p>13、写博客能梳理清楚知识点，对于学习有用，然而我觉得花时间有点多不是那么高效，有没有更高效的方式呢？</p>
+<p>（二）就业求职</p>
+<p>1、对之后就业上能够给予的帮助能再仔细说明一下吗？</p>
+<p>2、转行的话，工作经历和项目经历该怎么处理呢？</p>
+<p>3、大厂里面大部分部门老大都是后端出身，前端是否比后端更难晋升？</p>
+<p>4、在看大厂的前端实习、校招要求时，有很多要求有性能优化的经验，这方面该如何准备？</p>
+<p>5、希望老师讲讲关于秋招的问题，往年的说法是金九银十，今年因为是疫情的关系的关系吗？我看有些公司已经有秋招了，是秋招提前了？今年还是金九银十吗（我是21届的毕业生）</p>
+<p>（三）其他</p>
+<p>1、 如何挑选培训班</p>
+<p>2、快30岁的人学习互联网还能行吗？</p>
+<p>3、如何知道自己学到什么程度？</p>
+<p>4、开发时候注意的问题</p>
+<p>5、如何进阶自己的前端水平</p>
+<p>6、从事前端三年后该如何提升自己？大前端or全栈or可视化等其他方向？</p>
+<p>7、大厂的前端平时工作是怎样的，除了写页面，还有哪些有挑战性的工作？</p>
+<p>误区:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201208165746.png" alt="image-20201208165746618"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/08/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">http://zjeff-953.gitee.io/zjeff/2020/12/08/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/09/%E9%9A%8F%E7%AC%94%20-%2005%20%E8%AE%B0%E5%8D%9A%E5%AE%A2%E5%92%8C%E7%AC%94%E8%AE%B0%E7%9A%84%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">随笔 - 05 记博客和笔记的方式</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/06/CSS%E5%AE%9E%E7%94%A8%20-%2002%20%E5%B1%85%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__text">CSS实用 - 02 居中实现方式</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          涉及知识点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          系统任务中的项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          可选项目（5+3）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          应用类项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          造轮子项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          学习模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          答疑</span></a></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">8</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
