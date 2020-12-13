@@ -5,6 +5,8 @@
 <meta property="og:site_name" content="Zjeff&#39;blog">
 <meta property="og:description" content="8086&#x2F;8088 微处理器和存储器">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212140118.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212140129.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116093408.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116093913.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116093947.png">
@@ -22,6 +24,7 @@
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201117152739.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118150034.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118150625.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212144104.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118151055.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118151518.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118151756.png">
@@ -45,12 +48,12 @@
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118161731.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118161838.png">
 <meta property="article:published_time" content="2020-11-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-12-04T09:13:57.679Z">
+<meta property="article:modified_time" content="2020-12-12T07:10:20.078Z">
 <meta property="article:author" content="Jeffords zuo">
 <meta property="article:tag" content="微机原理和接口技术">
 <meta property="article:tag" content="计算机体系结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116093408.png"><title>汇编与接口 - 02 微处理器 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212140118.png"><title>汇编与接口 - 02 微处理器 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -74,20 +77,27 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">汇编与接口 - 02 微处理器</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-04</span></span></div></header><div class="post-body"><p>8086/8088微型计算机的处理器和存储器有什么特点 ?</p>
-<p>他们和模型及有什么区别 ?</p>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">汇编与接口 - 02 微处理器</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-12</span></span></div></header><div class="post-body">
+        <h1><span id="汇编与接口-02-80868088微型机结构">
+          汇编与接口 - 02 8086/8088微型机结构</span></h1>
+      
+<p>8086/8088微型计算机的处理器和存储器有什么特点 ?</p>
+<p>他们和模型机有什么区别 ?</p>
 <a id="more"></a>
+<p>认识8086/8088微型机</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212140118.png" alt="image-20201212140118028"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212140129.png" alt="image-20201212140129239"></p>
 
-        <h2><span id="2-80868088-微处理器和存储器">
-          2. 8086/8088 微处理器和存储器</span></h2>
+        <h2><span id="1-80868088-微处理器cpu">
+          1. 8086/8088 微处理器(CPU)</span></h2>
       
 
-        <h3><span id="21-80868088-cpu特点及工作模式">
-          2.1 8086/8088 CPU特点及工作模式</span></h3>
+        <h3><span id="11-80868088-cpu特点及工作模式">
+          1.1 8086/8088 CPU特点及工作模式</span></h3>
       
 
-        <h4><span id="211-80888086-cpu的特点">
-          2.1.1 8088/8086 CPU的特点</span></h4>
+        <h4><span id="111-80888086-cpu的特点">
+          1.1.1 8088/8086 CPU的特点</span></h4>
       
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116093408.png" alt="image-20201116093408428"></p>
 
@@ -148,13 +158,13 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>N</mi><mi mathvariant="normal">/</mi><mover accent="true"><mrow><mi>M</mi><mi>X</mi></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">MN/\overline{MX} = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.13333em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>  最大模式</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>N</mi><mi mathvariant="normal">/</mi><mover accent="true"><mrow><mi>M</mi><mi>X</mi></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">MN/\overline{MX} = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.13333em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>  最小模式</p>
 
-        <h3><span id="22-80868088-cpu主要引脚功能和内部结构">
-          2.2 8086/8088 CPU主要引脚功能和内部结构</span></h3>
+        <h3><span id="12-80868088-cpu主要引脚功能和内部结构">
+          1.2 8086/8088 CPU主要引脚功能和内部结构</span></h3>
       
 <p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2680969494,1438250358&amp;fm=26&amp;gp=0.jpg" alt="img"></p>
 
-        <h4><span id="221-主要引线">
-          2.2.1 主要引线</span></h4>
+        <h4><span id="121-主要引线">
+          1.2.1 主要引线</span></h4>
       
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116094757.png" alt="image-20201116094757577"></p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201116094954.png" alt="image-20201116094953928"></p>
@@ -285,8 +295,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 </li>
 </ol>
 
-        <h5><span id="iii-ready">
-          Ⅲ READY</span></h5>
+        <h5><span id="iii-readyreadyready">
+          Ⅲ READYREADYREADY</span></h5>
       
 <ol>
 <li>
@@ -307,12 +317,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
       
 <ol>
 <li>
-<p>INTR (INTerrupt Request) 可屏蔽中断请求输入信号</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>I</mi><mi>N</mi><mi>T</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">INTR</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> (INTerrupt Request) 可屏蔽中断请求输入信号</p>
 <p>CPU每条指令的最后一个周期采样该信号 , 决定是否进入响应周期 ,</p>
 <p>可以通过软件屏蔽</p>
 </li>
 <li>
-<p>NMI (Non Maskable Interrupt) 非屏蔽中断请求输入信号</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>M</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">NMI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span> (Non Maskable Interrupt) 非屏蔽中断请求输入信号</p>
 <p>不能被软件屏蔽的中断请求信号</p>
 <p>CPU在当前指令执行结束后就进入中断过程</p>
 </li>
@@ -328,11 +338,11 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
       
 <ol>
 <li>
-<p>HOLD 总线保持请求信号输入端</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>O</mi><mi>L</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">HOLD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span> 总线保持请求信号输入端</p>
 <p>当CPU以外的其他设备要求占用总线时，通过该引脚向CPU发出请求</p>
 </li>
 <li>
-<p>HLDA 总线保持响应信号输出端</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>L</mi><mi>D</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">HLDA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">A</span></span></span></span> 总线保持响应信号输出端</p>
 <p>CPU对HOLD信号的响应信号</p>
 </li>
 </ol>
@@ -434,8 +444,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 </li>
 </ol>
 
-        <h3><span id="23-80868088cpu内部寄存器">
-          2.3 8086/8088CPU内部寄存器</span></h3>
+        <h3><span id="13-80868088cpu内部寄存器">
+          1.3 8086/8088CPU内部寄存器</span></h3>
       
 <p>内部寄存器的类型, 含14个16位寄存器，按功能可分为三类</p>
 <ol>
@@ -446,8 +456,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201117143848.png" alt="image-20201117143848594"></p>
 <p>对于每个寄存器都要了解清楚</p>
 
-        <h4><span id="231-通用寄存器8">
-          2.3.1 通用寄存器(8)</span></h4>
+        <h4><span id="131-通用寄存器8">
+          1.3.1 通用寄存器(8)</span></h4>
       
 
         <h5><span id="i-数据寄存器-axbxcxdx">
@@ -470,26 +480,26 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <p>数据寄存器有特定的固有用法</p>
 <ol>
 <li>
-<p>AX(Accumulator) : 累加器</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">AX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>(Accumulator) : 累加器</p>
 <ul>
 <li>所有I/O指令都通过AX与接口传送信息</li>
 <li>中间运算结果也多放于AX中</li>
 </ul>
 </li>
 <li>
-<p>BX(Base) : 基址寄存器</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">BX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>(Base) : 基址寄存器</p>
 <ul>
 <li>在间接寻址中用于存放基地址</li>
 </ul>
 </li>
 <li>
-<p>CX(Count) : 计数寄存器</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">CX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>(Count) : 计数寄存器</p>
 <ul>
 <li>用于在循环或串操作指令中存放计数值</li>
 </ul>
 </li>
 <li>
-<p>DX(Data) : 数据寄存器</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">DX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>(Data) : 数据寄存器</p>
 <ul>
 <li>在间接寻址的I/O指令中存放I/O端口地址</li>
 </ul>
@@ -505,12 +515,12 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
           组成和功能</span></h6>
       
 <ol>
-<li>SP(Stack Pointer) : 堆栈指针寄存器
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">SP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>(Stack Pointer) : 堆栈指针寄存器
 <ul>
 <li>永远指向栈顶的偏移地址</li>
 </ul>
 </li>
-<li>BP(Base Pointer) : 基质指针寄存器
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">BP</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span>(Base Pointer) : 基质指针寄存器
 <ul>
 <li>常用于在访问内存时存放内存单元的偏移地址/基地址</li>
 <li>BP与BX异同 :
@@ -540,18 +550,18 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
           组成和功能</span></h6>
       
 <ol>
-<li>SI(Source Index) : 源变址寄存器</li>
-<li>DI(Destination Index) : 目的变址寄存器</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">SI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>(Source Index) : 源变址寄存器</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">DI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>(Destination Index) : 目的变址寄存器</li>
 </ol>
 <p>变址寄存器在指令中常用于存放数据在内存中的地址</p>
 <p>常作为变址寻址方式中作为索引指针</p>
 
-        <h4><span id="232-控制寄存器2">
-          2.3.2 控制寄存器(2)</span></h4>
+        <h4><span id="132-控制寄存器2-ipflag">
+          1.3.2 控制寄存器(2) IP/FLAG</span></h4>
       
 
-        <h5><span id="i-ip">
-          Ⅰ IP</span></h5>
+        <h5><span id="i-ipipip">
+          Ⅰ IPIPIP</span></h5>
       
 <p>IP(Instruction Pointer) : 指令指针寄存器</p>
 <p>用于存放预取指令的偏移地址</p>
@@ -560,8 +570,8 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <p>用户程序不能直接访问IP</p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201117150040.png" alt="image-20201117150040713"></p>
 
-        <h5><span id="ii-flag">
-          Ⅱ FLAG</span></h5>
+        <h5><span id="iiflagflagflag">
+          ⅡFLAGFLAGFLAG</span></h5>
       
 <p>标志寄存器 / 程序状态字(PSW)</p>
 <p>16位寄存器,但只使用其中的9位,其中6个状态标志,3个控制标志</p>
@@ -572,19 +582,19 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <p>记录算术和逻辑运算结果的一些特征</p>
 <ol>
 <li>
-<p>CF(Carry Flag) : 进位标志位</p>
+<p><strong>CF</strong>(Carry Flag) : 进位标志位</p>
 <ul>
 <li>加(减)法运算时 , 若最高位有进(借)位时  CF=1</li>
 </ul>
 </li>
 <li>
-<p>PF(Parity Flag) : 奇偶标志位</p>
+<p><strong>PF</strong>(Parity Flag) : 奇偶标志位</p>
 <ul>
 <li>运算结果的低8位中“1”的个数为偶数时 PF=1</li>
 </ul>
 </li>
 <li>
-<p>AF(Auxiliary Carry Flag) : 辅助进位标志位</p>
+<p><strong>AF</strong>(Auxiliary Carry Flag) : 辅助进位标志位</p>
 <ul>
 <li>
 <p>加(减)操作中 , 若Bit3向Bit4有进位(借位) AF=1</p>
@@ -593,19 +603,19 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </ul>
 </li>
 <li>
-<p>ZF(Zero Flag) : 零标志位</p>
+<p><strong>ZF</strong>(Zero Flag) : 零标志位</p>
 <ul>
 <li>当运算结果为零时 ZF=1</li>
 </ul>
 </li>
 <li>
-<p>SF(Sign Flag) : 符号标志位</p>
+<p><strong>SF</strong>(Sign Flag) : 符号标志位</p>
 <ul>
 <li>当运算结果的最高位为1时，SF=l</li>
 </ul>
 </li>
 <li>
-<p>OF(Overflow Flag) : 溢出标志位</p>
+<p><strong>OF</strong>(Overflow Flag) : 溢出标志位</p>
 </li>
 </ol>
 <ul>
@@ -637,8 +647,8 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </li>
 </ol>
 
-        <h4><span id="234-段寄存器4">
-          2.3.4 段寄存器(4)</span></h4>
+        <h4><span id="134-段寄存器4">
+          1.3.4 段寄存器(4)</span></h4>
       
 
         <h5><span id="组成和作用">
@@ -662,37 +672,41 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <p>程序中同时可以使用4个段分别由CS、DS、ES和SS四个段寄存器指示</p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201117152739.png" alt="image-20201117152738944"></p>
 
-        <h5><span id="i-代码段-cscode-segment">
-          Ⅰ 代码段 CS(Code Segment)</span></h5>
+        <h5><span id="i-代码段-cscscscode-segment">
+          Ⅰ 代码段 CSCSCS(Code Segment)</span></h5>
       
 <p>代码段寄存器，存放代码段的段基地址</p>
 
-        <h5><span id="ii-数据段-dsdata-segment">
-          Ⅱ 数据段 DS(Data Segment)</span></h5>
+        <h5><span id="ii-数据段-dsdsdsdata-segment">
+          Ⅱ 数据段 DSDSDS(Data Segment)</span></h5>
       
 <p>数据段寄存器，存放数据段的段基地址</p>
 
-        <h5><span id="iii-附加段-esextra-segment">
-          Ⅲ 附加段 ES(Extra Segment)</span></h5>
+        <h5><span id="iii-附加段-esesesextra-segment">
+          Ⅲ 附加段 ESESES(Extra Segment)</span></h5>
       
 <p>附加段寄存器，存放数据段的段基地址</p>
 
-        <h5><span id="iv-堆栈段-ssstack-segemnt">
-          Ⅳ 堆栈段 SS(Stack Segemnt)</span></h5>
+        <h5><span id="iv-堆栈段-ssssssstack-segemnt">
+          Ⅳ 堆栈段 SSSSSS(Stack Segemnt)</span></h5>
       
 <p>堆栈段寄存器，存放堆栈段的段基地址</p>
 
-        <h3><span id="24-80868088-存储器组织和实地址模式下的存储器寻址">
-          2.4 8086/8088 存储器组织和实地址模式下的存储器寻址</span></h3>
+        <h2><span id="2-80868088-存储器">
+          2. 8086/8088 存储器</span></h2>
       
+<p>主要了解存储器组织和实地址模式下的存储器寻址</p>
+<p>8086处理器有20根地址总线</p>
+<p>而寄存器只有16根线</p>
+<p>所以用两个16根, 舍去重合的部分表示20位</p>
 
-        <h4><span id="241-内存单元的编制">
-          2.4.1 内存单元的编制</span></h4>
+        <h3><span id="21-内存单元的编制">
+          2.1 内存单元的编制</span></h3>
       
 <p>内存单元的地址表示有<strong>物理地址</strong>和<strong>逻辑地址</strong>两种方式</p>
 
-        <h5><span id="i-物理地址">
-          Ⅰ 物理地址</span></h5>
+        <h4><span id="211-物理地址">
+          2.1.1 物理地址</span></h4>
       
 <p>指每个内存单元在整个内存空间中具有的惟一的地址</p>
 
@@ -728,8 +742,8 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </li>
 </ol>
 
-        <h5><span id="ii-逻辑地址">
-          Ⅱ 逻辑地址</span></h5>
+        <h4><span id="212-逻辑地址">
+          2.1.2 逻辑地址</span></h4>
       
 
         <h6><span id="1-组成">
@@ -759,6 +773,7 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </li>
 </ul>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118150625.png" alt="image-20201118150625104"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212144104.png" alt="image-20201212144104763"></p>
 
         <h6><span id="2-划分效果和目的">
           ② 划分效果和目的</span></h6>
@@ -810,6 +825,17 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </li>
 </ul>
 
+        <h6><span id="需要注意的现象">
+          需要注意的现象</span></h6>
+      
+<p>我的理解: 你用俩16位,能表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>的数字,但是你只想要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>20</mn></msup></mrow><annotation encoding="application/x-tex">2^{20}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span>个数,因为你只有20根线,所以就会有不可避免的重合,比如: 16000H+1234H == 16120H + 0034H</p>
+<p>正因如此, 你使用代码段加特定的偏移地址是可以访问到数据段等等</p>
+<p>这给我们两点启示:</p>
+<ol>
+<li>内存里放的东西只是一串01二进制码, 他具体是指令还是数据,取决于你怎么能执行他</li>
+<li>逻辑段终究是逻辑上的分段, 使用时也要注意越界等问题</li>
+</ol>
+
         <h6><span id="4-在任一时刻一个程序只能访问4个当前段中的内容">
           ④ 在任一时刻，一个程序只能访问4个当前段中的内容</span></h6>
       
@@ -821,8 +847,8 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <p>例子 :</p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118152922.png" alt="image-20201118152922482"></p>
 
-        <h4><span id="242-逻辑地址和物理地址转换-重点">
-          2.4.2 逻辑地址和物理地址转换 (重点)</span></h4>
+        <h3><span id="22-逻辑地址和物理地址转换-重点">
+          2.2 逻辑地址和物理地址转换 (重点)</span></h3>
       
 <p>内存物理地址由段基地址和偏移地址组合而成</p>
 <ul>
@@ -842,8 +868,8 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <p>例3 :</p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118153340.png" alt="image-20201118153340128"></p>
 
-        <h4><span id="243-堆栈及堆栈段的使用">
-          2.4.3 堆栈及堆栈段的使用</span></h4>
+        <h3><span id="23-堆栈及堆栈段的使用">
+          2.3 堆栈及堆栈段的使用</span></h3>
       
 
         <h5><span id="i-堆栈的定义">
@@ -891,8 +917,8 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </ol>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118153907.png" alt="image-20201118153907107"></p>
 
-        <h5><span id="iv-堆栈指针sp">
-          Ⅳ 堆栈指针SP</span></h5>
+        <h5><span id="iv-堆栈指针spspsp">
+          Ⅳ 堆栈指针SPSPSP</span></h5>
       
 <p>为了指示堆栈中<strong>栈顶</strong>的位置，设置一个寄存器来指示其位置。其内容就象一个指针一样</p>
 <p>特点 :</p>
@@ -926,7 +952,7 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 <li>堆栈初始化时SP指向栈底+2单元，其值就是堆栈的长度。由于SP是16位寄存器，因此堆栈长度 64K字节</li>
 <li>SP始终表示堆栈段基址与栈顶之间的距离（字节数）
 <ul>
-<li>当SP为最大(初始)值时，表示堆栈为空</li>
+<li>当SP为最大(初始)值时，表示堆栈为空,此时他指向栈底的下一个单元</li>
 <li>当SP为0时，表示堆栈全满。</li>
 </ul>
 </li>
@@ -937,12 +963,12 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </ul>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118154421.png" alt="image-20201118154421567"></p>
 
-        <h3><span id="23-8088总线时序">
-          2.3 8088总线时序</span></h3>
+        <h2><span id="3-8088-总线">
+          *3. 8088 总线</span></h2>
       
 
-        <h4><span id="231-总线的基本概念">
-          2.3.1 总线的基本概念</span></h4>
+        <h3><span id="31-总线的基本概念">
+          3.1 总线的基本概念</span></h3>
       
 
         <h5><span id="i-定义">
@@ -956,18 +982,18 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
       
 <p>地址总线 , 数据总线 , 控制总线</p>
 
-        <h4><span id="232-最小总线模式">
-          2.3.2 最小总线模式</span></h4>
+        <h3><span id="32-最小总线模式">
+          3.2 最小总线模式</span></h3>
       
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118155134.png" alt="image-20201118155134719"></p>
 
-        <h4><span id="233-最大总线模式">
-          2.3.3 最大总线模式</span></h4>
+        <h3><span id="33-最大总线模式">
+          3.3 最大总线模式</span></h3>
       
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201118155203.png" alt="image-20201118155203263"></p>
 
-        <h4><span id="234-最小模式总线时序">
-          2.3.4 最小模式总线时序</span></h4>
+        <h3><span id="34-最小模式总线时序">
+          3.4 最小模式总线时序</span></h3>
       
 
         <h5><span id="i-概念">
@@ -1070,18 +1096,19 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
 </ul>
 </li>
 </ol>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/">http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/">微机原理和接口技术</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">汇编与接口 - 03 指令系统和寻址方式</span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
-          2. 8086&#x2F;8088 微处理器和存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
-          2.1 8086&#x2F;8088 CPU特点及工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.1.1 8088&#x2F;8086 CPU的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/">http://zjeff-953.gitee.io/zjeff/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2002%20%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/">微机原理和接口技术</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2007%20%E6%B1%87%E7%BC%96%E6%80%BB%E7%BB%93/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">汇编与接口 - 04 汇编灌口</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/18/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2003%20%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__text">汇编与接口 - 03 指令系统和寻址方式</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">
+          汇编与接口 - 02 8086&#x2F;8088微型机结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          1. 8086&#x2F;8088 微处理器(CPU)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          1.1 8086&#x2F;8088 CPU特点及工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.1.1 8088&#x2F;8086 CPU的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅰ CPU内部结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅱ 存储器寻址方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅲ 工作模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
-          2.2 8086&#x2F;8088 CPU主要引脚功能和内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.2.1 主要引线</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          1.2 8086&#x2F;8088 CPU主要引脚功能和内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.2.1 主要引线</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅰ 最小模式下的8088引线</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅱ 主要的控制和状态信号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅲ READY</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅲ READYREADYREADY</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅳ 中断信号和响应信号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅴ 总线保持信号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           8088和8086CPU的引线差异</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
@@ -1090,39 +1117,39 @@ DX <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒
           Ⅰ 执行单元 EU</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅱ 总线接口单元</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           8086&#x2F;8088CPU结构特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
-          2.3 8086&#x2F;8088CPU内部寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.1 通用寄存器(8)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          1.3 8086&#x2F;8088CPU内部寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.3.1 通用寄存器(8)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅰ 数据寄存器 (AX，BX，CX，DX)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅱ 地址指针寄存器（SP，BP）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅲ 变址寄存器（SI，DI）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.2 控制寄存器(2)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅰ IP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅱ FLAG</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.4 段寄存器(4)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          1.3.2 控制寄存器(2) IP&#x2F;FLAG</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅰ IPIPIP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          ⅡFLAGFLAGFLAG</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          1.3.4 段寄存器(4)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           组成和作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅰ 代码段 CS(Code Segment)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅱ 数据段 DS(Data Segment)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅲ 附加段 ES(Extra Segment)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅳ 堆栈段 SS(Stack Segemnt)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
-          2.4 8086&#x2F;8088 存储器组织和实地址模式下的存储器寻址</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.4.1 内存单元的编制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅰ 物理地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅱ 逻辑地址</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          8086&#x2F;8088存储器段结构的特点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.4.2 逻辑地址和物理地址转换 (重点)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.4.3 堆栈及堆栈段的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅰ 代码段 CSCSCS(Code Segment)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅱ 数据段 DSDSDS(Data Segment)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅲ 附加段 ESESES(Extra Segment)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅳ 堆栈段 SSSSSS(Stack Segemnt)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          2. 8086&#x2F;8088 存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          2.1 内存单元的编制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          2.1.1 物理地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
+          2.1.2 逻辑地址</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          8086&#x2F;8088存储器段结构的特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          2.2 逻辑地址和物理地址转换 (重点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          2.3 堆栈及堆栈段的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅰ 堆栈的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅱ 堆栈的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅲ 堆栈的结构特征</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅳ 堆栈指针SP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅴ 堆栈的使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
-          2.3 8088总线时序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.1 总线的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅳ 堆栈指针SPSPSP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅴ 堆栈的使用</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">
+          *3. 8088 总线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.1 总线的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅰ 定义 :</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
-          Ⅱ 组成</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.2 最小总线模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.3 最大总线模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">
-          2.3.4 最小模式总线时序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
+          Ⅱ 组成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.2 最小总线模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.3 最大总线模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+          3.4 最小模式总线时序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅰ 概念:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text">
           Ⅱ 总线周期 示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
-          小结</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">8</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
+          小结</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">8</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
