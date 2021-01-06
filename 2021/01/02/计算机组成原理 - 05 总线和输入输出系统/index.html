@@ -6,16 +6,20 @@
 <meta property="og:description" content="计算机组成原理 - 05 总线和输入输出系统        计算机内部各部分如何通信? 计算机和外部设备如何通信? 计算机和人,计算机和其他计算机是如何通信的?">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102112149.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102143032.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113038.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113008.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103094209.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113403.png">
-<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102143032.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102153255.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102154640.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102154812.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102155125.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102160555.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103093617.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103093651.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102162312.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103093307.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102164117.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102164607.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102171133.png">
@@ -30,12 +34,13 @@
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102194633.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102171509.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102195514.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103091617.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102205712.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102205827.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102205930.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102205958.png">
 <meta property="article:published_time" content="2021-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-02T13:02:48.361Z">
+<meta property="article:modified_time" content="2021-01-04T07:06:11.289Z">
 <meta property="article:author" content="Jeffords zuo">
 <meta property="article:tag" content="计算机体系结构">
 <meta property="article:tag" content="计算机组成原理">
@@ -64,7 +69,7 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机组成原理 - 05 总线和输入输出系统</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-01-02</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-02</span></span></div></header><div class="post-body">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机组成原理 - 05 总线和输入输出系统</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-01-02</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-04</span></span></div></header><div class="post-body">
         <h1 id="计算机组成原理-05-总线和输入输出系统"   >
           <a href="#计算机组成原理-05-总线和输入输出系统" class="heading-link"><i class="fas fa-link"></i></a>计算机组成原理 - 05 总线和输入输出系统</h1>
       
@@ -124,41 +129,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
         <h3 id="13-主机和外部设备的连接方式"   >
           <a href="#13-主机和外部设备的连接方式" class="heading-link"><i class="fas fa-link"></i></a>1.3 主机和外部设备的连接方式</h3>
       
-<p>越往后, 越快, 也越复杂</p>
-<ol>
-<li>
-<p>直接连接式(辐射式)</p>
-<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102112149.png" alt="image-20210102112149550" /></p>
-<ul>
-<li>引入接口增加了可扩展性, 你想放什么I/O设备都可以</li>
-</ul>
-</li>
-<li>
-<p>总线式(单总线结构)</p>
-<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113038.png" alt="image-20210102113038157" /></p>
-<ul>
-<li>总线的引入简化了线路, 现在只需要把新设备接到总线上就行了,不需要和各个部件都接起来</li>
-<li>总线的引入进一步增加了可拓展性, 现在你想放几个接口都可以</li>
-</ul>
-</li>
-<li>
-<p>通道式(双总线结构)</p>
-<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113008.png" alt="image-20210102113007384" /></p>
-<ul>
-<li>因为总线一次只能在两个设备之间通信, 大量低速I/O设备影响了主存和高速I/O设备的通信速度</li>
-<li>通道的加入使得主存总线可以之和通道通信, 通道简单处理后再给主存总线,减少了传输的内容, 降低了传输的时间</li>
-</ul>
-</li>
-<li>
-<p>DMA方式(三总线结构)</p>
-<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113403.png" alt="image-20210102113403443" /></p>
-<ul>
-<li>通道方式还是影响高速I/O设备的的速度</li>
-<li>DMA可以直接访问内存</li>
-<li>给高速I/O设备开个小道</li>
-</ul>
-</li>
-</ol>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102112149.png" alt="image-20210102112149550" style="zoom:25%;" />
+<p>引入接口增加了可扩展性, 你想放什么I/O设备都可以</p>
+<p>后来又引入了总线简化了线路,进一步增加了拓展性</p>
+<p>再后来为了提高大型计算机效率引入了通道, 更加适合高速I/O</p>
 
         <h2 id="2-输入输出接口"   >
           <a href="#2-输入输出接口" class="heading-link"><i class="fas fa-link"></i></a>2 输入输出接口</h2>
@@ -283,7 +257,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <ul>
 <li>将一部分总线地址(高区)分配给设备接口中的寄存器</li>
 <li><strong>(占用了主存地址)</strong></li>
-<li>访问时使用通用的访存指令</li>
+<li>访问时使用通用的访存指令/传送指令</li>
+<li>这种方式下的访存指令/传送指令也叫&quot;隐式I/O指令&quot;</li>
 </ul>
 </li>
 <li>单独编址:
@@ -291,6 +266,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <li>为接口中的每个寄存器分配独立的端口号</li>
 <li><strong>(与主存地址无关)</strong></li>
 <li>访问时由专门的I/O指令比如<code>IN</code>,<code>OUT</code></li>
+<li>这种方式下的指令也叫&quot;显式I/O指令&quot;</li>
 </ul>
 </li>
 </ol>
@@ -486,7 +462,42 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
         <h4 id="321-总线结构"   >
           <a href="#321-总线结构" class="heading-link"><i class="fas fa-link"></i></a>3.2.1 总线结构</h4>
       
-<p>见<code>1.3</code></p>
+<ol>
+<li>
+<p>单总线结构</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/irxlinpw/article/details/11766465" >总线结构详见</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113038.png" alt="image-20210102113038157" style="zoom:33%;" />
+<ul>
+<li>总线的引入简化了线路, 现在只需要把新设备接到总线上就行了,不需要和各个部件都接起来</li>
+<li>总线的引入进一步增加了可拓展性, 现在你想放几个接口都可以</li>
+</ul>
+</li>
+<li>
+<p>双总线分离结构</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113008.png" alt="image-20210102113007384" style="zoom: 33%;" />
+<ul>
+<li>
+<p>因为总线一次只能在两个设备之间通信, 大量低速I/O设备影响了主存和高速I/O设备的通信速度</p>
+</li>
+<li>
+<p>通道的加入使得主存总线可以之和通道通信, 通道简单处理后再给主存总线,减少了传输的内容, 降低了传输的时间</p>
+</li>
+<li>
+<p>还有以存储器为核心的双总线结构:</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103094209.png" alt="image-20210103094208879" style="zoom:50%;" />
+</li>
+</ul>
+</li>
+<li>
+<p>三总线结构</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102113403.png" alt="image-20210102113403443" style="zoom:33%;" />
+<ul>
+<li>通道方式还是影响高速I/O设备的的速度</li>
+<li>DMA可以直接访问内存</li>
+<li>给高速I/O设备开个小道</li>
+</ul>
+</li>
+</ol>
 
         <h4 id="322-总线性能指标"   >
           <a href="#322-总线性能指标" class="heading-link"><i class="fas fa-link"></i></a>3.2.2 总线性能指标</h4>
@@ -635,7 +646,11 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <li>在固定时钟周期内完成数据传送，由同步脉冲定时打入</li>
 </ol>
 <p>就是在整个工作周期中留出一段时间, 没到这个时间就发射脉冲信号, 放开地址总线和数据总线, 只有在这段时间内才能通过总线进行数据传送操作, 如果没有传送操作, 或者传送完了还有时间, 这个时间将被&quot;浪费&quot;</p>
+<p>读数据的时候:</p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102160555.png" alt="image-20210102160555266" /></p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103093617.png" alt="image-20210103093617661" style="zoom:50%;" />
+<p>写数据的时候 :</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103093651.png" alt="image-20210103093651355" style="zoom:50%;" />
 
         <h4 id="343-异步定时方式"   >
           <a href="#343-异步定时方式" class="heading-link"><i class="fas fa-link"></i></a>3.4.3 异步定时方式</h4>
@@ -648,6 +663,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <p>一般流程:</p>
 <p>主设备申请总线权, 然后开始数据传输, 直到接收到从设备的响应, 归还总线权, 结束总线周期<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210102162312.png" alt="image-20210102162312546" /></p>
 <p>异步应答方式可以分为 不互锁,半互锁,全互锁 三种</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103093307.png" alt="image-20210103093307584" style="zoom: 33%;" />
 
         <h5 id="不互锁"   >
           <a href="#不互锁" class="heading-link"><i class="fas fa-link"></i></a>不互锁</h5>
@@ -1043,10 +1059,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <li>CPU执行中断隐指令操作，进入服务程序</li>
 </ol>
 
+        <h5 id="中断接口设计"   >
+          <a href="#中断接口设计" class="heading-link"><i class="fas fa-link"></i></a>中断接口设计</h5>
+      
+<p>关注: 命令字、状态字格式的拟定，中断源的扩展</p>
+<p>如果我现在有两个外设, 中断接口应该这么设计:</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210103091617.png" alt="image-20210103091617614" style="zoom: 50%;" />
+
         <h3 id="53-dma输入输出方式"   >
           <a href="#53-dma输入输出方式" class="heading-link"><i class="fas fa-link"></i></a>5.3 DMA输入输出方式</h3>
       
-<p>(DMA: Direct Memory Access):</p>
+<p>DMA: Direct Memory Access,DMA相当于雇了个副手, 专门处理高速设备的IO</p>
 
         <h4 id="531-dma定义"   >
           <a href="#531-dma定义" class="heading-link"><i class="fas fa-link"></i></a>5.3.1 DMA定义</h4>
@@ -1161,8 +1184,35 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <li>中断功能多，比如可以处理异常，而DMA仅仅是为了IO数据传输设计的;</li>
 <li>从数据传输来看，中断靠程序传输，DMA靠硬件传输。</li>
 </ol>
+
+        <h4 id="535-磁盘的dma方式输入输出过程"   >
+          <a href="#535-磁盘的dma方式输入输出过程" class="heading-link"><i class="fas fa-link"></i></a>5.3.5 磁盘的DMA方式输入输出过程</h4>
+      
+<p>在写磁盘过程中，适配器向主机发出DMA请求是在（ 扇区缓冲区空时 ）</p>
+<p>在读磁盘过程中，适配器向主机发出DMA请求是在（  扇区缓冲区满时 ）</p>
+
+        <h4 id="536-dma-vs-通道"   >
+          <a href="#536-dma-vs-通道" class="heading-link"><i class="fas fa-link"></i></a>5.3.6 DMA vs 通道</h4>
+      
+<p>共同点:</p>
+<ul>
+<li>都是控制数据交流</li>
+</ul>
+<p>不同点:</p>
+<ol>
+<li>性质不同</li>
+</ol>
+<p>在DMA控制方式中，DMA控制器控制设备和主bai存之间成批地进程数据交流，而不用CPU干预。通道控制方式与DMA控制方式类似，也是一种以内存为中心，实现设备与内存直接交换数据的控制方式。</p>
+<ol start="2">
+<li>特点不同</li>
+</ol>
+<p>在DMA控制方式中不但减轻了CPU的负担，而且提高了I/O数据传送速度。这种控制方式应用于块设备的数据传输。在通道控制方式中，CPU只需发出启动指令，指出通道相应的操作和I/O设备，该指令就可以启动通道并使通道从内存中调出相应的通道程序执行。</p>
+<ol start="3">
+<li>干预不同</li>
+</ol>
+<p>与DMA相比，通道方式所需的CPU干预更少，并且可以做到一个通道控制多台设备，从而进一步减轻了CPU负担。</p>
 <p><strong>Keep Curious , Keep Learning !</strong></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2005%20%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">http://zjeff-953.gitee.io/zjeff/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2005%20%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2021/01/01/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E9%A2%98%E7%9B%AE%E4%B8%AD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/"><span class="paginator-prev__text">概率论与数理统计 - 题目中的知识分类</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-05-%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2005%20%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">http://zjeff-953.gitee.io/zjeff/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2005%20%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/01/03/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB%E7%BB%9F%E8%AE%A1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">概率论与数理统计 - 重点题型</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/01/01/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/"><span class="paginator-prev__text">概率论与数理统计 - 最核心知识</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-05-%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-text">
           计算机组成原理 - 05 总线和输入输出系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-text">
           1 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1%E7%9A%84%E9%83%A8%E4%BB%B6"><span class="toc-text">
           1.1 计算机通信的部件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E8%AE%A4%E8%AF%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87"><span class="toc-text">
@@ -1241,7 +1291,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
           5.2.11 中断方式输入输出的过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5212-%E4%B8%AD%E6%96%AD%E6%8E%A5%E5%8F%A3"><span class="toc-text">
           5.2.12 中断接口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%8E%A5%E5%8F%A3%E7%BB%93%E6%9E%84"><span class="toc-text">
           中断接口结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%8E%A5%E5%8F%A3%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-text">
-          中断接口工作过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-dma%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">
+          中断接口工作过程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          中断接口设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-dma%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">
           5.3 DMA输入输出方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#531-dma%E5%AE%9A%E4%B9%89"><span class="toc-text">
           5.3.1 DMA定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#532-dma%E7%89%B9%E7%82%B9%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-text">
           5.3.2 DMA特点与应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#dma%E7%89%B9%E7%82%B9"><span class="toc-text">
@@ -1253,4 +1304,6 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
           数据传送</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-text">
           后处理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#535-dma%E7%A1%AC%E4%BB%B6%E5%8A%9F%E8%83%BD"><span class="toc-text">
           5.3.5 DMA硬件功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#534-dma%E5%92%8C%E4%B8%AD%E6%96%AD%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">
-          5.3.4 DMA和中断的区别</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">59</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
+          5.3.4 DMA和中断的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#535-%E7%A3%81%E7%9B%98%E7%9A%84dma%E6%96%B9%E5%BC%8F%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          5.3.5 磁盘的DMA方式输入输出过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#536-dma-vs-%E9%80%9A%E9%81%93"><span class="toc-text">
+          5.3.6 DMA vs 通道</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">60</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
