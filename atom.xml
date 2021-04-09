@@ -6,7 +6,7 @@
   <link href="http://zjeff-953.gitee.io/zjeff/atom.xml" rel="self"/>
   
   <link href="http://zjeff-953.gitee.io/zjeff/"/>
-  <updated>2021-02-09T15:14:31.458Z</updated>
+  <updated>2021-04-09T10:01:28.280Z</updated>
   <id>http://zjeff-953.gitee.io/zjeff/</id>
   
   <author>
@@ -17,11 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>标题</title>
+    <title>项目展示 -- 青年大学习</title>
     <link href="http://zjeff-953.gitee.io/zjeff/2021/04/09/%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA%20-%20%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0/"/>
     <id>http://zjeff-953.gitee.io/zjeff/2021/04/09/%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA%20-%20%E9%9D%92%E5%B9%B4%E5%A4%A7%E5%AD%A6%E4%B9%A0/</id>
     <published>2021-04-09T09:44:56.966Z</published>
-    <updated>2021-02-09T15:14:31.458Z</updated>
+    <updated>2021-04-09T10:01:28.280Z</updated>
+    
+    <content type="html"><![CDATA[        <h1 id="项目展示-青年大学习"   >          <a href="#项目展示-青年大学习" class="heading-link"><i class="fas fa-link"></i></a>项目展示 - 青年大学习</h1>      <p>​      主要使用react axios redux antd等技术。在项目过程中主要熟悉了合作开发的知识，熟悉了使用git进行合作开发的过程，</p><p>​      熟悉了项目开发到部署的全流程，了解了基于docker，nginx，gitlab的CI/CD的实现，熟悉了权限管理的设计和实现，</p><p>​      熟悉了在后端使用graphql时如何进行合作和沟通。项目已投入内测。\</p><a id="more"></a><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210409174550.png" alt="img" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210409175002.png" alt="img" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210409175029.png" alt="img" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210409175051.png" alt="img" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210409175129.png" alt="img" /></p>]]></content>
     
     
     <summary type="html">描述</summary>
