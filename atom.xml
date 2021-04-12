@@ -6,7 +6,7 @@
   <link href="http://zjeff-953.gitee.io/zjeff/atom.xml" rel="self"/>
   
   <link href="http://zjeff-953.gitee.io/zjeff/"/>
-  <updated>2021-04-12T10:53:56.561Z</updated>
+  <updated>2021-04-12T11:07:01.497Z</updated>
   <id>http://zjeff-953.gitee.io/zjeff/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>项目展示 -- 青年大学习</title>
+    <title>项目展示 -- 课程管理系统</title>
     <link href="http://zjeff-953.gitee.io/zjeff/2021/04/12/%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA%20-%20%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     <id>http://zjeff-953.gitee.io/zjeff/2021/04/12/%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA%20-%20%E8%AF%BE%E7%A8%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</id>
     <published>2021-04-12T09:44:12.948Z</published>
-    <updated>2021-04-12T10:53:56.561Z</updated>
+    <updated>2021-04-12T11:07:01.497Z</updated>
     
     <content type="html"><![CDATA[        <h1 id="项目展示-课程管理系统"   >          <a href="#项目展示-课程管理系统" class="heading-link"><i class="fas fa-link"></i></a>项目展示 - 课程管理系统</h1>      <p>主要使用react axios redux等技术。 学校的项目，半路接手，熟悉了前端的主要工作，熟悉了同产品和后端沟通合作的方式和方法。 其中为了应对较复杂系统，大量采用了自定义hooks，hoc，renderProps，闭包等手段优化项目结构和代码。 在我接手期间，负责完善和补充前端部分，项目工程量较大, 目前完成一大半</p><a id="more"></a><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210412174453.png" alt="image-20210412174453079" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210412175139.png" alt="image-20210412175138909" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210412175025.png" alt="image-20210412175025594" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210412180105.png" alt="image-20210412180105268" /></p><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210412185258.png" alt="image-20210412185258792" /></p>]]></content>
     

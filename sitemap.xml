@@ -655,6 +655,13 @@
   </url>
   
   <url>
+    <loc>http://zjeff-953.gitee.io/zjeff/tags/TypeScript/</loc>
+    <lastmod>2021-04-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zjeff-953.gitee.io/zjeff/tags/JavaScript/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
@@ -669,13 +676,6 @@
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/tags/TypeScript/</loc>
-    <lastmod>2021-04-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://zjeff-953.gitee.io/zjeff/tags/Java/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
@@ -683,14 +683,14 @@
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/</loc>
+    <loc>http://zjeff-953.gitee.io/zjeff/tags/React%E7%94%9F%E6%80%81/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/tags/React%E7%94%9F%E6%80%81/</loc>
+    <loc>http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -711,14 +711,14 @@
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/tags/components/</loc>
+    <loc>http://zjeff-953.gitee.io/zjeff/tags/React/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/tags/React/</loc>
+    <loc>http://zjeff-953.gitee.io/zjeff/tags/components/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -888,14 +888,14 @@
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/categories/%E5%88%86%E7%B1%BB/</loc>
+    <loc>http://zjeff-953.gitee.io/zjeff/categories/%E5%85%A8%E6%A0%88/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zjeff-953.gitee.io/zjeff/categories/%E5%85%A8%E6%A0%88/</loc>
+    <loc>http://zjeff-953.gitee.io/zjeff/categories/%E5%88%86%E7%B1%BB/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
