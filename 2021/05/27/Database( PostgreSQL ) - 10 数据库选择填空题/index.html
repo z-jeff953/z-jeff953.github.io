@@ -1,15 +1,20 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Database( PostgreSQL ) - 09 数据库实践">
+<meta property="og:title" content="Database( PostgreSQL ) - 09 数据库选填判断">
 <meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/index.html">
 <meta property="og:site_name" content="Zjeff&#39;blog">
 <meta property="og:description" content="描述">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530105806.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104627.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104643.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104652.png">
 <meta property="article:published_time" content="2021-05-27T02:32:10.773Z">
-<meta property="article:modified_time" content="2021-05-27T09:48:03.551Z">
+<meta property="article:modified_time" content="2021-05-30T03:04:34.954Z">
 <meta property="article:author" content="Jeffords zuo">
 <meta property="article:tag" content="database">
-<meta name="twitter:card" content="summary"><title>Database( PostgreSQL ) - 09 数据库实践 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530105806.png"><title>Database( PostgreSQL ) - 09 数据库选填判断 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -33,10 +38,1032 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 09 数据库实践</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-27</span></span></div></header><div class="post-body">
-        <h1 id="database-postgresql-09-数据库实践"   >
-          <a href="#database-postgresql-09-数据库实践" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 09 数据库实践</h1>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 09 数据库选填判断</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-30</span></span></div></header><div class="post-body">
+        <h1 id="database-postgresql-09-数据库选填判断"   >
+          <a href="#database-postgresql-09-数据库选填判断" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 09 数据库选填判断</h1>
       
-<p>理解数据库的理论, 以及 “如何设计数据表” 的问题.</p>
-<a id="more"></a></div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/">http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/27/OS%20-%2010%20OS%20%E8%AE%A1%E7%AE%97%E9%A2%98%E7%BC%96%E7%A8%8B%E9%A2%98/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">OS - 10 OS 计算题编程题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2002%20%E7%89%A9%E7%90%86%E5%B1%82%E5%92%8C%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"><span class="paginator-prev__text">计算机网络 - 02 物理层和数据链路层</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#database-postgresql-09-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E8%B7%B5"><span class="toc-text">
-          Database( PostgreSQL ) - 09 数据库实践</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">139</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">21</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">39</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
+<p>数据库选填判断</p>
+<a id="more"></a>
+
+        <h2 id="1-数据库系统概论"   >
+          <a href="#1-数据库系统概论" class="heading-link"><i class="fas fa-link"></i></a>1. 数据库系统概论</h2>
+      
+
+        <h3 id="测试"   >
+          <a href="#测试" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>在数据管理技术发展阶段中，下面哪个阶段可以实现数据共享？</p>
+<ul>
+<li>人工管理阶段</li>
+<li>文件管理阶段</li>
+<li><strong>数据库管理阶段</strong></li>
+<li>以上阶段都可以</li>
+</ul>
+<p>Microsoft SQL Server数据库是属于下面哪种模型数据库？</p>
+<ul>
+<li>层次数据模型</li>
+<li>网状数据模型</li>
+<li>对象数据模型</li>
+<li><strong>关系数据模型</strong></li>
+</ul>
+<p>在数据库管理系统的层次结构中，下面哪个层次负责对数据文件进行操作访问？</p>
+<ul>
+<li>操作界面层</li>
+<li>语言翻译处理层</li>
+<li>数据存取层</li>
+<li><strong>数据存储层</strong></li>
+</ul>
+<p>在数据库领域技术中，下面哪种技术可以实现数据集成？</p>
+<ul>
+<li>数据库技术</li>
+<li><strong>数据仓库技术</strong></li>
+<li>数据挖掘技术</li>
+<li>商业智能技术</li>
+</ul>
+<p>下面哪种数据库系统应用结构适合银行业务系统？</p>
+<ul>
+<li>集中式结构</li>
+<li>客户/服务器结构</li>
+<li><strong>分布式结构</strong></li>
+<li>以上结构都可以</li>
+</ul>
+<p>下面哪类数据库应用系统需要使用数据分析处理技术？</p>
+<ul>
+<li>业务处理系统</li>
+<li>办公管理系统</li>
+<li>管理信息系统</li>
+<li><strong>决策支持系统</strong></li>
+</ul>
+<p>下面哪类数据库管理系统是对象-关系数据库系统？</p>
+<ul>
+<li>SQL Server</li>
+<li>MySQL</li>
+<li>Oracle Database</li>
+<li><strong>PostgreSQL</strong></li>
+</ul>
+<p>下面哪个程序实现PostgreSQL服务器起停控制？</p>
+<ul>
+<li>initdb</li>
+<li><strong>pg_ctl</strong></li>
+<li>postgres</li>
+<li>postmaster</li>
+</ul>
+<p>在PostgreSQL数据库中，不包含下面哪种数据库对象？</p>
+<ul>
+<li>函数</li>
+<li><strong>存储过程</strong></li>
+<li>触发器</li>
+<li>序列</li>
+</ul>
+<p>在PostgreSQL数据库中，不包含下面哪种类型表？</p>
+<ul>
+<li>关系表</li>
+<li>对象表</li>
+<li><strong>索引表</strong></li>
+<li>外部表</li>
+</ul>
+<p>用户程序可以直接访问数据库。</p>
+<p>X</p>
+<p>在数据库系统中，可以保证没有冗余数据。</p>
+<p>X</p>
+<p>业务规则数据在数据库中是一种元数据。</p>
+<p>V</p>
+<p>面向对象数据库可以支持复杂数据类型处理，它一定会取代关系数据库。</p>
+<p>X</p>
+<p>NoSQL数据库可以管理非结构化数据。</p>
+<p>V</p>
+<p>数据库挖掘可建立在数据仓库基础上进行数据分析处理</p>
+<p>V</p>
+<p>为简化数据库开发，不需要数据模型设计，可直接定义数据库表。</p>
+<p>X</p>
+<p>所有业务处理系统都支持联机事务处理和脱机事务处理。</p>
+<p>X</p>
+<p>分布式数据库系统可实现数据分布和处理分布</p>
+<p>V</p>
+<p>MySQL数据库系统是一种企业级DBMS。</p>
+<p>X</p>
+
+        <h3 id="讨论"   >
+          <a href="#讨论" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<p>1.什么是元数据？它是如何产生的，存储在哪里？</p>
+<p>2.结构化数据与非结构化数据有何区别？</p>
+<p>3.NoSQL数据库与NewSQL数据库有何区别？</p>
+<p>4.通用数据库与领域数据库有何区别？</p>
+<p>5.大数据分析与数据挖掘有何区别？</p>
+<p>6.数据库应用系统有哪些结构模式？各有什么适合的应用场景？</p>
+<p>7.对象-关系数据库DBMS具有哪些特点？</p>
+<p>8.PostgreSQL数据库软件与MySQL数据库软件比较，各有哪些技术特点？</p>
+
+        <h2 id="2-数据库关系模型"   >
+          <a href="#2-数据库关系模型" class="heading-link"><i class="fas fa-link"></i></a>2. 数据库关系模型</h2>
+      
+
+        <h3 id="测试-2"   >
+          <a href="#测试-2" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>常用的关系查询操作包括选择、投影、连接、并、交等。</p>
+<p>V</p>
+<p>实体完整性是指关系表的属性组成必须是完整的。</p>
+<p>X</p>
+<p>自然连接是一种等值连接。</p>
+<p>V</p>
+<p>在参照完整性中，可以定义级联操作。</p>
+<p>V</p>
+<p>用户自定义完整性可以实施数据的业务约束。</p>
+<p>V</p>
+<p>在关系表中，下面哪个项不是关系特征？</p>
+<ul>
+<li>表中行可任意顺序</li>
+<li>表中列可任意顺序</li>
+<li><strong>表中单元格可存放多个值</strong></li>
+<li>表中不允许有重复行存在</li>
+</ul>
+<p>在关系模型中，关系表的复合键可由</p>
+<ul>
+<li>至多一个属性组成</li>
+<li><strong>多个属性组成</strong></li>
+<li>一个或多个属性组成</li>
+<li>候选键组成</li>
+</ul>
+<p>下面哪项不是主键的作用？</p>
+<ul>
+<li>标识关系表中的不同元组</li>
+<li>作为关联表的关联属性列</li>
+<li>可通过主键列的索引快速检索行数据</li>
+<li><strong>标识关系表中的不同列</strong></li>
+</ul>
+<p>在关系表中，主键数据最好采用什么数据类型？</p>
+<ul>
+<li>字符串</li>
+<li>整型</li>
+<li><strong>序列</strong></li>
+<li>数值</li>
+</ul>
+<p>在关系表的实体完整性约束中，不允许主键列值出现下面哪种情况？</p>
+<ul>
+<li><strong>空值</strong></li>
+<li>字符串</li>
+<li>数字值</li>
+<li>序列值</li>
+</ul>
+<p>参照完整性是用来确保关系之间关联列的</p>
+<ul>
+<li><strong>数据一致性</strong></li>
+<li>数据正确性</li>
+<li>数据完整性</li>
+<li>以上都不是</li>
+</ul>
+<p>关系模型不包含什么部分</p>
+<ul>
+<li>数据结构</li>
+<li><strong>算法</strong></li>
+<li>操作方式</li>
+<li>数据约束</li>
+</ul>
+<p>专门的关系运算不包含如下哪个？</p>
+<ul>
+<li>选择</li>
+<li>投影</li>
+<li>连接</li>
+<li><strong>笛卡尔积</strong></li>
+</ul>
+<p>下面哪种连接要求组合两个关系的匹配元组而形成查询结果集？</p>
+<ul>
+<li><strong>内连接</strong></li>
+<li>左外连接</li>
+<li>右外连接</li>
+<li>全外连接</li>
+</ul>
+<p>用户自定义完整性约束可以是？</p>
+<ul>
+<li>属性缺省值</li>
+<li>属性取值唯一性</li>
+<li>属性取值范围</li>
+<li><strong>以上都可以</strong></li>
+</ul>
+<p>每个关系是一个二维表，但二维表不一定是关系。</p>
+<p>V</p>
+<p>关系中复合键至少包含两个属性。</p>
+<p>V</p>
+<p>代理键是为了唯一标识关系的不同元组，需要在表单或报表中显示出来。</p>
+<p>X</p>
+<p>关系表不允许有相同属性列</p>
+<p>V</p>
+<p>每个关系表都有多个候选键。</p>
+<p>X</p>
+
+        <h3 id="讨论-2"   >
+          <a href="#讨论-2" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<p>1.关系模型由哪几个部分组成？其工作原理是什么？</p>
+<p>2．在关系模型中，对关系有哪些数据操作方式？</p>
+<p>3．如何理解关系数据查询的选择运算操作、投影运算操作、连接运算操作？</p>
+<p>4．关系之间的θ连接操作与自然连接操作有何区别？</p>
+<p>5．关系之间的左外连接、右外连接、全外连接有何区别？</p>
+<p>6．如何理解关系模型的实体完整性和参照完整性？</p>
+<p>7.针对下关系表，如何定义该关系中的列约束？</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530105806.png" alt="image-20210530105806524" style="zoom:150%;" />
+
+        <h2 id="3-数据库操作sql语言"   >
+          <a href="#3-数据库操作sql语言" class="heading-link"><i class="fas fa-link"></i></a>3. 数据库操作SQL语言</h2>
+      
+
+        <h3 id="测试-3"   >
+          <a href="#测试-3" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>下面哪种数据类型不是SQL语言的标准数据类型？</p>
+<ul>
+<li><strong>text</strong></li>
+<li>integer</li>
+<li>char</li>
+<li>Numeric</li>
+</ul>
+<p>在create table语句中，对于“身份证”属性列，应采用下面哪种数据类型？</p>
+<ul>
+<li>String(18)</li>
+<li><strong>char(18)</strong></li>
+<li>varchar(18)</li>
+<li>text(18)</li>
+</ul>
+<p>在创建数据库表时，下面哪个不是关于主键的正确说法？</p>
+<ul>
+<li>主键取值必须唯一</li>
+<li>主键不允许空值</li>
+<li>主键可以有多种数据类型</li>
+<li><strong>主键必须是单一属性</strong></li>
+</ul>
+<p>在创建数据库表时，使用下面哪个列约束实现值范围检查？</p>
+<ul>
+<li><strong>check</strong></li>
+<li>unique</li>
+<li>default</li>
+<li>null</li>
+</ul>
+<p>修改数据库表结构，使用下面哪个SQL 语句。</p>
+<ul>
+<li>modify table</li>
+<li>change table</li>
+<li><strong>alter table</strong></li>
+<li>update table</li>
+</ul>
+<p>对于数据库表添加记录数据，采用下面哪种SQL语句。</p>
+<ul>
+<li>add data</li>
+<li>append data</li>
+<li><strong>insert into</strong></li>
+<li>以上都不是</li>
+</ul>
+<p>采用哪种关键词，对SQL查询结果集消除指定列的重复数据？</p>
+<ul>
+<li>unique</li>
+<li><strong>distinct</strong></li>
+<li>index</li>
+<li>order by</li>
+</ul>
+<p>在数据库中，使用更多索引可以加快数据库处理速度。</p>
+<p>X</p>
+<p>在create table数据库表创建时，可以同时创建该表的外键与参照完整性约束。</p>
+<p>V</p>
+<p>在SQL语言的查询语句中使用SORT BY关键词实现结果集按指定列排序输出。</p>
+<p>X</p>
+<p>在多表关联查询中，如果最终结果数据都来自于单个表，则可以使用子查询进行处理。</p>
+<p>V</p>
+<p>只有系统管理员才能运行SQL控制语句实现权限控制。</p>
+<p>X</p>
+<p>SQL控制语句既可以对用户实现权限控制，也可以对角色实现权限控制。</p>
+<p>V</p>
+<p>数据库对象拥有者可以收回赋予其他用户的访问权限。</p>
+<p>V</p>
+<p>视图与基本表一样可以任意进行数据插入、数据修改和数据删除。</p>
+<p>X</p>
+<p>视图可以实现多个数据库表的关联数据访问。</p>
+<p>V</p>
+<p>可以基于一个视图进行另一个视图对象创建。</p>
+<p>V</p>
+<p>下面哪个SQL数据类型适合“学号“属性列？</p>
+<ul>
+<li>int</li>
+<li>varchar(n)</li>
+<li><strong>char(n)</strong></li>
+<li>numeric</li>
+</ul>
+<p>下面哪个SQL数据类型适合“金额“属性列？</p>
+<ul>
+<li>int</li>
+<li>numeric</li>
+<li>real</li>
+<li><strong>money</strong></li>
+</ul>
+<p>下面哪项不是SQL语言的特性？</p>
+<ul>
+<li>对数据库进行操作</li>
+<li><strong>实现控制逻辑编程</strong></li>
+<li>数据库游标操作</li>
+<li>数据库事务操作</li>
+</ul>
+
+        <h3 id="讨论-3"   >
+          <a href="#讨论-3" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<p>1．SQL是一种什么类型语言？它与C/Java语言有什么区别？</p>
+<p>2．SQL有哪些类型语句，每类语句可完成什么操作处理？</p>
+<p>3．SQL支持哪些数据类型？</p>
+<p>4．PostgreSQL数据库除支持SQL数据类型外，还支持哪些数据类型？</p>
+<p>5．在PostgreSQL数据库中，如何自定义对象数据类型？</p>
+<p>6．PostgreSQL数据库在哪些方面拓展了SQL功能？</p>
+<p>7.在数据操纵SQL语句中，如何对级联表数据删除？</p>
+<p>8.在什么情况下，使用全外连接查询处理多表？</p>
+<p>9．在SQL中，如何使用视图简化前端编程的复杂SQL查询？</p>
+<p>10．在SQL中，如何控制视图数据只读查询？</p>
+
+        <h2 id="4-数据库设计与实现"   >
+          <a href="#4-数据库设计与实现" class="heading-link"><i class="fas fa-link"></i></a>4. 数据库设计与实现</h2>
+      
+
+        <h3 id="测试-4"   >
+          <a href="#测试-4" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>在数据库应用系统开发阶段中，主要在哪个阶段考虑数据库创建？</p>
+<ul>
+<li>需求分析</li>
+<li>系统设计</li>
+<li><strong>系统实现</strong></li>
+<li>系统测试</li>
+</ul>
+<p>在数据库设计中，不包括下面哪个模型？</p>
+<ul>
+<li>概念数据模型</li>
+<li>逻辑数据模型</li>
+<li>物理数据模型</li>
+<li><strong>数据流图模型</strong></li>
+</ul>
+<p>下面哪个不是E-R模型的基本元素？</p>
+<ul>
+<li>实体</li>
+<li>标识符</li>
+<li>联系</li>
+<li><strong>关系表</strong></li>
+</ul>
+<p>在E-R模型中，一个实体的其他关联实体数量称为什么？</p>
+<ul>
+<li>最小基数</li>
+<li>最大基数</li>
+<li><strong>联系度数</strong></li>
+<li>实例数</li>
+</ul>
+<p>“产品“实体与”厂商“实体在E-R模型中，它们是哪种联系？</p>
+<ul>
+<li>1:1</li>
+<li>1:n</li>
+<li><strong>m:n</strong></li>
+<li>继承l联系</li>
+</ul>
+<p>在下面哪种模型中，设计系统中的存储过程要素？</p>
+<ul>
+<li>概念数据模型</li>
+<li>逻辑数据模型</li>
+<li><strong>物理数据模型</strong></li>
+<li>以上都不是</li>
+</ul>
+<p>为了消除关系表属性之间的传递依赖，至少需要规范该关系到下面哪种范式？</p>
+<ul>
+<li>第1范式</li>
+<li>第2范式</li>
+<li><strong>第3范式</strong></li>
+<li>第4范式</li>
+</ul>
+<p>对于一个非规范的关系表，会出现下面哪项访问异常问题？</p>
+<ul>
+<li>删除数据异常</li>
+<li>插入数据异常</li>
+<li>修改数据复杂</li>
+<li><strong>以上都是</strong></li>
+</ul>
+<p>在逻辑数据模型转换为关系模型时，下面哪项不一定正确？</p>
+<ul>
+<li>实体转换为关系表</li>
+<li>属性转换为列</li>
+<li><strong>标识符转换为主键</strong></li>
+<li>联系转换为参照完整性约束</li>
+</ul>
+<p>在下面哪种模型中，可设计系统中的数据库索引要素？</p>
+<ul>
+<li>概念数据模型</li>
+<li>逻辑数据模型</li>
+<li><strong>物理数据模型</strong></li>
+<li>以上都不是</li>
+</ul>
+<p>在E-R模型中，一个实体要么是强实体，要么是弱实体。</p>
+<p>X</p>
+<p>在E-R模型图中，在定义一个实体时，必须指定它的标识符。</p>
+<p>X</p>
+<p>在系统逻辑数据模型中，可以设计关系表。</p>
+<p>X</p>
+<p>在系统物理数据模型中，可以设计数据库存储方案。</p>
+<p>V</p>
+<p>在进行1:N实体联系转换到关系模型时，N侧表的主键在1侧表中作为外键。</p>
+<p>X</p>
+<p>一个关系若其属性消除了多值依赖，则一定满足第四范式。</p>
+<p>X</p>
+<p>在进行关系数据库设计时，关系表的规范化程度越高，数据库性能就越好。</p>
+<p>X</p>
+<p>在关系数据库设计时，逆规范化处理就是不需要进行关系表的规范化设计。</p>
+<p>X</p>
+<p>在将数据库设计模型转换为数据库实现时，需要先将其转换为SQL程序。</p>
+<p>V</p>
+<p>数据库建模设计的目的是为数据库实现提供方案</p>
+<p>V</p>
+
+        <h3 id="讨论-4"   >
+          <a href="#讨论-4" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<p>1．在数据库应用系统设计中，系统数据架构与数据库模型有何区别？</p>
+<p>2．概念数据模型、逻辑数据模型、物理数据模型之间是什么关系?</p>
+<p>3．针对特定数据库应用系统，如何确定数据库设计策略？</p>
+<p>4．在数据库应用系统开发中，数据库设计建模如何实施？</p>
+<p>5．在E-R模型图中，如何理解标识符依赖弱实体和非标识符依赖弱实体？</p>
+<p>6．在E-R模型图中，如何表示系统的数据对象组成及其对象联系？</p>
+<p>7．一个非规范关系表在数据操作中会出现哪些问题？</p>
+<p>8．出现非规范关系表的主要原因是什么？</p>
+<p>9．如何理解不同程度的规范化设计范式？</p>
+<p>10．为解决数据库访问性能，可采取哪些逆规范化处理方案？</p>
+<p>11.如何将如下图书销售系统CDM分别转换为LDM、PDM 数据模型？</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104627.png" alt="image-20210530104627853" /></p>
+<p>12.如下工资关系表在数据库访问操作中会出现哪些数据异常？如何规范化设计该表到4NF范式？</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104643.png" alt="image-20210530104643435" style="zoom:33%;" />
+<p>13.针对如下数据库E-R模型设计，如何SQL编程实现该模型设计? 需要考虑业务规则中的级联处理。</p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104652.png" alt="image-20210530104652577" style="zoom:50%;" />
+
+        <h2 id="5-数据库管理"   >
+          <a href="#5-数据库管理" class="heading-link"><i class="fas fa-link"></i></a>5.  数据库管理</h2>
+      
+
+        <h3 id="测试-5"   >
+          <a href="#测试-5" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>下面哪项不是数据库管理的目标</p>
+<ul>
+<li>保障数据库系统正常运行</li>
+<li><strong>实现应用对数据库访问</strong></li>
+<li>发挥数据库系统处理能力</li>
+<li>确保数据库访问安全</li>
+</ul>
+<p>下面哪项不是事务的特性。</p>
+<ul>
+<li>一致性</li>
+<li>原子性</li>
+<li>可靠性</li>
+<li><strong>持续</strong></li>
+</ul>
+<p>在事务程序中，不能执行哪类SQL语句。</p>
+<ul>
+<li>事务提交commit</li>
+<li>事务回滚rollback</li>
+<li><strong>数据库创建</strong></li>
+<li>数据修改</li>
+</ul>
+<p>事务并发执行时，若不进行管理，可能会出现什么问题。</p>
+<ul>
+<li>脏读</li>
+<li>丢失更新</li>
+<li>幻想读</li>
+<li><strong>以上都是</strong></li>
+</ul>
+<p>在哪个粒度上对共享数据进行加锁访问，系统并发访问性能最好。</p>
+<ul>
+<li><strong>行</strong></li>
+<li>页面</li>
+<li>表</li>
+<li>数据库</li>
+</ul>
+<p>在DBMS中，设置哪种隔离级别后，系统吞吐率受影响最大。</p>
+<ul>
+<li>读取未提交</li>
+<li>读取已提交</li>
+<li><strong>可重复读</strong></li>
+<li>可串行化</li>
+</ul>
+<p>在数据库系统安全模型中，哪种安全管理手段是DBMS 系统提供的数据库安全访问机制？</p>
+<ul>
+<li>用户身份认证</li>
+<li><strong>用户存取权限控制</strong></li>
+<li>文件安全访问</li>
+<li>数据加密存储</li>
+</ul>
+<p>哪种数据库备份方式可以支持系统连续运行？</p>
+<ul>
+<li>冷备份</li>
+<li><strong>热备份</strong></li>
+<li>完整备份</li>
+<li>差异备份</li>
+</ul>
+<p>DBMS系统可自动恢复哪类数据？</p>
+<ul>
+<li>用户误删的系统数据</li>
+<li><strong>事务故障的数据错误</strong></li>
+<li>存储设备损坏的数据丢失</li>
+<li>非法访问导致数据丢失</li>
+</ul>
+<p>实现数据库管理需要借助于DBMS的工具程序。</p>
+<p>V</p>
+<p>在数据库系统中，事务是DBMS执行的最小任务单元。</p>
+<p>V</p>
+<p>单个SQL语句不能构成事务。</p>
+<p>X</p>
+<p>每个事务都具有ACID特性。</p>
+<p>V</p>
+<p>在数据库共享数据访问时，只能施加排他锁。</p>
+<p>X</p>
+<p>若并发执行的所有事务都遵循两阶段锁定协议，则这些事务的并发执行都可实现串行化调度。</p>
+<p>V</p>
+<p>事务隔离级别越高，其数据库系统处理性能就越好。</p>
+<p>X</p>
+<p>用户的数据库访问权限只能由DBA来赋予。</p>
+<p>X</p>
+<p>用户只要登陆进入数据库系统，他就可以对数据库进行访问操作。</p>
+<p>X</p>
+<p>只要对数据库进行了完全备份，就可以将数据库恢复到故障时刻的数据状态。</p>
+<p>X</p>
+
+        <h3 id="讨论-5"   >
+          <a href="#讨论-5" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<p>1．在特定数据库应用处理中，为什么需要事务机制？</p>
+<p>2．如何理解数据库事务的ACID特性？</p>
+<p>3．在数据库系统中，为什么事务程序通常需要并发运行？</p>
+<p>4．在SQL中，如何编写一个事务程序？</p>
+<p>5．在数据库系统中，事务程序与一般SQL程序有何区别？</p>
+<p>6．不同级别的加锁协议，可以分别解决哪些数据不一致问题？</p>
+<p>7．两阶段锁协议将解决什么问题？</p>
+<p>8．并发事务在运行过程中出现死锁的条件有哪些？</p>
+<p>9．如何构建一个完整的数据库系统安全体系？</p>
+<p>10．如何应用数据库存取控制安全模型？</p>
+
+        <h2 id="6-数据库编程"   >
+          <a href="#6-数据库编程" class="heading-link"><i class="fas fa-link"></i></a>6. 数据库编程</h2>
+      
+
+        <h3 id="测试-6"   >
+          <a href="#测试-6" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>Java嵌入SQL语句执行后，返回结果存储在什么对象中</p>
+<ul>
+<li><strong>ResultSet</strong></li>
+<li>DriverManager</li>
+<li>Connection</li>
+<li>PreparedStatement</li>
+</ul>
+<p>Java嵌入SQL语句，能传递动态参数执行查询的是什么接口</p>
+<ul>
+<li>Statement</li>
+<li><strong>PreparedStatement</strong></li>
+<li>prepareStatement</li>
+<li>CallableStatement</li>
+</ul>
+<p>Java嵌入SQL语句，能调用执行存储过程的是什么接口</p>
+<ul>
+<li>Statement</li>
+<li>PreparedStatement</li>
+<li>prepareStatement</li>
+<li><strong>CallableStatement</strong></li>
+</ul>
+<p>数据库的存储过程和触发器都可以有输入参数</p>
+<p>X</p>
+<p>JDBC和ODBC都可以在任何高级语言中，建立与数据库的互连。</p>
+<p>V</p>
+<p>servlet程序是用Java语言编写</p>
+<p>V</p>
+<p>在ODBC数据库编程中，驱动程序的加载是由用户应用程序完成。</p>
+<p>X</p>
+<blockquote>
+<p>在ODBC体系结构中，为应用程序加载、调用和卸载DB驱动程序的是______</p>
+<p>A．ODBC数据库应用程序<br />
+<strong>B．驱动程序管理器</strong><br />
+C．DB驱动程序<br />
+D．数据源</p>
+</blockquote>
+<p>触发器可以用于实现数据库表的数据完整性约束。</p>
+<p>V</p>
+<p>数据库游标是存储在内存中的查询结果集。</p>
+<p>V</p>
+<p>servlet是运行在客服端的应用程序。</p>
+<p>X<br />
+所有的宿主语言都使用EXEC SQL 执行嵌入式SQL语句。</p>
+<p>X</p>
+<p>HTML语句和JSP语句都是下载到浏览器端来执行。</p>
+<p>V</p>
+<p>Mybatis是使用ODBC访问数据库，并完成数据库记录与对象之间的映射。</p>
+<p>X</p>
+<p>有学生表(学号，学生姓名，性别，所属院系)，其中所属院系一定是已有的院系。实现该约束的可行方案是。</p>
+<ul>
+<li>在学生表上定义一个视图</li>
+<li>在学生表上定义一个存储过程</li>
+<li><strong>在学生表上定义插入和修改操作的触发器</strong></li>
+<li>在学生表上定义一个函数</li>
+</ul>
+<p>在数据库中，存储过程是一组预先定义并（ ）的SQL语句。</p>
+<ul>
+<li>保存</li>
+<li>解释</li>
+<li><strong>编译</strong></li>
+<li>编写</li>
+</ul>
+<p>下列哪个语句用于创建触发器</p>
+<ul>
+<li>CREATE FUNCTION</li>
+<li><strong>CREATE TRIGGER</strong></li>
+<li>ALTER TRIGGER</li>
+<li>DROP TRIGGER</li>
+</ul>
+<p>下列哪个语句用于创建存储过程。</p>
+<ul>
+<li><strong>CREATE PROCEDURE</strong></li>
+<li>CREATE TABLE</li>
+<li>DROP PROCEDURE</li>
+<li>CREATE FUNCTION</li>
+</ul>
+<p>以下哪个不是存储过程的优点</p>
+<ul>
+<li>实现模块化编程，可以被共享和重用</li>
+<li>可以加快程序的运行速度</li>
+<li><strong>可以增加网络的流量</strong></li>
+<li>可以提高数据库的安全性</li>
+</ul>
+<p>以下不属于触发器特点的是</p>
+<ul>
+<li>基于一个表创建，可对多个表进行操作</li>
+<li>被触发自动执行</li>
+<li><strong>可以带参数执行</strong></li>
+<li>可以实施更复杂的数据完整性约束</li>
+</ul>
+<p>从游标中读取数据，使用什么命令</p>
+<ul>
+<li>select</li>
+<li><strong>fecth</strong></li>
+<li>select from</li>
+<li>read</li>
+</ul>
+
+        <h3 id="讨论-6"   >
+          <a href="#讨论-6" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<ol>
+<li>在现阶段，数据库编程主要有哪些连接方式？</li>
+<li>ODBC连接数据库主要有哪几个步骤？</li>
+<li>JDBC驱动程序有几种类型，各有什么特点？</li>
+<li>JDBC连接数据库主要有哪几个步骤？</li>
+<li>Java Servlet编程有什么优点？Servlet工作过程是什么？</li>
+<li>使用存储过程的优点和缺点分别是什么？</li>
+<li>在数据库应用开发中，触发器主要应用于哪些情况？</li>
+<li>Java语言中执行嵌入式SQL语句，如何向SQL语句传递参数？如何向主语言返回执行结果集？</li>
+</ol>
+
+        <h2 id="7-nosql技术"   >
+          <a href="#7-nosql技术" class="heading-link"><i class="fas fa-link"></i></a>7. NoSQL技术</h2>
+      
+
+        <h3 id="测试-7"   >
+          <a href="#测试-7" class="heading-link"><i class="fas fa-link"></i></a>测试</h3>
+      
+<p>Neo4J是哪一种存储模型的NoSQL数据库？</p>
+<ul>
+<li>列存储</li>
+<li>文档存储</li>
+<li>键值对存储</li>
+<li><strong>图形存储</strong></li>
+</ul>
+<p>MongoDB是哪一种存储模型的NoSQL数据库？</p>
+<ul>
+<li>列存储</li>
+<li>文档存储</li>
+<li>键值对存储</li>
+<li>图形存储</li>
+</ul>
+<p>Hbase是哪一种存储模型的NoSQL数据库？</p>
+<ul>
+<li><strong>列存储</strong></li>
+<li>文档存储</li>
+<li>键值对存储</li>
+<li>图形存储</li>
+</ul>
+<p>以下哪一项不是NoSQL的共同特征？</p>
+<ul>
+<li>分区</li>
+<li>异步复制</li>
+<li>BASE</li>
+<li><strong>CAP</strong></li>
+</ul>
+<blockquote>
+<p>CAP理论是Brewer教授提出的：一个<strong>分布式系统</strong>不能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Tolerance of network Partition）。<strong>鱼和熊掌不可兼得。</strong></p>
+<pre><code>  关系型数据库事务的4个基本特性ACID，即原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）。
+
+  而对于分布式事务的特性BASE，则是反这个标准的，即基本可用（**B**asically **A**vailble）、软状态/柔性事务（Soft-state）、最终一致性（Eventual Consistency）。下面是Brewer教授在PODC大会展示的ACID vs BASE：
+</code></pre>
+</blockquote>
+<p>以下哪一项工作通常不是数据库系统面临的挑战？</p>
+<ul>
+<li>数据库高并发读写需求</li>
+<li>海量数据的高效存储和处理</li>
+<li>数据库高扩展性</li>
+<li><strong>编写数据库应用程序</strong></li>
+</ul>
+<p>以下哪一项不是大数据的特征？</p>
+<ul>
+<li>高速产生</li>
+<li>规模巨大</li>
+<li><strong>高密集价值数据</strong></li>
+<li>多样性</li>
+</ul>
+<p>以下哪一项不是CAP的含义？</p>
+<ul>
+<li>一致性</li>
+<li>可用性</li>
+<li><strong>分布式</strong></li>
+<li>分区容忍性</li>
+</ul>
+<p>以下哪一项不是BASE模型包含个三个元素？</p>
+<ul>
+<li><strong>完整性</strong></li>
+<li>基本可用</li>
+<li>最终一致性</li>
+<li>软状态</li>
+</ul>
+<p>HBASE中表和区域的关系可以是什么？</p>
+<ul>
+<li>1:1</li>
+<li><strong>1:N</strong></li>
+<li>N:1</li>
+<li>M:N</li>
+</ul>
+<p>以下哪一项不是MongoDB保留数据库？</p>
+<ul>
+<li>local</li>
+<li>admin</li>
+<li>config</li>
+<li><strong>system</strong></li>
+</ul>
+<p>CAP是在分布式环境下设计和部署系统时的3个核心需求</p>
+<p>V</p>
+<p>Redis复制主要包括RDB复制和AOF复制。</p>
+<p>V</p>
+<p>HBASE中的区域和表的关系是随着数据的增加动态变化的。</p>
+<p>V</p>
+<p>在Neo4J集群中，数据的写入是通过主服务器来完成的，数据的读取可以通过集群中的任意一个Neo4J实例来完成。</p>
+<p>V</p>
+<p>MongoDB的分片是将一个集合的数据分别存储在不同的节点上减轻单机压力。</p>
+<p>X</p>
+<p>Neo4j的数据物理存储主要分为节点、关系、节点或关系上属性这三类数据存储。</p>
+<p>X</p>
+<p>NoSQL数据库分类的依据是对数据的操作方式。</p>
+<p>X</p>
+<p>Redis数据库的底层实现是字典，对于数据库的增删改查操作都是通过对字典进行操作来实现的。</p>
+<p>V</p>
+<p>HBASE中表定义中要说明行健和表中包含的列族，列不用定义。</p>
+<p>V</p>
+<p>MongoDB复杂文档模型设计可以使用内嵌和引用的方法来解决。</p>
+<p>V</p>
+
+        <h3 id="讨论-7"   >
+          <a href="#讨论-7" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
+      
+<ol>
+<li>关系数据库的优点与缺点分别有哪些？</li>
+<li>CAP、BASE、最终一致性的原理和实现技术分别是什么？</li>
+<li>NoSQL数据库的共同特征是什么？</li>
+<li>HBase的物理存储架构是什么？</li>
+<li>HBase的应用场景有哪些？</li>
+<li>Redis数据库的数据模型是什么？</li>
+<li>Redis数据库适合哪些应用场景？</li>
+<li>MongoDB数据库的数据模型是什么？</li>
+<li>MongoDB数据库有哪些应用场景？</li>
+<li>Neo4j数据库有哪些技术特点？</li>
+</ol>
+
+        <h2 id="总复习"   >
+          <a href="#总复习" class="heading-link"><i class="fas fa-link"></i></a>总复习</h2>
+      
+<p>人工管理阶段在数据管理技术发展阶段中，下面哪个阶段可实现数据共享？</p>
+<ul>
+<li>A 人工数据管理阶段</li>
+<li>B 文件系统管理阶段</li>
+<li>C <strong>数据库管理阶段</strong></li>
+<li>D 以上阶段都可以</li>
+</ul>
+<p>第三范式的关系是在第二范式的基础上，消除了属性之间哪种函数依赖？</p>
+<ul>
+<li>A <strong>属性部分依赖</strong></li>
+<li>B 属性传递依赖</li>
+<li>C 多值依赖</li>
+<li>D 平凡函数依赖</li>
+</ul>
+<p>下面哪个不是E-R模型图的基本元素？</p>
+<ul>
+<li>A 实体</li>
+<li>B 属性</li>
+<li>C 标识符</li>
+<li>D 关系表</li>
+</ul>
+<p>下面哪项不是主键的作用？</p>
+<ul>
+<li>A 标识关系表中不同列</li>
+<li>B 作为关联表的关联列</li>
+<li>C 可通过主键列索引快速检索元组数据</li>
+<li>D 标识关系表中不同元组</li>
+</ul>
+<p>在“图书”与“作者”实体联系中，它们之间的关系应是？</p>
+<ul>
+<li>A 1：1联系</li>
+<li>B 1：N联系</li>
+<li>C M: N联系</li>
+<li>D 继承联系</li>
+</ul>
+<p>在事务程序中，执行下面哪个语句后，数据修改将即刻被写回磁盘？</p>
+<ul>
+<li>A Write</li>
+<li>B Update</li>
+<li>C Rollback</li>
+<li>D Commit</li>
+</ul>
+<p>在数据库锁机制管理中，哪种粒度对象的加锁处理最简单？</p>
+<ul>
+<li>A 表</li>
+<li>B 页</li>
+<li>C 行</li>
+<li>D 数据库</li>
+</ul>
+<p>哪种级别的锁协议，可以同时解决“脏读”、“不可重复读”和“丢失更新”问题？</p>
+<ul>
+<li>A 一级加锁协议</li>
+<li>B 二级加锁协议</li>
+<li>C 三级加锁协议</li>
+<li>D 均不可以</li>
+</ul>
+<p>在SQL语言中，下面哪种数据类型最适合作为学号字段的数据类型？</p>
+<ul>
+<li>A int</li>
+<li>B text</li>
+<li>C char</li>
+<li>D varchar</li>
+</ul>
+<p>实施下面哪种数据库备份方式，其开销的时间最长</p>
+<ul>
+<li>A 文件备份</li>
+<li>B 事务日志备份</li>
+<li>C 差异备份</li>
+<li>D 完全数据库备份</li>
+</ul>
+<p>下面哪个关键词表示从一个游标指针定位的数据缓冲区中获取结果集记录数据？</p>
+<ul>
+<li>A DECLARE</li>
+<li>B OPEN</li>
+<li>C FETCH</li>
+<li>D CLOSE</li>
+</ul>
+<p>对于触发器的描述，下面哪个是错误的？</p>
+<ul>
+<li>A 触发器是一种特定的存储过程</li>
+<li>B 触发器需要通过被调用执行</li>
+<li>C 触发器程序可以维护数据一致性</li>
+<li>D 触发器程序可以实现业务规则</li>
+</ul>
+<p>下面哪个不属于ODBC的组成部件？</p>
+<ul>
+<li>A DBMS驱动程序</li>
+<li>B 驱动程序管理器</li>
+<li>C 数据表</li>
+<li>D 数据源</li>
+</ul>
+<p>创建数据库对象是数据库应用系统开发哪个阶段的任务</p>
+<ul>
+<li>A 需求分析</li>
+<li>B 系统设计</li>
+<li>C 系统实现</li>
+<li>D 系统测试</li>
+</ul>
+<p>PostgreSQL数据库采用下面哪种数据模型的存储管理数据？</p>
+<ul>
+<li>A 关系模型</li>
+<li>B 对象-关系数据模型</li>
+<li>C 概念数据模型</li>
+<li>D 层次数据模型</li>
+</ul>
+<p>下列关于关系的说法哪个是错误的？</p>
+<ul>
+<li>A 关系是无限个元组的集合</li>
+<li>B 关系行的顺序可以是任意的</li>
+<li>C 关系的任意两个元组不能相同</li>
+<li>D 关系列的顺序可以是任意的</li>
+</ul>
+<p>在数据库应用实现中，下面哪种数据库应用结构适合银行业务系统？</p>
+<ul>
+<li>A 集中式结构</li>
+<li>B 客户/服务器结构</li>
+<li>C 分布式结构</li>
+<li>D 以上结构均可</li>
+</ul>
+<p>参照完整性是用来确保关系表之间关联列的（）。</p>
+<ul>
+<li>A 数据一致性</li>
+<li>B 数据完整性</li>
+<li>C 数据正确性</li>
+<li>D 以上均不是</li>
+</ul>
+<p>把实体-联系模型转换为关系模型时，实体之间多对多联系在关系模型中是通过</p>
+<ul>
+<li>A 建立新的属性来实现</li>
+<li>B 建立新的关键字来实现</li>
+<li>C 建立新的关系表来实现</li>
+<li>D 建立新的实体来实现</li>
+</ul>
+<p>对于意外断电导致的数据库异常，DBMS通过下面哪种备份文件进行系统自动恢复处理？</p>
+<ul>
+<li>A 完整备份文件</li>
+<li>B 差异备份文件</li>
+<li>C 日志备份文件</li>
+<li>D 表空间备份文件</li>
+</ul>
+<p>下面哪项工作不是DBA的职责？</p>
+<ul>
+<li>A 保障数据库系统正常运行</li>
+<li>B 编写数据库应用程序</li>
+<li>C 进行数据库备份与恢复处理</li>
+<li>D 用户权限管理</li>
+</ul>
+<p>下列哪项不是JDBC用到的接口或类</p>
+<ul>
+<li>A System</li>
+<li>B Connection</li>
+<li>C ResultSet</li>
+<li>D Statement</li>
+</ul>
+<p>Java嵌入SQL语句执行后，返回结果存储在下面哪个对象中</p>
+<ul>
+<li>A ResultSet</li>
+<li>B DriverManager</li>
+<li>C Connection</li>
+<li>D PreparedStatement</li>
+</ul>
+<p>下面哪种NoSQL数据库用于文档数据管理？</p>
+<ul>
+<li>A Hbase</li>
+<li>B MongoDB</li>
+<li>C Redis</li>
+<li>D Neo4j</li>
+</ul>
+<p>NoSQL数据库主要解决什么问题？</p>
+<ul>
+<li>A 海量数据管理</li>
+<li>B 非结构化数据管理</li>
+<li>C 数据查询优化</li>
+<li>D 数据库高可靠性</li>
+</ul>
+<p>在数据库中，不允许存储冗余数据。</p>
+<p>关系中的投影操作，可对应到SELECT的指定列读取操作。</p>
+<p>一个关系的主键，同时也可能是一个外键。</p>
+<p>实体完整性要求关系表的所有属性必须是相关的。</p>
+<p>在逻辑数据模型中，依旧采用E-R图表示实体联系。</p>
+<p>事务程序是一种处理业务的SQL程序。</p>
+<p>关系满足第一范式，并消除了关系中的属性部分依赖，该关系满足第二范式。</p>
+<p>在数据库中创建用户后，该用户就可访问数据库对象。</p>
+<p>JDBC可支持各种高级语言对数据库访问操作。</p>
+<p>参照完整性约束是用于保障关系之间关联列的数据完整性。</p>
+<p>关系1NF范式是指关系表的每个属性列都是不可分割的基本数据项。</p>
+<p>在数据库中，一个事务必须有多条SQL操作语句。</p>
+<p>事务并发执行是为了改善系统资源利用率和减少平均等待时间。</p>
+<p>排它锁可以封锁其他事务对共享数据的任何加锁访问。</p>
+<p>按两阶段锁定协议实施的事务调度可以实现可串行化调度处理。</p>
+<p>SQL语言可以实现业务逻辑处理</p>
+<p>在逻辑模型转换成物理模型时， 需要先确定将使用的DBMS。</p>
+<p>使用delete trigger语句可以删除触发器。</p>
+<p>存在语法问题的SQL语句是不能通过DBMS翻译处理。</p>
+<p>在数据库中，使用触发器会提高系统处理性能。</p>
+<p>在Java 应用编程中，可使用CallableStatement对象来调用数据库存储过程。</p>
+<p>在数据库应用编程中，需要先建立数据库连接，才能访问数据库对象。</p>
+<p>在高级语言程序中，可以嵌入SQL语句实现数据库操作访问。</p>
+<p>NoSQL数据库可以支持非结构数据管理</p>
+<p>Redis缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/">http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/27/OS%20-%2010%20OS%20%E8%AE%A1%E7%AE%97%E9%A2%98%E7%BC%96%E7%A8%8B%E9%A2%98/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">OS - 10 OS 计算题编程题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2002%20%E7%89%A9%E7%90%86%E5%B1%82%E5%92%8C%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"><span class="paginator-prev__text">计算机网络 - 02 物理层和数据链路层</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#database-postgresql-09-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%A1%AB%E5%88%A4%E6%96%AD"><span class="toc-text">
+          Database( PostgreSQL ) - 09 数据库选填判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA"><span class="toc-text">
+          1. 数据库系统概论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          2. 数据库关系模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-2"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-2"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9Csql%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          3. 数据库操作SQL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-3"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-3"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-text">
+          4. 数据库设计与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-4"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-4"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86"><span class="toc-text">
+          5.  数据库管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-5"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-5"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E7%A8%8B"><span class="toc-text">
+          6. 数据库编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-6"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-6"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-nosql%E6%8A%80%E6%9C%AF"><span class="toc-text">
+          7. NoSQL技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-7"><span class="toc-text">
+          测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-7"><span class="toc-text">
+          讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E5%A4%8D%E4%B9%A0"><span class="toc-text">
+          总复习</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">142</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">22</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">40</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
