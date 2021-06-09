@@ -5,7 +5,14 @@
 <meta property="og:site_name" content="Zjeff&#39;blog">
 <meta property="og:description" content="描述">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131309.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131309.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131340.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131358.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530105806.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131411.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131420.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131429.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104627.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104643.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104652.png">
@@ -13,12 +20,16 @@
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608091257.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608091308.png">
 <meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608091433.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103539.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103602.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103623.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103634.png">
 <meta property="article:published_time" content="2021-05-27T02:32:10.773Z">
-<meta property="article:modified_time" content="2021-06-08T01:26:16.235Z">
+<meta property="article:modified_time" content="2021-06-09T06:12:12.963Z">
 <meta property="article:author" content="Jeffords zuo">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530105806.png"><title>Database( PostgreSQL ) - 09 数据库选填判断 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131309.png"><title>Database( PostgreSQL ) - 09 数据库选填判断 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -42,7 +53,7 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 09 数据库选填判断</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-08</span></span></div></header><div class="post-body">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 09 数据库选填判断</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-09</span></span></div></header><div class="post-body">
         <h1 id="database-postgresql-09-数据库选填判断"   >
           <a href="#database-postgresql-09-数据库选填判断" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 09 数据库选填判断</h1>
       
@@ -150,14 +161,40 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
         <h3 id="讨论"   >
           <a href="#讨论" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131309.png" alt="image-20210609131308729" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131309.png" alt="image-20210609131315410" /></p>
 <p>1.什么是元数据？它是如何产生的，存储在哪里？</p>
+<p>元数据是指描述数据库结构的数据。元数据不是用户在数据库中存储的数据。</p>
+<p>元数据主要为描述数据的属性的信息，用来支持如指示历史数据、存储位置、文件记录、资源查找等功能。元数据在创建对象时就产生并存储到数据库里。</p>
 <p>2.结构化数据与非结构化数据有何区别？</p>
+<p>非结构化数据是数据结构不规则或不完整，没有预定义的数据模型，不方便用数据库二维逻辑表来表现的数据。</p>
+<p>结构化存储在关系数据库，非结构化数据存储再非关系数据库。</p>
 <p>3.NoSQL数据库与NewSQL数据库有何区别？</p>
+<p>NOSQL：泛指 非关系型数据库。它以放宽ACD原则为代价，NOSQL采取的 是最终致性原则，而不是像关系型数据库那样地严格遵守着 ACID的原则这意味着如果在特定时间段内没有特定数据项的 更新则最终对其所有的访问都将返回最后更新的值。</p>
+<p>NEWSQL：对各种新的可扩展(高性能数据库的简称,取了 SQL和 NEWSQL的优点，希望将ACD和可扩展性以及高性能 结合，但是目前而言，不适用于所有的场景。</p>
 <p>4.通用数据库与领域数据库有何区别？</p>
+<p>在技术实现原理上与通用数据库没有多大的区别，但它们与特定应用领域相结合，加强了数据库系统对有关应用领域的支撑能力。</p>
 <p>5.大数据分析与数据挖掘有何区别？</p>
+<p>数据仓库是数据库已经<strong>存储了长时间</strong>的数据。数据挖掘是一种建立在数据仓库基础上对大量数据进行模式或规律挖掘，从中发现有价值信息的技术。</p>
+<p>大数据分析处理技术是一种解决传统数据分析处理技术难以在规定时间完成大规模复杂数据分析处理的技术。<strong>快速</strong>、廉价、性能强。</p>
 <p>6.数据库应用系统有哪些结构模式？各有什么适合的应用场景？</p>
+<ul>
+<li>单机用户结构适用于单用户使用</li>
+<li>集中式结构；多用于传统的银行、电信、交通、医疗等 行业</li>
+<li>客户/服务器结构适用于客户机节点相对较少的多终端业务服务系统</li>
+<li>分布式结构适跨地区的大型机构及企业等组织对数据库应用的需求</li>
+</ul>
 <p>7.对象-关系数据库DBMS具有哪些特点？</p>
+<ul>
+<li>(1)数据结构化且统管理</li>
+<li>(2)有较高的 数据独立性</li>
+<li>(3)数据库控制功能</li>
+</ul>
 <p>8.PostgreSQL数据库软件与MySQL数据库软件比较，各有哪些技术特点？</p>
+<ul>
+<li>Postaresql采用进程模式，多进程、单线程。而MySQL采用的是线程模式，单进程、多线程。</li>
+<li>Postgresql只有一个存储引擎，且综合性能良好。而MySQL支持不同表使用不同的存储引擎。</li>
+</ul>
 
         <h2 id="2-数据库关系模型"   >
           <a href="#2-数据库关系模型" class="heading-link"><i class="fas fa-link"></i></a>2. 数据库关系模型</h2>
@@ -260,14 +297,23 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
         <h3 id="讨论-2"   >
           <a href="#讨论-2" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131340.png" alt="image-20210609131340574" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131358.png" alt="image-20210609131358294" /></p>
 <p>1.关系模型由哪几个部分组成？其工作原理是什么？</p>
+<p>组成:关系数据结构，关系操作集合，关系数据完整性。工作原理:关系模型假定把所有数据都表示为数学上的关系，即n个集合的笛卡尔积的一个子集，然后通过关系演算和关系代数的一种方式来操作关系。</p>
 <p>2．在关系模型中，对关系有哪些数据操作方式？</p>
+<p>组成:关系数据结构，关系操作集合，关系数据完整性。工作原理:关系模型假定把所有数据都表示为数学上的关系，即n个集合的笛卡尔积的一个子集，然后通过关系演算和关系代数的一种方式来操作关系。</p>
 <p>3．如何理解关系数据查询的选择运算操作、投影运算操作、连接运算操作？</p>
+<p>选择运算: .是在关系R中选出满足给定条件C的元组集。投影运算:是从关系R中选择出部分的属性列组成一-个新的关系。 连接运算:从两个关系的笛卡尔积中选取属性间满足一定条件的元组集合。</p>
 <p>4．关系之间的θ连接操作与自然连接操作有何区别？</p>
+<p>θ连接是从关系表的行角度进行运算而自然连接同时从行和列角度进行运算; θ连接比较的是任意两个属性,而自然连接要求进行比较的分量必须是相同的属性。自然连接要求属性的值要相同，而θ连接可设立的条件要更广泛。</p>
 <p>5．关系之间的左外连接、右外连接、全外连接有何区别？</p>
+<p>左外连接，保留左边的元组，针对与左侧关系不匹配的右侧关系元组，用空值来填充。右外连接则相反，保留右边的元组，针对与右侧关系不匹配的左侧关系元组，用空值来填充。全外连接则同时完成左外连接和右外连接，再把产生的结果自然连接到结果集中。</p>
 <p>6．如何理解关系模型的实体完整性和参照完整性？</p>
+<p>实体完整性:是在关系表中实施的主键取值约束，以保证关系表中的每个元组可标识。参照完整性:是关系之间的联系需要遵守的约束，以保证关系之间的数据一致性。</p>
 <p>7.针对下关系表，如何定义该关系中的列约束？</p>
 <img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530105806.png" alt="image-20210530105806524" style="zoom:150%;" />
+<p>StudentID设为主键，NOT NULL;CourselD设为外键，NOT NULL,Score,可为NULL，Note可为NULL</p>
 
         <h2 id="3-数据库操作sql语言"   >
           <a href="#3-数据库操作sql语言" class="heading-link"><i class="fas fa-link"></i></a>3. 数据库操作SQL语言</h2>
@@ -293,9 +339,9 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <p>在创建数据库表时，下面哪个不是关于主键的正确说法？</p>
 <ul>
 <li>主键取值必须唯一</li>
-<li>主键不允许空值</li>
+<li><strong>主键不允许空值</strong></li>
 <li>主键可以有多种数据类型</li>
-<li><strong>主键必须是单一属性</strong></li>
+<li>主键必须是单一属性</li>
 </ul>
 <p>在创建数据库表时，使用下面哪个列约束实现值范围检查？</p>
 <ul>
@@ -370,16 +416,33 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
         <h3 id="讨论-3"   >
           <a href="#讨论-3" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131411.png" alt="image-20210609131411139" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131420.png" alt="image-20210609131420072" /></p>
 <p>1．SQL是一种什么类型语言？它与C/Java语言有什么区别？</p>
+<p>C/JAVA需要编程操作数据库。</p>
 <p>2．SQL有哪些类型语句，每类语句可完成什么操作处理？</p>
+<p>1)数据定义语言，用于创建和维护数据库对象，如数据库，数据库表，视图，索引，触发器，存储过程等。</p>
+<p>2)数据操纵语言，用于对数据库中的数据表或视图进行数据插入，数据删除，数据更新等处理。</p>
+<p>3)数据查询语言，用于从数据库表中查询或统计数据但不改变数据库中的数据。</p>
+<p>4)数据控制语言，用于DBA用户管理数据库对象的权限。</p>
+<p>5)事务处理语言，用于数据库事务的编程处理。</p>
+<p>6)游标控制语言，用于数据库游标结构的使用。</p>
 <p>3．SQL支持哪些数据类型？</p>
+<p>支持字符串型varcharchar,整数型int，samllint,定点数型 numeric(p.d)浮点数型real，double(n,d)货币型money,逻辑型bit,日期型date</p>
 <p>4．PostgreSQL数据库除支持SQL数据类型外，还支持哪些数据类型？</p>
+<p>还包括，bigint， decimal, double, precision, serial, bigserial (n), character(n), boolean, time, timestamp等其他数据类型。</p>
 <p>5．在PostgreSQL数据库中，如何自定义对象数据类型？</p>
+<p>主要使用CREATE DOMAIN和CREATETYPE语句创建。CREATEDOMAIN创建用户定义类型，可以包括约束，如NOTNULL,CHECK,等。由 CREATEDOMAIN创建用户定义类型，可以包括约束，如NOTNULL，CHECK等。CREATETYPE创建组合类型，用于存储过程中的返回值。</p>
 <p>6．PostgreSQL数据库在哪些方面拓展了SQL功能？</p>
+<p>支持更多数据类型，支持更多的语言操作。</p>
 <p>7.在数据操纵SQL语句中，如何对级联表数据删除？</p>
+<p>在数据表1里把那些id值在数据表2里有匹配的记录全删掉：delete t1 fromt1， t2 where <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://t1.id=t2.id" >t1.id=t2.id</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>；从数据表t1里在数据表t2里没有匹配的记录查找出来并删除掉DEL.ETE t1 FROM t1 LEFTJOIN t2 ON <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://t1.id=t2.id" >t1.id=t2.id</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> WHERE <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://t2.id" >t2.id</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> IS NULL或DEL.ETEFROM t1,USING t1 LEFT JOIN t2 ON <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://t1.id=t2.id" >t1.id=t2.id</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> WHERE <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://t2.id" >t2.id</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> lS NULL;从两个表中找出相同记录的数据并把两个表中的数据都删除掉DELETE t1,t2 from t1 LEFTJOlN t2 ON <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://t1.id=t2.id" >t1.id=t2.id</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> WHERE t.id=25注意此处的deletet t1,t2 from中的t1，t2不能是别名。</p>
 <p>8.在什么情况下，使用全外连接查询处理多表？</p>
+<p>ColR和ColL彼此有交集但波此互不为子集时候用全外。</p>
 <p>9．在SQL中，如何使用视图简化前端编程的复杂SQL查询？</p>
+<p>通过视图，数据库开发人员可以将复杂的查询语句封装在视图内，使外部程序只需用简单方式访问该视图，以便获取所需要的数据。</p>
 <p>10．在SQL中，如何控制视图数据只读查询？</p>
+<p>指定SELECT权限</p>
 
         <h2 id="4-数据库设计与实现"   >
           <a href="#4-数据库设计与实现" class="heading-link"><i class="fas fa-link"></i></a>4. 数据库设计与实现</h2>
@@ -482,22 +545,36 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
         <h3 id="讨论-4"   >
           <a href="#讨论-4" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609131429.png" alt="image-20210609131429730" /></p>
 <p>1．在数据库应用系统设计中，系统数据架构与数据库模型有何区别？</p>
+<p>概念、逻辑、物理数据模型组成，数据库系统数据架构是设计数据库的蓝图，数据库模型是设计数据库的实现。</p>
 <p>2．概念数据模型、逻辑数据模型、物理数据模型之间是什么关系?</p>
+<p>它们从不同角度满足数据库设计模型准则。</p>
 <p>3．针对特定数据库应用系统，如何确定数据库设计策略？</p>
+<p>进行需求分析，概念、物理、逻辑数据模型设计，从物理数据模型得到具体数据库应用实现。</p>
 <p>4．在数据库应用系统开发中，数据库设计建模如何实施？</p>
+<p>使用相应建模工具实现。</p>
 <p>5．在E-R模型图中，如何理解标识符依赖弱实体和非标识符依赖弱实体？</p>
+<p>标识符依赖弱实体中标识符含有所依赖实体标识符非标识符依赖弱实体有自己的标识符。</p>
 <p>6．在E-R模型图中，如何表示系统的数据对象组成及其对象联系？</p>
+<p>系统数据对象组成由实体与属性构成，之间的联系可用鸟脚连线符号表示。</p>
 <p>7．一个非规范关系表在数据操作中会出现哪些问题？</p>
+<p>插入、删除、更新数据库异常。</p>
 <p>8．出现非规范关系表的主要原因是什么？</p>
+<p>存在冗余数据,即一个关系表中存在两个或多个主题数据。</p>
 <p>9．如何理解不同程度的规范化设计范式？</p>
+<p>不同程度规范处理范式将关系表分解成不同程度的关系。</p>
 <p>10．为解决数据库访问性能，可采取哪些逆规范化处理方案？</p>
+<p>关系表的合并,冗余列的话加，抽取表的创建，关系表分区的创建。</p>
 <p>11.如何将如下图书销售系统CDM分别转换为LDM、PDM 数据模型？</p>
-<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104627.png" alt="image-20210530104627853" /></p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104627.png" alt="image-20210530104627853" style="zoom: 50%;" />
+<p>在 PowerDesign中逐步创建，或将编著联系创建成一个独立的关系表,与作者,”图书保持多对一-的联系,作者实体分解出地区关系定义主、外键从而创建逻辑数据模型;将实体转换成关系表,设置实体联系成为主,外键联系,定义索引,视图在逻辑数据模型基础.上转换成物理数据模型。</p>
 <p>12.如下工资关系表在数据库访问操作中会出现哪些数据异常？如何规范化设计该表到4NF范式？</p>
-<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104643.png" alt="image-20210530104643435" style="zoom:33%;" />
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104643.png" alt="image-20210530104643435" style="zoom: 25%;" />
+<p>插入，删除,更新数据异常，将关系表分解成员,工表,工作部门表,月薪表。</p>
 <p>13.针对如下数据库E-R模型设计，如何SQL编程实现该模型设计? 需要考虑业务规则中的级联处理。</p>
-<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104652.png" alt="image-20210530104652577" style="zoom:50%;" />
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210530104652.png" alt="image-20210530104652577" style="zoom: 33%;" />
+<p>创建学校表与学生表,将学校编号转换成学生表中外键</p>
 
         <h2 id="5-数据库管理"   >
           <a href="#5-数据库管理" class="heading-link"><i class="fas fa-link"></i></a>5.  数据库管理</h2>
@@ -517,8 +594,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <ul>
 <li>一致性</li>
 <li>原子性</li>
-<li>可靠性</li>
-<li><strong>持续</strong></li>
+<li><strong>可靠性</strong></li>
+<li>持续</li>
 </ul>
 <p>在事务程序中，不能执行哪类SQL语句。</p>
 <ul>
@@ -594,15 +671,30 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
           <a href="#讨论-5" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
 <p>1．在特定数据库应用处理中，为什么需要事务机制？</p>
+<p>在数据库应用系统中，常遇到多个用户的程序并发访问同一数据库或同一数据库对象，甚至同一数据记录的需求。如果不对这些并发用户程序进行管理控制，会导致存取数据错误，破坏数据一致性的问题。</p>
 <p>2．如何理解数据库事务的ACID特性？</p>
+<p>(1)Atomicity(原子性)，即事务的SQL语句要么全部被执行，要么全部不被执行；</p>
+<p>(2)Consistency(一致性)指事务执行的结果使数据库从一种正确数据状态变迁到另一种正确数据状态；</p>
+<p>(3)lsolation(隔岛性)，指当多个事务并发执行的时候，一个事务的执行不能被其他事务干扰</p>
+<p>(4)Durbility(持续性)，指一个事务一旦被提交，对数据库的改变是永久的。</p>
 <p>3．在数据库系统中，为什么事务程序通常需要并发运行？</p>
+<p>并发事务运行才能改善系统的资源利用率、吞吐率，以及减少事务执行的平均等待时间。</p>
 <p>4．在SQL中，如何编写一个事务程序？</p>
+<p>利用SQL提供的事务控制语句和其他SQL操作语句编写程序，如BEGIN，ROLLBACK， COMMIT，SAVEPOINT。</p>
 <p>5．在数据库系统中，事务程序与一般SQL程序有何区别？</p>
+<p>事务程序具有ACID特性。</p>
 <p>6．不同级别的加锁协议，可以分别解决哪些数据不一致问题？</p>
+<p>一级加锁协议可以防止丢失更新的数据不一致问题</p>
+<p>二级加锁协议可议在一级加锁协议上防止脏读问题</p>
+<p>三级加锁协议还可以防止不可重复读问题、幻读问题</p>
 <p>7．两阶段锁协议将解决什么问题？</p>
+<p>两阶段铁定协议保证事务串行执行、并发事务执行的数据结果是正确的。</p>
 <p>8．并发事务在运行过程中出现死锁的条件有哪些？</p>
+<p>(1)互斥条件；(2)请求和保持条件；(3)不剥夺条件；(4)环路等待条件。</p>
 <p>9．如何构建一个完整的数据库系统安全体系？</p>
+<p>首先根据用户输入的账号和密码进行身份鉴别，然后对用户进行权限访问控制数据库操作还需要操作系统对数据文件访问；针对数据安全要求很高的应用系统，还需要进行加密存储处理。</p>
 <p>10．如何应用数据库存取控制安全模型？</p>
+<p>(1)用户标识和鉴定；(2)存取控制：自主存取控制、强制存取控制；(3)祝图；(4)审计；(5)数据加密</p>
 
         <h2 id="6-数据库编程"   >
           <a href="#6-数据库编程" class="heading-link"><i class="fas fa-link"></i></a>6. 数据库编程</h2>
@@ -635,7 +727,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><lin
 <p>数据库的存储过程和触发器都可以有输入参数</p>
 <p>X</p>
 <p>JDBC和ODBC都可以在任何高级语言中，建立与数据库的互连。</p>
-<p>V</p>
+<p>X</p>
 <p>servlet程序是用Java语言编写</p>
 <p>V</p>
 <p>在ODBC数据库编程中，驱动程序的加载是由用户应用程序完成。</p>
@@ -656,7 +748,7 @@ D．数据源</p>
 所有的宿主语言都使用EXEC SQL 执行嵌入式SQL语句。</p>
 <p>X</p>
 <p>HTML语句和JSP语句都是下载到浏览器端来执行。</p>
-<p>V</p>
+<p>X</p>
 <p>Mybatis是使用ODBC访问数据库，并完成数据库记录与对象之间的映射。</p>
 <p>X</p>
 <p>有学生表(学号，学生姓名，性别，所属院系)，其中所属院系一定是已有的院系。实现该约束的可行方案是。</p>
@@ -712,16 +804,34 @@ D．数据源</p>
         <h3 id="讨论-6"   >
           <a href="#讨论-6" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
-<ol>
+<ul>
 <li>在现阶段，数据库编程主要有哪些连接方式？</li>
+</ul>
+<p>现阶段，数据库编程主要有 ①ODBC②JDBC③ADO.NET④PDO</p>
+<ul>
 <li>ODBC连接数据库主要有哪几个步骤？</li>
+</ul>
+<p>用ODBC驱动管理器注册一个数据源;根据数据源提供的数据库位置、数据库名称及驱动程序等信息，驱动管理器建立起ODBC与具体数据库的联系;应用程序使用数据源建立与相应，数据库的连接;应用程序通过驱动程序管理器与数据库交换信息;驱动程序管理器负责将应用程序对ODBC API调用传递给驱动程序;驱动程序在执行完相应的SQL操作后，将结果通过驱动程序管理器返回给应用程序。</p>
+<ul>
 <li>JDBC驱动程序有几种类型，各有什么特点？</li>
+</ul>
+<p>有①JDBC-ODBC bridge Driver:利用现成的ODBC架构，将JDBC转化为 ODBC使用②Native- APIpartly-Java Driver: 是部分使用JAVA编程语言编写和部分使用本机代码编写的驱动程序, 用于与数据库的客户机API通信。③JDBC-Net All-JavaDriver:纯粹的Java客户程序库，使用跨数据库协议,将数据库访问请求传输给一个服务器组件,然后该中间件服务器将访问请求转换为特定的数据库系统的协议发送给数据库系统，主要目的是获得更好的架构灵活性④Native- protocol All-Java Driver:最常用的驱动程序类型，是纯JAVA实现的驱动程序，支持跨平台部署，性能也较好。</p>
+<ul>
 <li>JDBC连接数据库主要有哪几个步骤？</li>
+</ul>
+<p>应用程序开始，导入java.sq|包, 加在并注册驱动程序,创建connection对象，创建statement对象，执行sql语句, 使用ResultSet对象返回结果，关闭ResultSet对象, 关闭 Statement对象，关闭Connection对象。</p>
+<ul>
 <li>Java Servlet编程有什么优点？Servlet工作过程是什么？</li>
+</ul>
+<p>优点是简单易用，完全面对对象，servlet工作过程客户机将请求发送到Web服务器; Web服务器收到客户端的Servlet访问请求后，解析客户端的请求;服务器上的Web容器实例化 Servlet;调用Servlet实例对象的init()方法;调用Servlet的service()方法并将请求和响应对象作为参数传递进去;Servlet执行请求，并将结果返回到Web容器。Web容器将响应发回客户机。Web服务器关闭或Servlet空闲时间超过一定限度时，调用destory()方法退出。</p>
+<ul>
 <li>使用存储过程的优点和缺点分别是什么？</li>
-<li>在数据库应用开发中，触发器主要应用于哪些情况？</li>
+</ul>
+<p>优点是:减少网络通信量，执行速度更快，适应性更强，降低了业务实现与应用程序的耦合，降低了开发的复杂性，保护数据库元信息，增强了数据库安全性。缺点是:OSQL为结构化查询语言，存储过程本质.上是过程化的程序，把复杂的业务逻辑完全放在存储过程实现，难以体现SQL的优势。②如果存储过程的参数或返回数据发生变化，需要修改内部代码，还要更新主程序的调用代码。③开发调试复杂。④可移植性差。在数据库应用开发中，触发器主要应用于哪些情况？</p>
+<ul>
 <li>Java语言中执行嵌入式SQL语句，如何向SQL语句传递参数？如何向主语言返回执行结果集？</li>
-</ol>
+</ul>
+<p>7.主要应用于定义逻辑比较复杂的完整性约束，或者某种业务规则的约束 8.调用 executeUpdate (String sq|)方法执行，可以执行静态的语句，executeQuery()方 法进行数据查询，得到ResultSet对象，其存储了查询数据库后的数据集合。</p>
 
         <h2 id="7-nosql技术"   >
           <a href="#7-nosql技术" class="heading-link"><i class="fas fa-link"></i></a>7. NoSQL技术</h2>
@@ -740,7 +850,7 @@ D．数据源</p>
 <p>MongoDB是哪一种存储模型的NoSQL数据库？</p>
 <ul>
 <li>列存储</li>
-<li>文档存储</li>
+<li><strong>文档存储</strong></li>
 <li>键值对存储</li>
 <li>图形存储</li>
 </ul>
@@ -831,18 +941,775 @@ D．数据源</p>
         <h3 id="讨论-7"   >
           <a href="#讨论-7" class="heading-link"><i class="fas fa-link"></i></a>讨论</h3>
       
-<ol>
-<li>关系数据库的优点与缺点分别有哪些？</li>
-<li>CAP、BASE、最终一致性的原理和实现技术分别是什么？</li>
-<li>NoSQL数据库的共同特征是什么？</li>
-<li>HBase的物理存储架构是什么？</li>
-<li>HBase的应用场景有哪些？</li>
-<li>Redis数据库的数据模型是什么？</li>
-<li>Redis数据库适合哪些应用场景？</li>
-<li>MongoDB数据库的数据模型是什么？</li>
-<li>MongoDB数据库有哪些应用场景？</li>
-<li>Neo4j数据库有哪些技术特点？</li>
-</ol>
+<p>1.关系数据库的优点与缺点分别有哪些？</p>
+<p>关系数据库的优点:</p>
+<ul>
+<li>①数据表示的三级模式(外模式，模式，内模式)保证了数据的逻辑性和独立性，完整的事务处理机制保持数据的一致性（ACID）</li>
+<li>②用二维表来表示数据和数据间的关系，数据更新开销小</li>
+<li>③提供负责连接操作的各种查询处理等</li>
+<li>④网络和数据库的结合产生了分布式数据库，数据可以分布在网络的不同物理节点上</li>
+<li>⑤数据之间存在着逻辑关系，共同完成数据库的全局应用。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>①不能直接管理非结构化数据</li>
+<li>②受单机服务器限制难以支持数据库高并发读写操作</li>
+<li>③受磁盘容量限制不能满足海量数据的高效存储和出力</li>
+<li>④实现分布式数据库的高拓展性和高可用性比较复杂。</li>
+</ul>
+<p>2.CAP、BASE、最终一致性的原理和实现技术分别是什么？</p>
+<p>（1）CAP的原理是 ①一致性，在分布式计算中，执行某项数据的修改操作之后，所有节点在同一时间具有相同的数据，系统具有执行 ②可用性，在二米一个操作之后，无论成功或失败，系统都要在一定时间内返回结果，保证每个请求不管成功或失败都有响应 ③分区容忍性，系统中任意信息的丢失或失败不会影响系统的继续运行。（2）BASE原理是 ①BA，基本可用：系统能基本运行，一直提供服务，S软状态/柔性事务：可理解为无连接的，E最终一致性，系统在某个时刻达到最终一致性，而非时时保持一致。（3）最终一致性为 ①强一致性 要求无论更新操作在哪个副本执行，之后的读操作都要获得最终数据 ②弱一致性 用户读到某一操作对系统的更新需要一段时间。这段时间被称为“不一致性窗口” ③最终一致性，弱一致性的特例，保证用户最终能读到某操作对系统特定数据的更新。</p>
+<p>3.NoSQL数据库的共同特征是什么？</p>
+<p>共同特征：①不用预定义模式 ②无共享架构 ③弹性可拓展 ④分区 ⑤异步复制 ⑥BASE</p>
+<p>4.HBase的物理存储架构是什么？</p>
+<p>从大到小是表，区域，存储单元，存储单元文件</p>
+<p>5.HBase的应用场景有哪些？</p>
+<p>存储头条类，新闻类的新闻，网页，图片等应用数据，包括病毒公司的病毒库；推荐画像，用户的画像是比较大的稀疏矩阵；时空数据，如轨迹，气象网格，如滴滴打车的轨迹数据。电信领域，银行领域很多订单查询底层存储。</p>
+<p>6.Redis数据库的数据模型是什么？</p>
+<p>Redis数据模型是键值对存储模型</p>
+<p>7.Redis数据库适合哪些应用场景？</p>
+<p>会话缓存；全页缓存平台；队列提供列表和集合操作；Redis可以作为很好的消息队列平台；排行榜/计数器。</p>
+<p>8.MongoDB数据库的数据模型是什么？</p>
+<p>是文档型模型</p>
+<p>9.MongoDB数据库有哪些应用场景？</p>
+<p>①网站数据 ②缓存 ③大尺寸，低价值的数据 ④高伸缩性场景 ⑤用于对象及JSON数据的存储。</p>
+<p>10.Neo4j数据库有哪些技术特点？</p>
+<p>嵌入式，高性能，轻量级。</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>1</th>
+<th>PostgreSQL是一种典型的关系数据库。</th>
+<th>对</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>NoSQL数据库可以支持大数据处理，它一定会取代关系数据库。</td>
+<td>错</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>在数据库开发中，可不进行数据模型设计，而直接创建数据库表。</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>关系表中的外键只能通过表约束方式定义。</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>在对关系表插入日期数据时，需要使用双引号包括日期数据。</td>
+<td>错</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>SQL查询语句可以使用下划线通配符代表多个字符。</td>
+<td>错</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>在多表关联查询中，若结果集数据均来自一个表，可以使用子查询实现。</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>在数据库中，索引可以加快数据库表的插入操作速度。</td>
+<td>错</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>在数据库中，视图可以任意插入数据。</td>
+<td>错</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>对学生表STUDENT插入数据，其正确的SQL语句为</td>
+<td>A.insert student  value (“2015001”,“赵刚“)</td>
+<td>B.insert student value  (‘2015001’,‘赵刚’)</td>
+<td>C.insert into student value (‘2015001’,‘赵刚’)</td>
+<td>D.insert into student values (‘2015001’,‘赵刚’)</td>
+<td>D</td>
+</tr>
+<tr>
+<td>11</td>
+<td>正确查询学生表STUDENT信息，并按照年龄倒序排列的SQL语句为</td>
+<td>A.sort by Birthday</td>
+<td>B.order by Birthday</td>
+<td>C.order by Birthday  Desc</td>
+<td>D.sort by Birthday  Desc</td>
+<td>C</td>
+</tr>
+<tr>
+<td>12</td>
+<td>下面哪项不是索引的用途？</td>
+<td>A.在检索列上创建索引，</td>
+<td>B.在主键列上创建索引，</td>
+<td>C.在“性别”列上创建索引，</td>
+<td>D.在外键列上创建索引，</td>
+<td>C</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>加快检索速度</td>
+<td>可以组织表中数据存储</td>
+<td>可以加快检索速度</td>
+<td>可以加快连接速度</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>针对视图可以不受限制地进行如下哪类操作？</td>
+<td>A.插入数据</td>
+<td>B.修改数据</td>
+<td>C.删除数据</td>
+<td>D.查询数据</td>
+<td>D</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>CM1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>在数据管理技术发展阶段中，下面哪个阶段可以实现数据共享？</td>
+<td>A.人工管理阶段</td>
+<td>B.文件管理阶段</td>
+<td>C.数据库管理阶段</td>
+<td>D.以上阶段都可以</td>
+<td>C</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PostgreSQL数据库采用下面哪种数据模型？</td>
+<td>A.层次数据模型</td>
+<td>B.网状数据模型</td>
+<td>C.关系数据模型</td>
+<td>D.对象关系数据模型</td>
+<td>D</td>
+</tr>
+<tr>
+<td>3</td>
+<td>在数据库管理系统的层次结构中，下面哪个层次负责对数据文件进行操作访问？</td>
+<td>A.操作界面层</td>
+<td>B.语言翻译处理层</td>
+<td>C.数据存取层</td>
+<td>D.数据存储层</td>
+<td>D</td>
+</tr>
+<tr>
+<td>4</td>
+<td>在数据库领域技术中，下面哪种技术可以实现数据集成？</td>
+<td>A.数据库技术</td>
+<td>B.数据仓库技术</td>
+<td>C.数据挖掘技术</td>
+<td>D.商业智能技术</td>
+<td>B</td>
+</tr>
+<tr>
+<td>5</td>
+<td>下面数据库技术适合非结构化数据管理？</td>
+<td>A.SQL数据库</td>
+<td>B.NoSQL数据库</td>
+<td>C.关系数据库</td>
+<td>D.以上都可以</td>
+<td>B</td>
+</tr>
+<tr>
+<td>6</td>
+<td>下面哪种数据库系统应用结构适合银行业务系统？</td>
+<td>A.集中式结构</td>
+<td>B.客户/服务器结构</td>
+<td>C.分布式结构</td>
+<td>D.以上结构都可以</td>
+<td>C</td>
+</tr>
+<tr>
+<td>7</td>
+<td>下面哪类数据库应用系统最需要使用大数据分析处理技术？</td>
+<td>A.业务处理系统</td>
+<td>B.办公管理系统</td>
+<td>C.管理信息系统</td>
+<td>D.决策支持系统</td>
+<td>D</td>
+</tr>
+<tr>
+<td>8</td>
+<td>下面哪种DBMS是企业级数据库系统？</td>
+<td>A.Access</td>
+<td>B.MySQL</td>
+<td>C.PostgreSQL</td>
+<td>D.Oracle</td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>下面哪个程序实现PostgreSQL服务器起停控制？</td>
+<td>A.initdb</td>
+<td>B.pg_ctl</td>
+<td>C.postgres</td>
+<td>D.postmaster</td>
+<td>B</td>
+</tr>
+<tr>
+<td>10</td>
+<td>下面哪个程序可以通过命令行执行SQL操作？</td>
+<td>A.ecpg</td>
+<td>B.psql</td>
+<td>C.pgAdmin</td>
+<td>D.postgres</td>
+<td>B</td>
+</tr>
+<tr>
+<td></td>
+<td>CM2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪个项不是关系特征？</td>
+<td>A.表中行可任意顺序</td>
+<td>B.表中列可任意顺序</td>
+<td>C.表中单元格可存放多个值</td>
+<td>D.表中不允许有重复行存在</td>
+<td>C</td>
+</tr>
+<tr>
+<td>2</td>
+<td>在关系模型中，关系表中复合键可由</td>
+<td>A.至多一个属性组成</td>
+<td>B.多个属性组成</td>
+<td>C.一个或多个属性组成</td>
+<td>D.候选键组成</td>
+<td>B</td>
+</tr>
+<tr>
+<td>3</td>
+<td>下面哪项不是主键的作用？</td>
+<td>A.标识关系表中的不同元组</td>
+<td>B.作为关联表的关联属性列</td>
+<td>C.可通过主键列的索引快速检索行数据</td>
+<td>D.标识关系表中的不同列</td>
+<td>D</td>
+</tr>
+<tr>
+<td>4</td>
+<td>在关系表中，主键列最好采用什么数据类型？</td>
+<td>A.字符串</td>
+<td>B.整型</td>
+<td>C.序列</td>
+<td>D.数值</td>
+<td>C</td>
+</tr>
+<tr>
+<td>5</td>
+<td>在关系表的实体完整性约束中，不允许主键列值出现下面哪种情况？</td>
+<td>A.空值</td>
+<td>B.字符串</td>
+<td>C.数字值</td>
+<td>D.序列值</td>
+<td>A</td>
+</tr>
+<tr>
+<td>6</td>
+<td>参照完整性是用来确保关系之间关联列的</td>
+<td>A.数据一致性</td>
+<td>B.数据正确性</td>
+<td>C.数据完整性</td>
+<td>D.以上都不是</td>
+<td>A</td>
+</tr>
+<tr>
+<td>7</td>
+<td>关系模型不包含什么部分</td>
+<td>A.数据结构</td>
+<td>B.算法</td>
+<td>C.操作方式</td>
+<td>D.数据约束</td>
+<td>B</td>
+</tr>
+<tr>
+<td>8</td>
+<td>专门的关系运算不包含如下哪个操作？</td>
+<td>A.选择</td>
+<td>B.投影</td>
+<td>C.连接</td>
+<td>D.笛卡尔积</td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>下面哪种连接要求组合两个关系的匹配元组而形成查询结果集？</td>
+<td>A.内连接</td>
+<td>B.左外连接</td>
+<td>C.右外连接</td>
+<td>D.全外连接</td>
+<td>A</td>
+</tr>
+<tr>
+<td>10</td>
+<td>用户自定义完整性约束可以是？</td>
+<td>A.属性缺省值</td>
+<td>B.属性取值唯一性</td>
+<td>C.属性取值范围</td>
+<td>D.以上都可以</td>
+<td>D</td>
+</tr>
+<tr>
+<td></td>
+<td>CM3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪项不是SQL语言的特性？</td>
+<td>A.对数据库进行操作</td>
+<td>B.实现控制逻辑编程</td>
+<td>C.数据库游标操作</td>
+<td>D.数据库事务操作</td>
+<td>B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>下面哪个SQL数据类型适合“学号“属性列？</td>
+<td>A.int</td>
+<td>B.varchar(n)</td>
+<td>C.char(n)</td>
+<td>D.numeric</td>
+<td>C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>下面哪种数据类型不是SQL语言的标准数据类型？</td>
+<td>A.text</td>
+<td>B.integer</td>
+<td>C.char</td>
+<td>D.Numeric</td>
+<td>A</td>
+</tr>
+<tr>
+<td>4</td>
+<td>在创建数据库表时，下面哪个不是关于主键的正确说法？</td>
+<td>A.主键取值必须唯一</td>
+<td>B.主键不允许空值</td>
+<td>C.主键可以有多种数据类型</td>
+<td>D.主键必须有单一属性</td>
+<td>D</td>
+</tr>
+<tr>
+<td>5</td>
+<td>在创建数据库表时，使用下面哪个列约束实现值范围检查？</td>
+<td>A.check</td>
+<td>B.unique</td>
+<td>C.default</td>
+<td>D.null</td>
+<td>A</td>
+</tr>
+<tr>
+<td>6</td>
+<td>修改数据库表结构，使用下面哪个SQL  语句。</td>
+<td>A.modify table</td>
+<td>B.change table</td>
+<td>C.alter table</td>
+<td>D.update table</td>
+<td>C</td>
+</tr>
+<tr>
+<td>7</td>
+<td>对于数据库表添加记录数据，采用下面哪种SQL语句。</td>
+<td>A.add data</td>
+<td>B.append data</td>
+<td>C.insert into</td>
+<td>D.以上都不是</td>
+<td>C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>采用哪种关键词，对SQL查询结果集消除指定列的重复数据？</td>
+<td>A.unique</td>
+<td>B.distinct</td>
+<td>C.index</td>
+<td>D.order by</td>
+<td>B</td>
+</tr>
+<tr>
+<td>9</td>
+<td>对A表和B表进行关联查询，哪种连接可以使B表中不匹配的元组数据可以出现在结果集中？</td>
+<td>A.left join</td>
+<td>B.right join</td>
+<td>C.full join</td>
+<td>D.inner join</td>
+<td>B</td>
+</tr>
+<tr>
+<td>10</td>
+<td>下面哪个字符用于select查询语句的where子句实现匹配多个字符数据？</td>
+<td>A.%</td>
+<td>B.*</td>
+<td>C.!</td>
+<td>D._</td>
+<td>A</td>
+</tr>
+<tr>
+<td></td>
+<td>CM4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>在数据库应用系统开发阶段中，主要在哪个阶段考虑数据库创建？</td>
+<td>A.需求分析</td>
+<td>B.系统设计</td>
+<td>C.系统实现</td>
+<td>D.系统测试</td>
+<td>C</td>
+</tr>
+<tr>
+<td>2</td>
+<td>在数据库设计中，不包括下面哪个模型？</td>
+<td>A.概念数据模型</td>
+<td>B.逻辑数据模型</td>
+<td>C.物理数据模型</td>
+<td>D.数据流图模型</td>
+<td>D</td>
+</tr>
+<tr>
+<td>3</td>
+<td>下面哪个不是E-R模型的基本元素？</td>
+<td>A.实体</td>
+<td>B.标识符</td>
+<td>C.联系</td>
+<td>D.关系表</td>
+<td>D</td>
+</tr>
+<tr>
+<td>4</td>
+<td>“个人账户”、&quot;公司账户“&quot;与&quot;银行账户&quot;在E-R模型中，它们是哪种继承关系？</td>
+<td>A.互斥继承</td>
+<td>B.非互斥继承</td>
+<td>C.完整继承</td>
+<td>D.非完整继承</td>
+<td>A</td>
+</tr>
+<tr>
+<td>5</td>
+<td>“班级“实体与”学生“实体在E-R模型中，它们是哪种联系？</td>
+<td>A.1:1</td>
+<td>B.1:n</td>
+<td>C.m:n</td>
+<td>D.继承联系</td>
+<td>B</td>
+</tr>
+<tr>
+<td>6</td>
+<td>“订单明细“实体与”订单“实体在E-R模型中，“订单明细“实体是哪种类型实体？</td>
+<td>A.标识符依赖弱实体</td>
+<td>B.非标识符依赖弱实体</td>
+<td>C.强实体</td>
+<td>D.以上都不是</td>
+<td>A</td>
+</tr>
+<tr>
+<td>7</td>
+<td>在下面哪种模型中，设计系统中的视图要素？</td>
+<td>A.概念数据模型</td>
+<td>B.逻辑数据模型</td>
+<td>C.物理数据模型</td>
+<td>D.以上都不是</td>
+<td>C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>为了消除关系表属性多值依赖，至少需要规范该关系到下面哪种范式？</td>
+<td>A.第1范式</td>
+<td>B.第2范式</td>
+<td>C.第3范式</td>
+<td>D.第4范式</td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>下面哪项不是数据库表规范化设计的目标？</td>
+<td>A.消除冗余数据</td>
+<td>B.提升数据库查询性能</td>
+<td>C.解决删除数据异常</td>
+<td>D.解决修改数据异常</td>
+<td>B</td>
+</tr>
+<tr>
+<td>10</td>
+<td>对于一个非规范的关系表，会出现下面哪项访问异常问题？</td>
+<td>A.删除数据异常</td>
+<td>B.插入数据异常</td>
+<td>C.修改数据复杂</td>
+<td>D.以上都是</td>
+<td>D</td>
+</tr>
+<tr>
+<td></td>
+<td>CM5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪项不是数据库管理的目标？</td>
+<td>A.保障数据库系统正常运行</td>
+<td>B.实现应用对数据库访问</td>
+<td>C.发挥数据库系统处理能力</td>
+<td>D.确保数据库访问安全</td>
+<td>B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>事务处理是在DBMS的哪个层次？</td>
+<td>A.语言翻译处理层</td>
+<td>B.数据存取控制层</td>
+<td>C.数据存储管理层</td>
+<td>D.以上都不是</td>
+<td>B</td>
+</tr>
+<tr>
+<td>3</td>
+<td>下面哪个不是事物的特性？</td>
+<td>A.一致性</td>
+<td>B.原子性</td>
+<td>C.可靠性</td>
+<td>D.持续性</td>
+<td>C</td>
+</tr>
+<tr>
+<td>4</td>
+<td>事务并发执行时若不进行管理，会导致？</td>
+<td>A.脏读</td>
+<td>B.丢失更新</td>
+<td>C.幻想读</td>
+<td>D.以上都是</td>
+<td>D</td>
+</tr>
+<tr>
+<td>5</td>
+<td>哪个粒度上对共享数据加锁访问，并发性最好？</td>
+<td>A.行</td>
+<td>B.页面</td>
+<td>C.表</td>
+<td>D.数据库</td>
+<td>A</td>
+</tr>
+<tr>
+<td>6</td>
+<td>DBMS中至少设置那种隔离级别，可以确保并发事务执行不会出现脏数据？</td>
+<td>A.读取未提交</td>
+<td>B.读取已提交</td>
+<td>C.可重复读</td>
+<td>D.可串行化</td>
+<td>B</td>
+</tr>
+<tr>
+<td>7</td>
+<td>下面哪类安全问题导致系统机构损失最大？</td>
+<td>A.计算机设备破坏</td>
+<td>B.数据库被破坏</td>
+<td>C.业务数据全部丢失</td>
+<td>D.系统数据被非法访问</td>
+<td>C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>数据库系统安全模型中哪种安全管理手段是DBMS系统提供的数据库安全访问机制？</td>
+<td>A.用户身份认证</td>
+<td>B.用户存取控制权限</td>
+<td>C.文件安全访问</td>
+<td>D.数据加密存储</td>
+<td>B</td>
+</tr>
+<tr>
+<td>9</td>
+<td>那种数据库备份方式的数据备份时间最少？</td>
+<td>A.完整数据库备份</td>
+<td>B.差异数据库备份</td>
+<td>C.文件备份</td>
+<td>D.事务日志备份</td>
+<td>D</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DBMS系统可自动恢复哪类数据？</td>
+<td>A.用户误删的系统数据</td>
+<td>B.事务故障的数据错误</td>
+<td>C.存储设备损坏的数据丢失</td>
+<td>D.非法访问导致的数据损坏</td>
+<td>B</td>
+</tr>
+<tr>
+<td></td>
+<td>CM6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>数据库应用程序连接数据库需要使用下面哪种接口技术实现？</td>
+<td>A.JDBC</td>
+<td>B.ODBC</td>
+<td>C.数据库驱动接口</td>
+<td>D.以上均可</td>
+<td>D</td>
+</tr>
+<tr>
+<td>2</td>
+<td>在JDBC编程中，使用下面哪个语句实现存储过程调用?</td>
+<td>A.java.sql.Statement</td>
+<td>B.java.sql.Connect</td>
+<td>C.java.sql.PreparedStatement</td>
+<td>D.java.sql.CallableStatement</td>
+<td>D</td>
+</tr>
+<tr>
+<td>3</td>
+<td>在Servlet编程中，使用下面哪个方法处理访问控制？</td>
+<td>A.init ()</td>
+<td>B.service （）</td>
+<td>C.destroy ()</td>
+<td>D.getServletlnfo ()</td>
+<td>B</td>
+</tr>
+<tr>
+<td>4</td>
+<td>在JSP编程中，使用下面哪个内置对象的方法获得客户端向服务器端传送的数据？</td>
+<td>A.request</td>
+<td>B.response</td>
+<td>C.session</td>
+<td>D.application</td>
+<td>A</td>
+</tr>
+<tr>
+<td>5</td>
+<td>在PostgreSQL数据库存储过程编程中，使用下面哪个语句关键词定义存储过程？</td>
+<td>A.create procedure</td>
+<td>B.create procedure or  replace</td>
+<td>C.create function</td>
+<td>D.create function or  replace</td>
+<td>C</td>
+</tr>
+<tr>
+<td>6</td>
+<td>.在PostgreSQL数据库存储过程编程中，可以返回如下哪种数据类型结果？</td>
+<td>A.integer</td>
+<td>B.real</td>
+<td>C.boolean</td>
+<td>D.以上均可</td>
+<td>D</td>
+</tr>
+<tr>
+<td>7</td>
+<td>.在PostgreSQL数据库触发器编程中，下面哪种触发器不执行引起事件的SQL语句操作？</td>
+<td>A.before触发器</td>
+<td>B.after触发器</td>
+<td>C.instead of触发器</td>
+<td>D.行触发器</td>
+<td>C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PostgreSQL数据库触发器编程中，下面哪种内置变量可以提取触发器事件操作类型名称?</td>
+<td>A.TG_NAME</td>
+<td><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://B.TG" >B.TG</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> RELNAME</td>
+<td>C.TG_TABLE_NAME</td>
+<td>D.TG_OP</td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>在PostgresQL数据库游标编程中，下面哪种打开游标语句需要先声明游标变量？</td>
+<td>A.open for</td>
+<td>B.open for execute</td>
+<td>C.open</td>
+<td>D.以上都是</td>
+<td>C</td>
+</tr>
+<tr>
+<td>10</td>
+<td>在Java应用嵌入式SQL编程中，使用下面哪种方法提取结果集字段数据?</td>
+<td>A.ResultSet.next()</td>
+<td>B.ResultSet.previous()</td>
+<td>C.ResultSet.getString()</td>
+<td>D.以上都不是</td>
+<td>C</td>
+</tr>
+</tbody>
+</table></div>
 
         <h2 id="总复习"   >
           <a href="#总复习" class="heading-link"><i class="fas fa-link"></i></a>总复习</h2>
@@ -1059,6 +1926,14 @@ D．数据源</p>
 <p>C</p>
 <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608091433.png" alt="" /></p>
 <p>D</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103539.png" alt="image-20210608103539354" /></p>
+<p>候选键</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103602.png" alt="image-20210608103602558" /></p>
+<p>存取特权</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103623.png" alt="image-20210608103623599" /></p>
+<p>非结构化</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210608103634.png" alt="image-20210608103634465" /></p>
+<p>数据集合</p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/">http://zjeff-953.gitee.io/zjeff/2021/05/27/Database(%20PostgreSQL%20)%20-%2010%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E6%8B%A9%E5%A1%AB%E7%A9%BA%E9%A2%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/27/OS%20-%2010%20OS%20%E8%AE%A1%E7%AE%97%E9%A2%98%E7%BC%96%E7%A8%8B%E9%A2%98/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">OS - 10 OS 计算题编程题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2002%20%E7%89%A9%E7%90%86%E5%B1%82%E5%92%8C%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"><span class="paginator-prev__text">计算机网络 - 02 数据链路层</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#database-postgresql-09-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%A1%AB%E5%88%A4%E6%96%AD"><span class="toc-text">
           Database( PostgreSQL ) - 09 数据库选填判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA"><span class="toc-text">
           1. 数据库系统概论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">
@@ -1083,4 +1958,4 @@ D．数据源</p>
           测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA-7"><span class="toc-text">
           讨论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E5%A4%8D%E4%B9%A0"><span class="toc-text">
           总复习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93"><span class="toc-text">
-          刷题总结</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">154</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">22</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">42</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
+          刷题总结</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">154</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">23</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">42</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
