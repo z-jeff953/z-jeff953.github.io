@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="计算机网络 - 08 计网小题                            概念题                            计算机网络概览                                      计算题                            时延计算                            要点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络 - 08 计网小题">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2008%20%E8%AE%A1%E7%BD%91%E5%B0%8F%E9%A2%98/index.html">
+<meta property="og:site_name" content="Zjeff&#39;blog">
+<meta property="og:description" content="计算机网络 - 08 计网小题                            概念题                            计算机网络概览                                      计算题                            时延计算                            要点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105017.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105116.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105320.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105413.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105546.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105704.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105812.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105925.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618110003.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618110301.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618132543.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618141608.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618100122.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618141425.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618141841.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142210.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142324.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142349.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142556.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142616.png">
+<meta property="article:published_time" content="2021-05-27T02:39:43.324Z">
+<meta property="article:modified_time" content="2021-06-18T14:03:37.890Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105017.png"><title>计算机网络 - 08 计网小题 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2008%20%E8%AE%A1%E7%BD%91%E5%B0%8F%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机网络 - 08 计网小题</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-18</span></span></div></header><div class="post-body">
+        <h1 id="计算机网络-08-计网小题"   >
+          <a href="#计算机网络-08-计网小题" class="heading-link"><i class="fas fa-link"></i></a>计算机网络 - 08 计网小题</h1>
+      
+
+        <h2 id="概念题"   >
+          <a href="#概念题" class="heading-link"><i class="fas fa-link"></i></a>概念题</h2>
+      
+
+        <h3 id="计算机网络概览"   >
+          <a href="#计算机网络概览" class="heading-link"><i class="fas fa-link"></i></a>计算机网络概览</h3>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105017.png" alt="" /></p>
+<img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105116.png" alt="image-20210618105115916" style="zoom:50%;" />
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105320.png" alt="" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105413.png" alt="" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105546.png" alt="image-20210618105546485" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105704.png" alt="image-20210618105704433" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105812.png" alt="image-20210618105812111" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618105925.png" alt="image-20210618105925611" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618110003.png" alt="image-20210618110003187" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618110301.png" alt="image-20210618110301091" /></p>
+
+        <h2 id="计算题"   >
+          <a href="#计算题" class="heading-link"><i class="fas fa-link"></i></a>计算题</h2>
+      
+
+        <h3 id="时延计算"   >
+          <a href="#时延计算" class="heading-link"><i class="fas fa-link"></i></a>时延计算</h3>
+      
+
+        <h4 id="要点"   >
+          <a href="#要点" class="heading-link"><i class="fas fa-link"></i></a>要点</h4>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618132543.png" alt="image-20210618132543082" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618141608.png" alt="image-20210618141608078" /></p>
+
+        <h4 id="例题"   >
+          <a href="#例题" class="heading-link"><i class="fas fa-link"></i></a>例题</h4>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618100122.png" alt="" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618141425.png" alt="image-20210618141425017" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618141841.png" alt="image-20210618141841282" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142210.png" alt="image-20210618142210290" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142324.png" alt="image-20210618142324678" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142349.png" alt="image-20210618142349762" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142556.png" alt="image-20210618142556579" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210618142616.png" alt="image-20210618142616631" /></p>
+
+        <h2 id="mooc"   >
+          <a href="#mooc" class="heading-link"><i class="fas fa-link"></i></a>MOOC</h2>
+      
+
+        <h3 id="第1章-计算机网络和因特网"   >
+          <a href="#第1章-计算机网络和因特网" class="heading-link"><i class="fas fa-link"></i></a>第1章 计算机网络和因特网</h3>
+      
+<p>主机或端系统通过_________接入因特网。</p>
+<ul>
+<li><strong>A.ISP</strong></li>
+<li>B.调制解调器</li>
+<li>C.交换机</li>
+<li>D.路由器</li>
+</ul>
+<p>主机一般被划分为两类：客户和________。</p>
+<ul>
+<li>A.数据中心</li>
+<li><strong>B.服务器</strong></li>
+<li>C.端系统</li>
+<li>D.大型主机</li>
+</ul>
+<p>接入网(access network)是指将端系统连接到__________的物理链路。</p>
+<ul>
+<li>A.路由器</li>
+<li><strong>B.边缘路由器</strong></li>
+<li>C.服务器</li>
+<li>D.因特网</li>
+</ul>
+<p>以下_________属于家庭住宅常使用的网络接入方式。</p>
+<ul>
+<li>A.3G</li>
+<li>B.以太网</li>
+<li>C.Wi-Fi</li>
+<li><strong>D.ADSL</strong></li>
+</ul>
+<p>用户通常以_________速率接入以太网交换机。</p>
+<ul>
+<li><strong>A.100Mbps</strong></li>
+<li>B.10Mbps</li>
+<li>C.10Gbps</li>
+<li>D.1Gbps</li>
+</ul>
+<p>假定在发送主机和接收主机间只有一台分组交换机。发送主机和交换机间以及交换机和接收主机间的传输速率分别是R1和R2。假设该交换机使用存储转发分组交换方式，发送一个长度为L的分组的端到端总时延是________。（忽略排队时延、传播时延和处理时延)</p>
+<ul>
+<li>A.2L / R2</li>
+<li>B.2L / R1</li>
+<li><strong>C.L / R1 + L / R2</strong></li>
+<li>D.L / (R1 + R2)</li>
+</ul>
+<p>以下哪种时延受到网络拥塞情况的影响。</p>
+<ul>
+<li>A.传播时延</li>
+<li>B.处理时延</li>
+<li>C.排队时延</li>
+<li>D.传输时延</li>
+</ul>
+<p>一个长度为1000字节的分组经过距离为2900km的2Mbps的以太网链路，其中传播速率为2.9 * 10^8 m/s，其中 传播时延为多少？</p>
+<ul>
+<li>A.1 s</li>
+<li>B.1 ms</li>
+<li>C.0.1 s</li>
+<li>D.10 ms</li>
+</ul>
+<p>9</p>
+<p>主机A向主机B发送一个大小为6MB的文件，从主机A到主机B的路径上有3段链路， 其中速率分别是1Mbps, 800kbps, 2Mbps，该文件从主机A传输到主机B大概需要多久?</p>
+<ul>
+<li>A.48 s</li>
+<li>B.7.5 s</li>
+<li>C.60 s</li>
+<li>D.24 s</li>
+</ul>
+<p>因特网协议栈包含哪五层协议？</p>
+<ul>
+<li>A.应用层、运输层、会话层、网络层、物理层</li>
+<li>B.应用层、表示层、网络层、链路层、物理层</li>
+<li>C.应用层、表示层、运输层、链路层、网络层</li>
+<li><strong>D.应用层、运输层、网络层、链路层、物理层</strong></li>
+</ul>
+<p>在网络协议栈中，哪一层负责端到端之间的数据报文的发送与接收？</p>
+<ul>
+<li><strong>A.运输层</strong></li>
+<li>B.数据链路层</li>
+<li>C.网络层</li>
+<li>D.应用层</li>
+</ul>
+<p>SMTP、FTP、TCP、IP协议分别属于哪一层协议？</p>
+<ul>
+<li>
+<p>A.应用层、传输层、传输层、网络层</p>
+</li>
+<li>
+<p>B.传输层、应用层、传输层、网络层</p>
+</li>
+<li>
+<p>C.应用层、应用层、传输层、网络层</p>
+</li>
+<li>
+<p>D.应用层、传输层、网络层、网络层</p>
+</li>
+</ul>
+<p>分层协议中，发送发与接收方的数据传递方向是？</p>
+<ul>
+<li>
+<p>A.发送方从下到上，接收方从下到上</p>
+</li>
+<li>
+<p>B.发送发从上到下，接收方从下到上</p>
+</li>
+<li>
+<p>C.发送方从下到上、接收方从上到下</p>
+</li>
+<li>
+<p>D.发送发从上到下，接收方从上到下</p>
+</li>
+</ul>
+<p>以下说法中正确的是_________。</p>
+<ul>
+<li>
+<p>A.TCP是面向连接的，UDP是面向连接的</p>
+</li>
+<li>
+<p>B.电路交换网络分为虚电路网络和数据报网络</p>
+</li>
+<li>
+<p>C.分组交换网络分为时分复用和频分复用两种</p>
+</li>
+<li>
+<p>D.虚电路网络一定是面向连接的</p>
+</li>
+</ul>
+<p>路径选择功能是在OSI模型的_________上完成的。</p>
+<ul>
+<li>
+<p>A.数据链路层</p>
+</li>
+<li>
+<p>B.物理层</p>
+</li>
+<li>
+<p>C.运输层</p>
+</li>
+<li>
+<p>D.网络层</p>
+</li>
+</ul>
+<a id="more"></a>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2008%20%E8%AE%A1%E7%BD%91%E5%B0%8F%E9%A2%98/">http://zjeff-953.gitee.io/zjeff/2021/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2008%20%E8%AE%A1%E7%BD%91%E5%B0%8F%E9%A2%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%90%8E%E7%AB%AF/">后端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2009%20%E8%AE%A1%E7%BD%91%E5%A4%A7%E9%A2%98/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">计算机网络 - 09 计网大题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2007%20C%20Linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><span class="paginator-prev__text">计算机网络 - 07 C Linux网络编程</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-08-%E8%AE%A1%E7%BD%91%E5%B0%8F%E9%A2%98"><span class="toc-text">
+          计算机网络 - 08 计网小题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E9%A2%98"><span class="toc-text">
+          概念题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%A7%88"><span class="toc-text">
+          计算机网络概览</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E9%A2%98"><span class="toc-text">
+          计算题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%BB%B6%E8%AE%A1%E7%AE%97"><span class="toc-text">
+          时延计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-text">
+          要点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-text">
+          例题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mooc"><span class="toc-text">
+          MOOC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%92%8C%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-text">
+          第1章 计算机网络和因特网</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">164</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">45</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
