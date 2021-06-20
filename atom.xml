@@ -247,13 +247,13 @@
   </entry>
   
   <entry>
-    <title>前端视野 - 03 编译时给前端插上了工程化的翅膀</title>
-    <link href="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2003%20%E7%BC%96%E8%AF%91%E6%97%B6%E7%BB%99%E5%89%8D%E7%AB%AF%E6%8F%92%E4%B8%8A%E4%BA%86%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84%E7%BF%85%E8%86%80/"/>
-    <id>http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2003%20%E7%BC%96%E8%AF%91%E6%97%B6%E7%BB%99%E5%89%8D%E7%AB%AF%E6%8F%92%E4%B8%8A%E4%BA%86%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84%E7%BF%85%E8%86%80/</id>
+    <title>前端视野 - 04 WebUI何必拘泥于文档流canvas和wasm</title>
+    <link href="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2004%20WebUI%E4%BD%95%E5%BF%85%E6%8B%98%E6%B3%A5%E4%BA%8E%E6%96%87%E6%A1%A3%E6%B5%81(canvas%E5%92%8Cwasm)/"/>
+    <id>http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2004%20WebUI%E4%BD%95%E5%BF%85%E6%8B%98%E6%B3%A5%E4%BA%8E%E6%96%87%E6%A1%A3%E6%B5%81(canvas%E5%92%8Cwasm)/</id>
     <published>2021-06-09T16:00:00.000Z</published>
-    <updated>2021-06-10T04:01:14.978Z</updated>
+    <updated>2021-06-10T04:05:53.661Z</updated>
     
-    <content type="html"><![CDATA[        <h1 id="前端视野-03-编译时给前端插上了工程化的翅膀"   >          <a href="#前端视野-03-编译时给前端插上了工程化的翅膀" class="heading-link"><i class="fas fa-link"></i></a>前端视野 - 03 编译时给前端插上了工程化的翅膀</h1>      <a id="more"></a>]]></content>
+    <content type="html"><![CDATA[        <h1 id="前端视野-04-webui何必拘泥于文档流canvas和wasm"   >          <a href="#前端视野-04-webui何必拘泥于文档流canvas和wasm" class="heading-link"><i class="fas fa-link"></i></a>前端视野 - 04 WebUI何必拘泥于文档流canvas和wasm</h1>      <a id="more"></a>]]></content>
     
     
     <summary type="html">描述</summary>
@@ -268,13 +268,13 @@
   </entry>
   
   <entry>
-    <title>前端视野 - 04 WebUI何必拘泥于文档流canvas和wasm</title>
-    <link href="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2004%20WebUI%E4%BD%95%E5%BF%85%E6%8B%98%E6%B3%A5%E4%BA%8E%E6%96%87%E6%A1%A3%E6%B5%81(canvas%E5%92%8Cwasm)/"/>
-    <id>http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2004%20WebUI%E4%BD%95%E5%BF%85%E6%8B%98%E6%B3%A5%E4%BA%8E%E6%96%87%E6%A1%A3%E6%B5%81(canvas%E5%92%8Cwasm)/</id>
+    <title>前端视野 - 03 编译时给前端插上了工程化的翅膀</title>
+    <link href="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2003%20%E7%BC%96%E8%AF%91%E6%97%B6%E7%BB%99%E5%89%8D%E7%AB%AF%E6%8F%92%E4%B8%8A%E4%BA%86%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84%E7%BF%85%E8%86%80/"/>
+    <id>http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2003%20%E7%BC%96%E8%AF%91%E6%97%B6%E7%BB%99%E5%89%8D%E7%AB%AF%E6%8F%92%E4%B8%8A%E4%BA%86%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84%E7%BF%85%E8%86%80/</id>
     <published>2021-06-09T16:00:00.000Z</published>
-    <updated>2021-06-10T04:05:53.661Z</updated>
+    <updated>2021-06-10T04:01:14.978Z</updated>
     
-    <content type="html"><![CDATA[        <h1 id="前端视野-04-webui何必拘泥于文档流canvas和wasm"   >          <a href="#前端视野-04-webui何必拘泥于文档流canvas和wasm" class="heading-link"><i class="fas fa-link"></i></a>前端视野 - 04 WebUI何必拘泥于文档流canvas和wasm</h1>      <a id="more"></a>]]></content>
+    <content type="html"><![CDATA[        <h1 id="前端视野-03-编译时给前端插上了工程化的翅膀"   >          <a href="#前端视野-03-编译时给前端插上了工程化的翅膀" class="heading-link"><i class="fas fa-link"></i></a>前端视野 - 03 编译时给前端插上了工程化的翅膀</h1>      <a id="more"></a>]]></content>
     
     
     <summary type="html">描述</summary>
