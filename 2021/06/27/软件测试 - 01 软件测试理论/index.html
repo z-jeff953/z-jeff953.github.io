@@ -1,0 +1,749 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件测试 - 01 软件测试理论">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/06/27/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%20-%2001%20%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Zjeff&#39;blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230042.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230047.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230122.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230640.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230648.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230659.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230726.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230736.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230800.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230909.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627231657.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627234550.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627234646.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628002153.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628001920.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628001926.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628001941.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005515.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005522.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005530.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005546.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005556.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004812.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004940.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004952.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005005.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005041.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005101.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005131.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005149.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005201.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005215.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005224.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005235.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005246.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005257.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005330.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005337.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005348.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005358.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005811.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005836.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004714.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004729.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004703.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010850.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010901.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010909.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010918.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010924.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010933.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010942.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010953.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628011005.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628011030.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628011039.png">
+<meta property="article:published_time" content="2021-06-27T14:59:36.436Z">
+<meta property="article:modified_time" content="2021-06-27T17:10:47.489Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="标签">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230042.png"><title>软件测试 - 01 软件测试理论 | Zjeff'blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/06/27/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%20-%2001%20%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Zjeff'blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">软件测试 - 01 软件测试理论</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-28</span></span></div></header><div class="post-body">
+        <h1 id="软件测试-01-软件测试理论"   >
+          <a href="#软件测试-01-软件测试理论" class="heading-link"><i class="fas fa-link"></i></a>软件测试 - 01 软件测试理论</h1>
+      
+<a id="more"></a>
+
+        <h2 id="软件质量属性"   >
+          <a href="#软件质量属性" class="heading-link"><i class="fas fa-link"></i></a>软件质量属性</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230042.png" alt="" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230047.png" alt="image-20210627230047099" /></p>
+
+        <h2 id="软件质量标准"   >
+          <a href="#软件质量标准" class="heading-link"><i class="fas fa-link"></i></a>软件质量标准</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230122.png" alt="image-20210627230122617" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230640.png" alt="image-20210627230640761" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230648.png" alt="image-20210627230647890" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230659.png" alt="image-20210627230659006" /></p>
+
+        <h2 id="软件缺陷"   >
+          <a href="#软件缺陷" class="heading-link"><i class="fas fa-link"></i></a>软件缺陷</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230726.png" alt="image-20210627230726532" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230736.png" alt="image-20210627230735744" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230800.png" alt="image-20210627230800139" /></p>
+
+        <h2 id="软件测试"   >
+          <a href="#软件测试" class="heading-link"><i class="fas fa-link"></i></a>软件测试</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627230909.png" alt="image-20210627230908790" /></p>
+
+        <h2 id="测试方法"   >
+          <a href="#测试方法" class="heading-link"><i class="fas fa-link"></i></a>测试方法</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627231657.png" alt="image-20210627231656777" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627234550.png" alt="image-20210627234550713" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210627234646.png" alt="image-20210627234646310" /></p>
+
+        <h2 id="软件测试过程"   >
+          <a href="#软件测试过程" class="heading-link"><i class="fas fa-link"></i></a>软件测试过程</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628002153.png" alt="image-20210628002152912" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628001920.png" alt="image-20210628001920296" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628001926.png" alt="image-20210628001926173" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628001941.png" alt="image-20210628001941394" /></p>
+
+        <h2 id="质量保证"   >
+          <a href="#质量保证" class="heading-link"><i class="fas fa-link"></i></a>质量保证</h2>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005515.png" alt="image-20210628005514758" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005522.png" alt="image-20210628005522258" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005530.png" alt="image-20210628005530629" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005546.png" alt="image-20210628005545829" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005556.png" alt="image-20210628005555950" /></p>
+
+        <h1 id="课堂练习"   >
+          <a href="#课堂练习" class="heading-link"><i class="fas fa-link"></i></a>课堂练习</h1>
+      
+<p>感谢@dwy救命</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004812.png" alt="image-20210628004812211" /></p>
+<p>测试只是质量保证工作中的一个环节。软件测试和软件质量保证是软件质量工程的两个不同层面的工作。<br />
+质量保证（QA）：质量保证的重要工作通过预防、检查与改进来保证软件质量。所关注的是软件质量的检查与测量。QA的工作是软件生命周期的管理以及验证软件是否满足规定的质量和用户的需求，因此主要着眼于软件开发活动中的过程、步骤和产物，而不是对软件进行剖析找出问题或评估。<br />
+软件测试：测试关心的不是过程的活动，而是对过程的产物以及开发出的软件进行剖析。测试人员要“执行”软件，对过程中的产物——开发文档和源代码进行走查，运行软件，以找出问题，报告质量。对测试中发现的问题的分析、追踪与回归测试也是软件测试中的重要工作，因此软件测试是保证软件质量的一个重要环节。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004940.png" alt="image-20210628004940668" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004952.png" alt="image-20210628004952506" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005005.png" alt="image-20210628005005507" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005041.png" alt="image-20210628005041520" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005101.png" alt="image-20210628005101282" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005131.png" alt="image-20210628005130937" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005149.png" alt="image-20210628005148802" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005201.png" alt="image-20210628005201118" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005215.png" alt="image-20210628005215637" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005224.png" alt="image-20210628005224657" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005235.png" alt="image-20210628005235063" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005246.png" alt="image-20210628005246316" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005257.png" alt="image-20210628005257056" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005330.png" alt="image-20210628005329923" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005337.png" alt="image-20210628005336860" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005348.png" alt="image-20210628005347812" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005358.png" alt="image-20210628005358360" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005811.png" alt="image-20210628005811625" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628005836.png" alt="image-20210628005836218" /></p>
+
+        <h1 id="单元测试"   >
+          <a href="#单元测试" class="heading-link"><i class="fas fa-link"></i></a>单元测试</h1>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004714.jpg" alt="img" /><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004729.jpg" alt="img" /><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628004703.jpg" alt="1" /></p>
+
+        <h1 id="往届习题"   >
+          <a href="#往届习题" class="heading-link"><i class="fas fa-link"></i></a>往届习题</h1>
+      
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>piSeq</th>
+<th>piContent</th>
+<th>optionA</th>
+<th>optionB</th>
+<th>optionC</th>
+<th>optionD</th>
+<th>piAnswer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>CM1CM2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪项活动不在软件测试范围 ？</td>
+<td>A.需求文档评审</td>
+<td>B.设计评审</td>
+<td>C.代码测试</td>
+<td>D.过程评审</td>
+<td>D</td>
+</tr>
+<tr>
+<td>2</td>
+<td>软件测试的对象包括</td>
+<td>A.目标程序和相关文档</td>
+<td>B.源程序、目标程序、数据及相关文档</td>
+<td>C.目标程序、操作系统和平台软件</td>
+<td>D.源程序和目标程序</td>
+<td>B</td>
+</tr>
+<tr>
+<td>3</td>
+<td>在软件开发接近完成时，执行下面哪种测试？</td>
+<td>A.验收测试</td>
+<td>B.α测试</td>
+<td>C.β测试</td>
+<td>D.系统测试</td>
+<td>D</td>
+</tr>
+<tr>
+<td>4</td>
+<td>软件测试类型按开发阶段划分为</td>
+<td>A.需求、单元、集成、验证测试</td>
+<td>B.单元、集成、系统、验收测试</td>
+<td>C.单元、集成、确认、验收测试</td>
+<td>D.调试、单元、集成、用户测试</td>
+<td>B</td>
+</tr>
+<tr>
+<td>5</td>
+<td>在软件质量模型中，可维护性属性不包括下面哪个子特性</td>
+<td>A.适应性</td>
+<td>B.易安装性</td>
+<td>C.兼容性</td>
+<td>D.一致性</td>
+<td>C</td>
+</tr>
+<tr>
+<td>6</td>
+<td>软件质量是指</td>
+<td>A.软件具有功能性 可靠性</td>
+<td>B.最大限度满足用户需求</td>
+<td>C.软件没有错误</td>
+<td>D.软件满足用户需求的能力</td>
+<td>D</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>可维护性 可移植性</td>
+<td></td>
+<td></td>
+<td>和产品的固有特性</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>在所有软件缺陷中，哪类缺陷比例最高？</td>
+<td>A.程序代码错误</td>
+<td>B.软件设计错误</td>
+<td>C.需求分析错误</td>
+<td>D.其它</td>
+<td>C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>修复哪个阶段的软件缺陷，其成本最低？</td>
+<td>A.需求分析阶段</td>
+<td>B.系统设计阶段</td>
+<td>C.程序编码阶段</td>
+<td>D.软件发布阶段</td>
+<td>A</td>
+</tr>
+<tr>
+<td>9</td>
+<td>最基础的软件测试是什么？</td>
+<td>A.静态测试</td>
+<td>B.动态测试</td>
+<td>C.单元测试</td>
+<td>D.集成测试</td>
+<td>C</td>
+</tr>
+<tr>
+<td>10</td>
+<td>软件测试的主要目的是</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>BC</td>
+</tr>
+<tr>
+<td></td>
+<td>CM3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪个方法属于白盒测试方法？</td>
+<td>A.路径测试</td>
+<td>B.等价类</td>
+<td>C.因果图</td>
+<td>D.归纳测试</td>
+<td>A</td>
+</tr>
+<tr>
+<td>2</td>
+<td>等价类划分法设计8位宽度数字类型数据作用户登录账号，有多少种测试用例方案？</td>
+<td>A.2</td>
+<td>B.3</td>
+<td>C.4</td>
+<td>D.6</td>
+<td>C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>假定X为整数类型变量，X&gt;=1并且X&lt;=10，采用边界值法进行测试，其方案是</td>
+<td>A.1，10</td>
+<td>B.0，1，10，11</td>
+<td>C.0，1，2，9，10，11</td>
+<td>D.0，11</td>
+<td>C</td>
+</tr>
+<tr>
+<td>4</td>
+<td>根据输出对输入的依赖关系设计测试用例的方法是</td>
+<td>A.路径测试</td>
+<td>B.等价类</td>
+<td>C.因果图</td>
+<td>D.归纳测试</td>
+<td>C</td>
+</tr>
+<tr>
+<td>5</td>
+<td>在黑盒测试中，着重检查输入条件组合的方法是</td>
+<td>A.等价类划分法</td>
+<td>B.边界值分析法</td>
+<td>C.错误推测法</td>
+<td>D.判定表法</td>
+<td>D</td>
+</tr>
+<tr>
+<td>6</td>
+<td>不属于白盒测试的技术是</td>
+<td>A.判定表法</td>
+<td>B.判定覆盖</td>
+<td>C.条件覆盖</td>
+<td>D.路径覆盖</td>
+<td>A</td>
+</tr>
+<tr>
+<td>7</td>
+<td>下面那种方法能够有效地检测输入条件的各种组合可能引起的错误</td>
+<td>A.错误推测</td>
+<td>B.等价类划分</td>
+<td>C.判定覆盖</td>
+<td>D.因果图</td>
+<td>D</td>
+</tr>
+<tr>
+<td>8</td>
+<td>以下哪种方法不是黑盒测试用例的设计方法</td>
+<td>A.场景法</td>
+<td>B.边界值法</td>
+<td>C.因果图法</td>
+<td>D.路径法</td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>下列几种逻辑覆盖标准中，查错能力最强的是</td>
+<td>A.语句覆盖</td>
+<td>B.判定覆盖</td>
+<td>C.条件覆盖</td>
+<td>D.条件组合覆盖</td>
+<td>D</td>
+</tr>
+<tr>
+<td>10</td>
+<td>发现错误能力最弱的是</td>
+<td>A.语句覆盖</td>
+<td>B.判定覆盖</td>
+<td>C.条件覆盖</td>
+<td>D.路径覆盖</td>
+<td>A</td>
+</tr>
+<tr>
+<td>10</td>
+<td>查找程序是否有内存泄露，可采用的软件测试是</td>
+<td>A.静态测试</td>
+<td>B.动态测试</td>
+<td>C.单元测试</td>
+<td>D.集成测试</td>
+<td>B</td>
+</tr>
+<tr>
+<td></td>
+<td>CM4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>从软件工程角度，软件测试分为几个阶段。</td>
+<td>A.3</td>
+<td>B.4</td>
+<td>C.5</td>
+<td>D.6</td>
+<td>D</td>
+</tr>
+<tr>
+<td>2</td>
+<td>在W模型中，程序设计与下面哪项测试可以同步？</td>
+<td>A.需求评审</td>
+<td>B.设计评审</td>
+<td>C.功能测试用例设计</td>
+<td>D.单元测试</td>
+<td>C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>当软件开发机构具有独立的测试部门，该机构测试成熟度至少达到下面哪个级别？</td>
+<td>A.TMM2</td>
+<td>B.TMM3</td>
+<td>C.TMM4</td>
+<td>D.TMM5</td>
+<td>B</td>
+</tr>
+<tr>
+<td>4</td>
+<td>按照软件测试规范，执行单元测试是由哪类人员来进行？</td>
+<td>A.测试分析人员</td>
+<td>B.测试人员</td>
+<td>C.设计人员</td>
+<td>D.编程人员</td>
+<td>D</td>
+</tr>
+<tr>
+<td>5</td>
+<td>下面哪项不属于测试项目管理的内容</td>
+<td>A.测试设计</td>
+<td>B.单元测试</td>
+<td>C.测试执行</td>
+<td>D.测试结果分析</td>
+<td>B</td>
+</tr>
+<tr>
+<td>6</td>
+<td>按照软件测试规范，在以下哪个测试阶段制定测试策略？</td>
+<td>A.测试计划</td>
+<td>B.测试设计</td>
+<td>C.测试实施</td>
+<td>D.测试评估</td>
+<td>A</td>
+</tr>
+<tr>
+<td>7</td>
+<td>按照软件测试规范，下面哪项评审需要项目经理参加？</td>
+<td>A.测试计划评审</td>
+<td>B.测试用例评审</td>
+<td>C.测试过程评审</td>
+<td>D.测试结果评估</td>
+<td>A</td>
+</tr>
+<tr>
+<td>8</td>
+<td>在敏捷测试中，应主要采用探索式测试</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>在软件开发的  W模型中，测试过程与开发过程同步进行</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>测试结果的评估应由SQA人员来完成</td>
+<td>错</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>CM5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪个测试内容不属于单元测试（ ）</td>
+<td>A.接口数据测试</td>
+<td>B.局部数据测试</td>
+<td>C.模块间时序测试</td>
+<td>D.全局数据测试</td>
+<td>C</td>
+</tr>
+<tr>
+<td>2</td>
+<td>以下关于集成测试的正确描述是（）</td>
+<td>A.在把各个模块连接起来的时候，</td>
+<td>B.一个模块的功能是否会对另一个模块</td>
+<td>C.全局数据结构是否有问题</td>
+<td>D.以上都是</td>
+<td>D</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>穿越模块接口的数据是否会丢失</td>
+<td>的功能产生不利的影响</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>在集成测试时，能较早发现高层模块接口错误的测试方法为。</td>
+<td>A.自顶向下渐增式测试</td>
+<td>B.自底向上渐增式测试</td>
+<td>C.非渐增式测试</td>
+<td>D.系统测试</td>
+<td>A</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Web应用系统负载测试中，以下哪个不是衡量业务执行效率的指标。</td>
+<td>A.事务并发请求数</td>
+<td>B.CPU执行占用率</td>
+<td>C.事务吞吐量</td>
+<td>D.事务响应时间</td>
+<td>B</td>
+</tr>
+<tr>
+<td>5</td>
+<td>性能测试脚本执行，是在性能测试过程的第几阶段实施。</td>
+<td>A.2</td>
+<td>B.3</td>
+<td>C.4</td>
+<td>D.5</td>
+<td>C</td>
+</tr>
+<tr>
+<td>6</td>
+<td>以下哪类系统可靠性最高。</td>
+<td>A.单机系统</td>
+<td>B.C/S系统</td>
+<td>C.B/S系统</td>
+<td>D.P2P系统</td>
+<td>D</td>
+</tr>
+<tr>
+<td>7</td>
+<td>验证系统部件失效后的处理能力是属于以下哪种测试</td>
+<td>A.系统性能测试</td>
+<td>B.系统可靠性测试</td>
+<td>C.系统容错测试</td>
+<td>D.系统功能测试</td>
+<td>C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>下面哪种负载模式更接近实际系统运行情况</td>
+<td>A.一次性加载</td>
+<td>B.递增加载</td>
+<td>C.高低变更加载</td>
+<td>D.随机加载</td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>下面哪种情况不是导致系统性能问题的原因</td>
+<td>A.CPU使用率过高</td>
+<td>B.内存泄露</td>
+<td>C.系统响应时间长</td>
+<td>D.连接资源稀少</td>
+<td>C</td>
+</tr>
+<tr>
+<td>10</td>
+<td>以下哪个测试工具是使用最广泛的性能测试产品工具。</td>
+<td>A.Load Runner</td>
+<td>B.Selenium</td>
+<td>C.JMeter</td>
+<td>D.Quick Test  Professional</td>
+<td>A</td>
+</tr>
+<tr>
+<td></td>
+<td>CM6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>下面哪项不是软件度量的目标（）</td>
+<td>A.用数据指标表明验收标准</td>
+<td>B.分配资源时进行量化均衡</td>
+<td>C.便于对软件质量进行评价</td>
+<td>D.发现软件中的缺陷数量</td>
+<td>D</td>
+</tr>
+<tr>
+<td>2</td>
+<td>下面哪项不是软件度量的用途?</td>
+<td>A.衡量软件过程质量</td>
+<td>B.项目度量</td>
+<td>C.开发人员成效度量</td>
+<td>D.产品质量度量</td>
+<td>C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>下面项类质量数据不能用于评估软件稳定性?</td>
+<td>A.正确性</td>
+<td>B.可靠性</td>
+<td>C.可维护性</td>
+<td>D.可用性</td>
+<td>A</td>
+</tr>
+<tr>
+<td>4</td>
+<td>下面哪项活动是软件度量的阶段活动?</td>
+<td>A.识别目标</td>
+<td>B.定义度量过程</td>
+<td>C.数据分析与反馈</td>
+<td>D.以上都是</td>
+<td>D</td>
+</tr>
+<tr>
+<td>5</td>
+<td>软件度量的维度是下面哪项？</td>
+<td>A.项目度量</td>
+<td>B.产品度量</td>
+<td>C.过程度量</td>
+<td>D.以上都是</td>
+<td>D</td>
+</tr>
+<tr>
+<td>6</td>
+<td>下面哪项工作需要SQA人员来完成？</td>
+<td>A.需求评审</td>
+<td>B.过程评审</td>
+<td>C.设计评审</td>
+<td>D.系统测试</td>
+<td>B</td>
+</tr>
+<tr>
+<td>7</td>
+<td>下面哪项工作需要SQA人员来完成？</td>
+<td>A.制定SQA计划</td>
+<td>B.审查软件过程</td>
+<td>C.软件测试过程监督</td>
+<td>D.以上都是</td>
+<td>D</td>
+</tr>
+<tr>
+<td>8</td>
+<td>测试计划不包括下面哪项工作？</td>
+<td>A.测试计划安排</td>
+<td>B.测试风险识别</td>
+<td>C.测试流程审计</td>
+<td>D.测试资源安排</td>
+<td>C</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SQA在项目早期要根据项目计划制定与其对应的SQA计划</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>SQA是贯穿整个软件过程的第三方独立审查活动</td>
+<td>对</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+
+        <h1 id="作业大题"   >
+          <a href="#作业大题" class="heading-link"><i class="fas fa-link"></i></a>作业大题</h1>
+      
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010850.png" alt="image-20210628010850526" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010901.png" alt="image-20210628010901174" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010909.png" alt="image-20210628010909631" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010918.png" alt="image-20210628010918247" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010924.png" alt="image-20210628010924577" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010933.png" alt="image-20210628010933038" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010942.png" alt="image-20210628010941998" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628010953.png" alt="image-20210628010953483" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628011005.png" alt="image-20210628011005058" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628011030.png" alt="image-20210628011030646" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210628011039.png" alt="image-20210628011039596" /></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/06/27/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%20-%2001%20%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/">http://zjeff-953.gitee.io/zjeff/2021/06/27/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%20-%2001%20%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/">标签</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2013%20%E8%AE%A1%E7%BD%91%E6%80%BB%E7%BB%93/"><span class="paginator-prev__text">计算机网络 - 13 计网总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95-01-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">
+          软件测试 - 01 软件测试理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7"><span class="toc-text">
+          软件质量属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%A0%87%E5%87%86"><span class="toc-text">
+          软件质量标准</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7"><span class="toc-text">
+          软件缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          软件测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-text">
+          测试方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          软件测试过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81"><span class="toc-text">
+          质量保证</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="toc-text">
+          课堂练习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          单元测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%80%E5%B1%8A%E4%B9%A0%E9%A2%98"><span class="toc-text">
+          往届习题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%A4%A7%E9%A2%98"><span class="toc-text">
+          作业大题</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">168</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">45</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
