@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="软件安全 - 02 [Web安全策略] 实现WEB攻击">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件安全 - 02 [Web安全策略] 实现WEB攻击">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2002%20[Web%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5]%20%E5%AE%9E%E7%8E%B0WEB%E6%94%BB%E5%87%BB/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="软件安全 - 02 [Web安全策略] 实现WEB攻击">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/2/1676a843648d488c?w=1348&amp;h=318&amp;f=png&amp;s=41697">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/2/1676d5e1a09c8367?w=647&amp;h=292&amp;f=png&amp;s=32958">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/2/1676d8215a3d1f5b?w=1266&amp;h=478&amp;f=png&amp;s=85547">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/1/16768734d57c5f47?w=812&amp;h=424&amp;f=png&amp;s=43633">
+<meta property="article:published_time" content="2021-10-12T06:34:26.319Z">
+<meta property="article:modified_time" content="2021-06-01T07:00:20.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="标签">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/12/2/1676a843648d488c?w=1348&amp;h=318&amp;f=png&amp;s=41697"><title>软件安全 - 02 [Web安全策略] 实现WEB攻击 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2002%20[Web%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5]%20%E5%AE%9E%E7%8E%B0WEB%E6%94%BB%E5%87%BB/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">软件安全 - 02 [Web安全策略] 实现WEB攻击</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-01</span></span></div></header><div class="post-body">
+        <h1 id="软件安全-02-Web安全策略-实现WEB攻击"   >
+          <a href="#软件安全-02-Web安全策略-实现WEB攻击" class="heading-link"><i class="fas fa-link"></i></a>软件安全 - 02 [Web安全策略] 实现WEB攻击</h1>
+      <span id="more"></span>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html" >https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="尝试XSS攻击"   >
+          <a href="#尝试XSS攻击" class="heading-link"><i class="fas fa-link"></i></a>尝试XSS攻击</h2>
+      
+        <h2 id="尝试CSRF攻击"   >
+          <a href="#尝试CSRF攻击" class="heading-link"><i class="fas fa-link"></i></a>尝试CSRF攻击</h2>
+      
+        <h3 id="GET和Img标签"   >
+          <a href="#GET和Img标签" class="heading-link"><i class="fas fa-link"></i></a>GET和Img标签</h3>
+      <p>银行网站A，它以GET请求来完成银行转账的操作，如：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000" >http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>　　危险网站B，它里面有一段HTML的代码如下：</p>
+<p>　　<code>&lt;img src=http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000&gt;</code></p>
+<p>　　首先，你登录了银行网站A，然后访问危险网站B，噢，这时你会发现你的银行账户少了1000块……</p>
+<p>　　为什么会这样呢？原因是银行网站A违反了HTTP规范，使用GET请求更新资源。在访问危险网站B的之前，你已经登录了银行网站A，而B中的\<img\>以GET的方式请求第三方资源（这里的第三方就是指银行网站了，原本这是一个合法的请求，但这里被不法分子利用了），所以你的浏览器会带上你的银行网站A的Cookie发出Get请求，去获取资源“<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000”，结果银行网站服务器收到请求后，认为这是一个更新资源操作（转账操作），所以就立刻进行转账操作" >http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000”，结果银行网站服务器收到请求后，认为这是一个更新资源操作（转账操作），所以就立刻进行转账操作</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>……</p>
+
+        <h3 id="POST但是没有完全POST"   >
+          <a href="#POST但是没有完全POST" class="heading-link"><i class="fas fa-link"></i></a>POST但是没有完全POST</h3>
+      <p>为了杜绝上面的问题，银行决定改用POST请求完成转账操作。</p>
+<p>　　银行网站A的WEB表单如下：　　<br><figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;Transfer.php&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span>　　　　<span class="tag">&lt;<span class="name">p</span>&gt;</span>ToBankId: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;toBankId&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>　　　　<span class="tag">&lt;<span class="name">p</span>&gt;</span>Money: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;money&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>　　　　<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Transfer&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>　　<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></div></figure><br>　　后台处理页面Transfer.php如下：</p>
+<figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="meta">&lt;?php</span></span><br><span class="line">　　　　session_start();</span><br><span class="line">　　　　<span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;toBankId&#x27;</span>] &amp;&amp;　<span class="keyword">isset</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;money&#x27;</span>]))</span><br><span class="line">　　　　&#123;</span><br><span class="line">　　　　    buy_stocks(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;toBankId&#x27;</span>],　<span class="variable">$_REQUEST</span>[<span class="string">&#x27;money&#x27;</span>]);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　<span class="meta">?&gt;</span></span><br></pre></td></tr></table></div></figure>
+<p>和示例1中的操作一样，你首先登录了银行网站A，然后访问危险网站B，结果…..和示例1一样，你再次没了1000块～T_T，这次事故的原因是：银行后台使用了$_REQUEST去获取请求的数据，而$_REQUEST既可以获取GET请求的数据，也可以获取POST请求的数据，这就造成了在后台处理程序无法区分这到底是GET请求的数据还是POST请求的数据。在PHP中，可以使用$_GET和$_POST分别获取GET请求和POST请求的数据。在JAVA中，用于获取请求数据request一样存在不能区分GET请求数据和POST数据的问题。</p>
+
+        <h3 id="POST和虚假表单"   >
+          <a href="#POST和虚假表单" class="heading-link"><i class="fas fa-link"></i></a>POST和虚假表单</h3>
+      <p>　经过前面2个惨痛的教训，银行决定把获取请求数据的方法也改了，改用$_POST，只获取POST请求的数据，后台处理页面Transfer.php代码如下：</p>
+<figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">　　　　session_start();</span><br><span class="line">　　　　<span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;toBankId&#x27;</span>] &amp;&amp;　<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;money&#x27;</span>]))</span><br><span class="line">　　　　&#123;</span><br><span class="line">　　　　    buy_stocks(<span class="variable">$_POST</span>[<span class="string">&#x27;toBankId&#x27;</span>],　<span class="variable">$_POST</span>[<span class="string">&#x27;money&#x27;</span>]);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　<span class="meta">?&gt;</span></span><br></pre></td></tr></table></div></figure>
+<p>　　然而，危险网站B与时俱进，它改了一下代码：</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">　　　　　　<span class="function"><span class="keyword">function</span> <span class="title">steal</span>(<span class="params"></span>)</span></span></span><br><span class="line"><span class="function"><span class="javascript">　　　　　　</span>&#123;</span></span><br><span class="line"><span class="javascript">          　　　　 iframe = <span class="built_in">document</span>.frames[<span class="string">&quot;steal&quot;</span>];</span></span><br><span class="line"><span class="javascript">　　     　　      iframe.document.Submit(<span class="string">&quot;transfer&quot;</span>);</span></span><br><span class="line"><span class="javascript">　　　　　　&#125;</span></span><br><span class="line"><span class="javascript">　　　　</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">　　<span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">&quot;steal()&quot;</span>&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">&quot;steal&quot;</span> <span class="attr">display</span>=<span class="string">&quot;none&quot;</span>&gt;</span></span><br><span class="line">　　　　　　<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">name</span>=<span class="string">&quot;transfer&quot;</span>　<span class="attr">action</span>=<span class="string">&quot;http://www.myBank.com/Transfer.php&quot;</span>&gt;</span></span><br><span class="line">　　　　　　　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;toBankId&quot;</span> <span class="attr">value</span>=<span class="string">&quot;11&quot;</span>&gt;</span></span><br><span class="line">　　　　　　　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;money&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1000&quot;</span>&gt;</span></span><br><span class="line">　　　　　　<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">　　<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<p>如果用户仍是继续上面的操作，很不幸，结果将会是再次不见1000块……因为这里危险网站B暗地里发送了POST请求到银行!</p>
+<p>　　总结一下上面3个例子，CSRF主要的攻击模式基本上是以上的3种，其中以第1,2种最为严重，因为触发条件很简单，一个\<img\>就可以了，而第3种比较麻烦，需要使用JavaScript，所以使用的机会会比前面的少很多，但无论是哪种情况，只要触发了CSRF攻击，后果都有可能很严重。</p>
+<p>　　理解上面的3种攻击模式，其实可以看出，CSRF攻击是源于WEB的隐式身份验证机制！WEB的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的！</p>
+
+        <h3 id="防御策略"   >
+          <a href="#防御策略" class="heading-link"><i class="fas fa-link"></i></a>防御策略</h3>
+      <p>　　服务端的CSRF方式方法很多样，但总的思想都是一致的，就是在客户端页面增加伪随机数。</p>
+<p>　(1).Cookie Hashing(所有表单都包含同一个伪随机值)：</p>
+<p>就是用户访问的时候先给一个hash数字, 让用户每次请求的时候作为一个自定义头带上</p>
+<p>　　这个方法个人觉得已经可以杜绝99%的CSRF攻击了，那还有1%呢….由于用户的Cookie很容易由于网站的XSS漏洞而被盗取，这就另外的1%。一般的攻击者看到有需要算Hash值，基本都会放弃了，某些除外，所以如果需要100%的杜绝，这个不是最好的方法。</p>
+<p>　(2).验证码</p>
+<p>　　这个方案的思路是：每次的用户提交都需要用户在表单中填写一个图片上的随机字符串，厄….这个方案可以完全解决CSRF，但个人觉得在易用性方面似乎不是太好，还有听闻是验证码图片的使用涉及了一个被称为MHTML的Bug，可能在某些版本的微软IE中受影响。</p>
+<p>　　(3).One-Time Tokens(不同的表单包含一个不同的伪随机值)</p>
+<p>　　在实现One-Time Tokens时，需要注意一点：就是“并行会话的兼容”。如果用户在一个站点上同时打开了两个不同的表单，CSRF保护措施不应该影响到他对任何表单的提交。考虑一下如果每次表单被装入时站点生成一个伪随机值来覆盖以前的伪随机值将会发生什么情况：用户只能成功地提交他最后打开的表单，因为所有其他的表单都含有非法的伪随机值。必须小心操作以确保CSRF保护措施不会影响选项卡式的浏览或者利用多个浏览器窗口浏览一个站点。</p>
+
+        <h2 id="尝试SQL注入"   >
+          <a href="#尝试SQL注入" class="heading-link"><i class="fas fa-link"></i></a>尝试SQL注入</h2>
+      
+        <h1 id="前端安全知识点"   >
+          <a href="#前端安全知识点" class="heading-link"><i class="fas fa-link"></i></a>前端安全知识点</h1>
+      <p>这一章我们将来学习安全防范这一块的知识点。总的来说安全是很复杂的一个领域，不可能通过一个章节就能学习到这部分的内容。在这一章节中，我们会学习到常见的一些安全问题及如何防范的内容，在当下其实安全问题越来越重要，已经逐渐成为前端开发必备的技能了。</p>
+
+        <h2 id="XSS"   >
+          <a href="#XSS" class="heading-link"><i class="fas fa-link"></i></a>XSS</h2>
+      <blockquote>
+<p>涉及面试题：什么是 XSS 攻击？如何防范 XSS 攻击？什么是 CSP？</p>
+</blockquote>
+<p>XSS 简单点来说，就是攻击者想尽一切办法将可以执行的代码注入到网页中。</p>
+<p>XSS 可以分为多种类型，但是总体上我认为分为两类：<strong>持久型和非持久型</strong>。</p>
+<p>持久型也就是攻击的代码被服务端写入进<strong>数据库</strong>中，这种攻击危害性很大，因为如果网站访问量很大的话，就会导致大量正常访问页面的用户都受到攻击。</p>
+<p>举个例子，对于评论功能来说，就得防范持久型 XSS 攻击，因为我可以在评论中输入以下内容</p>
+<p><img   src="https://user-gold-cdn.xitu.io/2018/12/2/1676a843648d488c?w=1348&amp;h=318&amp;f=png&amp;s=41697" style=""  alt=""></p>
+<p>这种情况如果前后端没有做好防御的话，这段评论就会被存储到数据库中，这样每个打开该页面的用户都会被攻击到。</p>
+<p>非持久型相比于前者危害就小的多了，一般通过<strong>修改 URL 参数</strong>的方式加入攻击代码，诱导用户访问链接从而进行攻击。</p>
+<p>举个例子，如果页面需要从 URL 中获取某些参数作为内容的话，不经过过滤就会导致攻击代码被执行</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- http://www.domain.com?name=&lt;script&gt;alert(1)&lt;/script&gt; --&gt;</span><br><span class="line">&lt;div&gt;&#123;&#123;name&#125;&#125;&lt;/div&gt;                                                  </span><br></pre></td></tr></table></div></figure>
+<p>但是对于这种攻击方式来说，如果用户使用 Chrome 这类浏览器的话，浏览器就能自动帮助用户防御攻击。但是我们不能因此就不防御此类攻击了，因为我不能确保用户都使用了该类浏览器。</p>
+<p><img   src="https://user-gold-cdn.xitu.io/2018/12/2/1676d5e1a09c8367?w=647&amp;h=292&amp;f=png&amp;s=32958" style=""  alt=""></p>
+<p>对于 XSS 攻击来说，通常有两种方式可以用来防御。</p>
+
+        <h3 id="转义字符"   >
+          <a href="#转义字符" class="heading-link"><i class="fas fa-link"></i></a>转义字符</h3>
+      <p>首先，对于用户的输入应该是永远不信任的。最普遍的做法就是转义输入输出的内容，对于引号、尖括号、斜杠进行转义</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escape</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  str = str.replace(<span class="regexp">/&amp;/g</span>, <span class="string">&#x27;&amp;amp;&#x27;</span>)</span><br><span class="line">  str = str.replace(<span class="regexp">/&lt;/g</span>, <span class="string">&#x27;&amp;lt;&#x27;</span>)</span><br><span class="line">  str = str.replace(<span class="regexp">/&gt;/g</span>, <span class="string">&#x27;&amp;gt;&#x27;</span>)</span><br><span class="line">  str = str.replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quto;&#x27;</span>)</span><br><span class="line">  str = str.replace(<span class="regexp">/&#x27;/g</span>, <span class="string">&#x27;&amp;#39;&#x27;</span>)</span><br><span class="line">  str = str.replace(<span class="regexp">/`/g</span>, <span class="string">&#x27;&amp;#96;&#x27;</span>)</span><br><span class="line">  str = str.replace(<span class="regexp">/\//g</span>, <span class="string">&#x27;&amp;#x2F;&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></div></figure>
+<p>通过转义可以将攻击代码 <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> 变成<br><figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -&gt; &amp;lt;script&amp;gt;alert(1)&amp;lt;&amp;#x2F;script&amp;gt;</span></span><br><span class="line"><span class="built_in">escape</span>(<span class="string">&#x27;&lt;script&gt;alert(1)&lt;/script&gt;&#x27;</span>)</span><br><span class="line"> </span><br></pre></td></tr></table></div></figure><br>但是对于显示富文本来说，显然不能通过上面的办法来转义所有字符，因为这样会把需要的格式也过滤掉。对于这种情况，通常采用白名单过滤的办法，当然也可以通过黑名单过滤，但是考虑到需要过滤的标签和标签属性实在太多，更加推荐使用白名单的方式。<br><figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xss = require(&#x27;xss&#x27;)</span><br><span class="line">let html = xss(&#x27;&lt;h1 id=&quot;title&quot;&gt;XSS Demo&lt;/h1&gt;&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;&#x27;)</span><br><span class="line">// -&gt; &lt;h1&gt;XSS Demo&lt;/h1&gt;&amp;lt;script&amp;gt;alert(&quot;xss&quot;);&amp;lt;/script&amp;gt;</span><br><span class="line">console.log(html)</span><br><span class="line"> </span><br></pre></td></tr></table></div></figure><br>以上示例使用了 <code>js-xss</code> 来实现，可以看到在输出中保留了 <code>h1</code> 标签且过滤了 <code>script</code> 标签。</p>
+
+        <h3 id="CSP"   >
+          <a href="#CSP" class="heading-link"><i class="fas fa-link"></i></a>CSP</h3>
+      <p>CSP 本质上就是建立白名单，开发者明确告诉浏览器哪些外部资源可以加载和执行。我们只需要配置规则，如何拦截是由浏览器自己实现的。我们可以通过这种方式来尽量减少 XSS 攻击。<br>通常可以通过两种方式来开启 CSP：</p>
+<ol>
+<li>设置 HTTP Header 中的 <code>Content-Security-Policy</code></li>
+<li>设置 <code>meta</code> 标签的方式 <code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot;&gt;</code><br>这里以设置 HTTP Header 来举例</li>
+</ol>
+<ul>
+<li><p>只允许加载本站资源</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: default-src ‘self’</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>只允许加载 HTTPS 协议图片</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: img-src https://*</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>允许加载任何来源框架</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Security-Policy: child-src &#x27;none&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+</li>
+</ul>
+<p>当然可以设置的属性远不止这些，你可以通过查阅 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" >文档</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 的方式来学习，这里就不过多赘述其他的属性了。<br>对于这种方式来说，只要开发者配置了正确的规则，那么即使网站存在漏洞，攻击者也不能执行它的攻击代码，并且 CSP 的兼容性也不错。<br><img   src="https://user-gold-cdn.xitu.io/2018/12/2/1676d8215a3d1f5b?w=1266&amp;h=478&amp;f=png&amp;s=85547" style=""  alt=""></p>
+
+        <h2 id="CSRF"   >
+          <a href="#CSRF" class="heading-link"><i class="fas fa-link"></i></a>CSRF</h2>
+      <blockquote>
+<p>涉及面试题：什么是 CSRF 攻击？如何防范 CSRF 攻击？<br>CSRF 中文名为跨站请求伪造。原理就是攻击者构造出一个后端请求地址，诱导用户点击或者通过某些途径自动发起请求。如果用户是在登录状态下的话，后端就以为是用户在操作，从而进行相应的逻辑。<br>举个例子，假设网站中有一个通过 <code>GET</code> 请求提交用户评论的接口，那么攻击者就可以在钓鱼网站中加入一个图片，图片的地址就是评论接口<br><figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://www.domain.com/xxx?comment=&#x27;attack&#x27;&quot;/&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></div></figure><br>那么你是否会想到使用 <code>POST</code> 方式提交请求是不是就没有这个问题了呢？其实并不是，使用这种方式也不是百分百安全的，攻击者同样可以诱导用户进入某个页面，在页面中通过表单提交 <code>POST</code> 请求。</p>
+
+        <h3 id="如何防御"   >
+          <a href="#如何防御" class="heading-link"><i class="fas fa-link"></i></a>如何防御</h3>
+      <p>防范 CSRF 攻击可以遵循以下几种规则：</p>
+<ol>
+<li>Get 请求不对数据进行修改</li>
+<li>不让第三方网站访问到用户 Cookie</li>
+<li>阻止第三方网站请求接口</li>
+<li>请求时附带验证信息，比如验证码或者 Token
+        <h4 id="SameSite"   >
+          <a href="#SameSite" class="heading-link"><i class="fas fa-link"></i></a>SameSite</h4>
+      可以对 Cookie 设置 <code>SameSite</code> 属性。该属性表示 Cookie 不随着跨域请求发送，可以很大程度减少 CSRF 的攻击，但是该属性目前并不是所有浏览器都兼容。
+        <h4 id="验证-Referer"   >
+          <a href="#验证-Referer" class="heading-link"><i class="fas fa-link"></i></a>验证 Referer</h4>
+      对于需要防范 CSRF 的请求，我们可以通过验证 Referer 来判断该请求是否为第三方网站发起的。
+        <h4 id="Token"   >
+          <a href="#Token" class="heading-link"><i class="fas fa-link"></i></a>Token</h4>
+      服务器下发一个随机 Token，每次发起请求时将 Token 携带上，服务器验证 Token 是否有效。
+        <h2 id="点击劫持"   >
+          <a href="#点击劫持" class="heading-link"><i class="fas fa-link"></i></a>点击劫持</h2>
+      涉及面试题：什么是点击劫持？如何防范点击劫持？<br>点击劫持是一种视觉欺骗的攻击手段。攻击者将需要攻击的网站通过 <code>iframe</code> 嵌套的方式嵌入自己的网页中，并将 <code>iframe</code> 设置为透明，在页面中透出一个按钮诱导用户点击。<br><img   src="https://user-gold-cdn.xitu.io/2018/12/1/16768734d57c5f47?w=812&amp;h=424&amp;f=png&amp;s=43633" style=""  alt=""><br>对于这种攻击方式，推荐防御的方法有两种。
+        <h3 id="X-FRAME-OPTIONS"   >
+          <a href="#X-FRAME-OPTIONS" class="heading-link"><i class="fas fa-link"></i></a>X-FRAME-OPTIONS</h3>
+      <code>X-FRAME-OPTIONS</code> 是一个 HTTP 响应头，在现代浏览器有一个很好的支持。这个 HTTP 响应头 就是为了防御用 <code>iframe</code> 嵌套的点击劫持攻击。<br>该响应头有三个值可选，分别是</li>
+</ol>
+<ul>
+<li><code>DENY</code>，表示页面不允许通过 <code>iframe</code> 的方式展示</li>
+<li><code>SAMEORIGIN</code>，表示页面可以在相同域名下通过 <code>iframe</code> 的方式展示</li>
+<li><code>ALLOW-FROM</code>，表示页面可以在指定来源的 <code>iframe</code> 中展示
+        <h3 id="JS-防御"   >
+          <a href="#JS-防御" class="heading-link"><i class="fas fa-link"></i></a>JS 防御</h3>
+      对于某些远古浏览器来说，并不能支持上面的这种方式，那我们只有通过 JS 的方式来防御点击劫持了。<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;style id=&quot;click-jack&quot;&gt;</span><br><span class="line">    html &#123;</span><br><span class="line">      display: none !important;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (self == top) &#123;</span><br><span class="line">      var style = document.getElementById(&#x27;click-jack&#x27;)</span><br><span class="line">      document.body.removeChild(style)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      top.location = self.location</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></div></figure>
+以上代码的作用就是当通过 <code>iframe</code> 的方式加载页面时，攻击者的网页直接不显示所有内容了。
+        <h2 id="中间人攻击"   >
+          <a href="#中间人攻击" class="heading-link"><i class="fas fa-link"></i></a>中间人攻击</h2>
+      涉及面试题：什么是中间人攻击？如何防范中间人攻击？<br>中间人攻击是攻击方同时与服务端和客户端建立起了连接，并让对方认为连接是安全的，但是实际上整个通信过程都被攻击者控制了。攻击者不仅能获得双方的通信信息，还能修改通信信息。<br>通常来说不建议使用公共的 Wi-Fi，因为很可能就会发生中间人攻击的情况。如果你在通信的过程中涉及到了某些敏感信息，就完全暴露给攻击方了。<br>当然防御中间人攻击其实并不难，只需要增加一个安全通道来传输信息。HTTPS 就可以用来防御中间人攻击，但是并不是说使用了 HTTPS 就可以高枕无忧了，因为如果你没有完全关闭 HTTP 访问的话，攻击方可以通过某些方式将 HTTPS 降级为 HTTP 从而实现中间人攻击。
+        <h2 id="小结"   >
+          <a href="#小结" class="heading-link"><i class="fas fa-link"></i></a>小结</h2>
+      在这一章中，我们学习到了一些常见的前端安全方面的知识及如何防御这些攻击。但是安全的领域相当大，这些内容只是沧海一粟，如果大家对于安全有兴趣的话，可以阅读 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/trimstray/the-book-of-secret-knowledge" >这个仓库的内容</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 来学习和实践这方面的知识。</li>
+</ul>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2002%20[Web%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5]%20%E5%AE%9E%E7%8E%B0WEB%E6%94%BB%E5%87%BB/">http://zjeff-953.gitee.io/zjeff/2021/10/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2002%20[Web%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5]%20%E5%AE%9E%E7%8E%B0WEB%E6%94%BB%E5%87%BB/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/">标签</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2003%20%5B%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5%5D%20%E4%BD%8D%E8%BF%90%E7%AE%97%E5%92%8C%E6%9D%83%E9%99%90%E8%AE%BE%E8%AE%A1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">软件安全 - 03 [前端实践] 位运算和权限设计</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2001%20%5B%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%5D%20%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F/"><span class="paginator-prev__text">软件安全 - 03 [前端实践] 位运算和权限设计</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8-02-Web%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5-%E5%AE%9E%E7%8E%B0WEB%E6%94%BB%E5%87%BB"><span class="toc-text">
+          软件安全 - 02 [Web安全策略] 实现WEB攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95XSS%E6%94%BB%E5%87%BB"><span class="toc-text">
+          尝试XSS攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95CSRF%E6%94%BB%E5%87%BB"><span class="toc-text">
+          尝试CSRF攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET%E5%92%8CImg%E6%A0%87%E7%AD%BE"><span class="toc-text">
+          GET和Img标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST%E4%BD%86%E6%98%AF%E6%B2%A1%E6%9C%89%E5%AE%8C%E5%85%A8POST"><span class="toc-text">
+          POST但是没有完全POST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST%E5%92%8C%E8%99%9A%E5%81%87%E8%A1%A8%E5%8D%95"><span class="toc-text">
+          POST和虚假表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5"><span class="toc-text">
+          防御策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">
+          尝试SQL注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">
+          前端安全知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-text">
+          XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-text">
+          转义字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP"><span class="toc-text">
+          CSP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSRF"><span class="toc-text">
+          CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1"><span class="toc-text">
+          如何防御</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SameSite"><span class="toc-text">
+          SameSite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81-Referer"><span class="toc-text">
+          验证 Referer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Token"><span class="toc-text">
+          Token</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81"><span class="toc-text">
+          点击劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#X-FRAME-OPTIONS"><span class="toc-text">
+          X-FRAME-OPTIONS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E9%98%B2%E5%BE%A1"><span class="toc-text">
+          JS 防御</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-text">
+          中间人攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">
+          小结</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

@@ -1,0 +1,1487 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="软件安全 - 04 [软件安全理论] 软件安全UESTC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件安全 - 04 [软件安全理论] 软件安全UESTC">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2004%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8UESTC/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="软件安全 - 04 [软件安全理论] 软件安全UESTC">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210620215522.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619162646.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619162739.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619162807.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619171315.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619172530.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211223.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211320.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211410.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211441.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211724.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619214900.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215834.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215940.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215953.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619220002.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619220127.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619220138.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215221.png">
+<meta property="og:image" content="c:/Users/15727/AppData/Roaming/Typora/typora-user-images/image-20210620213106463.png">
+<meta property="article:published_time" content="2021-06-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-21T05:20:34.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="标签">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210620215522.png"><title>软件安全 - 04 [软件安全理论] 软件安全UESTC | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2004%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8UESTC/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">软件安全 - 04 [软件安全理论] 软件安全UESTC</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-21</span></span></div></header><div class="post-body">
+        <h1 id="软件安全-04-软件安全理论-软件安全-UESTC"   >
+          <a href="#软件安全-04-软件安全理论-软件安全-UESTC" class="heading-link"><i class="fas fa-link"></i></a>软件安全 - 04 [软件安全理论] 软件安全 UESTC</h1>
+      <span id="more"></span>
+
+        <h2 id="课程目标和课程安排"   >
+          <a href="#课程目标和课程安排" class="heading-link"><i class="fas fa-link"></i></a>课程目标和课程安排</h2>
+      <p>课程目标</p>
+<ol>
+<li>掌握<strong>软件安全的概念和研究内容</strong>；</li>
+<li>了解软件安全的研究前沿；</li>
+<li>了解软件安全对信息环境安全的影响；</li>
+<li>掌握软件安全工程的<strong>基本概念</strong>；</li>
+<li>掌握基本的软件安全<strong>设计原则</strong>；</li>
+<li>掌握软件安全<strong>测试的方法</strong>。</li>
+</ol>
+<p>课程安排</p>
+<ol>
+<li>CH01：计算环境与软件安全基础</li>
+<li>CH02：典型软件安全问题</li>
+<li>CH03：安全软件工程</li>
+<li>CH04：安全测试的概念</li>
+<li>CH05：安全的代码</li>
+<li>CH06：一个信息系统的安全模型</li>
+<li>CH07：WEB 应用安全</li>
+</ol>
+
+        <h2 id="软件安全概念和重要性"   >
+          <a href="#软件安全概念和重要性" class="heading-link"><i class="fas fa-link"></i></a>软件安全概念和重要性</h2>
+      
+        <h3 id="软件安全性"   >
+          <a href="#软件安全性" class="heading-link"><i class="fas fa-link"></i></a>软件安全性</h3>
+      <p>软件安全性：是指<strong>软件</strong>不被恶意使用或者攻击进而造成用户信息资产损失<strong>的属性</strong>。</p>
+
+        <h3 id="软件安全"   >
+          <a href="#软件安全" class="heading-link"><i class="fas fa-link"></i></a>软件安全</h3>
+      <p>软件安全：软件<strong>在恶意攻击下能够正确地完成其功能</strong>。</p>
+
+        <h3 id="软件安全属性"   >
+          <a href="#软件安全属性" class="heading-link"><i class="fas fa-link"></i></a>软件安全属性</h3>
+      <ol>
+<li>保护敏感信息不被未授权用户访问—— 软件的可信性，confidentiality</li>
+<li>保护数据不被更改或破坏 —— 软件的完整性 integrity</li>
+<li>确保资源被授权用户的使用——软件的可用性，availability</li>
+</ol>
+
+        <h3 id="软件安全保护什么"   >
+          <a href="#软件安全保护什么" class="heading-link"><i class="fas fa-link"></i></a>软件安全保护什么</h3>
+      <p>软件的完整性、可用性、可信性</p>
+<ol>
+<li>软件<strong>自身</strong>安全 防止软件<u>丢失、被破坏</u>、被篡改、被伪造</li>
+<li>软件<strong>存储</strong>安全 <u>可靠存储</u>，保密存储，<u>压缩存储，备份存储</u></li>
+<li>软件<strong>通信</strong>安全 安全传输、加密传输、网络安全下载、完整下载</li>
+<li>软件<strong>使用</strong>安全 合法用户与非法用户，授权访问，防止软件滥用，防止软件窃取，软件的非法复制</li>
+<li>软件<strong>运行</strong>安全 确保软件正常运行，功能正常</li>
+</ol>
+
+        <h3 id="软件安全所探讨的问题"   >
+          <a href="#软件安全所探讨的问题" class="heading-link"><i class="fas fa-link"></i></a>软件安全所探讨的问题</h3>
+      <p>软件安全研究：如何<strong>设计</strong>、<strong>构造</strong>、<strong>验证</strong>和<strong>维护</strong>软件<strong>以保证其是安全的</strong>。</p>
+<p>包括：</p>
+<ol>
+<li>改进和实现软件安全的架构或结构</li>
+<li>改进和实现软件安全的工具</li>
+<li>改进或实现软件安全的方法</li>
+</ol>
+
+        <h3 id="软件"   >
+          <a href="#软件" class="heading-link"><i class="fas fa-link"></i></a>软件</h3>
+      <p>程序、步骤及数据、信息手册等相关资料</p>
+<p>功能：针对一个系统（计算机），合理组织工作。</p>
+<p>两个层次：</p>
+<ul>
+<li>直接与硬件相关</li>
+<li>合理组织工作，完成特定任务。</li>
+</ul>
+
+        <h3 id="信息"   >
+          <a href="#信息" class="heading-link"><i class="fas fa-link"></i></a>信息</h3>
+      <p>所谓信息，就是客观世界中各种事物的变化和特征的最新反映，是客观事物之间联系的表征，也是客观事物状态经过传递后的再现。</p>
+
+        <h3 id="信息安全"   >
+          <a href="#信息安全" class="heading-link"><i class="fas fa-link"></i></a>信息安全</h3>
+      <p>“信息安全”没有公认和统一的定义,国内外的论述大致可分为两大类：</p>
+<p>站在国家宏观的角度，应定义为：一个国家的社会信息化状态不受外来的威胁与侵害，一个国家的信息技术体系不受外来的威胁与侵害。</p>
+<p>针对特定的信息体系或技术：信息或系统不受外来的威胁与侵害。</p>
+<p><u>恰当的信息安全定义</u>：信息具有<strong>保密性，完整性，可用性</strong></p>
+
+        <h3 id="ISO-7498-2-信息处理系统-开放系统互连-基本参考模型"   >
+          <a href="#ISO-7498-2-信息处理系统-开放系统互连-基本参考模型" class="heading-link"><i class="fas fa-link"></i></a>ISO 7498 - 2 信息处理系统. 开放系统互连.基本参考模型.</h3>
+      
+        <h4 id="5-种安全服务"   >
+          <a href="#5-种安全服务" class="heading-link"><i class="fas fa-link"></i></a>5 种安全服务</h4>
+      <p>描述开放系统互连安全的体系架构，提出设计安全的信息系统的基础架构应该包含的：5 种安全服务，对 5 种安全服务提供支持的 8 类安全机制，需要进行的 5 种 OSI 安全管理方式</p>
+<ol>
+<li>身份鉴别（Authentication）</li>
+<li>访问控制（Access Control）</li>
+<li>数据保密（Data Confidentiality）</li>
+<li>数据完整性（ Data integrity）</li>
+<li>抗抵赖（Non-reputation）</li>
+</ol>
+
+        <h4 id="8-种安全机制"   >
+          <a href="#8-种安全机制" class="heading-link"><i class="fas fa-link"></i></a>8 种安全机制</h4>
+      <ol>
+<li>加密</li>
+<li>数字签名</li>
+<li>访问控制</li>
+<li>数据完整性</li>
+<li>数据交换</li>
+<li>业务流填充</li>
+<li>路由控制</li>
+<li>公证</li>
+</ol>
+
+        <h3 id="安全设计"   >
+          <a href="#安全设计" class="heading-link"><i class="fas fa-link"></i></a>安全设计</h3>
+      <p>安全设计，就是指在设计设备的过程中，充分考虑设备的安全性，消除一切不安全因素的设计</p>
+
+        <h4 id="安全设计目的"   >
+          <a href="#安全设计目的" class="heading-link"><i class="fas fa-link"></i></a>安全设计目的</h4>
+      <ul>
+<li>软件在恶意攻击下能够正确地完成其功能</li>
+</ul>
+
+        <h4 id="产生安全问题场景"   >
+          <a href="#产生安全问题场景" class="heading-link"><i class="fas fa-link"></i></a>产生安全问题场景</h4>
+      <ul>
+<li>意外行为</li>
+<li>恶意行为</li>
+</ul>
+
+        <h3 id="软件安全工程"   >
+          <a href="#软件安全工程" class="heading-link"><i class="fas fa-link"></i></a>软件安全工程</h3>
+      <p>与其他软件相比，遵循安全理念开发的软件可以更为有效地抵御、容忍攻击并从攻击中恢复。</p>
+
+        <h3 id="软件目标和软件安全目标"   >
+          <a href="#软件目标和软件安全目标" class="heading-link"><i class="fas fa-link"></i></a>软件目标和软件安全目标</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210620215522.png" alt="image-20210620215521940"></p>
+
+        <h2 id="如何得到安全的软件"   >
+          <a href="#如何得到安全的软件" class="heading-link"><i class="fas fa-link"></i></a>如何得到安全的软件</h2>
+      <p>构建安全的软件是一个过程，这个过程包括：</p>
+<ul>
+<li>教育</li>
+<li>设计，接口选择和规格定义</li>
+<li>软件的实现和编码</li>
+<li>验证、测试和评估</li>
+<li>软件提交和安全地执行</li>
+<li>软件的维护、BUG 修复和调整</li>
+</ul>
+<p><strong>软件安全的研究</strong>包括上述过程中的所有内容</p>
+<p>从更广泛的视角看，软件安全涉及到：</p>
+<ul>
+<li>编程语言和编译器技术</li>
+<li>形式化验证</li>
+<li>软件工程</li>
+<li>操作系统</li>
+<li>硬件设计，处理器架构</li>
+<li>加密算法</li>
+</ul>
+
+        <h2 id="漏洞-脆弱性-攻击"   >
+          <a href="#漏洞-脆弱性-攻击" class="heading-link"><i class="fas fa-link"></i></a>漏洞 脆弱性 攻击</h2>
+      
+        <h3 id="漏洞"   >
+          <a href="#漏洞" class="heading-link"><i class="fas fa-link"></i></a>漏洞</h3>
+      <p>安全漏洞（Security Hole）：计算机系统具有的某种<strong>可能被入侵者恶意利用的属性</strong>。</p>
+<p>有时安全漏洞也称为脆弱性（Vulnerability）。</p>
+<p><strong>漏洞是软件的属性</strong>。</p>
+
+        <h3 id="脆弱性"   >
+          <a href="#脆弱性" class="heading-link"><i class="fas fa-link"></i></a>脆弱性</h3>
+      <p>1996 年 Matt Bishop 和 Dave Bailey，“计算机脆弱性（Computer Vulnerability）” ：</p>
+<p>“计算机系统由一系列描述构成计算机系统的实体的当前配置状态 (state) 组成，系统通过应用状态变换 (State Transition，状态转换)(即改变系统状态) 实现计算。</p>
+<p>使用一组状态变换，从给定的初始状态可以到达的所有状态最终分为由安全策略定义的两类状态：已授权的 (authorized，经授权的) 和未经授权的 (unauthorized ，未被授权的，未经认可的)。”</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619162646.png" alt="image-20210619162646584"></p>
+
+        <h3 id="脆弱状态"   >
+          <a href="#脆弱状态" class="heading-link"><i class="fas fa-link"></i></a>脆弱状态</h3>
+      <p>从已授权的状态变换到未授权状态。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619162739.png" alt="image-20210619162739103"></p>
+
+        <h3 id="攻击"   >
+          <a href="#攻击" class="heading-link"><i class="fas fa-link"></i></a>攻击</h3>
+      <p>攻击是以授权状态或脆弱状态开始，<strong>以受损状态为目标的状态变换</strong>。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619162807.png" alt="image-20210619162807431"></p>
+
+        <h3 id="漏洞的本质-渗透-安全事件"   >
+          <a href="#漏洞的本质-渗透-安全事件" class="heading-link"><i class="fas fa-link"></i></a>漏洞的本质 渗透 安全事件</h3>
+      <p>漏洞的本质：<strong>漏洞是系统的一组特性</strong>，<strong>恶意的主体</strong>（攻击者或者攻击程序）能够<strong>利用这组特性</strong>，通过<strong>已授权的手段和方式</strong>获取<strong>对资源的未经授权访问，或者对系统造成损害。</strong></p>
+<p>当系统的某个漏洞被入侵者<strong>渗透</strong>（exploit）而造成泄密时，其结果就称为一次<strong>安全事件</strong>（Security Incident）</p>
+
+        <h2 id="ISO9126-标准：软件产品评价－质量特性及其使用指南"   >
+          <a href="#ISO9126-标准：软件产品评价－质量特性及其使用指南" class="heading-link"><i class="fas fa-link"></i></a>ISO9126 标准：软件产品评价－质量特性及其使用指南</h2>
+      <p>定义的 6 个质量特性：</p>
+<ul>
+<li>功能性</li>
+<li>可靠性</li>
+<li>易用性</li>
+<li>效率</li>
+<li>维护性</li>
+<li>可移植性</li>
+</ul>
+<p>9126 质量模型的缺陷：</p>
+<ol>
+<li>安全性是软件功能性的子属性</li>
+<li>充分体现了对安全的忽视</li>
+</ol>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619171315.png" alt="image-20210619171315143" style="zoom:33%;" /></p>
+
+        <h2 id="什么样的软件是安全的"   >
+          <a href="#什么样的软件是安全的" class="heading-link"><i class="fas fa-link"></i></a>什么样的软件是安全的</h2>
+      
+        <h3 id="安全的代码（secure-code）"   >
+          <a href="#安全的代码（secure-code）" class="heading-link"><i class="fas fa-link"></i></a>安全的代码（secure code）</h3>
+      <p>能够抵抗恶意攻击的代码；</p>
+<p>安全的代码同时也是健壮的代码（robust code）</p>
+
+        <h3 id="安全性代码（security-code）"   >
+          <a href="#安全性代码（security-code）" class="heading-link"><i class="fas fa-link"></i></a>安全性代码（security code）</h3>
+      <p>实现安全功能的代码。</p>
+
+        <h3 id="程序是“安全的”"   >
+          <a href="#程序是“安全的”" class="heading-link"><i class="fas fa-link"></i></a>程序是“安全的”</h3>
+      <p>安全隐含某种程度的<strong>信任（trust）</strong>，程序实现了期望的机密性、完整性、可用性及其功能。</p>
+<p><strong>待解决的问题：</strong>从程序或者程序员的观点，如何检查软件构件（component）或代码段，并且评估它的安全？</p>
+
+        <h2 id="软件安全的英文-辨析-security-reliablity-safety"   >
+          <a href="#软件安全的英文-辨析-security-reliablity-safety" class="heading-link"><i class="fas fa-link"></i></a>软件安全的英文 辨析 security reliablity safety</h2>
+      <p>Safety 强调的是一个系统、组织或个人按照自己的机制正常运转的“稳定状态”</p>
+<p>Security 强调的是免受来自外部或内部“蓄意或恶意”的伤害，采取必要的措施防止这样的伤害发生，确保国家、组织或个人正常运转</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619172530.png" alt="image-20210619172530179"></p>
+
+        <h2 id="典型的安全问题和威胁分析"   >
+          <a href="#典型的安全问题和威胁分析" class="heading-link"><i class="fas fa-link"></i></a>典型的安全问题和威胁分析</h2>
+      
+        <h3 id="安全问题的来源"   >
+          <a href="#安全问题的来源" class="heading-link"><i class="fas fa-link"></i></a>安全问题的来源</h3>
+      <ol>
+<li>漏洞(漏洞是软件的属性)</li>
+<li>攻击者</li>
+<li>软件存在的攻击路径(攻击面)问题</li>
+</ol>
+
+        <h3 id="产生漏洞的原因"   >
+          <a href="#产生漏洞的原因" class="heading-link"><i class="fas fa-link"></i></a>产生漏洞的原因</h3>
+      <p>1） 软件或协议设计时的瑕疵</p>
+<p>协议定义了网络上计算机会话和通信的规则，如果在协议设计时存在瑕疵，那么无论实现该协议的方法多么完美，它都存在漏洞。</p>
+<p>2） 软件或协议实现中的弱点</p>
+<p>即使协议设计得很完美，实现协议的方式仍然可能引入漏洞。</p>
+<p>3） 软件本身的瑕疵</p>
+<p>良好的、编写安全程序的的编程习惯。</p>
+<p><strong>4） 系统和网络的错误配置</strong></p>
+<p>这一类的漏洞并不是由协议或软件本身的问题造成的，而是由服务和软件的不正确部署和配置造成的。</p>
+
+        <h2 id="缺陷"   >
+          <a href="#缺陷" class="heading-link"><i class="fas fa-link"></i></a>缺陷</h2>
+      <p>意外行为（Unexpected Behavior）：也称程序安全缺陷，是由于程序脆弱性引起的不适当的<strong>程序行为</strong>。</p>
+<p>缺陷（Flaw）：缺陷可以是故障（Fault），或者失效（Failure）</p>
+<p>程序安全缺陷可能来源于任何种类的软件错误：</p>
+<ul>
+<li>无意或疏忽的</li>
+<li>故意或有意的</li>
+</ul>
+
+        <h2 id="常见软件漏洞"   >
+          <a href="#常见软件漏洞" class="heading-link"><i class="fas fa-link"></i></a>常见软件漏洞</h2>
+      <p>软件漏洞包括设计漏洞和实现漏洞。漏洞是软件安全威胁的根源.</p>
+<ol>
+<li>设计漏洞：设计错误，往往发现于软件的安全功能特性中。</li>
+<li>实现漏洞：来源于软件实际编码中的安全缺陷</li>
+</ol>
+
+        <h3 id="常见的安全设计问题"   >
+          <a href="#常见的安全设计问题" class="heading-link"><i class="fas fa-link"></i></a>常见的安全设计问题</h3>
+      
+        <h4 id="1-密码技术使用的败笔"   >
+          <a href="#1-密码技术使用的败笔" class="heading-link"><i class="fas fa-link"></i></a>1. 密码技术使用的败笔</h4>
+      <ul>
+<li>创建自己的密码技术</li>
+<li>选用了不当的密码技术</li>
+<li>依赖隐蔽式安全</li>
+<li>编写到程序中的密钥</li>
+<li>错误地处理私密信息</li>
+</ul>
+
+        <h4 id="2-对用户及其许可权限进行跟踪的薄弱或缺失"   >
+          <a href="#2-对用户及其许可权限进行跟踪的薄弱或缺失" class="heading-link"><i class="fas fa-link"></i></a>2. 对用户及其许可权限进行跟踪的薄弱或缺失</h4>
+      <ul>
+<li>会话管理薄弱或者缺失</li>
+<li>身份鉴别薄弱或缺失</li>
+<li>授权薄弱或缺失</li>
+</ul>
+
+        <h4 id="3-有缺陷的输入验证"   >
+          <a href="#3-有缺陷的输入验证" class="heading-link"><i class="fas fa-link"></i></a>3. 有缺陷的输入验证</h4>
+      <ul>
+<li>没有在安全的上下文环境中执行验证，如在服务器验证而在客户端没有验证</li>
+<li>验证例程不集中，验证应尽可能靠近用户输入，并应集中以便于核实</li>
+<li>不安全的组件边界</li>
+</ul>
+
+        <h4 id="4-薄弱的结构性安全"   >
+          <a href="#4-薄弱的结构性安全" class="heading-link"><i class="fas fa-link"></i></a>4. 薄弱的结构性安全</h4>
+      <ul>
+<li>过大的攻击面</li>
+<li>在过高权限级别上运行进程</li>
+<li>没有纵深防御</li>
+<li>失效时的处理不安全</li>
+</ul>
+
+        <h4 id="5-其他设计缺陷"   >
+          <a href="#5-其他设计缺陷" class="heading-link"><i class="fas fa-link"></i></a>5. 其他设计缺陷</h4>
+      <ul>
+<li>代码和数据混在一起</li>
+<li>错将信任寄予外部系统</li>
+<li>不安全的默认值</li>
+<li>未做审计日志</li>
+</ul>
+
+        <h3 id="编程语言的问题-C-C-为例"   >
+          <a href="#编程语言的问题-C-C-为例" class="heading-link"><i class="fas fa-link"></i></a>编程语言的问题(C/C++为例)</h3>
+      
+        <h4 id="问题1：没有安全的本地字符串类型，也没有安全而易用的字符串处理函数。"   >
+          <a href="#问题1：没有安全的本地字符串类型，也没有安全而易用的字符串处理函数。" class="heading-link"><i class="fas fa-link"></i></a>问题1：没有安全的本地字符串类型，也没有安全而易用的字符串处理函数。</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211223.png" alt="image-20210619211223412" style="zoom:50%;" /></p>
+
+        <h4 id="问题2：缓冲区超限覆盖栈中的函数返回地址"   >
+          <a href="#问题2：缓冲区超限覆盖栈中的函数返回地址" class="heading-link"><i class="fas fa-link"></i></a>问题2：缓冲区超限覆盖栈中的函数返回地址</h4>
+      <p>用于从被调用的函数返回到某个位置的返回地址驻留在栈中，紧接在本地变量之后；<br>返回地址是驻留在栈中的一段隐蔽的数据，栈中其余部分是传递给该函数的变量；<br>编译后的程序在调用这个函数之前会将这个地址数据放在栈中，以使程序获知当这个函数执行完后转到哪里；<br>通过把栈中某个变量产生缓冲区溢出，就可以覆盖栈中的这个返回地址。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211320.png" alt="image-20210619211320076" style="zoom:50%;" /></p>
+
+        <h4 id="问题3：printf类型的格式化函数－格式化字符串攻击"   >
+          <a href="#问题3：printf类型的格式化函数－格式化字符串攻击" class="heading-link"><i class="fas fa-link"></i></a>问题3：printf类型的格式化函数－格式化字符串攻击</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211410.png" alt="image-20210619211410202"></p>
+
+        <h4 id="问题4：整数溢出"   >
+          <a href="#问题4：整数溢出" class="heading-link"><i class="fas fa-link"></i></a>问题4：整数溢出</h4>
+      <p>在C语言中，整数的正负标识是默认的；<br>当一个整数值增长从而超过了其最大可能的值并循环到成为一个负数的时候，将发生整数溢出；<br>C语言没有任何措施预防整数溢出。<br>如果攻击者通过用户输入操纵整数长度，就可以让这个值溢出，引起程序的处理发生错误。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211441.png" alt="image-20210619211441648"></p>
+
+        <h3 id="平台的实现问题-操作系统为代表"   >
+          <a href="#平台的实现问题-操作系统为代表" class="heading-link"><i class="fas fa-link"></i></a>平台的实现问题( 操作系统为代表 )</h3>
+      <p>平台是指程序在其中所运行的环境，包括操作系统以及与之交互的组件。威胁的来源：</p>
+<ul>
+<li>软件与用户的交互</li>
+<li>软件与网络交互</li>
+<li>软件与文件系统交互</li>
+<li>软件依赖OS产生新的子进程</li>
+<li>软件与其他进程通信</li>
+<li>其他</li>
+</ul>
+
+        <h4 id="问题1：符号链接"   >
+          <a href="#问题1：符号链接" class="heading-link"><i class="fas fa-link"></i></a>问题1：符号链接</h4>
+      <p>符号链接（Symbolic link, 简写为symlink）：文件系统中指向其他文件的文件。符号链接等效于其指向的文件。程序打开的是一个符号链接，实际打开的是该符号链接指向的文件。</p>
+<p>问题: </p>
+<p>攻击者可以使用程序预计要操作的文件名创建一个符号链接，使该文件名指向希望的文件；<br>利用符号链接，攻击者事实上可以启动系统中的任何程序。</p>
+<p>预防措施:</p>
+<p>程序员或使用者创建、打开、删除文件，或更改文件权限，必须检查该文件的符号链接，不可以基于文件名做任何安全方面的判定。<br>权限攻击的例子：如果程序以攻击者没有的权限运行，比如作为SUID（系统用户身份），攻击者可以借此发动一次权限提升。</p>
+
+        <h4 id="问题2：目录遍历"   >
+          <a href="#问题2：目录遍历" class="heading-link"><i class="fas fa-link"></i></a>问题2：目录遍历</h4>
+      <p>典型例子：<br>CIFS是WINDOWS的文件共享协议，允许计算机通过网络访问彼此的文件系统。<br>利用目录遍历，攻击者可通过使用“..”符号上升到文件系统的上一级目录，从而对文件共享程序进行欺骗，进而获得对不在共享目录下的目录进行访问。</p>
+
+        <h4 id="问题3：字符转换"   >
+          <a href="#问题3：字符转换" class="heading-link"><i class="fas fa-link"></i></a>问题3：字符转换</h4>
+      <p>平台支持不同类型的字符编码，存在多种不同的表示某个字符的方式。</p>
+<p>程序接受用户的输入，为了满足安全需求，通常会要求进行安全检查，以确保输入的字符串对该程序设计是有效的。</p>
+<p>当平台进行升级的时候可能会引入新的字符编码。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619211724.png" alt="image-20210619211724061" style="zoom:50%;" /></p>
+
+        <h2 id="owaft-top-10-常见安全问题"   >
+          <a href="#owaft-top-10-常见安全问题" class="heading-link"><i class="fas fa-link"></i></a>owaft top 10 ( 常见安全问题 )</h2>
+      <p>开放式 Web 应用程序安全项目（OWASP，Open Web Application Security Project）是一个组织，它提供有关计算机和互联网应用程序的公正、实际、有成本效益的信息。其目的是协助个人、企业和机构来发现和使用可信赖软件。</p>
+
+        <h3 id="1-注入"   >
+          <a href="#1-注入" class="heading-link"><i class="fas fa-link"></i></a>1. 注入</h3>
+      <p>当用户发送不可信地数据到解释器的时候，就可能出现注入漏洞，比如 SQL, NoSQL, LDAP 注入，解释器可能会将用户发送的恶意数据视为指令或数据库查询，使得用户在没有权限的情况下访问数据，甚至导致用户完全控制服务器。</p>
+
+        <h3 id="2-失效身份验证和会话管理"   >
+          <a href="#2-失效身份验证和会话管理" class="heading-link"><i class="fas fa-link"></i></a>2.失效身份验证和会话管理</h3>
+      <p>应用中负责认证和会话管理的部分没有正确实现，使得攻击者得以泄露密码，口令或令牌，进而可能获取其他用户的身份。</p>
+
+        <h3 id="3-敏感信息泄露"   >
+          <a href="#3-敏感信息泄露" class="heading-link"><i class="fas fa-link"></i></a>3.敏感信息泄露</h3>
+      <p>许多 web 应用和 API 没有很好地保护隐私数据，比如金融，医疗。攻击者可以偷取或修改这些数据，从而进行信用卡诈骗，身份窃取等。敏感数据在传输过程中应当使用额外的安全措施以避免泄露。</p>
+
+        <h3 id="4-XML-外部实体注入攻击（XXE）"   >
+          <a href="#4-XML-外部实体注入攻击（XXE）" class="heading-link"><i class="fas fa-link"></i></a>4.XML 外部实体注入攻击（XXE）</h3>
+      <p>许多老版本或弱配置的 XML 解析器在处理 XML 文件内的外部实体时，会去运行其中的代码。外部实体可以使用文件 URI 关闭系统内部正在运行的文件，导致无法提供功能。</p>
+
+        <h3 id="5-失效访问控制"   >
+          <a href="#5-失效访问控制" class="heading-link"><i class="fas fa-link"></i></a>5.失效访问控制</h3>
+      <p>认证用户权限的限制往往没有比较好地配置，这导致攻击者能够利用这些缺陷访问未授权的功能和数据。</p>
+
+        <h3 id="6-安全性错误配置"   >
+          <a href="#6-安全性错误配置" class="heading-link"><i class="fas fa-link"></i></a>6.安全性错误配置</h3>
+      <p>安全性错误配置是一种非常常见的问题，网站管理员往往会保留默认配置，这导致了很多安全性问题。系统，应用，框架，库不止应该被安全地配置，他们还应该被及时更新。</p>
+
+        <h3 id="7-Cross-Site-Scripting-XSS"   >
+          <a href="#7-Cross-Site-Scripting-XSS" class="heading-link"><i class="fas fa-link"></i></a>7.Cross-Site-Scripting(XSS)</h3>
+      <p>XSS 漏洞出现在当 web 页面包含不可信的数据，却没有合适的验证手段来找到它的时候。XSS 使得攻击者能够在受害者的浏览器中执行脚本，从而劫持会话，或重定向到恶意站点。</p>
+
+        <h3 id="8-不安全的反序列化"   >
+          <a href="#8-不安全的反序列化" class="heading-link"><i class="fas fa-link"></i></a>8.不安全的反序列化</h3>
+      <p>不安全的反序列化经常会导致远程代码执行。也能用于进行重放攻击，注入攻击，提权攻击。</p>
+
+        <h3 id="9-使用具有已知漏洞的组件"   >
+          <a href="#9-使用具有已知漏洞的组件" class="heading-link"><i class="fas fa-link"></i></a>9.使用具有已知漏洞的组件</h3>
+      <p>库，框架等软件组件和应用有着相同的权限。如果存在有漏洞的组件，那么攻击就能够导致数据泄露甚至控制服务器。组件中的漏洞会导致整个应用和 API 安全性的下降。</p>
+
+        <h3 id="10-日志记录和监控不足"   >
+          <a href="#10-日志记录和监控不足" class="heading-link"><i class="fas fa-link"></i></a>10.日志记录和监控不足</h3>
+      <p>日志和监控不足，再加上缺失或无效的事件响应，允许攻击者进一步攻击系统，他可以转向更多系统，进行篡改，提取，销毁数据。大部分研究表明违反往往会在超过 200 天后才被检测出来，而且还是由外部参与者检测到的。</p>
+
+        <h2 id="软件安全分析方法-微软-STRIDE-建模"   >
+          <a href="#软件安全分析方法-微软-STRIDE-建模" class="heading-link"><i class="fas fa-link"></i></a>软件安全分析方法 ( 微软 STRIDE 建模 )</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/dl71181/article/details/101281523" >https://blog.csdn.net/dl71181/article/details/101281523</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>基于数据流图进行的威胁分析方法</strong></p>
+<p>STRIDE 是从攻击者的角度，把威胁划分成 6 个类别，分别是 Spooling（仿冒）、Tampering(篡改)、Repudiation（抵赖）、InformationDisclosure（信息泄露）、Denial of Service (拒绝服务)和 Elevation of privilege (权限提升)。</p>
+<p>为什么划分这 6 类，这与信息安全三要素和信息安全基本的三个属性相关。</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>信息安全三要素</strong></th>
+<th><strong>信息安全三属性</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保密性</td>
+<td>认证</td>
+</tr>
+<tr>
+<td>完整性</td>
+<td>鉴权</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>审计</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>表：六类威胁与信息安全三要素、三属性的对应关系</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>威胁</strong></th>
+<th><strong>安全属性</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>举例</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仿冒（S）</td>
+<td>认证</td>
+<td>冒充人或物</td>
+<td>冒充其他用户账号</td>
+</tr>
+<tr>
+<td>篡改（T）</td>
+<td>完整性</td>
+<td>修改数据或代码</td>
+<td>修改订单信息</td>
+</tr>
+<tr>
+<td>抵赖（R）</td>
+<td>审计</td>
+<td>不承认做过某行为</td>
+<td>不承认修改行为</td>
+</tr>
+<tr>
+<td>信息泄露（I）</td>
+<td>保密性</td>
+<td>信息被泄露或窃取</td>
+<td>用户信息被泄露</td>
+</tr>
+<tr>
+<td>拒绝服务（D）</td>
+<td>可用性</td>
+<td>消耗资源、服务可不用</td>
+<td>DDOS 导致网站不可用</td>
+</tr>
+<tr>
+<td>权限提升（E）</td>
+<td>授权</td>
+<td>未经授权获取、提升权限</td>
+<td>普通用户提升到管理员</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>随着全球对隐私保护重视程度的加大，隐私安全也成了产品的一个重要威胁，因此 STRIDE 的 6 个威胁也添加了一项隐私（Privacy），也就变成了 ASTRIDE，A 代表 Advanced。</p>
+<p>为了防范上面的 STRIDE 威胁，我们需要采用一些防范措施。</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>威胁</th>
+<th>安全要素</th>
+<th>消减技术</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>身份假冒</td>
+<td>认证</td>
+<td>Kerberos、SSL/TLS、证书、认证码等</td>
+</tr>
+<tr>
+<td>篡改</td>
+<td>完整性</td>
+<td>访问控制列表、SSL/TLS、认证码等</td>
+</tr>
+<tr>
+<td>抵赖</td>
+<td>非抵赖/审计/记录</td>
+<td>安全审计和日志记录、数字签名、可信第三方</td>
+</tr>
+<tr>
+<td>信息泄露</td>
+<td>保密</td>
+<td>加密、访问控制列表</td>
+</tr>
+<tr>
+<td>拒绝服务</td>
+<td>可用性</td>
+<td>访问控制列表、过滤、配额、授权</td>
+</tr>
+<tr>
+<td>特权提升</td>
+<td>授权</td>
+<td>访问控制列表、角色控制、授权</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h2 id="SDL-和简化-SDL"   >
+          <a href="#SDL-和简化-SDL" class="heading-link"><i class="fas fa-link"></i></a>SDL 和简化 SDL</h2>
+      <p>安全开发生命周期 (SDL，Secure Development Lifecycle) 是侧重于软件开发的安全保证过程。在 Microsoft，自 2004 起，SDL 作为全公司的计划和强制政策，在将安全和隐私植入软件和企业文化方面发挥了重要作用。SDL是微软可信计算（Trustworthy Computing）的组成部分。</p>
+<p>Microsoft 安全开发实践，包括：</p>
+<ul>
+<li>应用程序开发过程中相关人员的角色和职责。</li>
+<li>必需的安全活动。</li>
+<li>可选的安全活动。</li>
+<li>应用程序安全验证过程。</li>
+</ul>
+
+        <h3 id="SDL概览"   >
+          <a href="#SDL概览" class="heading-link"><i class="fas fa-link"></i></a>SDL概览</h3>
+      
+        <h4 id="SDL从三个方面考虑软件安全的保障"   >
+          <a href="#SDL从三个方面考虑软件安全的保障" class="heading-link"><i class="fas fa-link"></i></a>SDL从三个方面考虑软件安全的保障</h4>
+      <p>设计安全 </p>
+<ul>
+<li>为了保护软件自身以及软件处理的信息,并抵御攻击,软件应该从架构,设计和实现上进行考虑</li>
+</ul>
+<p>缺省安全 </p>
+<ul>
+<li>设计者应该假定安全缺陷将会出现。为了当攻击者对软件存在的缺陷进行攻击时使损害降到最小, 软件的缺省状态应该保证安全。比如,最小特权原则。</li>
+</ul>
+<p>提交安全</p>
+<ul>
+<li>工具和指南应该随着软件提供以帮助最终用户或管理员安全使用。关于软件的更新应该容易提交。</li>
+</ul>
+
+        <h4 id="SDL-基于三个核心概念"   >
+          <a href="#SDL-基于三个核心概念" class="heading-link"><i class="fas fa-link"></i></a>SDL 基于三个核心概念</h4>
+      <p>教育<br>持续过程改善<br>责任</p>
+<p>对软件开发小组中的技术工作角色进行持续不断的教育，这一点至关重要。对知识传授进行适当的投资可帮助组织正确应对技术和威胁态势的变化。因为安全风险不是静止不变的，所以 SDL 非常重视了解安全漏洞的原因和后果，要求 定期评估 SDL 过程并随着新技术的发展和新威胁引入应对措施。收集数据以评估培训效果，使用过程内指标确认过程遵从性，使用发布后指标帮助指导进行进一步的更改。最后，SDL 要求对在危机关头维护应用程序所需的所有数据进行存档。如果配合使用详细的安全响应和沟通计划，组织可以向相关各方提供简明扼要、令人信服的指导。</p>
+
+        <h4 id="SDL适用范围"   >
+          <a href="#SDL适用范围" class="heading-link"><i class="fas fa-link"></i></a>SDL适用范围</h4>
+      <p>对于将实施 SDL 控制的项目类型，为组织设定明确的预期值是非常重要的。通过实践经验可知，具备以下一个或多个特征的应用程序应实施 SDL 控制：</p>
+<ol>
+<li>在业务或企业环境中部署</li>
+<li>处理个人可识别信息 (PII) 或其他敏感信息</li>
+<li>定期通过 Internet 或其他网络进行通信</li>
+<li>计算技术无处不在，威胁环境不断变化，因此，可能更方便的方式是确定不需要 实施安全控制（如 SDL 安全控制）的应用程序开发项目。</li>
+</ol>
+
+        <h3 id="SDL-流程步骤"   >
+          <a href="#SDL-流程步骤" class="heading-link"><i class="fas fa-link"></i></a>SDL 流程步骤</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619214900.png" alt="image-20210619214900367" style="zoom:67%;" /></p>
+
+        <h3 id="常见安全设计原则："   >
+          <a href="#常见安全设计原则：" class="heading-link"><i class="fas fa-link"></i></a>常见安全设计原则：</h3>
+      <ul>
+<li>经济机制：代码尽可能简单、紧凑。软件愈复杂，出现安全BUG的可能性愈高。</li>
+<li>默认失效保护：任何请求缺省应加以拒绝。</li>
+<li>安全中介：每个访问受保护对象的行为应当被检查。</li>
+<li>公开设计：与“不公开即安全”的原则相对应。设计自身不应具有神秘感。</li>
+<li>权限分离：切勿允许基于单一条件的操作过程。</li>
+<li>最小特权：只授予执行操作所必须的最小特权。</li>
+<li>最少公共机制：使公共资源尽可能少。</li>
+<li>心理可接受程度：安全产品与技术是否容易使用？用户能否接受？与UI的密切配合。</li>
+</ul>
+
+        <h3 id="简化SDL流程实施"   >
+          <a href="#简化SDL流程实施" class="heading-link"><i class="fas fa-link"></i></a>简化SDL流程实施</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215834.png" alt="image-20210619215834071"></p>
+<p>Microsoft 安全开发实践，包括：</p>
+<ul>
+<li>应用程序开发过程中相关人员的角色和职责。</li>
+<li>必需的安全活动。</li>
+<li>可选的安全活动。</li>
+<li>应用程序安全验证过程。</li>
+</ul>
+<p>各个流程的执行方案</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215940.png" alt="image-20210619215940462"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215953.png" alt="image-20210619215953229"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619220002.png" alt="image-20210619220002211"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619220127.png" alt="image-20210619220127275"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619220138.png" alt="image-20210619220138744"></p>
+
+        <h4 id="应用程序开发过程中相关人员的角色和职责"   >
+          <a href="#应用程序开发过程中相关人员的角色和职责" class="heading-link"><i class="fas fa-link"></i></a>应用程序开发过程中相关人员的角色和职责</h4>
+      <p>评析者/顾问角色。这些角色的任务是对项目安全和隐私进行监督，有权接受或拒绝项目团队的安全和隐私计划</p>
+<ul>
+<li>安全顾问/隐私顾问。这些角色由项目团队外部的主题专家 (SME) 担任。该角色可以由组织中专门进行此类评析的独立集中小组中的合格成员担任，也可以由组织外部的专家担任。为此任务选择的人员必须担任两个子角色：<ul>
+<li>审计官。此角色必须监控软件开发过程的每个阶段，并证明每个安全要求的成功实现。审计官必须能够自主证明过程是否符合安全和隐私要求方面的要求，而不受项目团队的干扰。</li>
+<li>专家。为顾问角色选择的人员必须在安全方面拥有可靠的相关专业知识。</li>
+</ul>
+</li>
+<li>顾问角色组合。如果可以确认某人具有合适的技能和经验，则安全顾问的角色可以与隐私顾问的角色合二为一。</li>
+</ul>
+<p>团队负责人。团队负责人角色应由项目团队的主题专家担任。这些角色负责协商、接受和跟踪最低安全和隐私要求，并在软件开发项目过程中与顾问和决策者保持通畅的沟通渠道。</p>
+<ul>
+<li>安全负责人/隐私负责人。此角色（一人或多人）不仅负责确保软件发布解决了所有安全问题，还负责协调和跟踪项目的安全问题。此角色还负责向安全顾问和项目团队的其他相关方（例如，开发和测试负责人）报告情况。 </li>
+<li>角色组合。与安全和隐私顾问角色一样，如果可以确认某人具有合适的技能和经验，则可以由一人承担负责人角色的职责。</li>
+</ul>
+
+        <h4 id="必需的安全活动"   >
+          <a href="#必需的安全活动" class="heading-link"><i class="fas fa-link"></i></a>必需的安全活动</h4>
+      <p>如果确定对某个软件开发项目实施 SDL 控制，则开发团队必须成功完成<strong>十六项必需的安全活动</strong>，才符合 SDL 过程的要求。<br>这些必需活动已由安全和隐私专家确认有效，并且会作为严格的年度评估过程的一部分，不断进行有效性评析。<br>如前所述，开发团队应保持灵活性，以便根据需要指定其他安全活动，但是“必须完成”实践列表应始终包括本文所述的十六项活动。</p>
+
+        <h5 id="SDL-实施前要求：安全培训"   >
+          <a href="#SDL-实施前要求：安全培训" class="heading-link"><i class="fas fa-link"></i></a>SDL 实施前要求：安全培训</h5>
+      
+        <h6 id="SDL-实践-1：培训要求"   >
+          <a href="#SDL-实践-1：培训要求" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 1：培训要求</h6>
+      <p>软件开发团队的所有成员都必须接受适当的培训，了解安全基础知识以及安全和隐私方面的最新趋势。直接参与软件程序开发的技术角色人员（开发人员、测试人员和程序经理）每年必须参加至少一门特有的安全培训课程。</p>
+<blockquote>
+<p>基本软件安全培训应涵盖的基础概念包括：</p>
+<ul>
+<li>安全设计，包括以下主题：<ul>
+<li>减小攻击面</li>
+<li>深度防御</li>
+<li>最小权限原则</li>
+<li>安全默认设置</li>
+</ul>
+</li>
+<li>威胁建模，包括以下主题：<ul>
+<li>威胁建模概述</li>
+<li>威胁模型的设计意义</li>
+<li>基于威胁模型的编码约束</li>
+</ul>
+</li>
+<li>安全编码，包括以下主题：<ul>
+<li>缓冲区溢出（对于使用 C 和 C++ 的应用程序）</li>
+<li>整数算法错误（对于使用 C 和 C++ 的应用程序）</li>
+<li>跨站点脚本（对于托管代码和 Web 应用程序）</li>
+<li>SQL 注入（对于托管代码和 Web 应用程序）</li>
+</ul>
+</li>
+<li>弱加密安全测试，包括以下主题：<ul>
+<li>安全测试与功能测试之间的区别</li>
+<li>风险评估</li>
+<li>安全测试方法</li>
+</ul>
+</li>
+<li>隐私，包括以下主题：<ul>
+<li>隐私敏感数据的类型</li>
+<li>隐私设计最佳实践</li>
+<li>风险评估</li>
+<li>隐私开发最佳实践</li>
+<li>隐私测试最佳实践</li>
+</ul>
+</li>
+</ul>
+<p>可能需要进行高级概念方面的培训。<br>示例包括但不限于以下方面：</p>
+<ul>
+<li>高级安全设计和体系结构</li>
+<li>可信用户界面设计</li>
+<li>安全漏洞细节</li>
+<li>实施自定义威胁缓解</li>
+</ul>
+</blockquote>
+
+        <h5 id="第一阶段：需求"   >
+          <a href="#第一阶段：需求" class="heading-link"><i class="fas fa-link"></i></a>第一阶段：需求</h5>
+      
+        <h6 id="SDL-实践-2：安全需求"   >
+          <a href="#SDL-实践-2：安全需求" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 2：安全需求</h6>
+      <p>“预先”考虑安全和隐私是开发安全系统过程的基础环节。<br>为软件项目定义信任度要求的最佳时间是在初始计划阶段。<br>尽早定义要求有助于开发团队确定关键里程碑和交付成果，并使集成安全和隐私的过程尽量不影响到计划和安排。<br>对安全和隐私要求的分析在项目初期执行，所做工作涉及为设计在计划运行环境中运行的应用程序确定最低安全要求，并确立和部署安全漏洞/工作项跟踪系统。</p>
+
+        <h6 id="SDL-实践-3：质量门-Bug-栏"   >
+          <a href="#SDL-实践-3：质量门-Bug-栏" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 3：质量门/Bug 栏</h6>
+      <p>质量门和 Bug 栏 用于确立安全和隐私质量的最低可接受级别。<br>在项目开始时定义这些标准可加强对安全问题相关风险的理解，并有助于团队在开发过程中发现和修复安全 Bug。<br>项目团队必须协商确定每个开发阶段的质量门（例如，必须在签入代码之前会审并修复所有编译器警告），随后将质量门交由安全顾问审批。安全顾问可以根据需要添加特定于项目的说明以及更加严格的安全要求。另外，项目团队须阐明其对商定安全门的遵从性，以便完成最终安全评析 (FSR)。<br>Bug 栏是应用于整个软件开发项目的质量门。它用于定义安全漏洞的严重性阈值：例如，应用程序在发布时不得包含具有“关键”或“重要”评级的已知漏洞。<br>Bug 栏一经设定，便绝不能放松。<br>动态 Bug 栏是一种不断变化的目标，</p>
+
+        <h6 id="SDL-实践-4：安全和隐私风险评估"   >
+          <a href="#SDL-实践-4：安全和隐私风险评估" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 4：安全和隐私风险评估</h6>
+      <p>安全风险评估 (SRA) 和隐私风险评估 (PRA) 是必需的过程，用于确定软件中需要深入评析的功能环节。这些评估必须包括以下信息：<br>（安全）项目的哪些部分在发布前需要威胁模型？<br>（安全）项目的哪些部分在发布前需要进行安全设计评析？<br>（安全）项目的哪些部分（如果有）需要由不属于项目团队且双方认可的小组进行渗透测试？<br>（安全）是否存在安全顾问认为有必要增加的测试或分析要求以缓解安全风险？<br>（安全）模糊测试要求的具体范围是什么？<br>（隐私）隐私影响评级如何？</p>
+<blockquote>
+<p>隐私影响评级</p>
+<p>P1 高隐私风险。功能、产品或服务将存储或传输 PII，更改设置或文件类型关联，或是安装软件。</p>
+<p>P2 中等隐私风险。功能、产品或服务中影响隐私的唯一行为是用户启动的一次性匿名数据传输（例如，软件在用户单击链接后转到外部网站）。</p>
+<p>P3 低隐私风险。功能、产品或服务中不存在影响隐私的行为。不传输匿名或个人数据，不在计算机上存储 PII，不代表用户更改设置，并且不安装软件。</p>
+<p>隐私影响分级：</p>
+<p>和隐私问题相关的几个定义<br>匿名数据－不唯一且不必绑定到某个特定用户，也无法追溯到发起者的任何用户数据。<br>个人身份信息（PII）－任何可唯一识别用户的用户数据<br>或与用户PII相混合或者关联的数据或者PII敏感数据<br>敏感PII－任何用于识别个人且容易导致身份被盗或欺诈行为的用户数据。如社会保险号码、信用卡号<br>或与PII相混合或关联，如密码等授权类数据，生物学统计信息（如指纹）<br>或与PII相混合或关联，可用于区分个人喜好、政治或宗教信仰、种族、工会等<br>或与PII相混合或关联，包含疾病史、健康记录及财务信息等<br>或包含未知内容，可能保留有敏感PII数据，如内容数据等</p>
+<p>隐私分级（3级的分类方法）</p>
+<p>隐私分级1：满足以下任何一项，具有最高隐私分级<br>该软件储存PII或传输PII<br>该软件目标是针对儿童或对儿童产生吸引力，或包含任何可以了解年龄的用户体验（按美国法案要求，收集PII需要成人权限，必须保护13岁以下儿童）<br>该软件不间断监控用户行为<br>该软件安装新的软件或改变用户文件类型的关联（如改变JPEG解码程序）</p>
+<p>隐私分级2：该软件传输匿名数据给开发人员或第三方<br>隐私分级3：如果软件不包含隐私分级1、2中任何一种行为，则被划分为隐私分级3</p>
+</blockquote>
+
+        <h5 id="第二阶段：设计"   >
+          <a href="#第二阶段：设计" class="heading-link"><i class="fas fa-link"></i></a>第二阶段：设计</h5>
+      
+        <h6 id="SDL-实践-5：设计要求"   >
+          <a href="#SDL-实践-5：设计要求" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 5：设计要求</h6>
+      <p>影响项目设计信任度的最佳时间是在项目生命周期的早期。<br>在设计阶段应仔细考虑安全和隐私问题，这一点至关重要。<br>如果在项目生命周期的开始阶段执行缓解措施，则缓解安全和隐私问题的成本会低得多。<br>项目团队应避免到项目开发将近结束时再“插入”安全和隐私功能及缓解措施。</p>
+<p>项目团队还必须理解“安全的功能”与“安全功能”之间的区别。<br>实现的安全功能实际上很可能是不安全的。<br>“安全的功能”定义为在安全方面进行了完善设计的功能，比如在处理之前对所有数据进行严格验证或是通过加密方式可靠地实现加密服务库。<br>“安全功能”描述具有安全影响的程序功能，如 Kerberos (网络认证协议)身份验证或防火墙</p>
+<blockquote>
+<p>关于Kerberos认证</p>
+<p>该认证过程的实现不依赖于主机操作系统的认证，无需基于主机地址的信任，不要求网络上所有主机的物理安全，并假定网络上传送的数据包可以被任意地读取、修改和插入数据。</p>
+<p>在以上情况下， Kerberos 作为一种可信任的第三方认证服务，是通过传统的密码技术（如：共享密钥）执行认证服务的。</p>
+<p>Kerberos认证过程具体如下：</p>
+<p>客户机向认证服务器（AS）发送请求，要求得到某服务器的证书，然后 AS 的响应包含这些用客户端密钥加密的证书。证书的构成为： 1) 服务器 “ticket” ； 2) 一个临时加密密钥（又称为会话密钥 “session key”） 。</p>
+<p>客户机将 ticket （包括用服务器密钥加密的客户机身份和一份会话密钥的拷贝）传送到服务器上。</p>
+<p>会话密钥可以（现已经由客户机和服务器共享）用来认证客户机或认证服务器，也可用来为通信双方以后的通讯提供加密服务，或通过交换独立子会话密钥为通信双方提供进一步的通信加密服务。</p>
+</blockquote>
+<p>设计要求活动包含一些必需行动。例如包括创建安全和隐私设计规范、规范评析以及最低加密设计要求规范。<br>设计规范应描述用户会直接接触的安全或隐私功能，如需要用户身份验证才能访问特定数据或在使用高风险隐私功能前需要用户同意的那些功能。<br>此外，所有设计规范都应描述如何安全地实现给定特性或功能所提供的全部功能。<br>针对应用程序的功能规范验证设计规范是个好做法。<br>功能规范应：<br>准确完整地描述特性或功能的预期用途。<br>描述如何以安全的方式部署特性或功能。</p>
+
+        <h6 id="SDL-实践-6：减小攻击面"   >
+          <a href="#SDL-实践-6：减小攻击面" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 6：减小攻击面*</h6>
+      <p>减小攻击面与威胁建模紧密相关，不过它解决安全问题的角度稍有不同。<br>减小攻击面通过减少攻击者利用潜在弱点或漏洞的机会来降低风险。<br>减小攻击面包括关闭或限制对系统服务的访问、应用最小权限原则以及尽可能进行分层防御。</p>
+<p>受攻击面分析:</p>
+<p>受攻击面分析：枚举所有接口、协议以及可执行代码的过程。</p>
+<p>软件的受攻击面：</p>
+<ul>
+<li>代码</li>
+<li>接口</li>
+<li>服务</li>
+<li>协议</li>
+<li>其他</li>
+</ul>
+<p>受攻击面降低：</p>
+<p>核心观点：在所有代码中存在至少一个或多个漏洞的可能性一定不为零，一部分严重漏洞会导致用户不得不接受妥协。唯一解决上述问题的方法是将代码的利用率降至为零。</p>
+<p>受攻击面降低的方法：综合考虑尽善尽美的安全与无法规避的风险二者之间的关系，尽可能减少未经信任的用户可能接触到的代码比例</p>
+<p>受攻击面降低具体方法可以概括为：</p>
+<p>降低默认执行的代码量<br>限制可访问到代码的人员范围<br>限定可访问到代码的人员身份<br>降低代码所需权限。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619215221.png" alt="image-20210619215221205"></p>
+
+        <h6 id="SDL-实践-7：威胁建模"   >
+          <a href="#SDL-实践-7：威胁建模" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 7：威胁建模*</h6>
+      <p>威胁建模用于存在重大安全风险的环境之中。<br>这一实践使开发团队可以在其计划的运行环境的背景下，以结构化方式考虑、记录并讨论设计的安全影响。<br>通过威胁建模还可以考虑组件或应用程序级别的安全问题。<br>威胁建模是一项团队活动（涉及项目经理、开发人员和测试人员），并且是软件开发设计阶段中执行的主要安全分析任务。</p>
+<p>风险分析或威胁建模的益处:</p>
+<p>有助于整个风险管理过程<br>在系统进入编码阶段前发现系统威胁<br>开发团队通过威胁建模可以重新验证其架构与设计<br>有助于进一步明确针对应用以及环境采取相应的解决对策<br>有助于指导整个代码审核过程<br>指导整个渗透测试过程</p>
+<p>威胁建模过程：</p>
+<ol>
+<li>定义应用场景</li>
+<li>收集外部依赖列表</li>
+<li>定义安全假设</li>
+<li>创建外部安全备注</li>
+<li>绘制待建模应用的一个或多个数据流图</li>
+<li>确定威胁类型</li>
+<li>识别系统威胁</li>
+<li>判断风险</li>
+<li>规划消减措施</li>
+</ol>
+
+        <h5 id="第三阶段：实施"   >
+          <a href="#第三阶段：实施" class="heading-link"><i class="fas fa-link"></i></a>第三阶段：实施</h5>
+      
+        <h6 id="SDL-实践-8：使用批准的工具"   >
+          <a href="#SDL-实践-8：使用批准的工具" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 8：使用批准的工具</h6>
+      <p>所有开发团队都应定义并发布获准工具及其关联安全检查的列表，如编译器/链接器选项和警告。<br>此列表应由项目团队的安全顾问进行批准。<br>一般而言，开发团队应尽量使用最新版本的获准工具，以利用新的安全分析功能和保护措施。</p>
+
+        <h6 id="SDL-实践-9：弃用不安全的函数"   >
+          <a href="#SDL-实践-9：弃用不安全的函数" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 9：弃用不安全的函数</h6>
+      <p>许多常用函数和 API 在当前威胁环境下并不安全。<br>项目团队应分析将与软件开发项目结合使用的所有函数和 API，并禁用确定为不安全的函数和 API。<br>确定禁用列表之后，项目团队应使用头文件（如 banned.h 和 strsafe.h）、较新的编译器或代码扫描工具来检查代码（在适当情况下还包括旧代码）中是否存在禁用函数，并使用更安全的备选函数替代这些禁用函数。</p>
+
+        <h6 id="SDL-实践-10：静态分析"   >
+          <a href="#SDL-实践-10：静态分析" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 10：静态分析</h6>
+      <p>项目团队应对源代码执行静态分析。<br>源代码静态分析为安全代码评析提供了伸缩性，可以帮助确保对安全代码策略的遵守。<br>静态代码分析本身通常不足以替代人工代码评析。<br>安全团队和安全顾问应了解静态分析工具的优点和缺点，并准备好根据需要为静态分析工具辅以其他工具或人工评析。</p>
+
+        <h5 id="第四阶段：验证"   >
+          <a href="#第四阶段：验证" class="heading-link"><i class="fas fa-link"></i></a>第四阶段：验证</h5>
+      
+        <h6 id="SDL-实践-11：动态程序分析"   >
+          <a href="#SDL-实践-11：动态程序分析" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 11：动态程序分析</h6>
+      <p>为确保程序功能按照设计方式工作，有必要对软件程序进行运行时验证。<br>此验证任务应指定一些工具，用以监控应用程序行为是否存在内存损坏、用户权限问题以及其他重要安全问题。<br>SDL 过程使用运行时工具（如 AppVerifier）以及其他方法（如模糊测试）来实现所需级别的安全测试覆盖率。</p>
+
+        <h6 id="SDL-实践-12：模糊测试"   >
+          <a href="#SDL-实践-12：模糊测试" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 12：模糊测试</h6>
+      <p>模糊测试是一种专门形式的动态分析，它通过故意向应用程序引入不良格式或随机数据诱发程序故障。<br>模糊测试策略的制定以应用程序的预期用途以及应用程序的功能和设计规范为基础。<br>安全顾问可能要求进行额外的模糊测试或扩大模糊测试的范围和增加持续时间。</p>
+
+        <h6 id="SDL-实践-13：威胁模型和攻击面评析"   >
+          <a href="#SDL-实践-13：威胁模型和攻击面评析" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 13：威胁模型和攻击面评析</h6>
+      <p>应用程序经常会严重偏离在软件开发项目要求和设计阶段所制定的功能和设计规范。<br>因此，在给定应用程序完成编码后重新评析其威胁模型和攻击面度量是非常重要的。<br>此评析可确保考虑到对系统设计或实现方面所做的全部更改，并确保因这些更改而形成的所有新攻击平台得以评析和缓解。</p>
+
+        <h5 id="第五阶段：发布"   >
+          <a href="#第五阶段：发布" class="heading-link"><i class="fas fa-link"></i></a>第五阶段：发布</h5>
+      
+        <h6 id="SDL-实践-14：事件响应计划"   >
+          <a href="#SDL-实践-14：事件响应计划" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 14：事件响应计划</h6>
+      <p>受 SDL 要求约束的每个软件发布都必须包含事件响应计划。即使在发布时不包含任何已知漏洞的程序也可能面临日后新出现的威胁。<br>事件响应计划应包括：<br>单独指定的可持续工程 (SE) 团队；或者，如果团队太小以至于无法拥有 SE 资源，则应制定紧急响应计划 (ERP)，在该计划中确定相应的工程、市场营销、通信和管理人员充当发生安全紧急事件时的首要联系点。<br>与决策机构的电话联系（7 x 24 随时可用）。<br>针对从组织中其他小组继承的代码的安全维护计划。<br>针对获得许可的第三方代码的安全维护计划，包括文件名、版本、源代码、第三方联系信息以及要更改的合同许可（如果适用）。</p>
+
+        <h6 id="SDL-实践-15：最终安全评析"   >
+          <a href="#SDL-实践-15：最终安全评析" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 15：最终安全评析</h6>
+      <p>最终安全评析 (FSR) 是在发布之前仔细检查对软件应用程序执行的所有安全活动。FSR 由安全顾问在普通开发人员以及安全和隐私团队负责人的协助下执行。FSR 不是“渗透和修补”活动，也不是用于执行以前忽略或忘记的安全活动的时机。FSR 通常要根据以前确定的质量门或 Bug 栏检查威胁模型、异常请求、工具输出和性能。</p>
+
+        <h6 id="SDL-实践-16：发布-存档"   >
+          <a href="#SDL-实践-16：发布-存档" class="heading-link"><i class="fas fa-link"></i></a>SDL 实践 16：发布/存档</h6>
+      <p>发布软件的生产版本 (RTM) 还是 Web 版本 (RTW) 取决于 SDL 过程完成时的条件。<br>指派负责发布事宜的安全顾问必须证明（使用 FSR 和其他数据）项目团队已满足安全要求。<br>同样，对于至少有一个组件具有 P1 隐私影响评级的所有产品，项目的隐私顾问必须先证明项目团队满足隐私要求，然后才能交付软件。<br>此外，必须对所有相关信息和数据进行存档，以便可以对软件进行发布后维护。<br>这些信息和数据包括所有规范、源代码、二进制文件、专用符号、威胁模型、文档、紧急响应计划、任何第三方软件的许可证和服务条款以及执行发布后维护任务所需的任何其他数据。</p>
+
+        <h4 id="可选的安全活动"   >
+          <a href="#可选的安全活动" class="heading-link"><i class="fas fa-link"></i></a>可选的安全活动</h4>
+      <ol>
+<li><p>人工代码评析</p>
+</li>
+<li><p>渗透测试</p>
+</li>
+<li><p>相似应用程序的漏洞分析</p>
+</li>
+<li><p>根本原因分析</p>
+</li>
+<li><p>过程定期更新</p>
+</li>
+</ol>
+
+        <h4 id="应用程序安全验证过程"   >
+          <a href="#应用程序安全验证过程" class="heading-link"><i class="fas fa-link"></i></a>应用程序安全验证过程</h4>
+      <p>开发安全软件的组织自然会需要一种途径来验证是否遵循了 Microsoft SDL 所规定的过程。<br>访问集中的开发和测试数据有助于在许多重要方案（如最终安全评析、SDL 要求异常处理和安全审核）中进行决策。</p>
+
+        <h2 id="测试-DREAD-模型"   >
+          <a href="#测试-DREAD-模型" class="heading-link"><i class="fas fa-link"></i></a>测试 DREAD 模型</h2>
+      <p>安全测试的方法主要包括：<br>静态测试<br>动态的测试<br>渗透测试<br>模糊测试<br>程序数据扫描</p>
+<p><strong>安全漏洞分级</strong></p>
+<p>DREAD模型：进行威胁程度级别分析的有效技术。Michael Howard 和David Leblanc在《编写安全的代码》提出。</p>
+<ol>
+<li><p>潜在的破坏（Damage potential）</p>
+<p>如果该漏洞被利用，所产生的破坏程度</p>
+</li>
+<li><p>再现性（Reproducibility）</p>
+<p>探测并利用该漏洞所需要的努力要多久</p>
+</li>
+<li><p>可利用性（Exploitability）</p>
+<p>是否需要身份鉴别？</p>
+<ol>
+<li>需要身份鉴别</li>
+<li>不需要身份鉴别，但需要难以确定的知识</li>
+<li>不需要身份鉴别，也不需要特殊的知识</li>
+</ol>
+</li>
+<li><p>受影响的用户（Affected users）</p>
+<p>漏洞利用的影响面有多大</p>
+<ol>
+<li>仅仅是特殊的配置</li>
+<li>普通情况</li>
+<li>默认用户或者大多数用户</li>
+</ol>
+</li>
+<li><p>可发现性（Discoverability）</p>
+<p>漏洞研究人员或黑客找出该漏洞的可能性</p>
+</li>
+</ol>
+
+        <h2 id="C-S-的架构的威胁分析-安全建模-变通设计"   >
+          <a href="#C-S-的架构的威胁分析-安全建模-变通设计" class="heading-link"><i class="fas fa-link"></i></a>C/S 的架构的威胁分析 安全建模 变通设计</h2>
+      <p>WEB APPLICATION 定义 : </p>
+<ol>
+<li>采用HTTP协议完成通信的应用程序</li>
+<li>与后台WEB Server实现交互的程序</li>
+<li>与互联网（Internet）服务器，包括Web Server，database server进行交互的程序</li>
+<li>位于中间层，进行数据交互或者其他服务程序</li>
+</ol>
+
+        <h3 id="威胁建模"   >
+          <a href="#威胁建模" class="heading-link"><i class="fas fa-link"></i></a>威胁建模</h3>
+      <p>威胁建模：一种用于理解和消除系统安全威胁的形式化的方法</p>
+<p>方法概述</p>
+<ol>
+<li>信息收集<ul>
+<li>定位文档（Locate written document）</li>
+<li>访问相关人员（Interview stakeholders）</li>
+<li>探查系统（Inspect system）</li>
+</ul>
+</li>
+<li>分析<ul>
+<li>用户Users</li>
+<li>构件，资产，动机 Components, assets, and motivation</li>
+<li>入口 Entry points</li>
+<li>弱点和威胁 Weaknesses and threats</li>
+</ul>
+</li>
+<li>威胁消除</li>
+</ol>
+
+        <h4 id="WEB应用威胁建模"   >
+          <a href="#WEB应用威胁建模" class="heading-link"><i class="fas fa-link"></i></a>WEB应用威胁建模</h4>
+      <ul>
+<li>活动：Web 应用程序的威胁建模</li>
+<li>目的：确定方案中的相关威胁和漏洞，以构建应用程序的安全设计。</li>
+<li>输入： <ul>
+<li>主要用例和使用方案 </li>
+<li>数据流图 </li>
+<li>数据架构 </li>
+<li>部署关系图 </li>
+</ul>
+</li>
+<li>输出： <ul>
+<li>威胁列表 </li>
+<li>漏洞列表 </li>
+</ul>
+</li>
+</ul>
+<p>威胁建模的五个主要步骤如下图所示</p>
+<p><img src="C:\Users\15727\AppData\Roaming\Typora\typora-user-images\image-20210620213106463.png" alt="image-20210620213106463" style="zoom: 50%;" /></p>
+<p>应该通过重复执行步骤 2 至步骤 5 来逐步细化威胁模型。</p>
+<p>随着应用程序开发周期的向前推进，会发现有关应用程序设计的更多内容，并能够添加更多细节。</p>
+<p>步骤 1 ：确定安全目标。目标清晰有助于将注意力集中在威胁建模活动上，以及确定后续步骤要做多少工作。<br>步骤 2 ：创建应用程序概述。逐条列出应用程序的重要特征和参与者有助于在步骤 4 中确定相关威胁。<br>步骤 3 ：分解应用程序。全面了解应用程序的结构可以更轻松地发现更相关、更具体的威胁。<br>步骤 4 ：确定威胁。使用步骤 2 和 3 中的详细信息来确定与应用程序方案和上下文相关的威胁。<br>步骤 5 ：确定漏洞。检查应用程序的各层以确定与威胁有关的弱点。使用漏洞类别来帮助关注最常出现错误的区域。 </p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>输入</strong></th>
+<th><strong>步骤</strong></th>
+<th><strong>输出</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>业务需求  安全策略  兼容性要求</td>
+<td><strong>步骤</strong> <strong>1</strong> <strong>：确定安全目标</strong></td>
+<td>主要安全目标</td>
+</tr>
+<tr>
+<td>部署关系图  用例  功能说明</td>
+<td><strong>步骤</strong> <strong>2</strong> <strong>：创建应用程序概述</strong></td>
+<td>带有端对端部署方案的白板样式关系图  主要方案  角色  技术  应用程序安全机制</td>
+</tr>
+<tr>
+<td>部署关系图  用例  功能说明  数据流关系图</td>
+<td><strong>步骤</strong> <strong>3</strong> <strong>：分解应用程序</strong></td>
+<td>信任边界  入口点  出口点  数据流</td>
+</tr>
+<tr>
+<td>常见威胁</td>
+<td><strong>步骤</strong> <strong>4</strong> <strong>：确定威胁</strong></td>
+<td>威胁列表</td>
+</tr>
+<tr>
+<td>常见漏洞</td>
+<td><strong>步骤</strong> <strong>5</strong> <strong>：确定漏洞</strong></td>
+<td>漏洞列表</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="威胁分析"   >
+          <a href="#威胁分析" class="heading-link"><i class="fas fa-link"></i></a>威胁分析</h3>
+      
+        <h4 id="WEB应用安全框架"   >
+          <a href="#WEB应用安全框架" class="heading-link"><i class="fas fa-link"></i></a>WEB应用安全框架</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入和数据验证</td>
+<td>如何知道应用程序接收的输入是有效且安全的呢？输入验证是指应用程序在进行其他处理之前如何筛选、删除或拒绝输入。</td>
+</tr>
+<tr>
+<td>身份验证</td>
+<td>是谁？身份验证是一个实体验证另一个实体身份的过程，通常通过凭据进行，例如用户名和密码。</td>
+</tr>
+<tr>
+<td>授权</td>
+<td>可以做什么？授权是应用程序提供对资源和操作的访问控制的方式。</td>
+</tr>
+<tr>
+<td>配置管理</td>
+<td>应用程序以谁的身份运行？它连接到哪个数据库？如何管理应用程序？如何保护这些设置？配置管理指的是应用程序如何处理这些操作问题。</td>
+</tr>
+<tr>
+<td>敏感数据</td>
+<td>应用程序如何处理敏感数据？敏感数据是指应用程序如何处理必须受到保护的所有数据，不管数据是在内存中、网络上还是永久性存储中。</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>应用程序如何处理和保护用户会话？会话是指用户与Web 应用程序之间的一系列相关交互。</td>
+</tr>
+<tr>
+<td>加密</td>
+<td>如何保持机密（保密性）？如何防止他人篡改数据或库（完整性）？如何为必须具有很强机密性的随机值提供种子？加密是指应用程序保证机密性和完整性的方式。</td>
+</tr>
+<tr>
+<td>参数操作</td>
+<td>应用程序如何操作参数值？对于应用程序，表单域、查询字符串参数和 cookie 值经常作为参数使用。参数操作既指应用程序保护这些值不被篡改的方式，也指应用程序处理输入参数的方式。</td>
+</tr>
+<tr>
+<td>异常管理</td>
+<td>当应用程序中的一个方法调用失败时，应用程序会做什么？显示了多少？是否将错误信息友好地返回给最终用户？是否将有价值的异常信息传递给调用方？应用程序的失败方式是否友好？</td>
+</tr>
+<tr>
+<td>审核与记录</td>
+<td>谁在什么时候做了什么？审核与记录是指应用程序记录与安全相关的事件的方式。</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="WEB应用安全框架漏洞"   >
+          <a href="#WEB应用安全框架漏洞" class="heading-link"><i class="fas fa-link"></i></a>WEB应用安全框架漏洞</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th>漏洞</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入和数据验证</td>
+<td>在超文本标记语言 (HTML) 输出流中使用未经验证的输入<br/>使用用于生成 SQL 查询的未经验证的输入依赖于客户端验证<br/>使用输入文件名、URL 或用户名进行安全决策<br/>对于恶意输入，只使用应用程序筛选器<br/>查找输入的已知无效模式</td>
+</tr>
+<tr>
+<td>身份验证</td>
+<td>使用较弱的密码<br/>在配置文件中存储明文凭据<br/>通过网络传递明文凭据<br/>允许越权帐户<br/>允许延长的会话周期<br/>将个人设置与身份验证混合</td>
+</tr>
+<tr>
+<td>授权</td>
+<td>依赖单一网关<br/>无法根据应用程序标识锁定系统资源<br/>无法限制对指定存储过程的数据库访问<br/>使用不合适的权限分离</td>
+</tr>
+<tr>
+<td>配置管理</td>
+<td>使用不安全的管理界面<br/>使用不安全的配置存储<br/>存储明文配置数据<br/>拥有太多管理员<br/>使用越权进程帐户和服务帐户</td>
+</tr>
+<tr>
+<td>敏感数据</td>
+<td>在不需要时存储机密信息<br/>在代码中存储机密信息<br/>以明文形式存储机密信息<br/>在网络上以明文形式传递敏感数据</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>通过未加密的信道传递会话标识符<br/>允许延长的会话周期<br/>拥有不安全的会话状态存储<br/>在查询字符串中放置会话标识符</td>
+</tr>
+<tr>
+<td>加密</td>
+<td>使用自定义加密<br/>使用的算法不正确，或者密钥长度太短<br/>无法保护加密密钥<br/>在延长的时间内使用同一密钥<br/>以不安全的方式分配密钥</td>
+</tr>
+<tr>
+<td>参数操作</td>
+<td>无法验证所有输入参数<br/>在未加密的 cookie 中存储敏感数据<br/>在查询字符串和表单域中存储敏感数据<br/>信任 HTTP 标头信息<br/>使用无保护的视图状态</td>
+</tr>
+<tr>
+<td>异常管理</td>
+<td>无法使用结构化异常处理<br/>显示太多的信息给客户端</td>
+</tr>
+<tr>
+<td>审核与记录</td>
+<td>无法审核失败的登录<br/>无法保护审核文件<br/>无法跨应用程序层进行审核</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="Web-应用程序安全框架的威胁和攻击"   >
+          <a href="#Web-应用程序安全框架的威胁和攻击" class="heading-link"><i class="fas fa-link"></i></a>Web 应用程序安全框架的威胁和攻击</h3>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th>漏洞</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入和数据验证</td>
+<td>缓冲区溢出<br/>跨站点脚本<br/>SQL 注入<br/>标准化攻击</td>
+</tr>
+<tr>
+<td>身份验证</td>
+<td>网络窃听<br/>强力攻击<br/>字典攻击<br/>Cookie 重播攻击<br/>盗窃凭据</td>
+</tr>
+<tr>
+<td>授权</td>
+<td>提升特权<br/>泄漏机密数据<br/>篡改数据<br/>引诱攻击</td>
+</tr>
+<tr>
+<td>配置管理</td>
+<td>未经授权访问管理界面<br/>未经授权访问配置存储<br/>检索明文配置机密信息<br/>缺乏个人问责制<br/>越权的进程和服务帐户</td>
+</tr>
+<tr>
+<td>敏感数据</td>
+<td>访问存储中的敏感数据<br/>访问内存中的敏感数据（包括进程转储）<br/>网络侦听<br/>信息泄漏</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>会话攻击<br/>会话重播<br/>中间人攻击</td>
+</tr>
+<tr>
+<td>加密</td>
+<td>丢失解密密钥<br/>加密破解</td>
+</tr>
+<tr>
+<td>参数操作</td>
+<td>查询字符串操作<br/>表单域操作<br/>Cookie 操作<br/>HTTP 标头操作</td>
+</tr>
+<tr>
+<td>异常管理</td>
+<td>显示敏感系统或应用程序细节<br/>拒绝服务攻击</td>
+</tr>
+<tr>
+<td>审核与记录</td>
+<td>用户拒绝执行某项操作<br/>攻击者利用了某个应用程序而没有留下踪迹<br/>攻击者可以掩盖他的踪迹</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="Web-应用程序安全框架组织的对策"   >
+          <a href="#Web-应用程序安全框架组织的对策" class="heading-link"><i class="fas fa-link"></i></a>Web 应用程序安全框架组织的对策</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>类别</strong></th>
+<th>漏洞</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入和数据验证</td>
+<td>不要信任输入。<br/>验证输入：长度、范围、格式和类型。<br/>限制、拒绝和净化输入。<br/>对输出进行编码。</td>
+</tr>
+<tr>
+<td>身份验证</td>
+<td>使用强密码策略。<br/>不要存储凭据。<br/>使用不需要通过网络传递明文凭据的身份验证机制。<br/>对通信信道进行加密以保护身份验证令牌。<br/>HTTPS 只与窗体身份验证 cookie 一起使用。<br/>将匿名验证从已验证的页面中分离出来。</td>
+</tr>
+<tr>
+<td>授权</td>
+<td>使用具有最少权限的帐户。<br/>考虑访问细分粒度。<br/>实行权限分离。<br/>使用多个网关。<br/>根据系统标识保护系统资源。</td>
+</tr>
+<tr>
+<td>配置管理</td>
+<td>未经授权访问管理界面<br/>未经授权访问配置存储<br/>检索明文配置机密信息<br/>缺乏个人问责制<br/>越权的进程和服务帐户</td>
+</tr>
+<tr>
+<td>敏感数据</td>
+<td>不要在软件中存储机密信息。<br/>加密通过网络传递的敏感数据。<br/>保护信道</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>按照匿名用户、已标识用户和经过身份验证的用户划分站点。<br/>减少会话超时。<br/>避免在会话存储中存储敏感数据。<br/>保护通往会话存储的信道。<br/>验证和授权对会话存储的访问。</td>
+</tr>
+<tr>
+<td>加密</td>
+<td>不要开发和使用专用算法（XOR 不是加密。使用平台提供的加密算法）。<br/>使用 RNGCryptoServiceProvider 方法生成随机数字。<br/>避免密钥管理。在适当的地方使用 Windows 数据保护 API (DPAPI)。<br/>定期更改您的密钥。</td>
+</tr>
+<tr>
+<td>参数操作</td>
+<td>不要信任客户端可以操作的字段。这些字段包括查询字符串、表单域、cookie 值以及 HTTP 标头。</td>
+</tr>
+<tr>
+<td>异常管理</td>
+<td>使用结构化异常处理（通过使用 try/catch 块）。<br/>只有在操作添加值/信息时才捕获和包装异常。<br/>不要显示敏感系统或应用程序信息。<br/>不要记录私人数据，例如密码。</td>
+</tr>
+<tr>
+<td>审核与记录</td>
+<td>识别恶意行为。<br/>了解基线（了解什么是良好的业务流）。<br/>使用应用程序规范公开可以监视的行为。</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="一个WEB应用安全模型方法"   >
+          <a href="#一个WEB应用安全模型方法" class="heading-link"><i class="fas fa-link"></i></a>一个WEB应用安全模型方法</h3>
+      <p>威胁建模：<br>一种用于理解和消除系统安全威胁的形式化的方法</p>
+
+        <h4 id="信息收集"   >
+          <a href="#信息收集" class="heading-link"><i class="fas fa-link"></i></a>信息收集</h4>
+      <p>定位文档（Locate written document）<br>访问相关人员（Interview stakeholders）<br>探查系统（Inspect system）</p>
+
+        <h4 id="分析"   >
+          <a href="#分析" class="heading-link"><i class="fas fa-link"></i></a>分析</h4>
+      <p>用户Users<br>构件，资产，动机 Components, assets, and motivation<br>入口 Entry points<br>弱点和威胁 Weaknesses and threats</p>
+
+        <h4 id="威胁消除"   >
+          <a href="#威胁消除" class="heading-link"><i class="fas fa-link"></i></a>威胁消除</h4>
+      <p>建立预算 Establish your budget.<br>排序处理 Rank threats using a model that works for you.<br>确立针对威胁的工作 Decide what to do with threats.</p>
+
+        <h5 id="消除-选择"   >
+          <a href="#消除-选择" class="heading-link"><i class="fas fa-link"></i></a>消除: 选择</h5>
+      <p>忽略 Ignore risk. (Popular choice!)<br>消除 Mitigate risk.<br>入侵代价昂贵<br>安全代价昂贵<br>能够承受？<br>接受 Accept risk.</p>
+
+        <h5 id="消除-策略"   >
+          <a href="#消除-策略" class="heading-link"><i class="fas fa-link"></i></a>消除: 策略</h5>
+      <p>移除入口点.<br>减少攻击面.<br>区分.<br>最小优先权（权限）原则</p>
+
+        <h5 id="技巧"   >
+          <a href="#技巧" class="heading-link"><i class="fas fa-link"></i></a>技巧</h5>
+      <p>不要过度宽泛以避免不能自拔。建立子模型分支以处理复杂性。<br>多数WEB APP具有共性-开发可重用的威胁模型库。<br>由一个草稿开始（scratch），并且不要做任何假定。消除多数明显的（foolproof）威胁将导致简单的操作过程.</p>
+
+        <h3 id="安全设计-1"   >
+          <a href="#安全设计-1" class="heading-link"><i class="fas fa-link"></i></a>安全设计</h3>
+      <p>根据安全目标，敏感数据，威胁分析的内容，实现安全设计。包括架构，安全问题的应对措施等。</p>
+<p>需明确：</p>
+<ol>
+<li>系统架构与安全性问题</li>
+<li>安全问题及其应对措施</li>
+<li>架构与安全目标的响应</li>
+<li>敏感数据的保护措施</li>
+<li>威胁的应对措施 </li>
+</ol>
+
+        <h1 id="考题预测"   >
+          <a href="#考题预测" class="heading-link"><i class="fas fa-link"></i></a>考题预测</h1>
+      <blockquote>
+<p>1、所有课程里面涉及的内容都是要求的</p>
+<p>2、卷面4个大题</p>
+<p>3、题目类型涉及OBE要求的四个方面：安全概念和意识，威胁及分析，安全工程，安全设计</p>
+<p>4、概念，问答，分析设计</p>
+</blockquote>
+
+        <h2 id="安全概念和意识"   >
+          <a href="#安全概念和意识" class="heading-link"><i class="fas fa-link"></i></a>安全概念和意识</h2>
+      
+        <h2 id="威胁及分析"   >
+          <a href="#威胁及分析" class="heading-link"><i class="fas fa-link"></i></a>威胁及分析</h2>
+      
+        <h3 id="常见威胁和避免方式OWE"   >
+          <a href="#常见威胁和避免方式OWE" class="heading-link"><i class="fas fa-link"></i></a>常见威胁和避免方式OWE</h3>
+      
+        <h2 id="安全工程"   >
+          <a href="#安全工程" class="heading-link"><i class="fas fa-link"></i></a>安全工程</h2>
+      
+        <h3 id="SDL安全生命周期"   >
+          <a href="#SDL安全生命周期" class="heading-link"><i class="fas fa-link"></i></a>SDL安全生命周期</h3>
+      
+        <h3 id="一个WEB应用安全模型方法-1"   >
+          <a href="#一个WEB应用安全模型方法-1" class="heading-link"><i class="fas fa-link"></i></a>一个WEB应用安全模型方法</h3>
+      
+        <h2 id="安全设计-2"   >
+          <a href="#安全设计-2" class="heading-link"><i class="fas fa-link"></i></a>安全设计</h2>
+      
+        <h3 id="如何设计一个安全的电商系统"   >
+          <a href="#如何设计一个安全的电商系统" class="heading-link"><i class="fas fa-link"></i></a>如何设计一个安全的电商系统</h3>
+      
+        <h2 id="课程目标"   >
+          <a href="#课程目标" class="heading-link"><i class="fas fa-link"></i></a>课程目标</h2>
+      <ol>
+<li><p>掌握<strong>软件安全的概念和研究内容</strong>；</p>
+</li>
+<li><p>了解软件安全的研究前沿；</p>
+</li>
+<li><p>了解软件安全对信息环境安全的影响；</p>
+</li>
+<li><p>掌握软件安全工程的<strong>基本概念</strong>；</p>
+<p>SE-CMM能力级别</p>
+<ol>
+<li>非正式执行</li>
+<li>计划与跟踪</li>
+<li>充分定义</li>
+<li>定量控制</li>
+<li>连续改进</li>
+</ol>
+<p>简化SDL的流程</p>
+</li>
+<li><p>掌握基本的软件安全<strong>设计原则</strong>；</p>
+<p><strong>常见安全设计原则：</strong></p>
+<ul>
+<li>经济机制：代码尽可能简单、紧凑。软件愈复杂，出现安全BUG的可能性愈高。</li>
+<li>默认失效保护：任何请求缺省应加以拒绝。</li>
+<li>安全中介：每个访问受保护对象的行为应当被检查。</li>
+<li>公开设计：与“不公开即安全”的原则相对应。设计自身不应具有神秘感。</li>
+<li>权限分离：切勿允许基于单一条件的操作过程。</li>
+<li>最小特权：只授予执行操作所必须的最小特权。</li>
+<li>最少公共机制：使公共资源尽可能少。</li>
+<li>心理可接受程度：安全产品与技术是否容易使用？用户能否接受？与UI的密切配合。</li>
+</ul>
+</li>
+<li><p>掌握软件安全<strong>测试的方法</strong></p>
+<ol>
+<li>安全测试的方法<ul>
+<li>静态测试</li>
+<li>动态测试</li>
+<li>渗透测试</li>
+<li>模糊测试</li>
+<li>程序数据扫描</li>
+</ul>
+</li>
+<li>安全测试的主要内容<ul>
+<li>程序安全性测试</li>
+<li>数据安全性测试</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+        <h1 id="参考资料"   >
+          <a href="#参考资料" class="heading-link"><i class="fas fa-link"></i></a>参考资料</h1>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/hack404/p/10447122.html" >https://www.cnblogs.com/hack404/p/10447122.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>keep curious, keep learning</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2004%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8UESTC/">http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2004%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8UESTC/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/">标签</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/07/11/%E5%A4%A7%E5%89%8D%E7%AB%AF/React%E7%94%9F%E6%80%81%20-%2001%20redux-sage%E6%BA%90%E7%A0%81%E5%88%B0sage-duck/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">React生态 - 01 redux-sage源码到sage-duck</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2006%20%5B%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA%5D%20%E8%AE%BE%E8%AE%A1%E5%AE%89%E5%85%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%94%BB%E5%87%BB%E9%9D%A2%E5%88%86%E6%9E%90%20-%20%E5%89%AF%E6%9C%AC/"><span class="paginator-prev__text">软件安全 - 06 [软件安全理论] 设计安全的系统和攻击面分析</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8-04-%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA-%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8-UESTC"><span class="toc-text">
+          软件安全 - 04 [软件安全理论] 软件安全 UESTC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87%E5%92%8C%E8%AF%BE%E7%A8%8B%E5%AE%89%E6%8E%92"><span class="toc-text">
+          课程目标和课程安排</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E6%A6%82%E5%BF%B5%E5%92%8C%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-text">
+          软件安全概念和重要性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">
+          软件安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8"><span class="toc-text">
+          软件安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E5%B1%9E%E6%80%A7"><span class="toc-text">
+          软件安全属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4%E4%BB%80%E4%B9%88"><span class="toc-text">
+          软件安全保护什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E6%89%80%E6%8E%A2%E8%AE%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">
+          软件安全所探讨的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-text">
+          软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF"><span class="toc-text">
+          信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8"><span class="toc-text">
+          信息安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISO-7498-2-%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%BC%80%E6%94%BE%E7%B3%BB%E7%BB%9F%E4%BA%92%E8%BF%9E-%E5%9F%BA%E6%9C%AC%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          ISO 7498 - 2 信息处理系统. 开放系统互连.基本参考模型.</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%A7%8D%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">
+          5 种安全服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E7%A7%8D%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="toc-text">
+          8 种安全机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          安全设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E7%9B%AE%E7%9A%84"><span class="toc-text">
+          安全设计目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%9C%BA%E6%99%AF"><span class="toc-text">
+          产生安全问题场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          软件安全工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%9B%AE%E6%A0%87%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%9B%AE%E6%A0%87"><span class="toc-text">
+          软件目标和软件安全目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%BE%97%E5%88%B0%E5%AE%89%E5%85%A8%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-text">
+          如何得到安全的软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E-%E8%84%86%E5%BC%B1%E6%80%A7-%E6%94%BB%E5%87%BB"><span class="toc-text">
+          漏洞 脆弱性 攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E"><span class="toc-text">
+          漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%86%E5%BC%B1%E6%80%A7"><span class="toc-text">
+          脆弱性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%86%E5%BC%B1%E7%8A%B6%E6%80%81"><span class="toc-text">
+          脆弱状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB"><span class="toc-text">
+          攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%9A%84%E6%9C%AC%E8%B4%A8-%E6%B8%97%E9%80%8F-%E5%AE%89%E5%85%A8%E4%BA%8B%E4%BB%B6"><span class="toc-text">
+          漏洞的本质 渗透 安全事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ISO9126-%E6%A0%87%E5%87%86%EF%BC%9A%E8%BD%AF%E4%BB%B6%E4%BA%A7%E5%93%81%E8%AF%84%E4%BB%B7%EF%BC%8D%E8%B4%A8%E9%87%8F%E7%89%B9%E6%80%A7%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-text">
+          ISO9126 标准：软件产品评价－质量特性及其使用指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%AE%89%E5%85%A8%E7%9A%84"><span class="toc-text">
+          什么样的软件是安全的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%88secure-code%EF%BC%89"><span class="toc-text">
+          安全的代码（secure code）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E4%BB%A3%E7%A0%81%EF%BC%88security-code%EF%BC%89"><span class="toc-text">
+          安全性代码（security code）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%98%AF%E2%80%9C%E5%AE%89%E5%85%A8%E7%9A%84%E2%80%9D"><span class="toc-text">
+          程序是“安全的”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%9A%84%E8%8B%B1%E6%96%87-%E8%BE%A8%E6%9E%90-security-reliablity-safety"><span class="toc-text">
+          软件安全的英文 辨析 security reliablity safety</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8C%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90"><span class="toc-text">
+          典型的安全问题和威胁分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="toc-text">
+          安全问题的来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">
+          产生漏洞的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E9%99%B7"><span class="toc-text">
+          缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%BD%AF%E4%BB%B6%E6%BC%8F%E6%B4%9E"><span class="toc-text">
+          常见软件漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E9%97%AE%E9%A2%98"><span class="toc-text">
+          常见的安全设计问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E8%B4%A5%E7%AC%94"><span class="toc-text">
+          1. 密码技术使用的败笔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AF%B9%E7%94%A8%E6%88%B7%E5%8F%8A%E5%85%B6%E8%AE%B8%E5%8F%AF%E6%9D%83%E9%99%90%E8%BF%9B%E8%A1%8C%E8%B7%9F%E8%B8%AA%E7%9A%84%E8%96%84%E5%BC%B1%E6%88%96%E7%BC%BA%E5%A4%B1"><span class="toc-text">
+          2. 对用户及其许可权限进行跟踪的薄弱或缺失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%89%E7%BC%BA%E9%99%B7%E7%9A%84%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="toc-text">
+          3. 有缺陷的输入验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%96%84%E5%BC%B1%E7%9A%84%E7%BB%93%E6%9E%84%E6%80%A7%E5%AE%89%E5%85%A8"><span class="toc-text">
+          4. 薄弱的结构性安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7"><span class="toc-text">
+          5. 其他设计缺陷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E9%97%AE%E9%A2%98-C-C-%E4%B8%BA%E4%BE%8B"><span class="toc-text">
+          编程语言的问题(C&#x2F;C++为例)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%981%EF%BC%9A%E6%B2%A1%E6%9C%89%E5%AE%89%E5%85%A8%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%8C%E4%B9%9F%E6%B2%A1%E6%9C%89%E5%AE%89%E5%85%A8%E8%80%8C%E6%98%93%E7%94%A8%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E3%80%82"><span class="toc-text">
+          问题1：没有安全的本地字符串类型，也没有安全而易用的字符串处理函数。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%EF%BC%9A%E7%BC%93%E5%86%B2%E5%8C%BA%E8%B6%85%E9%99%90%E8%A6%86%E7%9B%96%E6%A0%88%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="toc-text">
+          问题2：缓冲区超限覆盖栈中的函数返回地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%983%EF%BC%9Aprintf%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0%EF%BC%8D%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%94%BB%E5%87%BB"><span class="toc-text">
+          问题3：printf类型的格式化函数－格式化字符串攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%984%EF%BC%9A%E6%95%B4%E6%95%B0%E6%BA%A2%E5%87%BA"><span class="toc-text">
+          问题4：整数溢出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E9%97%AE%E9%A2%98-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%BA%E4%BB%A3%E8%A1%A8"><span class="toc-text">
+          平台的实现问题( 操作系统为代表 )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%981%EF%BC%9A%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5"><span class="toc-text">
+          问题1：符号链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%EF%BC%9A%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="toc-text">
+          问题2：目录遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%983%EF%BC%9A%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2"><span class="toc-text">
+          问题3：字符转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#owaft-top-10-%E5%B8%B8%E8%A7%81%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">
+          owaft top 10 ( 常见安全问题 )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B3%A8%E5%85%A5"><span class="toc-text">
+          1. 注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%B1%E6%95%88%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%92%8C%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.失效身份验证和会话管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-text">
+          3.敏感信息泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-XML-%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%EF%BC%88XXE%EF%BC%89"><span class="toc-text">
+          4.XML 外部实体注入攻击（XXE）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%B1%E6%95%88%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-text">
+          5.失效访问控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E9%94%99%E8%AF%AF%E9%85%8D%E7%BD%AE"><span class="toc-text">
+          6.安全性错误配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Cross-Site-Scripting-XSS"><span class="toc-text">
+          7.Cross-Site-Scripting(XSS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">
+          8.不安全的反序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%BD%BF%E7%94%A8%E5%85%B7%E6%9C%89%E5%B7%B2%E7%9F%A5%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-text">
+          9.使用具有已知漏洞的组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E5%92%8C%E7%9B%91%E6%8E%A7%E4%B8%8D%E8%B6%B3"><span class="toc-text">
+          10.日志记录和监控不足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95-%E5%BE%AE%E8%BD%AF-STRIDE-%E5%BB%BA%E6%A8%A1"><span class="toc-text">
+          软件安全分析方法 ( 微软 STRIDE 建模 )</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SDL-%E5%92%8C%E7%AE%80%E5%8C%96-SDL"><span class="toc-text">
+          SDL 和简化 SDL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SDL%E6%A6%82%E8%A7%88"><span class="toc-text">
+          SDL概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SDL%E4%BB%8E%E4%B8%89%E4%B8%AA%E6%96%B9%E9%9D%A2%E8%80%83%E8%99%91%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%9A%84%E4%BF%9D%E9%9A%9C"><span class="toc-text">
+          SDL从三个方面考虑软件安全的保障</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SDL-%E5%9F%BA%E4%BA%8E%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">
+          SDL 基于三个核心概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SDL%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">
+          SDL适用范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDL-%E6%B5%81%E7%A8%8B%E6%AD%A5%E9%AA%A4"><span class="toc-text">
+          SDL 流程步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="toc-text">
+          常见安全设计原则：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96SDL%E6%B5%81%E7%A8%8B%E5%AE%9E%E6%96%BD"><span class="toc-text">
+          简化SDL流程实施</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9B%B8%E5%85%B3%E4%BA%BA%E5%91%98%E7%9A%84%E8%A7%92%E8%89%B2%E5%92%8C%E8%81%8C%E8%B4%A3"><span class="toc-text">
+          应用程序开发过程中相关人员的角色和职责</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%85%E9%9C%80%E7%9A%84%E5%AE%89%E5%85%A8%E6%B4%BB%E5%8A%A8"><span class="toc-text">
+          必需的安全活动</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SDL-%E5%AE%9E%E6%96%BD%E5%89%8D%E8%A6%81%E6%B1%82%EF%BC%9A%E5%AE%89%E5%85%A8%E5%9F%B9%E8%AE%AD"><span class="toc-text">
+          SDL 实施前要求：安全培训</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%9C%80%E6%B1%82"><span class="toc-text">
+          第一阶段：需求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          第二阶段：设计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%AE%9E%E6%96%BD"><span class="toc-text">
+          第三阶段：实施</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%AA%8C%E8%AF%81"><span class="toc-text">
+          第四阶段：验证</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%8F%91%E5%B8%83"><span class="toc-text">
+          第五阶段：发布</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E7%9A%84%E5%AE%89%E5%85%A8%E6%B4%BB%E5%8A%A8"><span class="toc-text">
+          可选的安全活动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%AE%89%E5%85%A8%E9%AA%8C%E8%AF%81%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          应用程序安全验证过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-DREAD-%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          测试 DREAD 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-S-%E7%9A%84%E6%9E%B6%E6%9E%84%E7%9A%84%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90-%E5%AE%89%E5%85%A8%E5%BB%BA%E6%A8%A1-%E5%8F%98%E9%80%9A%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          C&#x2F;S 的架构的威胁分析 安全建模 变通设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1"><span class="toc-text">
+          威胁建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WEB%E5%BA%94%E7%94%A8%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1"><span class="toc-text">
+          WEB应用威胁建模</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90"><span class="toc-text">
+          威胁分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WEB%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6"><span class="toc-text">
+          WEB应用安全框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WEB%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E"><span class="toc-text">
+          WEB应用安全框架漏洞</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6%E7%9A%84%E5%A8%81%E8%83%81%E5%92%8C%E6%94%BB%E5%87%BB"><span class="toc-text">
+          Web 应用程序安全框架的威胁和攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Web-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6%E7%BB%84%E7%BB%87%E7%9A%84%E5%AF%B9%E7%AD%96"><span class="toc-text">
+          Web 应用程序安全框架组织的对策</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AAWEB%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">
+          一个WEB应用安全模型方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">
+          信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">
+          分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E6%B6%88%E9%99%A4"><span class="toc-text">
+          威胁消除</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B6%88%E9%99%A4-%E9%80%89%E6%8B%A9"><span class="toc-text">
+          消除: 选择</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B6%88%E9%99%A4-%E7%AD%96%E7%95%A5"><span class="toc-text">
+          消除: 策略</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%80%E5%B7%A7"><span class="toc-text">
+          技巧</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1-1"><span class="toc-text">
+          安全设计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%83%E9%A2%98%E9%A2%84%E6%B5%8B"><span class="toc-text">
+          考题预测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%A6%82%E5%BF%B5%E5%92%8C%E6%84%8F%E8%AF%86"><span class="toc-text">
+          安全概念和意识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E5%8F%8A%E5%88%86%E6%9E%90"><span class="toc-text">
+          威胁及分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%A8%81%E8%83%81%E5%92%8C%E9%81%BF%E5%85%8D%E6%96%B9%E5%BC%8FOWE"><span class="toc-text">
+          常见威胁和避免方式OWE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          安全工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SDL%E5%AE%89%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">
+          SDL安全生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AAWEB%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95-1"><span class="toc-text">
+          一个WEB应用安全模型方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1-2"><span class="toc-text">
+          安全设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%AE%89%E5%85%A8%E7%9A%84%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F"><span class="toc-text">
+          如何设计一个安全的电商系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="toc-text">
+          课程目标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">
+          参考资料</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

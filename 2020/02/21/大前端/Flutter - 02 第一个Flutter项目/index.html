@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="Flutter - 02 初识Flutter项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter - 02 初识Flutter项目">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/02/21/%E5%A4%A7%E5%89%8D%E7%AB%AF/Flutter%20-%2002%20%E7%AC%AC%E4%B8%80%E4%B8%AAFlutter%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="Flutter - 02 初识Flutter项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165413.svg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165546.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165843.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218170405.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218170853.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218170049.png">
+<meta property="article:published_time" content="2020-02-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-21T14:00:36.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="Flutter">
+<meta property="article:tag" content="Dart">
+<meta property="article:tag" content="大前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165413.svg"><title>Flutter - 02 初识Flutter项目 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/02/21/%E5%A4%A7%E5%89%8D%E7%AB%AF/Flutter%20-%2002%20%E7%AC%AC%E4%B8%80%E4%B8%AAFlutter%E9%A1%B9%E7%9B%AE/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Flutter - 02 初识Flutter项目</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-02-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-02-21</span></span></div></header><div class="post-body">
+        <h1 id="Flutter-02-初识Flutter项目"   >
+          <a href="#Flutter-02-初识Flutter项目" class="heading-link"><i class="fas fa-link"></i></a>Flutter - 02 初识Flutter项目</h1>
+      
+        <h1 id="2019091618013-左健甫"   >
+          <a href="#2019091618013-左健甫" class="heading-link"><i class="fas fa-link"></i></a>2019091618013 左健甫</h1>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165413.svg" alt="face"></p>
+<p>从零开始构建一个flutter项目</p>
+<span id="more"></span>
+
+        <h2 id="0-了解Android-Studio"   >
+          <a href="#0-了解Android-Studio" class="heading-link"><i class="fas fa-link"></i></a>0. 了解Android Studio</h2>
+      <p>左侧</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165546.png" alt="image-20201218165546845"></p>
+<p>右侧</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218165843.png" alt="image-20201218165843836"></p>
+
+        <h2 id="1-更换项目图标和应用名称"   >
+          <a href="#1-更换项目图标和应用名称" class="heading-link"><i class="fas fa-link"></i></a>1. 更换项目图标和应用名称</h2>
+      
+        <h3 id="1-1-安卓"   >
+          <a href="#1-1-安卓" class="heading-link"><i class="fas fa-link"></i></a>1.1 安卓</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218170405.png" alt="image-20201218170404961"></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:icon=&quot;你的图片&quot;</span><br></pre></td></tr></table></div></figure>
+<p><strong>使用svg图</strong></p>
+<ol>
+<li><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218170853.png" alt="image-20201218170853189"></p>
+</li>
+<li><p>改后缀为xml</p>
+</li>
+</ol>
+<p>修该名称</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:label=&quot;xxx&quot;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-2-ios"   >
+          <a href="#1-2-ios" class="heading-link"><i class="fas fa-link"></i></a>1.2 ios</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201218170049.png" alt="image-20201218170049669"></p>
+<p>drawer : <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/728692143b09" >https://www.jianshu.com/p/728692143b09</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>appbar: <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/88ab76d9b641" >https://www.jianshu.com/p/88ab76d9b641</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>appbar : <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37697590" >https://zhuanlan.zhihu.com/p/37697590</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>appbar自定义: <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34214500/article/details/91363610" >https://blog.csdn.net/weixin_34214500/article/details/91363610</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>包裹builder: <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/fd14c3d7438d" >https://www.jianshu.com/p/fd14c3d7438d</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/02/21/%E5%A4%A7%E5%89%8D%E7%AB%AF/Flutter%20-%2002%20%E7%AC%AC%E4%B8%80%E4%B8%AAFlutter%E9%A1%B9%E7%9B%AE/">http://zjeff-953.gitee.io/zjeff/2020/02/21/%E5%A4%A7%E5%89%8D%E7%AB%AF/Flutter%20-%2002%20%E7%AC%AC%E4%B8%80%E4%B8%AAFlutter%E9%A1%B9%E7%9B%AE/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/Flutter/">Flutter</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/Dart/">Dart</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/02/26/%E5%A4%A7%E5%89%8D%E7%AB%AF/Flutter%20-%2001%20%E5%BC%80%E5%A7%8BFlutter/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Flutter - 01  开始Flutter</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/02/20/%E5%A4%A7%E5%89%8D%E7%AB%AF/Vue%20-%2002%20%E8%AE%A4%E8%AF%86vue/"><span class="paginator-prev__text">Vue - 02 认识Vue</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flutter-02-%E5%88%9D%E8%AF%86Flutter%E9%A1%B9%E7%9B%AE"><span class="toc-text">
+          Flutter - 02 初识Flutter项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2019091618013-%E5%B7%A6%E5%81%A5%E7%94%AB"><span class="toc-text">
+          2019091618013 左健甫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E4%BA%86%E8%A7%A3Android-Studio"><span class="toc-text">
+          0. 了解Android Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9B%B4%E6%8D%A2%E9%A1%B9%E7%9B%AE%E5%9B%BE%E6%A0%87%E5%92%8C%E5%BA%94%E7%94%A8%E5%90%8D%E7%A7%B0"><span class="toc-text">
+          1. 更换项目图标和应用名称</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AE%89%E5%8D%93"><span class="toc-text">
+          1.1 安卓</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-ios"><span class="toc-text">
+          1.2 ios</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jeff&#39;s blog">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2001%20%E5%BC%80%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%BA%93%20,%20%E4%BD%BF%E7%94%A8DDL/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517171234.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517170321.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517170554.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517170922.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174206.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517175059.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174513.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174727.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517180055.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174800.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518210812.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518211024.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518211807.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518212554.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518215422.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518221207.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518221538.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522084923.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522090658.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522091702.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522093005.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522093239.png">
+<meta property="article:published_time" content="2021-10-12T06:34:24.930Z">
+<meta property="article:modified_time" content="2021-06-02T13:16:52.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517171234.png"><title>[ 文章无标题 ] | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2001%20%E5%BC%80%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%BA%93%20,%20%E4%BD%BF%E7%94%A8DDL/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">[ 文章无标题 ]</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-02</span></span></div></header><div class="post-body">
+        <h1 id="Database-PostgreSQL-01-开始数据库-使用DDL"   >
+          <a href="#Database-PostgreSQL-01-开始数据库-使用DDL" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 01 开始数据库 , 使用DDL</h1>
+      <p>数据库就是方便编程的excel, 他为了方便编程牺牲了很多展示上的优化, 效率高, 编程方便, 主要就是存数据, 并约定一系列约束和操作范式, 提高效率, 减少错误和冗余. 开始数据库将会介绍最基本的数据库使用方法和数据定义语言的使用. </p>
+<span id="more"></span>
+<p>数据库根据涉及可以大致划分为关系型和非关系型, 关系型中限制更多, 但是表示数据的关系更好, 出现错误冲突的几率更小, 非关系型主要是因为有的数据其实准确性不是太重要, 尤其是大数据时代很多数据都是没啥用的, 所以非关系型就是习生规范和范式, 提高读写效率的数据库, 关系型更复杂, 概念比较多, 需要系统学习(主要是概念和思想, 语句看文档) , 非关系型形态各异, 遇到了再看文档可以触类旁通.</p>
+<p>[TOC]</p>
+
+        <h2 id="1-UESTC数据库学习目标"   >
+          <a href="#1-UESTC数据库学习目标" class="heading-link"><i class="fas fa-link"></i></a>1. UESTC数据库学习目标</h2>
+      
+        <h3 id="1-1-学习内容"   >
+          <a href="#1-1-学习内容" class="heading-link"><i class="fas fa-link"></i></a>1.1 学习内容</h3>
+      <ol>
+<li>掌握数据库系统<strong>基本概念、数据模型原理、数据库编程语言、数据库系统管理、NoSQL数据库技术原理</strong>等基础知识。</li>
+<li>掌握<strong>数据库建模设计技术</strong>，能够给出<u>数据库的优化设计方案</u>，培养数据库设计能力。</li>
+<li>掌握<strong>数据库SQL语言和数据库管理技术</strong>，能够对实现结果给出合理性解释，培养<u>数据库操作访问与数据库系统管理</u>能力。</li>
+<li>掌握<strong>数据库应用编程技术及其开发工具的使用</strong>，培养<u>数据库应用编程能力</u>，同时培养解决复杂工程问题的数据库应用系统开发能力。</li>
+</ol>
+<p>总的来说, 就是四个方面, </p>
+<ol>
+<li>数据库相关概念 —— 关系数据模型 , 数据库的意义 , NoSQL的概念</li>
+<li>数据库设计 —— 逻辑数据模型, 物理数据模型, 概念数据模型等, 如何设计数据库和数据表及其之间的关系</li>
+<li>数据库操作 —— 如何写SQL语句</li>
+<li>数据库编程 —— 使用 JDBC</li>
+</ol>
+
+        <h3 id="1-2-学习环境"   >
+          <a href="#1-2-学习环境" class="heading-link"><i class="fas fa-link"></i></a>1.2 学习环境</h3>
+      <p>需要使用这些软件 </p>
+<ol>
+<li>数据库 Postgre SQL 13</li>
+<li>配套GUI管理系统 pgAdmin4</li>
+<li>数据库设计软件 Sybase PowerDesigner16.6</li>
+</ol>
+<p>纠结于概念只会越绕越乱, 所以先把Postgresql 装好就直接学习SQL编写操作入手, pgadmin4 是随着PostgresSQL13 一起安装好的 , 注意记住设置的密码</p>
+<blockquote>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.postgresql.org/" >postgresql官方文档</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.postgres.cn/docs/12/" >中文文档</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> </p>
+</blockquote>
+<p>我在windows 环境下进行操作</p>
+
+        <h3 id="1-3-SQL实战准备"   >
+          <a href="#1-3-SQL实战准备" class="heading-link"><i class="fas fa-link"></i></a>1.3 SQL实战准备</h3>
+      <p>数据库和SQL是两个概念, 数据库是Database, SQL是Structured Query Language, 结构化查询语言, 是一种编程语言, 他是有标准协会的, 其他数据库实现他的标准, DBMS是执行SQL语句的管理软件, 准确的说, 数据库就是指放数据的仓库 , DBMS是管理这些数据的系统 , SQL是告诉DBMS 进行什么操作的语句</p>
+<blockquote>
+<p>PostgreSQL是一种特性非常齐全的自由软件的对象-关系型数据库管理系统（ORDBMS）</p>
+<p>PostgreSQL 名字含有SQL, 俗称数据库, 实际是DBMS</p>
+</blockquote>
+<p>通过SQL的学习我们可以了解数据库的概念和功能</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517171234.png" alt="image-20210517171234330" style="zoom:50%;" /></p>
+<p><strong>在SQL中, 语句之间分割是分号, 同级别项目之间分割使用的是逗号</strong></p>
+
+        <h2 id="SQL语句总览"   >
+          <a href="#SQL语句总览" class="heading-link"><i class="fas fa-link"></i></a>SQL语句总览</h2>
+      <p><strong>SQL 语言简洁，易学易用，核心功能只需9个动词</strong></p>
+<p>① DDL  ( data manipulation language ）：CREATE、DROP、ALTER<br>② DML ( data definition language ）：SELECT、INSERT、UPDATE、DELETE<br>③ DCL（ data control language ）：GRANT、REVOKE</p>
+
+        <h3 id="1-数据定义语言"   >
+          <a href="#1-数据定义语言" class="heading-link"><i class="fas fa-link"></i></a>1. 数据定义语言</h3>
+      <p>（Data Definition Language，DDL）</p>
+<p>SQL语言中用于创建或删除表。也可以定义索引（键），规定表之间间的约束。</p>
+<p>① CREATE DATABASE - 创建新数据库<br>② ALTER DATABASE - 修改数据库<br>③ CREATE TABLE - 创建新表<br>④ ALTER TABLE - 变更（改变）数据库表<br>⑤ DROP TABLE - 删除表<br>⑥ CREATE INDEX - 创建索引（搜索键）<br>⑦ DROP INDEX - 删除索引</p>
+
+        <h3 id="2-数据操纵语言"   >
+          <a href="#2-数据操纵语言" class="heading-link"><i class="fas fa-link"></i></a>2. 数据操纵语言</h3>
+      <p>（Data Manipulation Language，DML）</p>
+<blockquote>
+<p> 也有的把SELECT单独分出去叫做 数据查询语言 DQL ( Data Query Language ）</p>
+</blockquote>
+<p>SQL语言中用于查询和增删修改表数据的语句</p>
+<p>① SELECT - 从数据库表中获取数据<br>② UPDATE - 更新数据库表中的数据<br>③ DELETE - 从数据库表中删除数据<br>④ INSERT - 向数据库表中插入数据</p>
+
+        <h3 id="3-数据控制语言"   >
+          <a href="#3-数据控制语言" class="heading-link"><i class="fas fa-link"></i></a>3. 数据控制语言</h3>
+      <p>（Data Control Language，DCL）</p>
+<p>SQL语言中用于对数据访问权进行控制的语句。</p>
+<p>① GRANT – 授予用户对数据对象的权限<br>② DENY – 拒绝授予用户对数据对象的权限<br>③ REVOKE – 撤消用户对数据对象的权限</p>
+
+        <h3 id="4-事务处理语言"   >
+          <a href="#4-事务处理语言" class="heading-link"><i class="fas fa-link"></i></a>4. 事务处理语言</h3>
+      <p>（Transaction Process Language，TPL）</p>
+<p>SQL语言中用于数据库内部事务处理的语句。</p>
+<p>① BEGIN TRANSACTION – 开始事务<br>② COMMIT – 提交事务<br>③ ROLLBACK – 回滚事务</p>
+
+        <h3 id="5-游标控制语言"   >
+          <a href="#5-游标控制语言" class="heading-link"><i class="fas fa-link"></i></a>5. 游标控制语言</h3>
+      <p>（Cursor Control Language，CCL）</p>
+<p>SQL语言中用于数据库游标操作的语句。</p>
+<p>① DECLARE CURSOR – 定义游标<br>② FETCH INTO – 提交游标数据<br>③ CLOSE CURSOR– 关闭游标</p>
+
+        <h2 id="2-数据库-DataBase"   >
+          <a href="#2-数据库-DataBase" class="heading-link"><i class="fas fa-link"></i></a>2. 数据库 ( DataBase )</h2>
+      <p>数据库里存放的是一个一个的数据表, 数据表就像excel一样, 不过每列内容是限定的, 每行表示一个数据项, 每个数据项有哪些属性都是规定好的, 这就是数据库中的表, 我们先从数据库级别的操作认识</p>
+
+        <h3 id="2-1-创建数据库"   >
+          <a href="#2-1-创建数据库" class="heading-link"><i class="fas fa-link"></i></a>2.1 创建数据库</h3>
+      <p>PostgreSQL 创建数据库可以用以下三种方式：<br>1、使用 CREATE DATABASE SQL 语句来创建。<br>2、使用 createdb 命令来创建。<br>3、使用 pgAdmin 工具。</p>
+
+        <h4 id="2-1-1-使用pgAdmin4-创建-db"   >
+          <a href="#2-1-1-使用pgAdmin4-创建-db" class="heading-link"><i class="fas fa-link"></i></a>2.1.1 使用pgAdmin4 创建 db</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517170321.png" alt="image-20210517170320812" style="zoom:50%;" /></p>
+<p>根据提示设置好pgAdmin4密码并登录进数据库</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517170554.png" alt="image-20210517170554869" style="zoom:50%;" /></p>
+<p>默认会有一个叫postgres 的数据库</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517170922.png" alt="image-20210517170922587" style="zoom:50%;" /></p>
+<p>这样就可以创建数据库, 不过使用命令行也是一个很重要到手段, 点这里可以查看你的每一个图形化操作的SQL语句, 我的环境不知道抽啥风, 命令行工具不能创建, 所以使用pgadmin提供的命令行执行入口执行</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174206.png" alt="image-20210517174206895"></p>
+<p>这里取消 , 换命令行</p>
+
+        <h4 id="2-1-2-使用sql语句创建-db"   >
+          <a href="#2-1-2-使用sql语句创建-db" class="heading-link"><i class="fas fa-link"></i></a>2.1.2 使用sql语句创建 db</h4>
+      <p>语句格式 </p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<p>使用一下</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517175059.png" alt="image-20210517175058994" style="zoom:50%;" /></p>
+<p>这样进入sql语句执行环境</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174513.png" alt=""></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database test_db </span><br><span class="line"><span class="comment">--其实到这里就可以了, 后面是为了模拟使用图形界面生成的代码, 之后学习with的用法</span></span><br><span class="line">	<span class="keyword">with</span> </span><br><span class="line">	owner <span class="operator">=</span> postgres</span><br><span class="line">	encoding <span class="operator">=</span> <span class="string">&#x27;UTF8&#x27;</span></span><br><span class="line">	connection limit <span class="operator">=</span> <span class="number">-1</span></span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174727.png" alt="image-20210517174727803" style="zoom:50%;" /></p>
+<p>执行sql语句 , 刷新可以看到成功创建</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517180055.png" alt="image-20210517180055069" style="zoom:33%;" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210517174800.png" alt="image-20210517174800376" style="zoom:33%;" /></p>
+
+        <h5 id="tips-大小写"   >
+          <a href="#tips-大小写" class="heading-link"><i class="fas fa-link"></i></a>tips:  大小写?</h5>
+      <p>sql语句不区分大小写, 你可以使用大写或者小写, 都会被转称小写, 如果你想在某些名字上使用大写, 你可以使用单引号框起来</p>
+
+        <h4 id="2-1-3-使用createdb命令"   >
+          <a href="#2-1-3-使用createdb命令" class="heading-link"><i class="fas fa-link"></i></a>2.1.3 使用createdb命令 *</h4>
+      <p>了解</p>
+<p>通常，执行这个命令的数据库用户成为新数据库的所有者。 不过，如果执行用户拥有合适的权限，那么他可以通过 -O指定合适的用户。createdb是一个SQL命令 CREATE DATABASE的封装。</p>
+<p><strong>语法格式：</strong>createdb [参数] [数据库] [描述]</p>
+<p>主机192.168.60.163上的服务器创建数据库linuxcool,端口是5888：</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# createdb -p 5888 -h 192.168.60.163 linuxcool</span><br></pre></td></tr></table></div></figure>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.linuxcool.com/createdb" >https://www.linuxcool.com/createdb</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="2-2-修改数据库"   >
+          <a href="#2-2-修改数据库" class="heading-link"><i class="fas fa-link"></i></a>2.2 修改数据库</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span> <span class="operator">&lt;</span>修改内容<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<p>如果我们将之前的test_db 改成 course_db</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> database test_db rename <span class="keyword">to</span> course_db</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p>修改内容 有哪些 , 主要是可以修改名字和所有者 , 其他再了解吧</p>
+<p><strong>ALTER DATABASE name RENAME TO new_name</strong></p>
+<p><strong>ALTER DATABASE name OWNER TO new_owner</strong></p>
+<p>ALTER DATABASE name SET TABLESPACE new_tablespace</p>
+<p>ALTER DATABASE name SET configuration_parameter { TO | = } { value | DEFAULT }</p>
+<p>ALTER DATABASE name SET configuration_parameter FROM CURRENT</p>
+<p>ALTER DATABASE name RESET configuration_parameter</p>
+<p>ALTER DATABASE name RESET ALL</p>
+</blockquote>
+
+        <h3 id="2-3-删除数据库"   >
+          <a href="#2-3-删除数据库" class="heading-link"><i class="fas fa-link"></i></a>2.3 删除数据库</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<p>删除之前的数据库</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database course_db</span><br></pre></td></tr></table></div></figure>
+
+        <h2 id="3-数据表-Table"   >
+          <a href="#3-数据表-Table" class="heading-link"><i class="fas fa-link"></i></a>3. 数据表 ( Table )</h2>
+      <p>数据表就是类似excel, 不过每列的格式类型是规定好的</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">  (</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="number">3</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">    ...</span><br><span class="line">  );</span><br><span class="line"><span class="comment">-- 尖括号表示唯一, 方括号表示可以用逗号分割同时填写多个 --</span></span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="3-1-数据表前置知识"   >
+          <a href="#3-1-数据表前置知识" class="heading-link"><i class="fas fa-link"></i></a>3.1 数据表前置知识</h3>
+      <p>&lt;数据类型&gt; [列完整性约束] 是啥? </p>
+
+        <h4 id="3-1-1-postgresql中的数据类型"   >
+          <a href="#3-1-1-postgresql中的数据类型" class="heading-link"><i class="fas fa-link"></i></a>3.1.1 postgresql中的数据类型</h4>
+      <p>各个数据库的数据类型可能不一样, 如果要学习另一种数据库, 了解他的数据类型是一个很重要的着手点</p>
+
+        <h5 id="1-数字类型"   >
+          <a href="#1-数字类型" class="heading-link"><i class="fas fa-link"></i></a>1. 数字类型</h5>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th style="text-align:left">名字</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">存储长度</th>
+<th style="text-align:left">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">smallint</td>
+<td style="text-align:left">小范围整数</td>
+<td style="text-align:left">2 字节</td>
+<td style="text-align:left">-32768 到 +32767</td>
+</tr>
+<tr>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">常用的整数</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">-2147483648 到 +2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">bigint</td>
+<td style="text-align:left">大范围整数</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">-9223372036854775808 到 +9223372036854775807</td>
+</tr>
+<tr>
+<td style="text-align:left">decimal</td>
+<td style="text-align:left">用户指定的精度，精确</td>
+<td style="text-align:left">可变长</td>
+<td style="text-align:left">小数点前 131072 位；小数点后 16383 位</td>
+</tr>
+<tr>
+<td style="text-align:left">numeric</td>
+<td style="text-align:left">用户指定的精度，精确</td>
+<td style="text-align:left">可变长</td>
+<td style="text-align:left">小数点前 131072 位；小数点后 16383 位</td>
+</tr>
+<tr>
+<td style="text-align:left">real</td>
+<td style="text-align:left">可变精度，不精确</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">6 位十进制数字精度</td>
+</tr>
+<tr>
+<td style="text-align:left">double precision</td>
+<td style="text-align:left">可变精度，不精确</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">15 位十进制数字精度</td>
+</tr>
+<tr>
+<td style="text-align:left">smallserial</td>
+<td style="text-align:left">自增的小范围整数</td>
+<td style="text-align:left">2 字节</td>
+<td style="text-align:left">1 到 32767</td>
+</tr>
+<tr>
+<td style="text-align:left">serial</td>
+<td style="text-align:left">自增整数</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">1 到 2147483647</td>
+</tr>
+<tr>
+<td style="text-align:left">bigserial</td>
+<td style="text-align:left">自增的大范围整数</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">1 到 9223372036854775807</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h5 id="2-字符串数据类型"   >
+          <a href="#2-字符串数据类型" class="heading-link"><i class="fas fa-link"></i></a>2. 字符串数据类型</h5>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>数据类型描述</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char(size) / <br />character(size)</td>
+<td>size是要存储的字符数。固定长度字符串，右边的空格填充到相等大小的字符。</td>
+</tr>
+<tr>
+<td>varchar(size) /<br />character varying(size)</td>
+<td>这里size是要存储的字符数。可变长度字符串。</td>
+</tr>
+<tr>
+<td>text</td>
+<td>可变长度字符串。</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h5 id="3-日期-时间数据类型"   >
+          <a href="#3-日期-时间数据类型" class="heading-link"><i class="fas fa-link"></i></a>3. 日期/时间数据类型</h5>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th style="text-align:left">名字</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">存储空间</th>
+<th style="text-align:left">最低值</th>
+<th style="text-align:left">最高值</th>
+<th style="text-align:left">分辨率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">timestamp [ (<em>p</em>) ]</td>
+<td style="text-align:left">日期和时间(无时区)</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">4713 BC</td>
+<td style="text-align:left">294276 AD</td>
+<td style="text-align:left">1 微秒</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">只用于日期</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">4713 BC</td>
+<td style="text-align:left">5874897 AD</td>
+<td style="text-align:left">1 天</td>
+</tr>
+<tr>
+<td style="text-align:left">time [ (<em>p</em>) ]</td>
+<td style="text-align:left">只用于一日内时间</td>
+<td style="text-align:left">8 字节</td>
+<td style="text-align:left">00:00:00</td>
+<td style="text-align:left">24:00:00</td>
+<td style="text-align:left">1 微秒</td>
+</tr>
+<tr>
+<td style="text-align:left">interval [ <em>fields</em> ] [ (<em>p</em>) ]</td>
+<td style="text-align:left">时间间隔</td>
+<td style="text-align:left">12 字节</td>
+<td style="text-align:left">-178000000 年</td>
+<td style="text-align:left">178000000 年</td>
+<td style="text-align:left">1 微秒</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h5 id="4-其他数据类型"   >
+          <a href="#4-其他数据类型" class="heading-link"><i class="fas fa-link"></i></a>4. 其他数据类型</h5>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">存储格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">true/false</td>
+<td style="text-align:left">1 字节</td>
+</tr>
+<tr>
+<td style="text-align:left">money</td>
+<td style="text-align:left">货币金额(-92233720368547758.08 到 +92233720368547758.07)</td>
+<td style="text-align:left">8 字节</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="3-1-2-postgres中列完整性约束关键词"   >
+          <a href="#3-1-2-postgres中列完整性约束关键词" class="heading-link"><i class="fas fa-link"></i></a>3.1.2 postgres中列完整性约束关键词</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRIMARY KEY</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td>非空值</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>空值</td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>值唯一(不可重复)</td>
+</tr>
+<tr>
+<td>CHECK</td>
+<td>有效性检查</td>
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>缺省值</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="3-2-创建数据表"   >
+          <a href="#3-2-创建数据表" class="heading-link"><i class="fas fa-link"></i></a>3.2 创建数据表</h3>
+      
+        <h4 id="3-2-1-使用SQL语句创建一个数据表"   >
+          <a href="#3-2-1-使用SQL语句创建一个数据表" class="heading-link"><i class="fas fa-link"></i></a>3.2.1 使用SQL语句创建一个数据表</h4>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">  (</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="number">3</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">    ...</span><br><span class="line">  );</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518210812.png" alt="image-20210518210812878" style="zoom: 33%;" /></p>
+<p>现在的操作在某一个特定的数据库内创建数据表, 所以我们要把queryTool切换过来</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518211024.png" alt="image-20210518211024465" style="zoom:33%;" /></p>
+<p>然后输入如下语句</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Course</span><br><span class="line">(</span><br><span class="line">	CourseID <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">	CourseName <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">	CourseType <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">NULL</span> <span class="keyword">CHECK</span>(CourseType <span class="keyword">IN</span> (<span class="string">&#x27;基础课&#x27;</span>,<span class="string">&#x27;专业课&#x27;</span>,<span class="string">&#x27;选修课&#x27;</span>)),</span><br><span class="line">	CourseCredit <span class="type">smallint</span> <span class="keyword">NULL</span>,</span><br><span class="line">	CoursePeriod <span class="type">smallint</span> <span class="keyword">NULL</span>,</span><br><span class="line">	TestMethod <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;闭卷考试&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="3-2-2-使用pgAdmin4创建数据表"   >
+          <a href="#3-2-2-使用pgAdmin4创建数据表" class="heading-link"><i class="fas fa-link"></i></a>3.2.2 使用pgAdmin4创建数据表</h4>
+      <p>很简单, 看着操作就行了</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518211807.png" alt="image-20210518211807092" style="zoom:50%;" /></p>
+
+        <h3 id="3-3-表约束-列完整性约束"   >
+          <a href="#3-3-表约束-列完整性约束" class="heading-link"><i class="fas fa-link"></i></a>3.3 表约束(列完整性约束)</h3>
+      <p>主键是数据库中用来标识一行数据的标志, 他是数据库的一列, 主键是每行唯一的, 按照主键寻找是很快的</p>
+<p>常见的主键使用一个自增序列作为标识</p>
+<p>还有的时候会使用复合主键</p>
+
+        <h4 id="3-3-1-表约束定义-复合-主键"   >
+          <a href="#3-3-1-表约束定义-复合-主键" class="heading-link"><i class="fas fa-link"></i></a>3.3.1 表约束定义(复合)主键</h4>
+      <p>使用列约束关键词PRIMARY KEY定义表的主键列只能定义单列主键，若要定义由多个列构成的复合主键，则需要使用表约束方式来定义。</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">(</span><br><span class="line">  <span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">  <span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">  <span class="operator">&lt;</span>列名<span class="number">3</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="operator">&lt;</span>约束名<span class="operator">&gt;</span> <span class="keyword">PRIMARY</span> KEY(主键列)</span><br><span class="line">  <span class="comment">-- 如果只填写一个主键列效果和使用列完整性约束一致</span></span><br><span class="line">)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518212554.png" alt="image-20210518212554249" style="zoom: 33%;" /></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Plan</span><br><span class="line">(</span><br><span class="line">	CourseID <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">	TeacherID <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">	CourseRoom <span class="type">varchar</span>(<span class="number">30</span>),</span><br><span class="line">	CourseTime <span class="type">varchar</span>(<span class="number">30</span>),</span><br><span class="line">	Note <span class="type">varchar</span>(<span class="number">50</span>),</span><br><span class="line">	<span class="keyword">CONSTRAINT</span> CoursePlan_PK <span class="keyword">PRIMARY</span> KEY(CourseID,TeacherID)</span><br><span class="line">)</span><br></pre></td></tr></table></div></figure>
+<p>使用表约束定义主键的优点：</p>
+<ol>
+<li>便于定义复合主键</li>
+<li>可命名主键约束</li>
+<li>便于定义代理键</li>
+</ol>
+
+        <h4 id="3-3-2-表约束定义代理键和外键"   >
+          <a href="#3-3-2-表约束定义代理键和外键" class="heading-link"><i class="fas fa-link"></i></a>3.3.2 表约束定义代理键和外键</h4>
+      <p>代理键就是自增主键</p>
+<p>外键(FK)是用于建立和加强两个表数据之间的链接的一列或多列。通过将保存表中主键值的一列或多列添加到另一个表中，可创建两个表之间的链接。这个列就成为第二个表的外键。</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CONSTRAINT</span> <span class="operator">&lt;</span>约束名<span class="operator">&gt;</span> <span class="keyword">FOREIGN</span> KEY(外键列)</span><br><span class="line">  				 <span class="keyword">REFERENCES</span> <span class="operator">&lt;</span>数据表<span class="operator">&gt;</span>(外键列)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518215422.png" alt="image-20210518215422568" style="zoom:33%;" /></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Register</span><br><span class="line">(</span><br><span class="line">  CourseRegID serial <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  CoursePlanID <span class="type">Int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  StudentID <span class="type">char</span>(<span class="number">13</span>),</span><br><span class="line">  Note <span class="type">varchar</span>(<span class="number">30</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> CourseRegID_PK <span class="keyword">PRIMARY</span> KEY(CourseRegID),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> CoursePlanID_FK <span class="keyword">FOREIGN</span> KEY(CoursePlanID)</span><br><span class="line">             EFERENCES Plan(CoursePlanID)</span><br><span class="line">  <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE,</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> StudentID_FK <span class="keyword">FOREIGN</span> KEY(StudentID)</span><br><span class="line">             <span class="keyword">REFERENCES</span> Student(StudentID)</span><br><span class="line">  <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE</span><br><span class="line">);</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="3-4-修改表结构SQL语句-修改Table-的-Colums"   >
+          <a href="#3-4-修改表结构SQL语句-修改Table-的-Colums" class="heading-link"><i class="fas fa-link"></i></a>3.4 修改表结构SQL语句 ( 修改Table 的 Colums )</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="operator">&lt;</span>修改方式<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="3-4-1-修改方式"   >
+          <a href="#3-4-1-修改方式" class="heading-link"><i class="fas fa-link"></i></a>3.4.1 修改方式</h4>
+      
+        <h5 id="1-ADD"   >
+          <a href="#1-ADD" class="heading-link"><i class="fas fa-link"></i></a>1. ADD</h5>
+      <p>ADD修改方式，用于增加新<strong>列</strong>或<strong>列完整性约束</strong></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">ADD</span> <span class="operator">&lt;</span>新列名称<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span><span class="operator">|</span>[完整性约束]</span><br></pre></td></tr></table></div></figure>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-alter-table.html" >https://www.runoob.com/postgresql/postgresql-alter-table.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> MyPrimaryKey <span class="keyword">PRIMARY</span> KEY (column1, column2...);</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="2-DROP"   >
+          <a href="#2-DROP" class="heading-link"><i class="fas fa-link"></i></a>2. DROP</h5>
+      <p>DROP修改方式，用于<strong>删除指定列</strong>或<strong>列的完整性约束条件</strong></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span><span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span>；</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span><span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">DROP</span> <span class="keyword">CONSTRAINT</span><span class="operator">&lt;</span>完整性约束名<span class="operator">&gt;</span>；</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="3-RENAME"   >
+          <a href="#3-RENAME" class="heading-link"><i class="fas fa-link"></i></a>3. RENAME</h5>
+      <p>RENAME修改方式，用于修改<strong>表名称、列名称</strong></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> RENAME <span class="keyword">TO</span> <span class="operator">&lt;</span>新表名<span class="operator">&gt;</span>；</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> RENAME <span class="operator">&lt;</span>原列名<span class="operator">&gt;</span> <span class="keyword">TO</span> <span class="operator">&lt;</span>新列名<span class="operator">&gt;</span>；</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="4-ALTER"   >
+          <a href="#4-ALTER" class="heading-link"><i class="fas fa-link"></i></a>4. ALTER</h5>
+      <p>ALTER修改方式，用于修改<strong>列的数据类型</strong></p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">ALTER</span> <span class="keyword">COLUMN</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> TYPE<span class="operator">&lt;</span>新的数据类型<span class="operator">&gt;</span>；</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="3-4-2-表修改语句使用-试一下其他修改方式"   >
+          <a href="#3-4-2-表修改语句使用-试一下其他修改方式" class="heading-link"><i class="fas fa-link"></i></a>3.4.2 表修改语句使用 ( 试一下其他修改方式 )</h4>
+      <p>首先先运行这条指令添加数据 , 用法见数据操作</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> course(courseid,coursename,coursetype,coursecredit,courseperiod,testmethod)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">	(<span class="number">1144</span>,<span class="string">&#x27;课程名&#x27;</span>,<span class="string">&#x27;基础课&#x27;</span>,<span class="number">3</span>,<span class="number">234</span>,<span class="number">123</span>)</span><br></pre></td></tr></table></div></figure>
+<p>现在看到的数据表是这样的</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518221207.png" alt="image-20210518221207629" style="zoom: 50%;" /></p>
+<p>增加一个teacher的行</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> course <span class="keyword">ADD</span> teacher <span class="type">varchar</span>(<span class="number">40</span>)</span><br></pre></td></tr></table></div></figure>
+<p>再看可以看到</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210518221538.png" alt="image-20210518221538212" style="zoom:50%;" /></p>
+
+        <h3 id="3-5-删除表的SQL语句"   >
+          <a href="#3-5-删除表的SQL语句" class="heading-link"><i class="fas fa-link"></i></a>3.5 删除表的SQL语句</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<p>注意: 该语句将删除该表的<strong>所有数据</strong>及其<strong>结构</strong></p>
+<p>删除一下之前创建的plan表</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> plan</span><br></pre></td></tr></table></div></figure>
+<p>删了</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522084923.png" alt="image-20210522084923623"></p>
+
+        <h2 id="4-数据库索引-Index"   >
+          <a href="#4-数据库索引-Index" class="heading-link"><i class="fas fa-link"></i></a>4. 数据库索引 ( Index )</h2>
+      
+        <h3 id="4-1-认识索引"   >
+          <a href="#4-1-认识索引" class="heading-link"><i class="fas fa-link"></i></a>4.1 认识索引</h3>
+      <p>索引是数据库快的原因之一.</p>
+<blockquote>
+<p>索引（Index）是一种按照关系表中指定列的取值顺序组织元组数据存储的数据结构，使用它可以加快表中数据的查询访问</p>
+</blockquote>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522090658.png" alt="image-20210522090658510" style="zoom:50%;" /></p>
+<p>当然使用索引也不是百利无害的, 不能说既然索引快就把所有列的数据都设置为索引</p>
+<p><strong>索引优点：</strong></p>
+<ol>
+<li>提高数据检索速度</li>
+<li>可快速连接关联表</li>
+<li>减少分组和排序时间</li>
+</ol>
+<blockquote>
+<p>就是查的快</p>
+</blockquote>
+<p><strong>索引开销：</strong></p>
+<ol>
+<li>创建和维护索引都需要较大时间开销</li>
+<li>索引会占用额外物理存储空间</li>
+<li>数据操纵因维护索引带来系统性能开销</li>
+</ol>
+<blockquote>
+<p>就是创建索引耗时间, 保存索引耗空间, 增删改数据的时候还要修改索引耗时间</p>
+</blockquote>
+
+        <h5 id="什么情况下使用-避免使用索引？"   >
+          <a href="#什么情况下使用-避免使用索引？" class="heading-link"><i class="fas fa-link"></i></a>什么情况下使用 / 避免使用索引？</h5>
+      <p><strong>索引必须是在 WHEHE 子句的过滤条件中使用非常频繁的列。</strong></p>
+<p>虽然索引的目的在于提高数据库的性能，但这里有几个情况需要避免使用索引。</p>
+<p>使用索引时，需要考虑下列准则：</p>
+<ul>
+<li>索引不应该使用在<strong>较小的</strong>表上。</li>
+<li>索引不应该使用在有<strong>频繁</strong>的大批量的<strong>更新或插入</strong>操作的表上。</li>
+<li>索引不应该使用在含有<strong>大量的 NULL</strong> 值的列上。</li>
+<li>索引不应该使用在<strong>频繁操作的列</strong>上。</li>
+</ul>
+
+        <h3 id="4-2-创建索引"   >
+          <a href="#4-2-创建索引" class="heading-link"><i class="fas fa-link"></i></a>4.2 创建索引</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX  <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span>  <span class="keyword">ON</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span><span class="operator">&lt;</span>（列名[,...]）<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<p>我们试着将course表中的学分coursecredit设置为索引</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX Credit_Idx <span class="keyword">ON</span> course(coursecredit)</span><br></pre></td></tr></table></div></figure>
+<p>运行结果</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522091702.png" alt="image-20210522091702139" style="zoom:50%;" /></p>
+<blockquote>
+<p>如果使用命令行可以psql 中输入<strong>\d [表名]</strong> 命令查看索引 , <strong>\di</strong> 命令列出数据库中所有索引</p>
+</blockquote>
+
+        <h3 id="4-3-修改索引"   >
+          <a href="#4-3-修改索引" class="heading-link"><i class="fas fa-link"></i></a>4.3 修改索引</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span> <span class="operator">&lt;</span>修改项<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p>所有修改项, 主要了解重命名和设置索引类别 , 其他再了解 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/sql-alterindex.html" >文档</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>ALTER INDEX [ IF EXISTS ] name <strong>RENAME TO</strong> new_name<br>ALTER INDEX [ IF EXISTS ] name SET TABLESPACE tablespace_name<br>ALTER INDEX name ATTACH PARTITION index_name<br>ALTER INDEX name [ NO ] DEPENDS ON EXTENSION extension_name<br>ALTER INDEX [ IF EXISTS ] name <strong>SET</strong> ( storage_parameter [= value] [, … ] )<br>ALTER INDEX [ IF EXISTS ] name RESET ( storage_parameter [, … ] )<br>ALTER INDEX [ IF EXISTS ] name ALTER [ COLUMN ] column_number<br>    SET STATISTICS integer<br>ALTER INDEX ALL IN TABLESPACE name [ OWNED BY role_name [, … ] ]<br>    SET TABLESPACE new_tablespace [ NOWAIT ]</p>
+</blockquote>
+<p>修改 credit_idx 为 credit_index </p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> INDEX credit_idx RENAME <span class="keyword">TO</span> credit_index</span><br></pre></td></tr></table></div></figure>
+<p>结果 </p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522093005.png" alt="image-20210522093005487"></p>
+
+        <h3 id="4-4-删除索引"   >
+          <a href="#4-4-删除索引" class="heading-link"><i class="fas fa-link"></i></a>4.4 删除索引</h3>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></div></figure>
+<p>现在删除索引</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX credit_index</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210522093239.png" alt="image-20210522093238974"></p>
+
+        <h3 id="4-5-索引类型"   >
+          <a href="#4-5-索引类型" class="heading-link"><i class="fas fa-link"></i></a>4.5 索引类型</h3>
+      
+        <h4 id="1-单列索引"   >
+          <a href="#1-单列索引" class="heading-link"><i class="fas fa-link"></i></a>1. 单列索引</h4>
+      <p>单列索引是一个只基于表的一个列上创建的索引，基本语法如下：</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX index_name</span><br><span class="line"><span class="keyword">ON</span> table_name (column_name);</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="2-组合索引"   >
+          <a href="#2-组合索引" class="heading-link"><i class="fas fa-link"></i></a>2. 组合索引</h4>
+      <p>组合索引是基于表的多列上创建的索引，基本语法如下：</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX index_name</span><br><span class="line"><span class="keyword">ON</span> table_name (column1_name, column2_name);</span><br></pre></td></tr></table></div></figure>
+<p><strong>如果只有一列被使用到，就选择单列索引，如果有多列就使用组合索引。</strong></p>
+
+        <h4 id="3-唯一索引"   >
+          <a href="#3-唯一索引" class="heading-link"><i class="fas fa-link"></i></a>3. 唯一索引</h4>
+      <p>使用唯一索引不仅是为了性能，同时也为了<strong>数据的完整性</strong>。唯一索引<strong>不允许任何重复的值插入到表中</strong>。基本语法如下：</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX index_name</span><br><span class="line"><span class="keyword">on</span> table_name (column_name);</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="4-局部索引"   >
+          <a href="#4-局部索引" class="heading-link"><i class="fas fa-link"></i></a>4. 局部索引</h4>
+      <p>局部索引 是在表的子集上构建的索引；子集由一个条件表达式上定义。<strong>索引只包含满足条件的行</strong>。基础语法如下：</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX index_name</span><br><span class="line"><span class="keyword">on</span> table_name (conditional_expression);</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="5-隐式索引"   >
+          <a href="#5-隐式索引" class="heading-link"><i class="fas fa-link"></i></a>5. 隐式索引</h4>
+      <p>隐式索引 是在创建对象时，由数据库服务器<strong>自动创建的索引</strong>。<strong>索引自动创建为主键约束和唯一约束</strong>。</p>
+
+        <h2 id="DDL-总结1"   >
+          <a href="#DDL-总结1" class="heading-link"><i class="fas fa-link"></i></a>DDL 总结1</h2>
+      <p>（Data Definition Language，DDL）</p>
+<p>创建数据库中的<strong>数据库、表、索引、视图、存储过程、触发器</strong>等 , 这里先学习了<strong>数据库、表、索引</strong>, 学习了DML后才能学习其他的DDL </p>
+<p>SQL语言中用于创建或删除表。也可以定义索引（键），规定表之间间的约束。</p>
+<p>整体来说就这几个</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th></th>
+<th>DATABASE</th>
+<th>TABLE</th>
+<th>INDEX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREATE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DROP</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>对于TABLE的列的创建修改删除 以及约束的创建修改 要重点掌握</p>
+<p>首先创建表的时候就会创建列和约束</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">(</span><br><span class="line">  <span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">  <span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">  <span class="operator">&lt;</span>列名<span class="number">3</span><span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [列完整性约束],</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="operator">&lt;</span>约束名<span class="operator">&gt;</span> <span class="keyword">PRIMARY</span> KEY(主键列)</span><br><span class="line">  <span class="comment">-- 如果只填写一个主键列效果和使用列完整性约束一致</span></span><br><span class="line">)</span><br></pre></td></tr></table></div></figure>
+<p>其次, 创建后想要修改可以这样修改</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增加列</td>
+<td>ALTER TABLE &lt;表名&gt; <strong>ADD &lt;新列名称&gt;&lt;数据类型&gt;</strong></td>
+</tr>
+<tr>
+<td>增加列的约束</td>
+<td>ALTER TABLE &lt;表名&gt; <strong>ADD CONSTRAINT [完整性约束]</strong></td>
+</tr>
+<tr>
+<td>删除列</td>
+<td>ALTER TABLE&lt;表名&gt; <strong>DROP COLUMN &lt;列名&gt;</strong>；</td>
+</tr>
+<tr>
+<td>删除列的约束</td>
+<td>ALTER TABLE&lt;表名&gt; <strong>DROP CONSTRAINT&lt;完整性约束名&gt;</strong>；</td>
+</tr>
+<tr>
+<td>修改列名</td>
+<td>ALTER TABLE &lt;表名&gt; <strong>RENAME &lt;原列名&gt; TO &lt;新列名&gt;</strong>；<br />(注意和修改表名对比 ALTER TABLE &lt;表名&gt; RENAME TO &lt;新表名&gt;; )</td>
+</tr>
+<tr>
+<td>修改列类型</td>
+<td>ALTER TABLE &lt;表名&gt; <strong>ALTER COLUMN &lt;列名&gt; TYPE&lt;新的数据类型&gt;</strong>；</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h2 id="可能的疑惑"   >
+          <a href="#可能的疑惑" class="heading-link"><i class="fas fa-link"></i></a>可能的疑惑</h2>
+      
+        <h3 id="psql和postgres指令的区别"   >
+          <a href="#psql和postgres指令的区别" class="heading-link"><i class="fas fa-link"></i></a>psql和postgres指令的区别</h3>
+      <p>postgres是服务器本身,与所有客户端连接分开运行.它几乎永远不会是 <span class="exturl"><a class="exturl__link"   href="javascript:void(" >run by hand</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>).即使你想要启动和停止它,如果你从你的发行版安装了一个postgres包,这通常是通过 <a href="javascript:void("><code>pg_ctl</code></a>)或init脚本完成的.我不确定Postgresql的OSX版本是否有任何启动服务器的特殊方法,但需要在任何客户端连接之前启动它.</p>
+<p>psql是命令行客户端,它连接到服务器并允许您手动执行单个查询.不知道为什么你认为你需要它,但没有它只是烦人,因为没有它你将不得不编写自己的程序来执行像“CREATE TABLE”或“CREATE USER”这样的命令.</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2001%20%E5%BC%80%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%BA%93%20,%20%E4%BD%BF%E7%94%A8DDL/">http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2001%20%E5%BC%80%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%BA%93%20,%20%E4%BD%BF%E7%94%A8DDL/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2002%20%E6%8A%8ADML%E7%8E%A9%E5%87%BA%E8%8A%B1%E5%B0%B1%E6%98%AFDB%E5%A4%A7%E5%B8%88/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Database( PostgreSQL ) - 02 把DML玩出花就是DB大师</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2000%20%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"><span class="paginator-prev__text">Database( PostgreSQL ) - 00 学习方法</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Database-PostgreSQL-01-%E5%BC%80%E5%A7%8B%E6%95%B0%E6%8D%AE%E5%BA%93-%E4%BD%BF%E7%94%A8DDL"><span class="toc-text">
+          Database( PostgreSQL ) - 01 开始数据库 , 使用DDL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-UESTC%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">
+          1. UESTC数据库学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="toc-text">
+          1.1 学习内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83"><span class="toc-text">
+          1.2 学习环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-SQL%E5%AE%9E%E6%88%98%E5%87%86%E5%A4%87"><span class="toc-text">
+          1.3 SQL实战准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E5%8F%A5%E6%80%BB%E8%A7%88"><span class="toc-text">
+          SQL语句总览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          1. 数据定义语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          2. 数据操纵语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E6%8E%A7%E5%88%B6%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          3. 数据控制语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          4. 事务处理语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%B8%B8%E6%A0%87%E6%8E%A7%E5%88%B6%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          5. 游标控制语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93-DataBase"><span class="toc-text">
+          2. 数据库 ( DataBase )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">
+          2.1 创建数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E4%BD%BF%E7%94%A8pgAdmin4-%E5%88%9B%E5%BB%BA-db"><span class="toc-text">
+          2.1.1 使用pgAdmin4 创建 db</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E4%BD%BF%E7%94%A8sql%E8%AF%AD%E5%8F%A5%E5%88%9B%E5%BB%BA-db"><span class="toc-text">
+          2.1.2 使用sql语句创建 db</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#tips-%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="toc-text">
+          tips:  大小写?</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E4%BD%BF%E7%94%A8createdb%E5%91%BD%E4%BB%A4"><span class="toc-text">
+          2.1.3 使用createdb命令 *</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">
+          2.2 修改数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">
+          2.3 删除数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E8%A1%A8-Table"><span class="toc-text">
+          3. 数据表 ( Table )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-text">
+          3.1 数据表前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-postgresql%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          3.1.1 postgresql中的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          1. 数字类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          2. 字符串数据类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%97%A5%E6%9C%9F-%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          3. 日期&#x2F;时间数据类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          4. 其他数据类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-postgres%E4%B8%AD%E5%88%97%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="toc-text">
+          3.1.2 postgres中列完整性约束关键词</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-text">
+          3.2 创建数据表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E4%BD%BF%E7%94%A8SQL%E8%AF%AD%E5%8F%A5%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-text">
+          3.2.1 使用SQL语句创建一个数据表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E4%BD%BF%E7%94%A8pgAdmin4%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-text">
+          3.2.2 使用pgAdmin4创建数据表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E8%A1%A8%E7%BA%A6%E6%9D%9F-%E5%88%97%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="toc-text">
+          3.3 表约束(列完整性约束)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E8%A1%A8%E7%BA%A6%E6%9D%9F%E5%AE%9A%E4%B9%89-%E5%A4%8D%E5%90%88-%E4%B8%BB%E9%94%AE"><span class="toc-text">
+          3.3.1 表约束定义(复合)主键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E8%A1%A8%E7%BA%A6%E6%9D%9F%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%90%86%E9%94%AE%E5%92%8C%E5%A4%96%E9%94%AE"><span class="toc-text">
+          3.3.2 表约束定义代理键和外键</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84SQL%E8%AF%AD%E5%8F%A5-%E4%BF%AE%E6%94%B9Table-%E7%9A%84-Colums"><span class="toc-text">
+          3.4 修改表结构SQL语句 ( 修改Table 的 Colums )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-%E4%BF%AE%E6%94%B9%E6%96%B9%E5%BC%8F"><span class="toc-text">
+          3.4.1 修改方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-ADD"><span class="toc-text">
+          1. ADD</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-DROP"><span class="toc-text">
+          2. DROP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-RENAME"><span class="toc-text">
+          3. RENAME</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-ALTER"><span class="toc-text">
+          4. ALTER</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-%E8%A1%A8%E4%BF%AE%E6%94%B9%E8%AF%AD%E5%8F%A5%E4%BD%BF%E7%94%A8-%E8%AF%95%E4%B8%80%E4%B8%8B%E5%85%B6%E4%BB%96%E4%BF%AE%E6%94%B9%E6%96%B9%E5%BC%8F"><span class="toc-text">
+          3.4.2 表修改语句使用 ( 试一下其他修改方式 )</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%88%A0%E9%99%A4%E8%A1%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5"><span class="toc-text">
+          3.5 删除表的SQL语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95-Index"><span class="toc-text">
+          4. 数据库索引 ( Index )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AE%A4%E8%AF%86%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          4.1 认识索引</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BD%BF%E7%94%A8-%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%EF%BC%9F"><span class="toc-text">
+          什么情况下使用 &#x2F; 避免使用索引？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          4.2 创建索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BF%AE%E6%94%B9%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          4.3 修改索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          4.4 删除索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B"><span class="toc-text">
+          4.5 索引类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          1. 单列索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BB%84%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          2. 组合索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          3. 唯一索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%B1%80%E9%83%A8%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          4. 局部索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%9A%90%E5%BC%8F%E7%B4%A2%E5%BC%95"><span class="toc-text">
+          5. 隐式索引</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDL-%E6%80%BB%E7%BB%931"><span class="toc-text">
+          DDL 总结1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E7%96%91%E6%83%91"><span class="toc-text">
+          可能的疑惑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#psql%E5%92%8Cpostgres%E6%8C%87%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">
+          psql和postgres指令的区别</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

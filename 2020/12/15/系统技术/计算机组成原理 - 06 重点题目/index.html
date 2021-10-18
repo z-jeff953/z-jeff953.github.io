@@ -1,0 +1,345 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="计算机体系结构 - 重点题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机体系结构 - 重点题目">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/15/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2006%20%E9%87%8D%E7%82%B9%E9%A2%98%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="计算机体系结构 - 重点题目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215744.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215833.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215828.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215818.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215910.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215933.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215940.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210111090904.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210111100258.png">
+<meta property="article:published_time" content="2020-12-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-11T02:23:28.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="计算机体系结构">
+<meta property="article:tag" content="计算机组成原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215744.png"><title>计算机体系结构 - 重点题目 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/15/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2006%20%E9%87%8D%E7%82%B9%E9%A2%98%E7%9B%AE/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机体系结构 - 重点题目</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-11</span></span></div></header><div class="post-body">
+        <h1 id="计算机体系结构-重点题目"   >
+          <a href="#计算机体系结构-重点题目" class="heading-link"><i class="fas fa-link"></i></a>计算机体系结构 - 重点题目</h1>
+      <p>错题,难题</p>
+<span id="more"></span>
+<ol>
+<li><p>指令中以什么方式提供操作数或操作数地址，称为寻址方式</p>
+</li>
+<li><p>假设R0 的内容为2000H，R1 的内容为2500H，（2000H）=3000H，<br>(3000H)=4000H，则指令“MOV R1，@(R0)+”执行后，R0 的内容为（），R1 的内容为（），(2000H)的内容为（），(3000H)的内容为（）。<br>2001H，4000H，3000H，4000H</p>
+</li>
+<li><p>若数据传输指令的源和目的操作数都采用变址寻址，指令字长为48bit（包含形式地址），数据总线和地址总线为16bit，则该指令的执行需要从存储器取指令、取源操作数，并送到目的存储单元，需要多少次访存？（）<br>5</p>
+</li>
+<li><p>指令ADD（R0），@（R1）+的指令长度是3 字节（存储器按字节编址），则指令从取指开始执行，共需要（）次访问存储器。<br>7</p>
+</li>
+<li><p>存储单元的个数：存储器中存储单元的个数。MAR 的位数反映了存储单元的个数。如果MAR 为N 位，则存储单元的个数为2 的N 次幂。<br>地址线条数：决定了存储单元的最大寻址范围，决定了MAR 的位数和存储单元个数。<br>存储容量：存储容量=存储单元的个数*存储字长。单位B（byte）。<br>【例1】某主存总容量为64MB，按字编址，需要多少条地址线，MAR 位数是多少？<br>(25，25)</p>
+</li>
+<li><p>后续微地址的形成有（增量和断定）两种，其中按照目的操作数寻址方式实现分支属于（断定）方式</p>
+</li>
+<li><p>主存：<strong>CPU 可直接访问，存放CPU ==当前==使用的指令和数据</strong></p>
+</li>
+<li><p>静态存储器SRAM(双极型、静态MOS 型): 依靠==双稳态电路内部交叉反馈机制==，作Cache<br>动态存储器DRAM：依靠==电容存储电荷==的原理存储信息,作主存</p>
+</li>
+<li><p>刷新方法：各DRAM 芯片同时刷新，片内按行刷新(按行读)</p>
+</li>
+<li><p>主存储器校验<br>奇偶校验编码规则：编码中“1”的个数为奇数或者偶数</p>
+</li>
+<li><p>某计算机主存空间是4GB，字长为32 位，按字节编制，采用32 位字长的指令格式，<br>则程序计数器PC 和指令寄存器IR 的位数分别是（）<br>A、30，30 B、30，32 C、32,30 D、32,32<br>D</p>
+</li>
+<li><p>某主存容量为32KB，由16 片16K<em>1 位（内部采用128</em>128 存储阵列）的DRAM 芯片<br>组成，若采用集中式刷新方式，且刷新周期为2ms，那么所有存储单元刷新一遍需要至<br>少需要安排个刷新周期。<br>128</p>
+</li>
+<li><p>磁盘属于（）类型的存储器<br>A．随机存取存储器（RAM）B.只读存储器（ROM）C.顺序存取存储器（SAM）D.直接存取存储器（DAM）<br>D</p>
+</li>
+<li><p>某存储器容量为32K×16 位，则地址线有条。<br>15</p>
+</li>
+<li><p>某DRAM 芯片，采用地址复用技术，其容量为1024×8 位，除电源和接地外，该芯片<br>的引脚最少是条（读写控制线为2 条）<br>17</p>
+</li>
+<li><p>16、假设地址总线16 条，数据总线8 条，存储器按字节编址，有以下存储器连接电路</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215744.png" alt="image-20210110215744092"></p>
+<p>（1）写出8KB 和4KB 芯片的地址范围<br>（2）分别为图中的2KB 和1KB 芯片分配地址范围（要求：1KB 芯片从0000H 开始分配，2KB 芯片从1000H 开始分配），写出其片选逻辑表达式，画出译码器电路，并与2KB 和1KB 芯片的片选信号相连接（要求采用全译码方式）<br>（3）如果直接用一片8KB 芯片替换图中的4KB 芯片，且不修改其片选逻辑，是否可以，为什么？</p>
+<p>答</p>
+<p>（1）8KB 芯片的地址范围：E000H~FFFFH，4KB 芯片的范围：C000H~DFFFH</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215833.png" alt="image-20210110215833682"></p>
+<p>（2）1KB 芯片的地址范围：0000H~03FFH，2KB 芯片的范围：1000H~17FFH</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215828.png" alt="image-20210110215828405"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215818.png" alt="image-20210110215818718"></p>
+<p>（3）可以，4KB 的对应的地址范围：C000H~DFFFH，有4KB 的地址重叠。</p>
+</li>
+<li><p>用2Kx4b 的若干芯片构成一个12KB 的存储器，其地址范围在C000H~C2FFFH 和<br>C4000H~C6FFFH 之间，数据总线D0~D7，地址总线是A0~A19，芯片读写控制信号R/W，且片选信号为3-8 译码器输出。<br>（1）需要2Kx4b 的芯片多少片？每组芯片地址线如何分配？<br>（2）哪些地址线作3-8 译码器的使能端，哪些做3-8 译码器输入端？<br>（3）画出存错逻辑电路图（3-8 译码器使能端、输入端、输出连线，以及组成12KB 存储芯片电路图）</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215910.png" alt="image-20210110215910903"></p>
+<p>（1）需要2Kx4b 的芯片多少片？每组芯片地址线如何分配？<br>12 片，A0~A10<br>（2）哪些地址线作3-8 译码器的使能端，哪些做3-8 译码器输入端？<br>使能端：A19~A15<br>片选：A11~A13<br>（3）画出存错逻辑电路图（3-8 译码器使能端、输入端、输出连线，以及组成12KB 存储芯片电路图）</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215933.png" alt="image-20210110215933357"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110215940.png" alt="image-20210110215940438"></p>
+</li>
+<li><p>串行接口: 接口与系统总线==并行==传送，接口与外设串行传送；数据逐位分时传送。(接口和系统总线一定是并行的,区别是接口和外设的关系)</p>
+</li>
+<li><p>接口传送信息包括控制命令、数据、状态</p>
+</li>
+<li><p>总线定义：一组能为多个部件分时共享的信息传送线路</p>
+</li>
+<li><p>中断优先级判断<br>（1）优先顺序: 故障、内中断、DMA、外中断；</p>
+<pre><code>       高速操作优于低速操作，输入优于输出。
+</code></pre><p>（2）CPU 现行程序与外设请求的判优<br>（a）CPU 设置允许中断标志<br>（b）CPU 设置程序状态字的优先级字段，为现行程序赋予优先级<br>中断接口判优：中断请求寄存器、中断屏蔽寄存器、中断服务寄存器，判断是否发出INT请求</p>
+</li>
+<li><p>中断周期在ET之后</p>
+</li>
+<li><p>（3）响应过程<br>（a）中断周期IT 流程（关中断；保存断点；获取服务程序入口地址；转向程序状态1-&gt;FT）<br>（b）中断服务程序流程<br>单级中断：保护现场、中断服务处理、恢复现场、开中断、返回。<br>多重中断：保护现场、送屏蔽字和开中断、中断服务处理、关中断、恢复现场及屏蔽字、开中断、返回。</p>
+</li>
+<li><p>DMA传送前和传送后需要CPU 程序干预</p>
+<p>(1)响应随机请求<br>(2)一般不影响CPU 程序的执行，仅占用总线、无程序切换<br>(3)大批量数据的简单传送</p>
+</li>
+<li><p>CPU 初始化DMA 步骤<br>向接口送出I/O 设备的寻址信息；<br>向DMA 控制器送出控制字，如传送方向；<br>向DMA 控制器送出主存缓冲区首址；<br>向DMA 控制器送出传送的数据量；</p>
+</li>
+<li><p>DMA 硬件功能<br>DMA 控制器功能：<br>①接收初始化信息（传送方向、主存首址、交换量）<br>②接收外设DMA 请求，判优，向CPU 申请总线。<br>③接管总线权，发地址、读/写命令。<br>接口功能<br>①接收初始化信息(外设寻址信息）)<br>②向DMA 控制器发请求。<br>③传送数据。</p>
+</li>
+<li><p>主设备发送数据，从设备接收数据（X）</p>
+</li>
+<li><p>有关I/O 接口的叙述中，错误的是（）<br>A、状态端口和控制端口可以合并为同一寄存器<br>B、I/O 接口中CPU 可访问的寄存器称为I/O 端口<br>C、采用独立编址方式时，I/O 端口地址和主存地址可能相同<br>D、采用同一编址方式，CPU 不能用访存指令访问I/O 端口<br>D</p>
+</li>
+<li><p>下列关于中断I/O 方式和DMA 方式的叙述中，错误的是（）<br>A、中断I/O 方式请求的是CPU 处理时间，DMA 方式请求的是总线使用权<br>B、中断响应发生在一条指令执行结束后，DMA 响应发生在一个总线周期完成后<br>C、中断I/O 方式下数据传送通过软件完成，DMA 方式下数据传送通过硬件完成<br>D 中断I/O 方式下适用于所有外部设备，DMA 方式仅适用于快速外部设备<br>D</p>
+</li>
+<li><p>7、中断屏蔽和允许中断的描述，以下说法不正确的是（）<br>A、中断屏蔽是指向CPU 向接口写入控制字，以控制是否让中断源提出中断请求<br>B、允许中断是指CPU 向接口写入控制字，以允许或不允许中断源提出中断请求<br>C、允许中断是CPU 内部状态位，用于决定是否响应中断请求<br>D、中断屏蔽功能的实施一般在中断接口中。<br>B</p>
+</li>
+<li><p>在有多个中断源的系统中，采用向量中断方式，中断屏蔽字来自于（）<br>A、中断接口B、提出中断请求设备C、CPU D、向量地址<br>C</p>
+</li>
+<li><p>在单级中断中，中断服务程序执行顺序是（）<br>a. 保护现场；b. 开中断；c. 关中断d. 保存断点；e. 中断事件处理；<br>f. 恢复现场；g. 中断返回<br>A、a→e→f→b→g B. c→a→e→g<br>C. c→d→e→f→g D. d→a→e→f→g<br>A</p>
+</li>
+<li><p>某计算机有五级中断L4-L0，中断屏蔽字为M4M3M2M1M0，Mi=1(0≤i≤4)表示Li 级中断屏蔽，若中断响应优先级顺序是L4-&gt;L0-&gt;L2-&gt;L1-&gt;L3，则L1 的中断处理程序中设置的中断屏蔽字是<br>01010</p>
+</li>
+<li><p>关于DMA 方式的说法，正确的是（）<br>A、DMA 方式利用软件是新数据传送<br>B、DMA 方式能完全取代中断方式<br>C、DMA 方式在<strong>传送过程中</strong>需要CPU 程序的干预<br>D、DMA 方式一般用于高速外设数据的简单传送<br>D</p>
+</li>
+<li><p>三地址指令常用于（　　）中。<br>(1)微型机    (2)小型机   (3)大型机   (4)所有大﹑小﹑微机<br>3</p>
+</li>
+<li><p>为了实现输入输出操作,指令中(    )。<br>(1)对单独编址方式,可以指明设备号或端口地址。对统一编址方式,可以指     明寄存器的总线地址。<br>(2)必须指明外围接口中寄存器的地址码<br>(3)必须同时指明外围设备号与接口中寄存器的总线地址<br>(4)必须指明外围设备的设备号<br>1</p>
+</li>
+<li><p>变址寻址的思想是(     )。<br>(1)按指令中的位移量做为基准地址，而变址寄存器提供修改量进行存储空间寻址<br>(2)通过多次寻址来对地址码进行变换，以实现对存储器的寻址。<br>(3)通过改变地址码长度，来实现对全内存地址的访问<br>(4)允许总线周期长度可变<br>1</p>
+</li>
+<li><p>在写磁盘过程中，适配器向主机发出DMA请求是在（    ）。<br>(1)寻道完成时              (2)启动磁盘时<br>(3)扇区缓冲区空时          (4)扇区缓冲区满时</p>
+<p>3</p>
+</li>
+<li><p>在读磁盘过程中，适配器向主机发出DMA请求是在（    ）。<br>(1)寻道完成时              (2)启动磁盘时<br>(3)扇区缓冲区空时          (4)扇区缓冲区满时</p>
+<p>4</p>
+</li>
+<li><p>CPU（　　）才能响应DMA请求。或者用如下叙述：CPU响应DMA请求的时间是（　　）。<br>(1)必须在一条指令执行完毕        (2)可在任意时钟周期结束<br>(3)必须在一个总线周期结束        (4)在判明没有中断请求之后<br>3</p>
+</li>
+<li><p>在同步控制方式中（　　）。<br>(1)每个时钟周期（节拍）长度固定   (2)各指令的时钟周期不变<br>(3)每个工作周期长度固定           (4)各指令的工作周期数不变<br>1</p>
+</li>
+<li><p>异步控制常用于（　　）中，作为其主要控制方式。<br>(1)单总线结构计算机中访问主存与外围设备时  (2)微型计算机中的CPU控制<br>(3)组合逻辑控制器              (4)微程序控制器</p>
+<p>1</p>
+</li>
+<li><p>13.三级时序系统提供的三级时序信号是（　　）。<br>(1)指令周期、工作周期、节拍      (2)工作周期、节拍、脉冲<br>(3)指令周期、机器周期、时钟周期  (3)指令周期、微指令周期, 时钟周期<br>2</p>
+<p>时钟周期是计算机操作的最小单位时间，由计算机的主频确定。工作脉冲是控制器的最小时间单位，起定时触发作用。一个时钟周期有一个或几个工作脉冲。</p>
+</li>
+<li><p>15.程序计数器PC用于（     ）。<br> (1)存放指令的地址              (2)对程序中的指令数量进行计数<br> (3)存放将要执行的下一条指令    (4)计数并统计系统中程序的数量<br>1</p>
+<p>PC为取为取下一条指令做准备, 但是不是永远指向下一条指令的</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210111090904.png" alt="1"></p>
+</li>
+<li><p>按照模型机数据通路结构，如果要将一个存储单元的内容传送到某一个寄存器Ri，下面的说法正确的是（    ）<br>(1)对存储单元读出的数据首先进行译码，以判断是数据还是指令，再决定是否送到Ri ，如果是指令，应该送到指令寄存器IR操作<br> (2)从存储器单元读出的内容到数据总线后，为Ri 提供一个打入脉冲，即可完成上述<br> (3)要判断从存储单元读出的内容是操作数还是操作数地址，以决定是送到MDR还是MAR<br>(4)以上三种说法都不正确</p>
+<p>4 控制器通过时序判断是指令还是数据</p>
+</li>
+<li><p>采用16位定长指令，存储器按字节编址。当前指令(非转移或转子指令)的起始地址1000H，该指令的操作数之一采用自增型寻址，且指定的寄存器是PC，则下一条要执行的指令的地址起始是(    )。<br>(1)1000H     (2)1001H      (3)1002H     (4)1003H</p>
+<p>4</p>
+</li>
+<li><p>33.若某浮点数为25×1.10101，其尾数为补码表示，则该数（    ）。<br>(1)已是规格化数            (2)需将尾数左移两位规格化<br>(3)需右移规格化            (4)需将尾数左移一位规格化<br>[解析] 浮点数25×1.10101的尾数不是规格化数，需要进行左规。<br>对于诸如0.0xx…x和1.1xx…x这类非规格化数，需要使尾数左移以实现规格化，这个过程称为左规。尾数每左移一位，阶码相应减1，直至成为规格化数为止。由于左规一次之后尾数就成为规格化数了，所以只需左移一位。<br>最高位仍然是符号位, 规格化的意义是有效位的规定</p>
+<p>4</p>
+</li>
+<li><p>在补码一位乘法中，有效位连同符号位共N+1位，因此需要做（   ）步操作。<br>(1)N或者N+1   (2)N   (3)N+2   (4)N+1</p>
+<p>1</p>
+</li>
+<li><p>待执行的工作程序存放在（主存）中，正在执行的指令存放在（指令寄存器）中，而微程序存放在（控制存储器）中</p>
+</li>
+<li><p>在CPU中采用（同步控制）的时序控制方式 </p>
+</li>
+<li><p>模型机中，指令ADD（R0），@（R0）+的长度为三个字节（存储器按字节编址，AB总线的宽度为16位），则该指令从取指开始到执行完成，共需要（7）次访问存储器。</p>
+</li>
+<li><p>假设一条数据传输指令的源操作数和目的操作数都采用直接寻址，指令长度为48位，数据总线和地址总线位数均为16位，则该指令从取指到执行完成需要至少访存多少（5）次</p>
+</li>
+<li><p>乘法器的核心部件是加法器。（   V ）</p>
+</li>
+<li><p>运算器实现移位操作，必须使用移位线路。（ X） 斜位线路</p>
+</li>
+<li><p>用两级半加器组成的全加器，求和时间虽然比用与或非门组成的全加器长一些，但前者构成的加法器，其运算速度仍可能高于用后者构成的加法器。（V）</p>
+</li>
+<li><p>原码加减运算比补码加减运算简单。（X）</p>
+</li>
+<li><p>原码乘法运算比补码乘法运算简单。（V）</p>
+</li>
+<li><p>进位制中的基数是：一个数位中允许使用的最大数码值。（ X）最多数码个数</p>
+</li>
+<li><p>若数据传输指令的源和目的操作数都采用变址寻址，指令字长为48bit（<strong>包含形式地址</strong>），数据总线和地址总线为16bit，则该指令的执行需要从存储器取指令、取源操作数，并送到目的存储单元，需要多少次访存？（5）</p>
+</li>
+<li><p>模型机中，MOV X(R0)，X(R1)，则该指令的执行需要从存储器取指令、取源操作数，并送到目的存储单元，需要多少次访存？（5）</p>
+</li>
+<li><p>模型机中，MOV (R0)，@(R1)+，则该指令的执行需要从存储器取指令、取源操作数，并送到目的存储单元，需要多少次访存？（4）</p>
+</li>
+<li><p>在磁盘接口中（    ）。<br>(1)采用直接程序传送方式    (2)只采用中断方式    (3)只采用DMA方式               (4)既有DMA方式，又有中断方式</p>
+<p>4</p>
+</li>
+<li><p>地址总线A0（高位）∽A15（低位），用4Kx4b的存储芯片组成16KB的存储器，则加至各存储芯片上的地址线是（    ）。<br>(1)A16∽A15  （2）A0∽A9    (3)A0∽A11   (4)A4∽A15<br>4</p>
+</li>
+<li><p>地址总线A0（高位）∽A15（低位），用4Kx4b的存储芯片组成16KB的存储器，则应由（   ）译码产生片选信号。<br>(1)A0∽A5     (2)A0A1      (3)A12∽A15      (4)A2A3<br>4</p>
+</li>
+<li><p>地址总线A15（高位）∽A0（低位），用1Kx4b的存储芯片组成4KB的存储器，则加至各存储芯片上的地址线是（   ）。<br>(1)A15∽A6      (2)A9∽A0      (3)A15∽A5       (4)A10∽A0  </p>
+<p>2</p>
+</li>
+<li><p>同上题，问应由（   ）译码产生片选信号。<br>(1)A9∽A0       (2)A11A10      (3)A15A14      (4)A1A0</p>
+<p>2</p>
+</li>
+<li><p>在磁盘接口中（    ）。<br>(1)采用直接程序传送方式         (2)只采用中断方式       (3)只采用DMA方式               (4)既有DMA方式，又有中断方式</p>
+<p>4</p>
+</li>
+<li><p>在下面的结论中，（    ）正确。<br>(1)主存是主机的一部分，不能通过系统总线被访问<br>(2)主存是主机的一部分，必须通过专用总线进行访问<br>(3)主存可以和外围设备一样，通过系统总线被访问<br>(4)主存是主机的一部分，必须通过内总线进行访问</p>
+<p>3</p>
+</li>
+<li><p>磁盘常采用（    ）。<br>(1)随机存取方式       (2)顺序存取方式<br>(3)直接存取方式       (3)只读不写方式</p>
+<p>3</p>
+</li>
+<li><p>某种计算机为16位定长指令，地址总线和数据总线均为16位。中断发生时，CPU正在执行的指令位于2000H号单元，该中断对应的中断服务程序从5000H号单元开始存放，该中断服务程序共计30条指令，则中断返回指令执行完毕时，PC值等于(    )。（若该机存储器按字节编址）<br>(1)2002H      (2)5029H     (3)5130H       (4)2001H</p>
+<p>1</p>
+</li>
+<li><p>在对动态存储器进行读操作时，存在电容的放电现象，从而改变了电容量的大小，因此，动态存储器工作过程存在（    ）操作。<br>(1) 刷新     (2)重写     (3)防止电荷泄露     (4)数据备份</p>
+<p>1</p>
+</li>
+<li><p>在磁盘中（　）。<br>(1)只采取查询等待方式        (2)只采取程序中断方式<br>(3)只采取ＤＭＡ方式          (4)既有ＤＭＡ方式，也有中断方式<br>4</p>
+</li>
+<li><p>在中断方式中，数据传送由（   ）。<br>(1)总线控制器控制           (2)中断控制器控制<br>(2)接口控制                 (4)CPU控制</p>
+<p>4</p>
+</li>
+<li><p>在有多个中断源的系统中，采用向量中断方式，中断屏蔽字来自于<br>(1)中断接口   (2)提出中断请求的设备   (3)向量地址   (4)CPU </p>
+<p>4</p>
+</li>
+<li><p>CPU执行中断指令时，若中断类型号为5（假设中断向量表在主存的起始位置为0000H，且每个中断向量在中断向量表中占用4个单元地址），则该中断的起始向量地址为（   ）。<br>(1)0005H   (2)14H   (3)17H   (4)20H<br>这是16进制!     14H=20<br>2</p>
+</li>
+<li><p>一种计算机为16位定长指令，地址总线和数据总线均为16位,存储器按字节编址。中断发生时，CPU正在执行的指令位于2001H号单元，该中断对应的中断服务程序从5000H号单元开始存放，该中断服务程序共计30条指令，则中断返回指令执行完毕时，PC值等于(    )。<br>(1)2002H     (2)2003H    (3)5029H     (4)5130H       </p>
+<p>1</p>
+</li>
+<li><p>冯·诺依曼结构的特点是 （1）由五大基本部件组成,（2）采用二进制来表示指令和数据，（3）存储程序  </p>
+</li>
+<li><p>现在主要采用  总线  结构作为微型计算机硬件之间的连接方式</p>
+</li>
+<li><p>软件系统分为 系统软件  和 应用软件  两大类</p>
+</li>
+<li><p>用于科学计算的计算机中，标志系统性能的主要参数是（ D ）。<br>A.  主频  B.  主存容量  C. MIPS   D.  MFLOPS</p>
+</li>
+<li><p>若短浮点数IEEE754编码为（BF400000）16，则其代表的十进制数为多少？<br>解：<br>（1）浮点十六进制代码：A27F,其二进制代码为：101000,1001111111<br>阶码（补码）为：101000，其二进制真值为：-11000，即-24；<br>尾数补码：1.001111111，其二进制真值：-0.110000001<br>尾数的十进制真值：$-(2^{-1}+2^{-2}+2^{-9})$<br>所以，浮点数十进制真值：$-(2^{-1}+2^{-2}+2^{-9})2^{-24}$</p>
+</li>
+<li><p>影响并行加法器速度的关键因素是（进位信号的产生和传递）</p>
+</li>
+<li><p>在双符号位判断溢出的方案中，出现正溢出时，双符号位应当为（   ）<br>A. 00   B. 01   C.  10   D.  11</p>
+<p>B</p>
+</li>
+<li><p>(将8位二进制补码的)十进制数-121，扩展成16位二进制补码，结果用16进制表示为（  ）<br>A. 0087H    B.  FF87H   C.8079H   D.FFF9H</p>
+<p>B</p>
+</li>
+<li><p>已知X=13/16，Y=-11/16，用变形补码计算X+Y和X-Y，同时指出运算结果是否溢出？</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210111100258.png" alt="image-20210111100258300"></p>
+</li>
+<li><p>某加法器采用组内并行、组间并行的进位链，4位一组，写出进位信号 的逻辑表达式。</p>
+<script type="math/tex; mode=display">
+C_4=G_I^*+P_I^* C_0\\
+G_I^*=G_4+P_4 G_3+P_4 P_3 G_2+P_4 P_3 P_2 G_1\\
+P_I^*=P_4 P_3 P_2 P_1 \\
+C_5=G_5+P_5 C_4 \\
+C_6=G_6+P_6 C_5=G_6+P_6 (G_5+P_5 C_4)\\</script></li>
+<li><p>一个计算机系统采用32位单字长指令，地址码为12位，如果定义了250条二地址指令，那么单地址指令的条数最多有（  ）。<br>A. 4K    B.  8K   C. 16K    D.  24K</p>
+<p>D</p>
+</li>
+<li><p>用来支持浮动程序设计的寻址方式是（  ）。<br>A. 相对寻址  B. 变址寻址  C. 间接寻址  D. 基址寻址<br>C</p>
+</li>
+<li><p>将子程序返回地址放在（  ）中时，子程序允许嵌套和递归。<br>A. 寄存器  B. 堆栈  C. 子程序的结束位置  D. 子程序的起始位置</p>
+<p>B</p>
+</li>
+<li><p>设某计算机有变址寻址、间址寻址和相对寻址等寻址方式，且当前指令的地址部分为001AH，正在执行的指令所在地址为1F05H，变址寄存器中的内容为23A0H。</p>
+<pre><code>          地址码                 存储内容
+          001AH                  23A0H
+          1F05H                  241AH
+          1F1FH                  2500H
+          23A0H                  2600H
+          23BAH                  1748H
+</code></pre><p>（1）当执行取数指令时，如为变址寻址方式，则取出的数为多少？<br>（2）如为间址寻址，取出的数为多少？<br>（3）当为相对寻址时，转移地址为多少？</p>
+<p>解：</p>
+<p>（1）1748H;<br>（2）2600H<br>（3）1F1FH</p>
+</li>
+<li><p>存储器堆栈的栈顶内容是1000H，堆栈自底向上生成，堆栈指针寄存器SP的内容是100H，一条双字长的子程序调用指令位于存储器地址2000H、2001H处，指令第二字是地址字段，内容为3000H，问一下情况下PC、SP和栈顶的内容是什么？<br>（1）子程序调用指令被读之前；<br>（2）子程序调用指令被执行之后；<br>（3）从子程序返回之后。</p>
+<p>解：<br>（1）（PC）=2000H；（SP）=100H；栈顶=1000H<br>（2）（PC）=3000H；（SP）=FFH；栈顶=2002H<br>（3）（PC）=2002H；（SP）=100H；栈顶=1000H</p>
+</li>
+<li><p>微命令发生器的作用是（   ）。<br>  A. 从主存中取出指令    B. 完成指令操作码的分析功能<br>  C. 产生控制时序        D. 产生各种微操作控制信号</p>
+<p>D</p>
+</li>
+<li><p>微程序控制器中，微程序的入口地址是由（  ）形成的。<br>  A. 机器指令的地址码字段    B. 微指令的微地址码字段<br>  C. 机器指令的操作码字段    D. 微指令的微命令字段</p>
+<p>C</p>
+</li>
+<li><p>微指令执行的顺序控制问题，实际上是如何确定下一条微指令的地址问题。通常采用的一种方法是断定方式，其基本思想是（   ）。<br>  A. 用程序计数器来产生后继微指令地址<br>  B. 用微程序计数器来产生后继微指令地址<br>  C. 通过微指令顺序控制字段由设计者指定或由判断字段控制产生后继微指令地址<br>  D. 通过指令中指定一个专门字段来控制产生后继微指令地址</p>
+<p>C</p>
+</li>
+<li><p>相对于微程序控制器，硬布线控制器的特点是（   ）。<br> A. 指令执行速度慢，指令功能的修改和扩展容易<br> B. 指令执行速度慢，指令功能的修改和扩展难<br> C. 指令执行速度快，指令功能的修改和扩展容易<br> D. 指令执行速度快，指令功能的修改和扩展难</p>
+<p>D</p>
+</li>
+<li><p>某计算机的控制器采用微程序控制方式，微指令中的操作控制字段采用字段直接编码法，共有33个微命令，构成5个互斥类，分别包含了7、3、12、5和6个微命令，则操作控制字段至少有（   ）。<br>  A.  5位    B.  6位   C.  15位   D.  33位</p>
+<p>C</p>
+</li>
+<li><p>挂接在总线上的多个部件（   ）</p>
+<pre><code>  A. 只能分时向总线发送数据，并只能分时从总线上接收数据
+  B. 只能分时向总线发送数据，但可同时从总线上接收数据
+  C. 可同时向总线发送数据，并同时从总线上接收数据
+  D. 可同时向总线发送数据，但只能分时从总线上接收数据
+</code></pre><p>B</p>
+</li>
+<li><p>总线的主设备指的是（   ），从设备指的是（   ）</p>
+<pre><code>  A.  申请作为从设备的设备     B.  被主设备访问的设备
+  C.  掌握总线控制权的设备     D.  总线源设备
+</code></pre><p>C,B</p>
+</li>
+<li><p>CPU响应中断必须满足的条件是（   ）</p>
+<pre><code> A.  CPU接收到中断请求信号       B.  CPU允许中断
+ B.  一条指令执行完毕            D.  以上都是
+</code></pre><p>D</p>
+</li>
+<li><p>设置中断屏蔽标志可以改变（   ）</p>
+<pre><code> A.  多个中断源的中断请求优先级     B.  CPU对多个中断请求响应的优先次序
+ C.  多个中断服务程序被开始执行的次序  D.  多个中断服务程序执行完的次序
+</code></pre><p>D</p>
+</li>
+<li><p>单级中断系统中，中断服务程序内的执行顺序是（   ）</p>
+<pre><code>  I. 保护现场；II.开中断；III.关中断；IV.保存断点；
+  V.中断事件处理；VI.恢复现场；VII.中断返回
+  A. I→V→VI→II→VII     B. III→I→V→VII
+  C. III→IV→V→VI→VII   D. IV→I→V→VI→VII
+</code></pre><p>A</p>
+</li>
+<li><p>响应外部中断的过程中，中断隐指令完成的操作，除保护断点外，还包括（  ）<br>I.关中断  II.保存通用寄存器的内容  III.形成中断服务程序入口地址并送PC<br>A.  仅I、II   B. 仅I、III  C. 仅II、III   D.I、II、III<br>B</p>
+</li>
+<li><p>某计算机有5级中断L4∽L0，中断屏蔽字为M4∽M0，Mi=1表示对Li级中断进行屏蔽。若中断响应优先级从高到低的顺序是L0→L1→L2→L3→L4，且要求中断处理优先级从高到低的顺序为L4→L0→L2→L1→L3，则L1的中断处理程序中设置的中断屏蔽字是（   ）</p>
+<pre><code>A.  11110     B. 01101   C.  00011   D. 01010
+</code></pre><p>D</p>
+</li>
+</ol>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/15/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2006%20%E9%87%8D%E7%82%B9%E9%A2%98%E7%9B%AE/">http://zjeff-953.gitee.io/zjeff/2020/12/15/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2006%20%E9%87%8D%E7%82%B9%E9%A2%98%E7%9B%AE/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/16/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/Go%20-%2001%20-%E5%BC%80%E5%A7%8BGo/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Go - 01 - Hello GoWeb</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/15/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2002%20%E6%85%95%E8%AF%BE%E9%A2%98%20/"><span class="paginator-prev__text">软件工程 - 应试知识总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E9%87%8D%E7%82%B9%E9%A2%98%E7%9B%AE"><span class="toc-text">
+          计算机体系结构 - 重点题目</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

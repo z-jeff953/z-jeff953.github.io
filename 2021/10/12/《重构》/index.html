@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《重构---改善既有代码的设计》">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E3%80%8A%E9%87%8D%E6%9E%84%E3%80%8B/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-12T06:34:25.642Z">
+<meta property="article:modified_time" content="2021-06-08T02:21:18.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary"><title>《重构---改善既有代码的设计》 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E3%80%8A%E9%87%8D%E6%9E%84%E3%80%8B/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">《重构---改善既有代码的设计》</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-08</span></span></div></header><div class="post-body">
+        <h1 id="《重构—-改善既有代码的设计》"   >
+          <a href="#《重构—-改善既有代码的设计》" class="heading-link"><i class="fas fa-link"></i></a>《重构—-改善既有代码的设计》</h1>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">哪有什么天生如此，只是我们天天坚持。 -Zhiyuan</span><br></pre></td></tr></table></div></figure>
+<p>国庆抽出时间来阅读这本从师傅那里借来的书，听说还是程序员的必读书籍。<br>关于书的高清下载连接会在文章的最后呈现。<br>话不多说让我们一起去领略一下书中风采。</p>
+<p>如果你读到这篇文章，说明你也想对你的代码进行重构，那首先我们就来看一下什么是重构？</p>
+<span id="more"></span>
+
+        <h2 id="1-何谓重构？"   >
+          <a href="#1-何谓重构？" class="heading-link"><i class="fas fa-link"></i></a>1. 何谓重构？</h2>
+      <p>两个定义：</p>
+<ol>
+<li><strong>名词形式</strong><br>重构(名词)<strong>：</strong>对软件内部的一种太纵横，目的是在不改变软件可观察的前提下，提高其可理解性，降低其修改成本。</li>
+<li><strong>动词形式</strong><br>重构(动词)<strong>：</strong>使用一系列的重构手法，在不改变软件可观察的行为的前提下，调整其结构。</li>
+</ol>
+<p>上面是重构的学术解释，相信一些大神是可以直接一步到位的领略它的意思。我比较喜欢通俗易懂的解释：<br>你要问我“重构就只是整理代码吗？” 在某种角度来说 还真是。 but ! 重构肯定有其独到的地方：<br><strong>它还提供一种 更高效 且 受控的 代码整理技术。</strong></p>
+<p>划重点哈！</p>
+<p>作者还对重构进行了另外两方面的扩展。让我一起来看下还有什么好玩的：</p>
+<ol>
+<li><p><strong>重构的目的是是软件更容易被理解和修改</strong>。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">也就是说让你的修改但你只能对软件的可观察的外部行为造成很小的变化甚至不造成变化。</span><br><span class="line">和重构形成对比的是 **性能优化** (我反正一开始觉得这两个都是一样的)，</span><br><span class="line">差就差在性能优化通常不会改变组件的行为（除了执行速度）指挥改变其内部结构。</span><br><span class="line">但是！   </span><br><span class="line">这两个的出发点不同： **性能优化往往是代码较难理解，但是为了得到所需的性能你不得不这么做。**  </span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>重构不会改变软件的可观察的行为</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">也就是说重构之后软件的功能一如以往。所有人除了你自己都不知道有东西改变过（就像鬼子进村悄悄的进行，打枪的不要）。</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+
+        <h2 id="2-为何重构？"   >
+          <a href="#2-为何重构？" class="heading-link"><i class="fas fa-link"></i></a>2. 为何重构？</h2>
+      <p>重构有四大好处：</p>
+<ol>
+<li><strong>重构改进软件设计</strong><br>如果没有重构，程序的设计会逐渐腐败变质。重构很像是在整理代码，你所做的就是让所有东西回到应出的位置上。经常性的重构可以帮助维持自己该有的形态。</li>
+<li><strong>重构使软件更容易理解</strong><br>重构可以帮助我们让代码更易读。</li>
+<li><strong>重构帮助找到bug</strong><br>对代码进行重构，可以帮助我们深入理解代码，对代码理解的越深，就越能帮我们找到bug。重构能够帮大家更有效地写出强健的代码。（这对程序员来说是重点）</li>
+<li><strong>重构提高编程速度</strong><br>重构可以帮助我们更快速地开发软件，因为它阻止系统腐败变质，它甚至还可以提高设计质量。（这对Boss来说是重点）</li>
+</ol>
+<blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</span><br></pre></td></tr></table></div></figure>
+<p>任何一个傻瓜都能写出计算机可以理解的代码。唯有写出人类容易理解的代码，才是优秀的代码。</p>
+</blockquote>
+
+        <h2 id="3-何时重构？"   >
+          <a href="#3-何时重构？" class="heading-link"><i class="fas fa-link"></i></a>3. 何时重构？</h2>
+      <p>重构 <strong>不是</strong> 一件应该特别拨出时间做的事情，重构应该随时随地进行。<strong>不应该为重构而重构，之所以重构</strong>，是因为我们想做别的什么事，而重构可以帮助我们把那些事做好。</p>
+<p>作者给出了一个三次原则，让我们来看一下：</p>
+<p><strong>三次法则：事不过三，三则重构。</strong></p>
+<ol>
+<li><strong>添加功能</strong>时重构。</li>
+<li><strong>修补错误</strong>时重构。</li>
+<li><strong>复审代码</strong>时重构。</li>
+</ol>
+<p>够明确了吧！ 当你发现你的代码正符合里面的条件式那就抓紧时间重构吧。</p>
+
+        <h2 id="4-怎么对经理说？"   >
+          <a href="#4-怎么对经理说？" class="heading-link"><i class="fas fa-link"></i></a>4. 怎么对经理说？</h2>
+      <p><strong>此章节只可意会不可言传。</strong></p>
+
+        <h2 id="5-重构的难题"   >
+          <a href="#5-重构的难题" class="heading-link"><i class="fas fa-link"></i></a>5. 重构的难题</h2>
+      <p>当你使用一种可以提高生成力的新技能时，一定要<strong>仔细思考此场景是不是适用</strong>。 别人的“好媳妇”在你着没准就没那么好用。</p>
+<p>假如你发现你确实需要重构，请参考仔细阅读下面你可能会遇到的难题：</p>
+<ol>
+<li><p><strong>数据库难在哪？</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.绝大多数的程序都和背后的数据库结构紧密的耦合在一起。</span><br><span class="line">2.数据迁移</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>接口修改难在哪？</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.已经发布了的接口</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>何时不该重构？</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.代码根本无法工作或者太糟糕，重构还不如重写来的简单。</span><br><span class="line">   </span><br><span class="line">2.在项目的最后期限，应该避免重构</span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+<hr>
+<p><strong>中场休息</strong><br>文章至此，大家应该知道自己现在所处的阶段适不适合重构心里有点b数了吧？<br>不适合就别往下看了，光知道重构是什么东西就可以，以后用到再回来看看这篇文章。</p>
+<p>下面的文章能告诉你怎么重构，只是框架，我又不可能把书都抄下来，如果大家真的需要重构不如立刻行动买书看，或者下载我的电子书。（免费的哦~）</p>
+<hr>
+
+        <h2 id="6-代码的坏味道"   >
+          <a href="#6-代码的坏味道" class="heading-link"><i class="fas fa-link"></i></a>6. 代码的坏味道</h2>
+      <ol>
+<li><strong>重复代码</strong>(Duplicated Code)</li>
+<li><strong>过长函数</strong>(Long Method)</li>
+<li><strong>过大的类</strong>(Large Class)</li>
+<li><strong>过长参数列</strong>(Long Parameter List)</li>
+<li><strong>发散式变化</strong>(Divergent Change)：一个类受多种变化的影响</li>
+<li><strong>霰弹式修改</strong>(Shotgun Surgery)：一种变化引发多个类相应修改</li>
+<li><strong>依恋情结</strong>(Feature Envy)：函数对某个类的兴趣高过自己所处类的兴趣</li>
+<li><strong>数据泥团</strong>(Data Clumps)：相同的若干项数据出现在不同地方，这些绑在一起出现的数据应该有属于它们自己的对象</li>
+<li><strong>基本类型偏执</strong>(Private Obsession)：很多人不愿意在小任务上运用小对象</li>
+<li><strong>switch惊悚现身</strong>(Switch Statements)：switch语句会在很多地方重复出现，一改则需全改</li>
+<li><strong>平行继承体系</strong>(Parallel Inheritance Hierarchies)：当你为某一个类增加子类时，也必须为另一个类相应增加一个类</li>
+<li><strong>冗赘类</strong>(Lazy Class)：如果一个类不值得存在，那就让它消失</li>
+<li><strong>夸夸其谈的未来星(</strong>Speculative Generality)：预留的无用的抽象类，无用的抽象参数</li>
+<li><strong>令人迷惑的暂时字段</strong>(Temporary Field)：类中某个字段只为某些特殊情况而设置</li>
+<li><strong>过度耦合的消息链</strong>(Message Chains)：用户向一个对象请求另一个对象，然后再向后者请求另一个对象……</li>
+<li><strong>中间人</strong>(Middle Man)：无用的委托，过多的中间层</li>
+<li><strong>狎昵关系</strong>(Inappropriate Intimacy)：两个类过于亲密，一个类过于关注另一个类的成员</li>
+<li><strong>异曲同工的类</strong>(Alternative Classes with DifferentInterfaces)：不同名字的类或函数，作者相同的事</li>
+<li><strong>不完美的库类</strong>(Incomplete Library Class)：类库设计不可能完美</li>
+<li><strong>纯数据类</strong>(Data Class)：一个类拥有一些字段以及用于访问这些字段的函数，除此之外一无长物</li>
+<li><strong>被拒绝的遗赠</strong>(Refused Bequest)：子类不想继承超类所有的函数和数据，只想挑几样来玩</li>
+<li><strong>过多的注释</strong>(Comments)</li>
+</ol>
+
+        <h2 id="7-构筑测试体系"   >
+          <a href="#7-构筑测试体系" class="heading-link"><i class="fas fa-link"></i></a>7. 构筑测试体系</h2>
+      <ol>
+<li>重构的首要前提是拥有一个<strong>可靠的测试环境</strong>。</li>
+<li><strong>只要写好一点功能，就立即添加测试</strong>，并确保所有测试都完全自动化，让它们检查自己的测试结果。一套测试就是一个强大的bug侦测器，能够大大缩减查找bug所需要的时间。</li>
+<li><strong>撰写测试代码的最有用时机是在开始编程之前。</strong>当你需要添加特性的时候，先写相应测试代码。</li>
+<li><strong>多运用单元测试。</strong>测试你最担心出错的地方，考虑可能出错的边界条件。不要因为测试无法捕捉所有bug就不写测试，因为测试的确可以捕捉到大多数bug。“花合理时间抓出大多数bug”要好过“穷尽一生抓出所有bug”。</li>
+</ol>
+
+        <h2 id="8-重新组织函数"   >
+          <a href="#8-重新组织函数" class="heading-link"><i class="fas fa-link"></i></a>8. 重新组织函数</h2>
+      <ol>
+<li><strong>提炼函数</strong>（Extract Method）。你有一段代码可以被组织在一起并独立出来。将这段代码放进一个独立函数中，并将函数名称解释该函数的用途。</li>
+<li><strong>内联函数</strong>（Inline Method）。一个函数的本体与名称同样清楚易懂。在函数调用点插入函数本体，然后移除该函数。</li>
+<li><strong>内联临时变量</strong>（InlineTemp）。你有一个临时变量，只被一个简单表达式赋值一次，而它妨碍了其他重构手法。将所有对该变量的引用动作，替换为对它赋值的那个表达式自身。</li>
+<li><strong>以查询取代临时变量</strong>（Replace Temp withQuery）。你的程序以一个临时变量保存某一表达式的运算结果。将这个表达式提炼到一个独立函数中。将这个临时变量的所有引用点替换为对新函数的调用。此后，新函数就可被其他函数使用。</li>
+<li><strong>引入解释性变量</strong>（Introduce ExplainingVariable）。你有一个复杂的表达式。将该复杂表达式（或其中一部分）的结果放进一个临时变量，以此变量名称来解释表达式用途。</li>
+<li><strong>分解临时变量</strong>（Split TemporaryVariable）。你的程序有某个临时变量被赋值过一次，它既不是循环变量，也不被用于收集计算结果。针对每次赋值，创造一个独立、对应的临时变量。</li>
+<li><strong>移除对参数的赋值</strong>（Remove Assignments Parameters）。代码对一个参数进行赋值。以一个临时变量取代参数的位置。</li>
+<li><strong>以函数对象取代函数</strong>（Replace Method with MethodObject）。你有一个大型函数，其中对局部变量的使用使你无法采用ExtractMethod。将这个函数放进一个单独对象中，如此一来局部变量就成了对象内的字段。然后你可以在同一个对象中将这个大型函数分解为多个小型函数。</li>
+<li><strong>替换算法</strong>（Substitute Algorithm）。你想要把某个算法替换为另一个更清晰的算法。将函数本体替换为另一个算法。</li>
+</ol>
+
+        <h2 id="9-在对象之间搬移特性"   >
+          <a href="#9-在对象之间搬移特性" class="heading-link"><i class="fas fa-link"></i></a>9. 在对象之间搬移特性</h2>
+      <ol>
+<li><strong>搬移函数</strong>（MoveMethod）。你的程序中，有个函数与其所驻之外的另一个类进行更多交流：调用后者，或被后者调用。在该函数最常引用的类中建立一个有着类似行为的新函数。将旧函数变成一个单纯的委托函数，或是将旧函数完全移除。</li>
+<li><strong>搬移字段</strong>（MoveField）。你的程序中，某个字段被其所驻类之外的另一个类更多地用到。在目标类新建一个字段，修改源字段的所有用户，令它们改用新字段。</li>
+<li><strong>提炼类</strong>（Extract Class）。某个类做了应该有两个类做的事。建立一个新类，将相关的字段和函数从旧类搬移到新类。</li>
+<li><strong>将类内联化</strong>（Inline Class）。某个类没有做太多事情。将这个类的所有特性搬移到另一个类中，然后移除原类。</li>
+<li><strong>隐藏“委托关系”</strong>（Hide Delegate）。客户通过一个委托来调用另一个对象。在服务类上建立客户所需的所有函数，用以隐藏委托关系。</li>
+<li><strong>移除中间人</strong>（Remove Middle Man）。某个类做了过多的简单委托动作。让客户直接调用受托类。</li>
+<li><strong>引入外加函数</strong>（Introduce ForeignMethod）。你需要为提供服务的类增加一个函数，但你无法修改这个类。在客户类中建立一个函数，并以第一参数形式传入一个服务类实例。</li>
+<li><strong>引入本地扩展</strong>（Introduce LocalExtension）。你需要为服务类提供一些额外函数，但你无法修改这个类。建立一个新类，使它包含这些额外函数。让这个扩展品成为源类的子类或包装类。</li>
+</ol>
+
+        <h2 id="10-重新组织数据"   >
+          <a href="#10-重新组织数据" class="heading-link"><i class="fas fa-link"></i></a>10. 重新组织数据</h2>
+      <ol>
+<li><strong>自封装字段</strong>（Self Encapsulate Field）。你直接访问一个字段，但与字段之间的耦合关系逐渐变得笨拙。为这个字段建立取值/设值函数，并且只以这些函数来访问字段。</li>
+<li><strong>以对象取代数据值</strong>（Replace Data Value withObject）。你有一个数据项，需要与其他数据和行为一起使用才有意义。将数据项变成对象。</li>
+<li><strong>将值对象改为引用对象</strong>（Change Value toReference）。你从一个类衍生出许多彼此相等的实例，希望将它们替换为同一个对象。将这个值对象变成引用对象。</li>
+<li><strong>将引用对象改为值对象</strong>（Change Reference to Value）。你有一个引用对象，很小且不可变，而且不易管理。将它变成一个值对象。</li>
+<li><strong>以对象取代数据</strong>（Replace Array withObject）。你有一个数组，其中的元素各自代表不同的东西。以对象替换数组，对于数组中的每个元素，以一个字段来表示。</li>
+<li><strong>复制“被监视数据”</strong>（Duplicate ObservedData）。你有一些领域数据置身GUI控件中，而领域函数需要访问这些数据。将该数据复制到一个领域对象中。建立一个Observe模式，用以同步领域对象和GUI对象内的重复数据。</li>
+<li><strong>将单向关联改为双向关联</strong>（Change Unidirectional Association toBidirectional）。两个类都需要使用对方特性，但其间只有一条单向链接。添加一个反向指针，并使修改函数能够同时更新两条链接。</li>
+<li><strong>将双向关联改为单向关联</strong>（Change Bidirectional Association toUnidirectional）。两个类之间有双向关联，但其中一个类如今不再需要另一个类的特性。去除不必要的关联。</li>
+<li><strong>以字面常量取代魔法数</strong>（Replace Magic Number with SymbolicConstant）。你有一个字面数值，带有特别含义。创造一个常量，根据其意义为它命名，并将上述的字面数值替换为这个常量。</li>
+<li><strong>封装字段</strong>（Encapsulate Field）。你的类中存在一个public字段。将它声明为private，并提供相应的访问函数。</li>
+<li><strong>封装集合</strong>（EncapsulateCollection）。有个函数返回一个集合。让这个函数返回该集合的一个只读副本，并在这个类中提供添加/移除集合元素的函数。</li>
+<li><strong>以数据类取代记录</strong>（Replace Record with Data Class）。你需要面对传统编程环境中的记录结构。为该记录创建一个“哑”数据对象。</li>
+<li><strong>以类取代类型码</strong>（Replace Type Code withClass）。类之中有一个数值类行码，但它并不影响类的行为。以一个新的类替换该数值类型码。</li>
+<li><strong>以子类取代类型码</strong>（Replace Type Code withSubclass）。你又一个不可变的类型码，它会影响类的行为。以子类取代这个类型码。</li>
+<li><strong>以State/Strategy取代类型码</strong>（Replace Type Code withState/Strategy）。你有一个类型码，它会影响类的行为，但你无法通过继承手法消除它。以状态对象取代类型码。</li>
+<li><strong>以字段取代子类</strong>（Replace Subclass withFields）。你的各个子类的唯一差别只在“返回常量数据”的函数身上。修改这些函数，使他么返回超类中的某个（新增）字段，然后销毁子类。</li>
+</ol>
+
+        <h2 id="11-简化条件表达式"   >
+          <a href="#11-简化条件表达式" class="heading-link"><i class="fas fa-link"></i></a>11. 简化条件表达式</h2>
+      <ol>
+<li><strong>分解条件表达式</strong>（DecomposeConditional）。你有一个复杂的条件（if-then-else）语句。从if、then、else三分段落中分别提炼出独立函数。</li>
+<li><strong>合并条件表达式</strong>（Consolidate ConditionalExpression）。你有一系列条件测试，都得到相同结果。将这些测试合并为一个条件表达式，并将这个条件表达式提炼成为一个独立函数。</li>
+<li><strong>合并重复的条件片段</strong>（Consolidate Duplicate ConditionalFragments）。在条件表达式的每个分支上有着相同的一段代码。将这段重复的代码搬移到条件表达式之外。</li>
+<li><strong>移除控制标记</strong>（Remove ControlFlag）。在一系列布尔表达式中，某个变量带有“控制标记”的作用。以break语句或return语句取代控制标记。</li>
+<li><strong>以卫语句取代嵌套条件表达式</strong>（Replace nested Conditional with GuardClauses）。函数中的条件逻辑使人难以看清正常的执行路径。使用卫语句表现所有的特殊情况。</li>
+<li><strong>以多态取代条件表达式</strong>（Replace Conditional withPolymorphism）。你手上有个条件表达式，它根据对象类型的不同选择不同的行为。将这个条件表达式的每个分支放进一个子类内的覆写函数中，然后将原始函数声明为抽象函数。</li>
+<li><strong>引入Null对象</strong>（Introduce Null Object）。你需要再三检查某对象是否为null。将null值替换为null对象。</li>
+<li><strong>引入断言</strong>（Introduce Assertion）。某一段代码需要对程序状态做出某种假设。以断言明确表现这种假设。</li>
+</ol>
+
+        <h2 id="12-简化条件表达式"   >
+          <a href="#12-简化条件表达式" class="heading-link"><i class="fas fa-link"></i></a>12. 简化条件表达式</h2>
+      <ol>
+<li><strong>函数改名</strong>（Rename Method）。函数的名称未能揭示函数的用途。修改函数的名称。</li>
+<li><strong>添加参数</strong>（Add Parameter）。某个函数需要从调用端得到更多信息。为此函数添加一个对象参数，让该对象带进函数所需信息。</li>
+<li><strong>移除参数</strong>（Remove Parameter）。函数本体不再需要某个参数。将该参数去除。</li>
+<li><strong>将查询函数和修改函数分离</strong>（Separate Query from Modifier）。某个函数既返回对象状态值，又修改对象状态。建立两个不同的函数，其中一个负责查询，另一个负责修改。</li>
+<li><strong>令函数携带参数</strong>（ParameterizeMethod）。若干函数做了类似的工作，但在函数本体中却包含了不同的值。建立单一函数，以参数表达那些不同的值。</li>
+<li><strong>以明确函数取代参数</strong>（Replace Parameter with ExplicitMethods）。你有一个函数，其中完全取决于参数值而采取不同行为。针对该参数的每一个可能值，建立一个独立函数。</li>
+<li><strong>保持对象完整</strong>（Preserve WholeObject）。你从某个对象中取出若干值，将它们作为某一次函数调用时的参数。改为传递整个对象。</li>
+<li><strong>以函数取代参数</strong>（Replace Parameter withMethods）。对象调用某个函数，并将所得结果作为参数，传递给另一个函数。而接受该参数的函数本身也能够调用前一个函数。让参数接受者去除该项参数，并直接调用前一个函数。</li>
+<li><strong>引入参数对象</strong>（Introduce Parameter Object）。某些参数总是很自然地同时出现。以一个对象取代这些参数。</li>
+<li><strong>移除设值函数</strong>（Remove Setting Method）。类中的某个字段应该在对象创建时被设值，然后就不再改变。去掉该字段的所有设值函数。</li>
+<li><strong>隐藏函数</strong>（Hide Method）。有一个函数，从来没有被其他任何类用到。将这个函数修改为private。</li>
+<li><strong>以工厂函数取代构造函数</strong>（Replace Constructor with FactoryMethod）。你希望在创建对象时不仅仅是做简单的构建动作。将构建函数替换为工厂函数。</li>
+<li><strong>封装向下转型</strong>（Encapsulate Downcast）。某个函数返回的对象，需要由函数调用者执行向下转型。将向下转型动作移到函数中。</li>
+<li><strong>以异常取代错误码</strong>（Replace Error Code withException）。某个函数返回一个特定的代码，用以表示某种错误情况。改用异常。</li>
+<li><strong>以测试取代异常</strong>（Replace Exception withTest）。面对一个调用者可以预先检查的条件，你抛出了一个异常。修改调用者，使它在调用函数之前先做检查。</li>
+</ol>
+
+        <h2 id="13-处理概括关系"   >
+          <a href="#13-处理概括关系" class="heading-link"><i class="fas fa-link"></i></a>13.处理概括关系</h2>
+      <ol>
+<li><strong>字段上移</strong>（Pull Up Field）。两个子类拥有相同的字段。将该字段移至超类。</li>
+<li><strong>函数上移</strong>（Pull Up Method）。有些函数，在各个子类中产生完全相同的结果。将该函数移至超类。</li>
+<li><strong>构造函数本体上移</strong>（Pull Up ConstructorBody）。你在各个子类中拥有一些构造函数，他们的本体几乎完全一致。在超类中新建一个构造函数，并在子类构造函数中调用它。</li>
+<li><strong>函数下移</strong>（Push Down Method）。超类中的某个函数只与部分（而非全部）子类有关。将这个函数移到相关的那些子类去。</li>
+<li><strong>字段下移</strong>（Push Down Field）。超类中的某个字段只被部分（而非全部）子类用到。将这个字段移到需要它的那些子类去。</li>
+<li><strong>提炼子类</strong>（ExtractSubclass）。类中的某些特性只被某些（而非全部）实例用到。新建一个子类，将上面所说的那一部分特性移到子类中。</li>
+<li><strong>提炼超类</strong>（Extract Superclass）。两个类有相似特性。为这两个类建立一个超类，将相同特性移至超类。</li>
+<li><strong>提炼接口</strong>（ExtractInterface）。若干客户使用类接口中的同一子集，或者两个类的接口有部分相同。将相同的子集提炼到一个独立接口中。</li>
+<li><strong>折叠继承体系</strong>（Collapse Hierarchy）。超类和子类之间无太大差别。将它们合为一体。</li>
+<li><strong>塑造模板函数</strong>（Form TemPlateMethod）。你有一些子类，其中相应的某些函数以相同顺序执行类似的操作，但各个操作的细节上所有不同。将这些操作分别放进独立函数中，并保持它们都有相同的签名，于是原函数也就变得相同了。然后将原函数上移至超类。</li>
+<li><strong>以委托取代继承</strong>（Replace Inheritance withDelegation）。某个子类只使用超类接口中的一部分，或是根本不需要继承而来的数据。在子类中新建一个字段用以保存超类；调整子类函数令它改而委托超类；然后去掉两者之间的继承关系。</li>
+<li><strong>以继承取代委托</strong>（Replace Delegation withInheritance）。你在两个类之间使用委托关系，并经常为整个接口编写许多极简单的委托函数。让委托类来继承受托类。</li>
+</ol>
+
+        <h2 id="14-大型重构"   >
+          <a href="#14-大型重构" class="heading-link"><i class="fas fa-link"></i></a>14.大型重构</h2>
+      <ol>
+<li><strong>梳理并分解继承体系</strong>（Tease ApartInheritance）。某个继承体系同时承担两项责任。建立两个继承体系，并通过委托关系让其中一个可以调用另一个。</li>
+<li><strong>将过程化设计转化为对象设计</strong>（Convert Procedural Design toObjects）。你手上有一些传统过程化风格的代码。将数据记录变成对象，将大块的行为分成小块，并将行为移入相关对象之中。</li>
+<li><strong>将领域和表述/显示分离</strong>（Separate Domain fromPresentation）。某些GUI类之中包含了领域逻辑。将领域逻辑分离出来，为它们建立独立的领域类。</li>
+<li><strong>提炼继承体系</strong>（ExtractHierarchy）。你有某各类做了太多工作，其中一部分工作是以大量条件表达式完成的。建立继承体系，以一个子类表示一种特殊情况。</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>有幸看这本书的朋友 请反复看 反复看 反复看！</strong><br>希望看到这篇文章的人能有收获，希望多年后翻看此篇文章的我能有更近一步的理解。 加油！<br>点赞 收藏 走一波。降低应用程序复杂性？</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E3%80%8A%E9%87%8D%E6%9E%84%E3%80%8B/">http://zjeff-953.gitee.io/zjeff/2021/10/12/%E3%80%8A%E9%87%8D%E6%9E%84%E3%80%8B/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/12/%E5%89%8D%E7%AB%AF%E5%BA%94%E8%AF%95/%E5%88%B7%E9%9D%A2%E7%AD%8B%20-00%20%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">刷面筋 -00 自我介绍和项目经历</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/12/Web%E5%BC%80%E5%8F%91%E8%80%85%E5%B8%B8%E8%AF%86%20-%20Web%E7%BC%93%E5%AD%98(%E5%89%8D+%E5%90%8E)/"><span class="paginator-prev__text">标题</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E9%87%8D%E6%9E%84%E2%80%94-%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B"><span class="toc-text">
+          《重构—-改善既有代码的设计》</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%95%E8%B0%93%E9%87%8D%E6%9E%84%EF%BC%9F"><span class="toc-text">
+          1. 何谓重构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BA%E4%BD%95%E9%87%8D%E6%9E%84%EF%BC%9F"><span class="toc-text">
+          2. 为何重构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%95%E6%97%B6%E9%87%8D%E6%9E%84%EF%BC%9F"><span class="toc-text">
+          3. 何时重构？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%8E%E4%B9%88%E5%AF%B9%E7%BB%8F%E7%90%86%E8%AF%B4%EF%BC%9F"><span class="toc-text">
+          4. 怎么对经理说？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%87%8D%E6%9E%84%E7%9A%84%E9%9A%BE%E9%A2%98"><span class="toc-text">
+          5. 重构的难题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E7%9A%84%E5%9D%8F%E5%91%B3%E9%81%93"><span class="toc-text">
+          6. 代码的坏味道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%9E%84%E7%AD%91%E6%B5%8B%E8%AF%95%E4%BD%93%E7%B3%BB"><span class="toc-text">
+          7. 构筑测试体系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E9%87%8D%E6%96%B0%E7%BB%84%E7%BB%87%E5%87%BD%E6%95%B0"><span class="toc-text">
+          8. 重新组织函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%9C%A8%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E6%90%AC%E7%A7%BB%E7%89%B9%E6%80%A7"><span class="toc-text">
+          9. 在对象之间搬移特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E9%87%8D%E6%96%B0%E7%BB%84%E7%BB%87%E6%95%B0%E6%8D%AE"><span class="toc-text">
+          10. 重新组织数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E7%AE%80%E5%8C%96%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">
+          11. 简化条件表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E7%AE%80%E5%8C%96%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">
+          12. 简化条件表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%A4%84%E7%90%86%E6%A6%82%E6%8B%AC%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          13.处理概括关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%A4%A7%E5%9E%8B%E9%87%8D%E6%9E%84"><span class="toc-text">
+          14.大型重构</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

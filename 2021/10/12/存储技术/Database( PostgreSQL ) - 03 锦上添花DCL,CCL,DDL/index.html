@@ -1,0 +1,666 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database( PostgreSQL ) - 03 锦上添花DCL,CCL,DDL">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2003%20%E9%94%A6%E4%B8%8A%E6%B7%BB%E8%8A%B1DCL,CCL,DDL/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525134006.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525134101.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525105041.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525132501.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525141630.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525193136.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525193243.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525140551.png">
+<meta property="og:image" content="c:/Users/15727/AppData/Roaming/Typora/typora-user-images/image-20210525191615260.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191643.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191658.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525182553.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191805.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191816.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525192830.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525193956.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525194151.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525205304.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525205432.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210123.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210514.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210547.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210601.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210625.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210859.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525211000.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210949.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525211024.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525213611.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525213853.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525214020.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525214147.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609143542.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609143606.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210526110554.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210526110617.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210526110627.png">
+<meta property="article:published_time" content="2021-10-12T06:34:24.947Z">
+<meta property="article:modified_time" content="2021-06-09T06:36:50.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525134006.png"><title>Database( PostgreSQL ) - 03 锦上添花DCL,CCL,DDL | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2003%20%E9%94%A6%E4%B8%8A%E6%B7%BB%E8%8A%B1DCL,CCL,DDL/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 03 锦上添花DCL,CCL,DDL</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-09</span></span></div></header><div class="post-body">
+        <h1 id="Database-PostgreSQL-03-锦上添花DCL-CCL-DDL"   >
+          <a href="#Database-PostgreSQL-03-锦上添花DCL-CCL-DDL" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 03 锦上添花DCL,CCL,DDL</h1>
+      <p>数据库事务, 游标, 存储过称 , 触发器, 权限控制</p>
+<p>数据库的所有设计都是为了两件事 : 准, 快</p>
+<p>准就是没有冲突, 保持一致性, 快就是检索速度快</p>
+<p>属于数据库管理部分, 管理权限, 管理事务, 以及数据库的备份和恢复</p>
+<p>属于数据库编程的部分, 存储过程, 触发器, 以及 JDBC 编程</p>
+<span id="more"></span>
+<p>[TOC]</p>
+
+        <h2 id="数据库语言分类"   >
+          <a href="#数据库语言分类" class="heading-link"><i class="fas fa-link"></i></a>数据库语言分类</h2>
+      <p>DDL（Data Definition Languages）语句： 即数据库定义语句，用来创建数据库中的表、索引、视图、存储过程、触发器等<br>常用的语句关键字有：CREATE,ALTER,DROP,TRUNCATE,COMMENT,RENAME。</p>
+<p>DML（Data Manipulation Language）语句： 即数据操纵语句，用来查询、添加、更新、删除等<br>常用的语句关键字有：SELECT,INSERT,UPDATE,DELETE,MERGE,CALL,EXPLAIN PLAN,LOCK TABLE,包括通用性的增删改查。</p>
+<p>DCL（Data Control Language）语句： 即数据控制语句，用于授权/撤销数据库及其字段的权限（DCL is short name of Data Control Language which includes commands such as GRANT and mostly concerned with rights, permissions and other controls of the database system.）。<br>常用的语句关键字有：GRANT,REVOKE。</p>
+<p>TCL（Transaction Control Language）语句： 事务控制语句，用于控制事务<br>常用的语句关键字有：COMMIT,ROLLBACK,SAVEPOINT,SET TRANSACTION。</p>
+<p>DQL:（Data QueryLanguage）语句： 数据查询语言<br>常用的语句关键字有：SELECT, FROM, WHERE, ORDER BY, HAVING,ASC|DESC</p>
+<p>CCL（Cursor Control Languag） 语句 : 指针控制语言<br>常用的语句关键字有： DECLARE CURSOR，FETCH INTO和UPDATE WHERE CURRENT</p>
+
+        <h2 id="1-数据库管理概述"   >
+          <a href="#1-数据库管理概述" class="heading-link"><i class="fas fa-link"></i></a>1 数据库管理概述</h2>
+      <p>数据库管理(Database Management)是指为保证数据库系统的正常运行和服务质量必须进行的系统管理工作。</p>
+<p><strong>数据库管理的目标:</strong> </p>
+<ol>
+<li>保障数据库系统正常稳定运行</li>
+<li>充分发挥数据库系统的软硬件处理能力</li>
+<li>确保数据库系统安全和用户数据隐私性</li>
+<li>有效管理数据库用户及其角色权限</li>
+<li>解决数据库系统性能优化、系统故障与数据损坏等问题</li>
+<li>最大程度地发挥数据库对其所属机构的作用</li>
+</ol>
+<p><strong>数据库管理的目标 : </strong></p>
+<ol>
+<li>DBMS系统运行管理</li>
+<li>数据库性能监控</li>
+<li>数据库索引管理</li>
+<li>数据库查询优化</li>
+<li>数据库事务并发控制</li>
+<li>数据库角色管理</li>
+<li>数据库用户管理</li>
+<li>数据库对象权限管理</li>
+<li>数据安全管理</li>
+<li>数据库备份</li>
+<li>数据库恢复</li>
+</ol>
+<p>…</p>
+<p><strong>数据库管理员（DBA）职责</strong></p>
+<ol>
+<li>负责数据库系统开发与运维</li>
+<li>负责数据库用户与权限管理</li>
+<li>负责数据库备份与数据库恢复管理</li>
+<li>负责数据库性能调优管理</li>
+</ol>
+<p>DBMS的 功能</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525134006.png" alt="image-20210525134006443" style="zoom:50%;" /></p>
+<p>DBMS 的结构层次</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525134101.png" alt="image-20210525134101303" style="zoom:50%;" /></p>
+
+        <h2 id="2-DCL-角色权限管理"   >
+          <a href="#2-DCL-角色权限管理" class="heading-link"><i class="fas fa-link"></i></a>2 DCL - 角色权限管理</h2>
+      <p>在SQL语言中，数据控制SQL语句是一种可对用户数据访问权进行控制的操作语句，它可以控制特定用户或角色对数据表、视图、存储过程、触发器等数据库对象的访问权限。</p>
+<p>主要有三个语句 , 代表了三个操作</p>
+<ul>
+<li>GRANT授权语句</li>
+<li>REVOKE收权语句</li>
+<li>DENY拒绝权限语句</li>
+</ul>
+<p>权限类别</p>
+<ul>
+<li><p>数据库对象访问操作权限</p>
+</li>
+<li><p>数据库对象定义操作权限</p>
+</li>
+</ul>
+
+        <h3 id="2-1-数据库角色和用户管理"   >
+          <a href="#2-1-数据库角色和用户管理" class="heading-link"><i class="fas fa-link"></i></a>2.1 数据库角色和用户管理</h3>
+      <p>登录数据库的时候输入的账号密码用的时一个用户的账号和密码, 每个用户可以有多个角色 , </p>
+<p>每个用户 / 角色在数据库层面有登录 , 继承, 更新等权限</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525105041.png" alt="image-20210525105040966" style="zoom:50%;" /></p>
+<p>用户 / 角色对于数据表也可以进行权限的控制</p>
+<p>也就是说, 你可以把对于数据库/数据表的权限赋予角色, 然后给不同的用户赋予不容的角色, 还可以在一些特殊情况下为某个用户赋予一定的权限</p>
+
+        <h4 id="2-1-1-用户管理"   >
+          <a href="#2-1-1-用户管理" class="heading-link"><i class="fas fa-link"></i></a>2.1.1 用户管理</h4>
+      <p>用户管理——在数据库安全管理中，DBMS需要对每个用户进行管理，如用户创建、用户修改、用户删除管理等。</p>
+
+        <h5 id="1-创建用户"   >
+          <a href="#1-创建用户" class="heading-link"><i class="fas fa-link"></i></a>1. 创建用户</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER  &lt;用户账号名&gt; [ [WITH]  option […]];</span><br></pre></td></tr></table></div></figure>
+<p>创建一个新用户，其账号名字为“userA”，密码为“123456”。该用户具有登录权限（Login）和角色继承权限（Inherit）系统权限，但它不是超级用户（SuperUser），不具有创建数据库权限（CreateDB）、创建角色权限（CreateRole）、数据库复制权限（Replication），此外数据库连接数（Connection Limit）不受限。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER  &quot;userA&quot;  WITH</span><br><span class="line">  LOGIN</span><br><span class="line">  NOSUPERUSER</span><br><span class="line">  NOCREATEDB</span><br><span class="line">  NOCREATEROLE</span><br><span class="line">  INHERIT</span><br><span class="line">  NOREPLICATION</span><br><span class="line">  CONNECTION LIMIT -1</span><br><span class="line">  PASSWORD &#x27;123456&#x27;;</span><br></pre></td></tr></table></div></figure>
+<p>这里用户名只能用双引号</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525132501.png" alt="image-20210525132501902"></p>
+<p>可以在pgadmin的这一栏看到结果</p>
+
+        <h5 id="2-修改用户"   >
+          <a href="#2-修改用户" class="heading-link"><i class="fas fa-link"></i></a>2. 修改用户</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER  &lt;用户名&gt;  [ [ WITH ] option [ ... ] ];  	</span><br><span class="line">--修改用户的属性</span><br><span class="line">ALTER USER  &lt;用户名&gt;  RENAME TO &lt;新用户名&gt;;  		</span><br><span class="line">--修改用户的名称</span><br><span class="line">ALTER USER  &lt;用户名&gt;  SET &lt;参数项&gt; &#123; TO | = &#125; &#123; value | DEFAULT &#125;;</span><br><span class="line">--修改用户的参数值  </span><br><span class="line">ALTER USER  &lt;用户名&gt;  RESET &lt;参数项&gt;;			</span><br><span class="line">--重置用户参数值</span><br></pre></td></tr></table></div></figure>
+<p>修改用户“userA”的账号密码为“654321”。同时也限制该用户的数据库连接数为10。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &quot;userA&quot;</span><br><span class="line">	CONNECTION LIMIT 10</span><br><span class="line">	PASSWORD &#x27;654321&#x27;</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="3-删除用户"   >
+          <a href="#3-删除用户" class="heading-link"><i class="fas fa-link"></i></a>3. 删除用户</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP  USER  &lt;用户名&gt;;</span><br></pre></td></tr></table></div></figure>
+<p>在数据库中，删除用户“userA”。可以通过执行如下用户删除SQL语句实现用户删除。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP USER &quot;userA&quot;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="2-1-2-角色管理"   >
+          <a href="#2-1-2-角色管理" class="heading-link"><i class="fas fa-link"></i></a>2.1.2 角色管理</h4>
+      <p>在DBMS中，为了方便对众多用户及其权限进行管理，通常将一组具有相同权限的用户定义为角色(Role)。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE  ROLE  &lt;角色名&gt; [ [ WITH ] option [ ... ] ]; 	 </span><br><span class="line">--创建角色</span><br><span class="line">ALTER  ROLE  &lt;角色名&gt;  [ [ WITH ] option [ ... ] ]; 	</span><br><span class="line">--修改角色属性</span><br><span class="line">ALTER  ROLE  &lt;角色名&gt;  RENAME TO &lt;新角色名&gt;; 		 </span><br><span class="line">--修改角色名称 </span><br><span class="line">ALTER  ROLE  &lt;角色名&gt;  SET &lt;参数项&gt; &#123; TO | = &#125; &#123; value | DEFAULT &#125;;</span><br><span class="line">--修改角色参数值</span><br><span class="line">ALTER  ROLE  &lt;角色名&gt;  RESET &lt;参数项&gt;;</span><br><span class="line">--复位角色参数值</span><br><span class="line">DROP  ROLE  &lt;角色名&gt;;</span><br><span class="line">--删除指定角色</span><br></pre></td></tr></table></div></figure>
+<p>在工程项目管理系统中，假定需要在ProjectDB数据库内创建经理角色Role_Manager。该角色具有登录权限（Login）和角色继承权限（Inherit）系统权限，但它不是超级用户（SuperUser），不具有创建数据库权限（CreateDB）、创建角色权限（CreateRole）、数据库复制权限（Replication），此外数据库连接数（Connection Limit）不受限。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE  ROLE  &quot;Role_Manager&quot;  WITH</span><br><span class="line"> LOGIN</span><br><span class="line"> NOSUPERUSER</span><br><span class="line"> NOCREATEDB</span><br><span class="line"> NOCREATEROLE</span><br><span class="line"> INHERIT</span><br><span class="line"> NOREPLICATION</span><br><span class="line"> CONNECTION LIMIT -1;</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="给用户赋予角色"   >
+          <a href="#给用户赋予角色" class="heading-link"><i class="fas fa-link"></i></a>给用户赋予角色</h5>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GRANT &lt;角色名/用户名&gt; TO &lt;用户名&gt;[,&lt;角色名/用户名&gt;]; </span><br><span class="line">--给用户1,2赋予角色1,两个用户就拥有了创建数据库和创建角色的权限</span><br><span class="line">REVOKE &lt;角色名/用户名&gt; FROM &lt;用户名&gt;[,&lt;角色名/用户名&gt;]; </span><br><span class="line">--从用户1移除角色1，用户不在拥有角色1的权限</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="深入理解Postgresql的角色和用户"   >
+          <a href="#深入理解Postgresql的角色和用户" class="heading-link"><i class="fas fa-link"></i></a>深入理解Postgresql的角色和用户</h5>
+      <p>其实角色和用户是一个东西, 你可以使用 GRANT 将用户的权限赋予角色, 也可以反过来, 使用Pgadmin4对用户进行操作就可以发现, 创建的用户的修改语句也是 <code>ALTER ROLE</code></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525141630.png" alt="image-20210525141630034" style="zoom:50%;" /></p>
+<p>而上面提到的GRANT 就是 所谓的<code>继承</code> 关系 , 所以就有允许继承这个权限的设计</p>
+
+        <h5 id="换一个用户登录你的数据库"   >
+          <a href="#换一个用户登录你的数据库" class="heading-link"><i class="fas fa-link"></i></a>换一个用户登录你的数据库</h5>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525193136.png" alt="image-20210525193136592"></p>
+<p>这里输入你的用户名密码, 以及数据库地址</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525193243.png" alt="image-20210525193243411" style="zoom:50%;" /></p>
+<p>然后就可以登陆了, 如果登陆失败可以尝试刷新</p>
+
+        <h3 id="2-2-表的权限管理"   >
+          <a href="#2-2-表的权限管理" class="heading-link"><i class="fas fa-link"></i></a>2.2 表的权限管理</h3>
+      <p>对于DBMS的权限控制属于用户管理和角色管理的范畴</p>
+<p>这里我们学习如何对角色/用户授予每个表的增删查改权限</p>
+
+        <h4 id="2-2-1-GRANT-权限授予"   >
+          <a href="#2-2-1-GRANT-权限授予" class="heading-link"><i class="fas fa-link"></i></a>2.2.1 GRANT 权限授予</h4>
+      <p>GRANT语句是一种由数据库对象创建者或管理员执行的权限授予语句，它可以把访问数据库对象权限授予给其他用户或角色。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT &lt;权限列表&gt; ON &lt;数据库对象&gt; TO &lt;用户或角色&gt;</span><br><span class="line">[ WITH GRANT OPTION ];</span><br></pre></td></tr></table></div></figure>
+<p>例在选课管理系统数据库中，将课程表course的数据插入、数据修改、数据删除、数据查询赋予角色ROLEA</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT SELECT,INSERT,UPDATE,DELETE ON course to &quot;ROLEA&quot;</span><br></pre></td></tr></table></div></figure>
+<p>对于权限关键字, 有这些, 可以使用ALL来直接授予所有权限</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525140551.png" alt="image-20210525140551682" style="zoom:50%;" /></p>
+
+        <h4 id="2-2-2-REVOKE-权限收回"   >
+          <a href="#2-2-2-REVOKE-权限收回" class="heading-link"><i class="fas fa-link"></i></a>2.2.2 REVOKE 权限收回</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE &lt;权限列表&gt; ON &lt;数据库对象&gt; FROM &lt;用户或角色&gt; ;</span><br></pre></td></tr></table></div></figure>
+<p>现在收回之前赋予角色ROLEA的删除权限</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REVOKE DELETE ON course FROM &quot;ROLEA&quot;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="2-2-3-DENY-权限拒绝-Postgresql-没有-DENY"   >
+          <a href="#2-2-3-DENY-权限拒绝-Postgresql-没有-DENY" class="heading-link"><i class="fas fa-link"></i></a>2.2.3 DENY 权限拒绝 ( Postgresql 没有 DENY )</h4>
+      <p>DENY语句用于拒绝给当前数据库内的用户或者角色授予权限，并<strong>防止用户或角色通过其组或角色成员继承权限</strong>。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DENY &lt;权限列表&gt; ON &lt;数据库对象&gt; TO &lt;用户或角色&gt; ;</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="DENY-和-REVOKE的区别"   >
+          <a href="#DENY-和-REVOKE的区别" class="heading-link"><i class="fas fa-link"></i></a>DENY 和 REVOKE的区别</h5>
+      <ol>
+<li>GRANT赋予主体各类权限。</li>
+<li><p>用户成为角色的成员可以继承角色的权限。</p>
+</li>
+<li><p>REVOKE、DENY同时可以收回GRANT赋予的权限，但两者影响不同，REVOKE仅仅收回了权限，DENY撤销GRANT赋予的权限后并拒绝该权限，具体影响见下面的6、8结论。</p>
+</li>
+<li><p>REVOKE可以撤销DENY拒绝的权限。</p>
+</li>
+<li><p>赋予（GRANT）数据库SELECT权限，则获得数据库下所有子对象（如数据库的表、视图及所有列，包括新建的表和列）的SELECT权限，某些单独拒绝（DENY）SELECT的子对象除外。</p>
+</li>
+<li><p>拒绝（DENY）数据库的SELECT权限，则拒绝父对象下所有子对象（如数据库的表、表的列，包括新建的表和列）的SELECT权限，即使单独赋予子对象的SELECT权限。</p>
+</li>
+<li><p>赋予表SELECT权限，则对表的所有列（包括新建列）有SELECT权限，单独拒绝SELECT的列除外。</p>
+</li>
+<li><p>拒绝表的SELECT权限，则拒绝表的所有列（包括新建列）SELECT权限，单独赋予SELECT的列除外。</p>
+</li>
+</ol>
+<blockquote>
+<p> 原文链接：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/zhoujunah/article/details/104719638" >https://blog.csdn.net/zhoujunah/article/details/104719638</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+
+        <h2 id="3-数据库备份和恢复"   >
+          <a href="#3-数据库备份和恢复" class="heading-link"><i class="fas fa-link"></i></a>3 数据库备份和恢复</h2>
+      
+        <h3 id="3-1-数据库备份原理"   >
+          <a href="#3-1-数据库备份原理" class="heading-link"><i class="fas fa-link"></i></a>3.1 数据库备份原理</h3>
+      <p><strong>啥是备份</strong></p>
+<p>数据库备份——是指将数据库当前数据和状态进行副本复制，以便当数据库受到破坏或丢失数据时可以进行修复。</p>
+<p>数据库恢复——是指数据库中数据丢失或被破坏时，从备份副本将数据库从错误状态恢复到某一正确状态。</p>
+<p><strong>为啥备份</strong></p>
+<ol>
+<li>数据库服务器硬件故障</li>
+<li>系统软件故障</li>
+<li>用户误操作</li>
+<li>系统意外断电</li>
+</ol>
+<p><strong>备份哪些东西 </strong></p>
+<p>备份内容——包括<strong>数据文件、日志文件</strong>等。</p>
+<p>  对数据库所做的每次更改，无论是单个 update 语句还是一组 SQL 语句执行的结果，都会被记录在数据库系统中，称为<strong>事务日志(log)</strong>。</p>
+<p><strong>谁进行备份</strong></p>
+<p>备份角色——可以是服务器管理员（sysadmin）、数据库所有者（db_owner）、数据库备份员（db_backupoperator）角色之一。</p>
+<p><strong>备份到哪里</strong></p>
+<p>备份介质——包括磁盘阵列、磁带库、光盘库等。</p>
+<p><strong>啥时候备份</strong></p>
+<p>备份时机——当<strong>系统数据库重要数据被修改、日志被清理、用户数据库创建、用户数据库加载等事件出现时</strong>。</p>
+
+        <h3 id="3-2-数据库备份方法"   >
+          <a href="#3-2-数据库备份方法" class="heading-link"><i class="fas fa-link"></i></a>3.2 数据库备份方法</h3>
+      <p>备份方法：</p>
+<ol>
+<li>完全数据库备份</li>
+<li>差异数据库备份</li>
+<li>事务日志备份</li>
+<li>文件备份</li>
+</ol>
+<p>备份方式：</p>
+<ol>
+<li>冷备份</li>
+<li>热备份</li>
+</ol>
+<p>pgadmin4可以GUI备份, 但是我的设备上有点小问题, 在服务器上应该会比较好</p>
+<p><img src="C:\Users\15727\AppData\Roaming\Typora\typora-user-images\image-20210525191615260.png" alt="image-20210525191615260" style="zoom:50%;" /></p>
+<p>这里使用命令行进行备份</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\pg_dump.exe -h localhost -p 5432 -U postgres -f O:\\Develop2\\sql\\backup\\CarRentDBBackUp.sql CarRentDB</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191643.png" alt="image-20210525191643142"></p>
+<p>可以看到成功备份</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191658.png" alt="img" style="zoom:50%;" /></p>
+
+        <h3 id="3-3-数据库恢复方法"   >
+          <a href="#3-3-数据库恢复方法" class="heading-link"><i class="fas fa-link"></i></a>3.3 数据库恢复方法</h3>
+      <p>恢复时机</p>
+<ol>
+<li>事务故障的数据恢复</li>
+<li>系统崩溃的数据恢复</li>
+<li>存储介质损坏的数据恢复</li>
+</ol>
+<p>数据库恢复技术利用数据库<strong>备份文件</strong>和数据库系统事务<strong>日志文件</strong>来实现数据库恢复处理。</p>
+<p>当数据库出现故障后，可使用<strong>保存的事务日志进行前滚事务数据恢复</strong>或<strong>回滚事务数据恢复</strong>。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525182553.png" alt="image-20210525182553753"></p>
+<p>删除之前备份过的数据库, 然后创建一个同名的数据库, 这样才能成功导入</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\psql.exe -h localhost -p 5432 -U postgres -d CarRentDB -f O:\\Develop2\\sql\\backup\\CarRentDBBackUp.sql</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191805.png" alt="image-20210525191804994" style="zoom:50%;" /></p>
+<p>可以看到成功导入数据</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525191816.png" alt="img" style="zoom:50%;" /></p>
+<p>数据库恢复成功</p>
+
+        <h2 id="4-DDL补充-视图-存储过程-触发器"   >
+          <a href="#4-DDL补充-视图-存储过程-触发器" class="heading-link"><i class="fas fa-link"></i></a>4 DDL补充 -  视图, 存储过程 , 触发器</h2>
+      
+        <h3 id="4-1-视图-View"   >
+          <a href="#4-1-视图-View" class="heading-link"><i class="fas fa-link"></i></a>4.1 视图 View</h3>
+      <p>View（视图）是一张假表，只不过是通过相关的名称存储在数据库中的一个 PostgreSQL 语句。</p>
+<p>View（视图）实际上是一个以预定义的 PostgreSQL 查询形式存在的表的组合。</p>
+<p>View（视图）可以包含一个表的所有行或从一个或多个表选定行。</p>
+<p>View（视图）可以从一个或多个表创建，这取决于要创建视图的 PostgreSQL 查询。</p>
+<p>View（视图）是一种虚拟表，允许用户实现以下几点：</p>
+<ul>
+<li>用户或用户组认为更自然或直观查找结构数据的方式。</li>
+<li>限制数据访问，用户只能看到有限的数据，而不是完整的表。</li>
+<li>汇总各种表中的数据，用于生成报告。</li>
+</ul>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525192830.png" alt="image-20210525192829993" style="zoom:50%;" /></p>
+
+        <h4 id="4-1-1-创建视图"   >
+          <a href="#4-1-1-创建视图" class="heading-link"><i class="fas fa-link"></i></a>4.1.1 创建视图</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW &lt;视图名&gt;[(列名1)，(列名2)，…] AS &lt;SELECT查询&gt;;</span><br></pre></td></tr></table></div></figure>
+<p>这里可以看出视图就是对SELECT 语句的封装 , 将一个SELECT的结果封装成表就是视图</p>
+<p>现在把之前使用过的一个SELECT语句创建一个视图</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW CourseView AS</span><br><span class="line">SELECT </span><br><span class="line">C.coursename AS 课程名称,</span><br><span class="line">T.teachername AS 教师名字,</span><br><span class="line">S.time AS 开课时间</span><br><span class="line">FROM </span><br><span class="line">course AS C JOIN teacher AS T </span><br><span class="line">ON C.teachername = T.teachername</span><br><span class="line">JOIN schedule AS S</span><br><span class="line">ON S.courseid=C.courseid</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525193956.png" alt="image-20210525193956677" style="zoom:50%;" /></p>
+<p>可以在这里看到创建的视图</p>
+
+        <h4 id="4-1-2-使用视图"   >
+          <a href="#4-1-2-使用视图" class="heading-link"><i class="fas fa-link"></i></a>4.1.2 使用视图</h4>
+      <ol>
+<li><p><strong>使用视图简化复杂SQL查询操作</strong></p>
+</li>
+<li><p><strong>使用视图提高数据访问安全性</strong></p>
+<p>通过视图可以将数据表中敏感数据隐藏起来，外部用户无法得知数据表的完整数据，降低数据库被攻击的风险。此外，还可以保护用户隐私数据。</p>
+<p>比如 : 你可以使用ID作为WHERE的条件, 但是在视图中只显示名称而不是id</p>
+</li>
+<li><p>提供一定程度的逻辑独立性</p>
+<p>通过视图，可提供一定程度的数据逻辑独立性。当数据表结构发生改变，只要视图结构不变，应用程序可以不作修改。</p>
+</li>
+<li><p>集中展示用户所感兴趣的特定数据</p>
+<p>通过视图，可以将部分用户不关心的数据进行过滤，仅仅提供他们所感兴趣的数据。</p>
+</li>
+</ol>
+
+        <h5 id="视图的权限"   >
+          <a href="#视图的权限" class="heading-link"><i class="fas fa-link"></i></a>视图的权限</h5>
+      <p>PostgreSQL 视图是只读的</p>
+<p>因此可能无法在视图上执行 DELETE、INSERT 或 UPDATE 语句</p>
+<p><strong>但是可以在视图上创建一个触发器，当尝试 DELETE、INSERT 或 UPDATE 视图时触发，需要做的动作在触发器内容中定义。</strong></p>
+
+        <h5 id="视图使用例子"   >
+          <a href="#视图使用例子" class="heading-link"><i class="fas fa-link"></i></a>视图使用例子</h5>
+      <p><strong>1. 从视图中查询</strong></p>
+<p>将视图当作表就可以进行操作了</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM CourseView WHERE 课程名称 = &#x27;课程(改)&#x27;</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525194151.png" alt="image-20210525194151410" style="zoom:33%;" /></p>
+<p>这个例子还可以得出两个结论 : </p>
+<ol>
+<li>SQL中支持中文作为非字符串使用</li>
+<li>视图中使用了AS的话拿不到原本的字段</li>
+</ol>
+
+        <h4 id="4-1-3-删除视图"   >
+          <a href="#4-1-3-删除视图" class="heading-link"><i class="fas fa-link"></i></a>4.1.3 删除视图</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW &lt;视图名&gt;;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="4-2-存储过程-存储函数"   >
+          <a href="#4-2-存储过程-存储函数" class="heading-link"><i class="fas fa-link"></i></a>4.2 存储过程 / 存储函数</h3>
+      <p>存储过程就是SQL中的函数 , 有的SQL中也有存储函数的概念, 两者的区别是, 存储过程不具有返回值, 存储函数有返回值, 不过Postgresql中只有存储函数</p>
+<blockquote>
+<p>如ORACLE、MySQL、SQL SERVER等数据库，使用CREATE PRECEDURE命令创建存储过程，使用CREATE FUNCTION命令创建函数。</p>
+</blockquote>
+
+        <h4 id="4-2-1-创建存储过程"   >
+          <a href="#4-2-1-创建存储过程" class="heading-link"><i class="fas fa-link"></i></a>4.2.1 创建存储过程</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE [ OR REPLACE ] FUNCTION name</span><br><span class="line">( [ [ argmode ] [ argname ] argtype [ &#123; DEFAULT | = &#125; default_expr ] [, ...] ] )</span><br><span class="line">[ RETURNS retype | RETURNS TABLE ( column_name column_type [, ...] ) ]</span><br><span class="line">AS $$ </span><br><span class="line">-- $$用于声明存储过程的实际代码的开始</span><br><span class="line">DECLARE</span><br><span class="line">-- 声明段</span><br><span class="line">BEGIN</span><br><span class="line">--函数体语句</span><br><span class="line">END;</span><br><span class="line">$$ LANGUAGE lang_name; </span><br><span class="line">--$$ 表明代码的结束, LANGUAGE后面指明所用的编程语言</span><br></pre></td></tr></table></div></figure>
+<p>现在尝试创建一个存储过程统计之前创建的视图中的项目数量</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION countAll()</span><br><span class="line">RETURNS integer AS $counter$</span><br><span class="line">DECLARE </span><br><span class="line">	counter integer;</span><br><span class="line">BEGIN</span><br><span class="line">	SELECT count(*) INTO counter FROM course;</span><br><span class="line">	RETURN COUNTER;</span><br><span class="line">END;</span><br><span class="line">$counter$ LANGUAGE plpgsql</span><br></pre></td></tr></table></div></figure>
+<p>在这里可以查看</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525205304.png" alt="image-20210525205304075"></p>
+
+        <h4 id="4-2-2-调用存储过程"   >
+          <a href="#4-2-2-调用存储过程" class="heading-link"><i class="fas fa-link"></i></a>4.2.2 调用存储过程</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select 存储过程名（参数）;</span><br><span class="line">-- OR</span><br><span class="line">select * from 存储过程名（参数）;</span><br></pre></td></tr></table></div></figure>
+<p>现在调用之前的存储过程</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM countAll()</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525205432.png" alt="image-20210525205432253" style="zoom:50%;" /></p>
+
+        <h4 id="4-2-3-在存储过程中调用其他存储过程"   >
+          <a href="#4-2-3-在存储过程中调用其他存储过程" class="heading-link"><i class="fas fa-link"></i></a>4.2.3 在存储过程中调用其他存储过程</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select into 自定义变量 存储过程名（参数）;</span><br></pre></td></tr></table></div></figure>
+<p>现在创建一个存储过程调用上面的存储过程</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION test()</span><br><span class="line">RETURNS integer AS $wrapped$</span><br><span class="line">DECLARE</span><br><span class="line">	res integer;</span><br><span class="line">BEGIN</span><br><span class="line">	SELECT INTO res countAll();</span><br><span class="line">	RETURN res;</span><br><span class="line">END;</span><br><span class="line">$wrapped$ LANGUAGE plpgsql;</span><br><span class="line"></span><br><span class="line">SELECT * FROM test()</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210123.png" alt="image-20210525210123243" style="zoom:50%;" /></p>
+
+        <h4 id="4-2-4-删除存储过程"   >
+          <a href="#4-2-4-删除存储过程" class="heading-link"><i class="fas fa-link"></i></a>4.2.4 删除存储过程</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION [ IF EXISTS ] name ( [ [ argmode ] [ argname ] argtype [, ...] ] ) [ CASCADE | RESTRICT ]</span><br></pre></td></tr></table></div></figure>
+<p>主要参数：<br>（1）IF EXISTS：如果指定的存储过程不存在，那么发出提示信息。<br>（2）name ：现存的存储过程名称。<br>（3）argmode：参数的模式：IN(缺省), OUT, INOUT, VARIADIC。请注意，实际并不注意OUT参数，因<br>为判断存储过程的身份只需要输入参数。<br>（4）argname：参数的名字。请注意，实际上并不注意参数的名字，因为判断函数的身份只需要输入参<br>数的数据类型。<br>（5）argtype：如果有的话，是存储过程参数的类型。<br>（6）CASCADE：级联删除依赖于存储过程的对象(如触发器)。<br>（7）RESTRICT：如果有任何依赖对象存在，则拒绝删除该函数；这个是缺省值。</p>
+<p>现在尝试删除test()</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION test()</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="4-2-5-PL-SQL基本语法"   >
+          <a href="#4-2-5-PL-SQL基本语法" class="heading-link"><i class="fas fa-link"></i></a>4.2.5 PL/SQL基本语法</h4>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/PL%2FSQL/8564979" >PL/SQL</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>也是一种<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/程序语言/10696489" >程序语言</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，叫做过程化<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/SQL语言/4801972" >SQL语言</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>（Procedural Language/SQL）。PL/SQL是<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/Oracle数据库/3710800" >Oracle数据库</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>对SQL语句的扩展。在普通SQL语句的使用上增加了编程语言的特点，所以PL/SQL把数据操作和查询语句组织在PL/SQL代码的过程性单元中，通过逻辑判断、循环等操作实现复杂的功能或者计算。</p>
+<ol>
+<li><p>声明局部变量。</p>
+<pre><code>变量声明的语法如下：
+</code></pre><figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">变量名 变量类型;</span><br></pre></td></tr></table></div></figure>
+<p>如果声明变量为记录类型，变量声明格式为：variable_name RECORD;</p>
+<pre><code>注：RECORD不是真正的数据类型，只是一个占位符。
+</code></pre><figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">count intger；</span><br><span class="line">rec RECORD ；</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>条件语句</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210514.png" alt="image-20210525210514384"></p>
+</li>
+<li><p>循环语句</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210547.png" alt="image-20210525210547560"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210601.png" alt="image-20210525210601194"></p>
+</li>
+<li><p>遍历命令结果</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210625.png" alt="image-20210525210625508"></p>
+</li>
+</ol>
+
+        <h4 id="4-2-6-存储过程的优缺点"   >
+          <a href="#4-2-6-存储过程的优缺点" class="heading-link"><i class="fas fa-link"></i></a>4.2.6 存储过程的优缺点</h4>
+      <p>1、使用存储过程的优点</p>
+<p>(1) 减少网络通信量<br>(2) 执行速度更快<br>(3) 更强的适应性<br>(4) 降低了业务实现与应用程序的耦合<br>(5) 降低了开发的复杂性<br>(6) 保护数据库元信息<br>(7) 增强了数据库的安全性</p>
+<p>2、使用存储过程的缺点</p>
+<p>(1) SQL本身是一种结构化查询语言，而存储过程本质上是过程化的程序；面对复<br>杂的业务逻辑，过程化处理逻辑相对比较复杂；而SQL语言的优势是面向数据查询<br>而非业务逻辑的处理。<br>(2) 如果存储过程的参数或返回数据发生变化，一般需要修改存储过程的代码，同<br>时还需要更新主程序调用存储过程的代码。<br>(3) 开发调试复杂，由于缺乏支持存储过程的集成开发环境，存储过程的开发调试<br>要比一般程序困难。<br>(4) 可移植性差</p>
+
+        <h3 id="4-3-触发器"   >
+          <a href="#4-3-触发器" class="heading-link"><i class="fas fa-link"></i></a>4.3 触发器</h3>
+      
+        <h4 id="4-3-1-认识触发器"   >
+          <a href="#4-3-1-认识触发器" class="heading-link"><i class="fas fa-link"></i></a>4.3.1 认识触发器</h4>
+      <ul>
+<li>触发器是特殊类型的存储过程，主要由<strong>操作事件</strong>(<strong>INSERT、UPDATE、DELETE) 触发</strong>而被自动执行。</li>
+<li>触发器<strong>可以实现比约束更复杂的数据完整性</strong>，经常用于加强数据的完整性约束和业务规则。</li>
+<li>触发器本身是一个<strong>特殊的事务单位</strong>。</li>
+</ul>
+<p><strong>特点</strong></p>
+<ol>
+<li><strong>与表相关联</strong>：必须定义在表或视图上。</li>
+<li><strong>自动触发</strong>：由执行INSERT、DELETE、UPDATE操作时触发</li>
+<li><strong>不能直接调用，也不能传递或接受参数</strong></li>
+<li><strong>是事务的一部分</strong>：触发器和触发语句作为可在触发器内回滚的单个事务。</li>
+</ol>
+
+        <h4 id="4-3-2-触发器分类"   >
+          <a href="#4-3-2-触发器分类" class="heading-link"><i class="fas fa-link"></i></a>4.3.2 触发器分类</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210859.png" alt="image-20210525210859249" style="zoom: 67%;" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525211000.png" alt="image-20210525210941200" style="zoom:67%;" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525210949.png" style="zoom: 67%;" /></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525211024.png" alt="image-20210525211023992" style="zoom:50%;" /></p>
+
+        <h4 id="4-3-3-触发器中的特殊变量"   >
+          <a href="#4-3-3-触发器中的特殊变量" class="heading-link"><i class="fas fa-link"></i></a>4.3.3 触发器中的特殊变量</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>数据类型</th>
+<th>行触发器的值</th>
+<th>语句触发器值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEW</td>
+<td>RECORD</td>
+<td>INSERT或UPDATE操作产生的新的数据行</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>OLD</td>
+<td>RECORD</td>
+<td>UPDATE或DELETE操作修改或删除的旧的数据行</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>TG_OP</td>
+<td>text</td>
+<td>INSERT/UPDATE/DELETE</td>
+<td>INSERT/UPDATE/DELETE</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="4-3-4-创建触发器"   >
+          <a href="#4-3-4-创建触发器" class="heading-link"><i class="fas fa-link"></i></a>4.3.4 创建触发器</h4>
+      <p><strong>基本步骤</strong></p>
+<p>（1）检查数据库中将要创建的触发器所依附的表或视图是否存在，如果不存在，必须首先创建该表或视图。<br>（2）<strong>创建触发器被触发时所要执行的触发器函数</strong>，该函数的类型必须是<strong>TRINGER型，是触发器的执行函数</strong>。但要注意，有些数据库不需要独立定义触发器函数，而是在创建触发器时，定义触发器的过程体。<br>（3）<strong>创建触发器</strong>，一般需要指明触发器依附的表，触发器被触发执行的时间，触发器是行级触发器还是语句级触发器，触发器执行需要满足的条件。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER 触发器名</span><br><span class="line">&#123; BEFORE | AFTER | INSTEAD OF &#125;</span><br><span class="line">ON 表名</span><br><span class="line">[ FOR [ EACH ] &#123; ROW | STATEMENT &#125; ]</span><br><span class="line">EXECUTE PROCEDURE 存储过程名( 参数列表)</span><br></pre></td></tr></table></div></figure>
+<p>说明 : </p>
+<p>（1）指明所定义的触发器名<br>（2）BEFORE | AFTER | INSTEAD OF 指明触发器被触发的时间<br>（3）ON 表名指明触发器所依附的表<br>（4）FOR EACH { ROW | STATEMENT } 指明触发器被触发的次数<br>（5）EXECUTE PROCEDURE 存储过程名( 参数列表) 指明触发时所执行的存储过程</p>
+<p>例子 : </p>
+<p>现在创建一个触发器, 当我们修改course表中的id的时候修改schedule表中的courseid </p>
+<p>首先创建一个<strong>触发器函数</strong> , 方式和创建函数等同</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION update_courseid()</span><br><span class="line">RETURNS TRIGGER AS $$</span><br><span class="line">	BEGIN</span><br><span class="line">		IF(TG_OP = &#x27;UPDATE&#x27;) THEN</span><br><span class="line">			UPDATE schedule</span><br><span class="line">			SET courseid = new.courseid</span><br><span class="line">			WHERE old.courseid = schedule.courseid;</span><br><span class="line">			RETURN NEW;</span><br><span class="line">		END IF;</span><br><span class="line">	END;</span><br><span class="line">$$ LANGUAGE plpgsql;</span><br></pre></td></tr></table></div></figure>
+<p>然后将这个触发器关联在course表中</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER update_courseid_trigger</span><br><span class="line">BEFORE UPDATE</span><br><span class="line">ON course</span><br><span class="line">FOR EACH ROW</span><br><span class="line">EXECUTE PROCEDURE update_courseid()</span><br></pre></td></tr></table></div></figure>
+<p>尝试修改courseid</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE course</span><br><span class="line">SET courseid = &#x27;1145&#x27;</span><br><span class="line">WHERE courseid = &#x27;1144&#x27;</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525213611.png" alt="image-20210525213611650" style="zoom:50%;" /></p>
+<p>可以看到成功修改</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525213853.png" alt="image-20210525213853337" style="zoom:50%;" /></p>
+
+        <h4 id="4-3-5-触发器修改"   >
+          <a href="#4-3-5-触发器修改" class="heading-link"><i class="fas fa-link"></i></a>4.3.5 触发器修改</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TRIGGER name ON table_name RENAME TO new_name</span><br></pre></td></tr></table></div></figure>
+<p>主要参数说明：<br>（1）name：需要修改的现有触发器的名称。<br>（2）table_name：该触发器作用的表的名字。<br>（3）new_name：现有触发器的新名字。</p>
+<p>将上面的触发器改个名字</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TRIGGER update_courseid_trigger</span><br><span class="line">ON course</span><br><span class="line">RENAME TO new_update_courseid_trigger`</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525214020.png" alt="image-20210525214020697"></p>
+
+        <h4 id="4-3-5-触发器删除"   >
+          <a href="#4-3-5-触发器删除" class="heading-link"><i class="fas fa-link"></i></a>4.3.5 触发器删除</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TRIGGER [ IF EXISTS ] name ON table_name [ CASCADE | RESTRICT ]</span><br></pre></td></tr></table></div></figure>
+<p>主要参数说明：<br>（1）IF EXISTS：如果指定的触发器不存在，那么发出提示而不是抛出错误。<br>（2）name：要删除的触发器名。<br>（3）table_name：触发器定义所依附的表的名称。<br>（5）CASCADE：级联删除依赖于触发器的对象；没有明确哪类对象依赖触发器。<br>（6）RESTRICT：如果有依赖对象存在，那么拒绝删除。该参数缺省是拒绝删除。</p>
+<p>例如：将上述触发器new_update_courseid_trigger删除，同时级联删除依赖触发器的对象。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DROP TRIGGER IF EXISTS new_update_courseid_trigger</span><br><span class="line">ON course</span><br><span class="line">CASCADE</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210525214147.png" alt="image-20210525214147136" style="zoom:50%;" /></p>
+
+        <h5 id="触发器实例"   >
+          <a href="#触发器实例" class="heading-link"><i class="fas fa-link"></i></a>触发器实例</h5>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609143542.png" alt=""></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210609143606.png" alt=""></p>
+
+        <h2 id="5-CCL-指针-游标控制"   >
+          <a href="#5-CCL-指针-游标控制" class="heading-link"><i class="fas fa-link"></i></a>5 CCL - 指针 / 游标控制</h2>
+      <p>游标是一个指向SELECT语句结果的指针, 游标只能使用在存储过程中</p>
+<p>游标和视图的区别 : </p>
+<ul>
+<li>游标和视图的本质是不同：一个是作为指针操作，一个是作为数据库对象来展现给用户。</li>
+<li>占用的资源不用：游标占用的资源很大，而视图占用的资源很小。</li>
+<li>工作方式不同：游标对需要的数据操作是针对行进行操作的，而视图是针对基表的一个整体的查询。</li>
+</ul>
+<p>游标的详细阐述 : </p>
+<ol>
+<li>游标（Cursor）是一种临时的数据库对象；</li>
+<li>用来存放从数据库表中查询返回的数据记录；</li>
+<li>提供了从结果集中提取并分别处理每一条记录的机制；</li>
+<li>游标总是与一条SQL查询语句相关联；</li>
+<li>游标包括：SQL语言的查询结果，指向特定记录的指针。</li>
+</ol>
+<p><strong>使用游标的过程</strong></p>
+<ol>
+<li>声明游标</li>
+<li>打开游标</li>
+<li>使用游标</li>
+<li>关闭游标</li>
+</ol>
+
+        <h3 id="5-1-声明游标"   >
+          <a href="#5-1-声明游标" class="heading-link"><i class="fas fa-link"></i></a>5.1 声明游标</h3>
+      <p>（1）在存储过程中游标类型的变量。例如：游标变量refcursor;refcursor是关键字；<br>此时，游标变量还没有绑定查询语句，因此不能访问游标变量。</p>
+<p>（2）使用游标专有的声明语法，如：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">游标名 CURSOR [ ( arguments ) ] FOR query;</span><br></pre></td></tr></table></div></figure>
+<p>其中arguments为由逗号分隔的参数列表，用于打开游标时向游标传递参数，类似于存储过程或函数的形式参数；query是select数据查询语句，返回的值存储在游标变量中。</p>
+<p>现在创建一个函数 将所有的课程id 都加1000 </p>
+<p>先搭一个格式</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION change_all_courseid()</span><br><span class="line">RETURNS boolean as $$</span><br><span class="line">DECLARE</span><br><span class="line">	temp integer;</span><br><span class="line">BEGIN</span><br><span class="line">END;</span><br><span class="line">$$ LANGUAGE plpgsql;</span><br></pre></td></tr></table></div></figure>
+<p>需要先声明一个游标, 指向所有的课程</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curCourse CURSOR FOR SELECT * FROM course;</span><br></pre></td></tr></table></div></figure>
+<p>如果我想要一个可以根据传入id打开课程</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curCourseOne CURSOR FOR(cid integer) IS SELECT * FROM course WHERE courseid = cid;</span><br></pre></td></tr></table></div></figure>
+<p>现在整个函数中是这样的</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION change_all_courseid()</span><br><span class="line">RETURNS boolean as $$</span><br><span class="line">DECLARE</span><br><span class="line">	temp integer;</span><br><span class="line">	curCourse CURSOR FOR SELECT * FROM course;</span><br><span class="line">BEGIN</span><br><span class="line">	</span><br><span class="line">END;</span><br><span class="line">$$ LANGUAGE plpgsql;</span><br></pre></td></tr></table></div></figure>
+<p>也可以声明一个空游标, 然后在后面打开游标的时候指定位置</p>
+
+        <h3 id="5-2-打开游标"   >
+          <a href="#5-2-打开游标" class="heading-link"><i class="fas fa-link"></i></a>5.2 打开游标</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OPEN unbound_cursor FOR query;</span><br><span class="line">OPEN unbound_cursor FOR EXECUTE query-string;</span><br></pre></td></tr></table></div></figure>
+<p>（1）OPEN FOR:</p>
+<p>其声明形式为：<br>OPEN unbound_cursor FOR query;<br>打开未绑定的游标变量，<strong>其query查询语句是返回记录的SELECT语句。</strong><br>例如：</p>
+<p>OPEN curVars1 FOR SELECT * FROM student WHERE SID = mykey;</p>
+<p>（2）OPEN FOR EXECUTE<br>其声明形式为：OPEN unbound_cursor FOR EXECUTE query-string;<br>打开未绑定的游标变量。<strong>EXECUTE将动态执行查询字符串。</strong></p>
+<p>例如：<br>OPEN curVars1 FOR EXECUTE ‘SELECT * FROM ‘ || quote_ident($1);<br>注意：​$1是指由存储过程传递的第1个参数。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION change_all_courseid()</span><br><span class="line">RETURNS boolean as $$</span><br><span class="line">DECLARE</span><br><span class="line">	temp integer;</span><br><span class="line">	curCourse CURSOR FOR SELECT * FROM course;</span><br><span class="line">BEGIN</span><br><span class="line">	OPEN curCourse;</span><br><span class="line">END;</span><br><span class="line">$$ LANGUAGE plpgsql;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="5-3-使用游标"   >
+          <a href="#5-3-使用游标" class="heading-link"><i class="fas fa-link"></i></a>5.3 使用游标</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FETCH cursor INTO target;</span><br></pre></td></tr></table></div></figure>
+<p>FETCH命令从游标中读取下一行记录的数据到目标中，读取成功与否，可通过<br>PL/SQL内置系统变量FOUND来判断。<br>例如：<br>FETCH curVars1 INTO rowvar; —rowvar为行变量<br>FETCH curStudent INTO SID, Sname, sex;<br>请注意：游标的属性列必须与目标列的数量一致，并且类型兼容。</p>
+
+        <h3 id="5-4-关闭游标"   >
+          <a href="#5-4-关闭游标" class="heading-link"><i class="fas fa-link"></i></a>5.4 关闭游标</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CLOSE cursorName;</span><br></pre></td></tr></table></div></figure>
+<p>当游标数据不再需要时，需要关闭游标，以释放其占有的系统资源，主要是释放<br>游标数据所占用的内存资源，cursorName是游标名。<br>例如：CLOSE curStudent;<br>需要注意：当游标被关闭后，如果需要再次读取游标的数据，需要重新使用open<br>打开游标，这时游标重新查询返回新的结果。</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE <span class="keyword">FUNCTION</span> change_all_courseid()</span><br><span class="line"><span class="keyword">RETURNS</span> <span class="type">boolean</span> <span class="keyword">as</span> $$</span><br><span class="line"><span class="keyword">DECLARE</span></span><br><span class="line">	tempid <span class="type">integer</span>;</span><br><span class="line">	curCourse <span class="keyword">CURSOR</span> <span class="keyword">FOR</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> course;</span><br><span class="line">	rcd record;</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">OPEN</span> curCourse;</span><br><span class="line">	LOOP</span><br><span class="line">		<span class="keyword">FETCH</span> curCourse <span class="keyword">INTO</span> tempid;</span><br><span class="line">		IF FOUND <span class="keyword">THEN</span></span><br><span class="line">			UPDATE course</span><br><span class="line">			<span class="keyword">SET</span> courseid<span class="operator">=</span><span class="built_in">CAST</span>(<span class="built_in">CAST</span>(courseid <span class="keyword">AS</span> <span class="type">NUMERIC</span>)<span class="operator">+</span><span class="number">1000</span> <span class="keyword">AS</span> text)</span><br><span class="line">			<span class="keyword">WHERE</span> <span class="keyword">CURRENT</span> <span class="keyword">OF</span> curCourse;</span><br><span class="line">		<span class="keyword">ELSE</span></span><br><span class="line">			EXIT;</span><br><span class="line">		<span class="keyword">END</span> IF;</span><br><span class="line">	<span class="keyword">END</span> LOOP;</span><br><span class="line">	<span class="keyword">RETURN</span> <span class="literal">TRUE</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line">$$ <span class="keyword">LANGUAGE</span> plpgsql;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> change_all_courseid();</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> course</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210526110554.png" alt="image-20210526110554822"></p>
+<p>发现成功运行</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210526110617.png" alt="image-20210526110617902"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210526110627.png" alt="image-20210526110627541"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2003%20%E9%94%A6%E4%B8%8A%E6%B7%BB%E8%8A%B1DCL,CCL,DDL/">http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2003%20%E9%94%A6%E4%B8%8A%E6%B7%BB%E8%8A%B1DCL,CCL,DDL/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2004%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Database( PostgreSQL ) - 04 数据库设计</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/12/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2002%20%E6%8A%8ADML%E7%8E%A9%E5%87%BA%E8%8A%B1%E5%B0%B1%E6%98%AFDB%E5%A4%A7%E5%B8%88/"><span class="paginator-prev__text">Database( PostgreSQL ) - 02 把DML玩出花就是DB大师</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Database-PostgreSQL-03-%E9%94%A6%E4%B8%8A%E6%B7%BB%E8%8A%B1DCL-CCL-DDL"><span class="toc-text">
+          Database( PostgreSQL ) - 03 锦上添花DCL,CCL,DDL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80%E5%88%86%E7%B1%BB"><span class="toc-text">
+          数据库语言分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0"><span class="toc-text">
+          1 数据库管理概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-DCL-%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2 DCL - 角色权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%92%E8%89%B2%E5%92%8C%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.1 数据库角色和用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.1.1 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">
+          1. 创建用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">
+          2. 修改用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">
+          3. 删除用户</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E8%A7%92%E8%89%B2%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.1.2 角色管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%99%E7%94%A8%E6%88%B7%E8%B5%8B%E4%BA%88%E8%A7%92%E8%89%B2"><span class="toc-text">
+          给用户赋予角色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Postgresql%E7%9A%84%E8%A7%92%E8%89%B2%E5%92%8C%E7%94%A8%E6%88%B7"><span class="toc-text">
+          深入理解Postgresql的角色和用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8D%A2%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%BD%A0%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">
+          换一个用户登录你的数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%A1%A8%E7%9A%84%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.2 表的权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-GRANT-%E6%9D%83%E9%99%90%E6%8E%88%E4%BA%88"><span class="toc-text">
+          2.2.1 GRANT 权限授予</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-REVOKE-%E6%9D%83%E9%99%90%E6%94%B6%E5%9B%9E"><span class="toc-text">
+          2.2.2 REVOKE 权限收回</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-DENY-%E6%9D%83%E9%99%90%E6%8B%92%E7%BB%9D-Postgresql-%E6%B2%A1%E6%9C%89-DENY"><span class="toc-text">
+          2.2.3 DENY 权限拒绝 ( Postgresql 没有 DENY )</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#DENY-%E5%92%8C-REVOKE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">
+          DENY 和 REVOKE的区别</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%92%8C%E6%81%A2%E5%A4%8D"><span class="toc-text">
+          3 数据库备份和恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%8E%9F%E7%90%86"><span class="toc-text">
+          3.1 数据库备份原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E6%96%B9%E6%B3%95"><span class="toc-text">
+          3.2 数据库备份方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95"><span class="toc-text">
+          3.3 数据库恢复方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-DDL%E8%A1%A5%E5%85%85-%E8%A7%86%E5%9B%BE-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">
+          4 DDL补充 -  视图, 存储过程 , 触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%A7%86%E5%9B%BE-View"><span class="toc-text">
+          4.1 视图 View</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="toc-text">
+          4.1.1 创建视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E4%BD%BF%E7%94%A8%E8%A7%86%E5%9B%BE"><span class="toc-text">
+          4.1.2 使用视图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-text">
+          视图的权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90"><span class="toc-text">
+          视图使用例子</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE"><span class="toc-text">
+          4.1.3 删除视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B-%E5%AD%98%E5%82%A8%E5%87%BD%E6%95%B0"><span class="toc-text">
+          4.2 存储过程 &#x2F; 存储函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          4.2.1 创建存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          4.2.2 调用存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E5%9C%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B0%83%E7%94%A8%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          4.2.3 在存储过程中调用其他存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E5%88%A0%E9%99%A4%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          4.2.4 删除存储过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-PL-SQL%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">
+          4.2.5 PL&#x2F;SQL基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-6-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">
+          4.2.6 存储过程的优缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">
+          4.3 触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E8%AE%A4%E8%AF%86%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">
+          4.3.1 认识触发器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%86%E7%B1%BB"><span class="toc-text">
+          4.3.2 触发器分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-3-%E8%A7%A6%E5%8F%91%E5%99%A8%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F"><span class="toc-text">
+          4.3.3 触发器中的特殊变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-4-%E5%88%9B%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">
+          4.3.4 创建触发器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-5-%E8%A7%A6%E5%8F%91%E5%99%A8%E4%BF%AE%E6%94%B9"><span class="toc-text">
+          4.3.5 触发器修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-5-%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%A0%E9%99%A4"><span class="toc-text">
+          4.3.5 触发器删除</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8%E5%AE%9E%E4%BE%8B"><span class="toc-text">
+          触发器实例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-CCL-%E6%8C%87%E9%92%88-%E6%B8%B8%E6%A0%87%E6%8E%A7%E5%88%B6"><span class="toc-text">
+          5 CCL - 指针 &#x2F; 游标控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%A3%B0%E6%98%8E%E6%B8%B8%E6%A0%87"><span class="toc-text">
+          5.1 声明游标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E6%89%93%E5%BC%80%E6%B8%B8%E6%A0%87"><span class="toc-text">
+          5.2 打开游标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E4%BD%BF%E7%94%A8%E6%B8%B8%E6%A0%87"><span class="toc-text">
+          5.3 使用游标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E5%85%B3%E9%97%AD%E6%B8%B8%E6%A0%87"><span class="toc-text">
+          5.4 关闭游标</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

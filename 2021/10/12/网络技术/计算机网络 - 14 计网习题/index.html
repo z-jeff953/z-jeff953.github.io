@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="计算机网络 - 14 计网习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络 - 14 计网习题">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2014%20%E8%AE%A1%E7%BD%91%E4%B9%A0%E9%A2%98/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="计算机网络 - 14 计网习题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629224831.png">
+<meta property="og:image" content="c:/Users/15727/AppData/Roaming/Typora/typora-user-images/image-20210629082042336.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629100259.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629100317.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629100350.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629202542.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629202724.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210630001953.png">
+<meta property="article:published_time" content="2021-10-12T06:34:26.268Z">
+<meta property="article:modified_time" content="2021-06-30T00:30:00.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629224831.png"><title>计算机网络 - 14 计网习题 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2014%20%E8%AE%A1%E7%BD%91%E4%B9%A0%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机网络 - 14 计网习题</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-30</span></span></div></header><div class="post-body">
+        <h1 id="计算机网络-14-计网习题"   >
+          <a href="#计算机网络-14-计网习题" class="heading-link"><i class="fas fa-link"></i></a>计算机网络 - 14 计网习题</h1>
+      <span id="more"></span>
+
+        <h2 id="题1"   >
+          <a href="#题1" class="heading-link"><i class="fas fa-link"></i></a>题1</h2>
+      <p>一、单选题 (每小题2分，共30分)</p>
+<p>下列不是Cerf and Kahn的开发网络体系结构系统设计原则的是:</p>
+<p>A、自治原则</p>
+<p>B、尽力服务</p>
+<p>C、无状态路由 </p>
+<p><strong>D、集中式控制</strong></p>
+<p>协议中规定报文交互事件顺序的要素是: ( )</p>
+<p>A、语法</p>
+<p>B、语义</p>
+<p><strong>C、同步</strong></p>
+<p>D、以上都不是</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629224831.png" alt="image-20210629224830744" style="zoom:50%;" /></p>
+<p>具有相同上行和下行速率的网络接入技术是: ( )</p>
+<p>A、ADSL</p>
+<p><strong>B、WiFi</strong> </p>
+<p>C、CDMA </p>
+<p>D、4G</p>
+<blockquote>
+<p>我们使用的ADSL是非对称的传输方式，即上行速率不等于下行速率；ADSL上行速率640Kbps到1Mbps，下行速率10Mbps到100Mbps。</p>
+<p><img src="C:\Users\15727\AppData\Roaming\Typora\typora-user-images\image-20210629082042336.png" alt="image-20210629082042336"></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/53150127/answer/135456359" >原理上wifi的mac层是对等的</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>这个题可以用排除法啊，ADSL是非对称的，C，D本质上都是同一类型的调制方式，CDMA有3G、4G，只有B是一种局域网络接入方式，理论上两个方向肯定是一样的，就像接收端发送端都是对等的</p>
+</blockquote>
+<p>使用UDP协议的应用层协议是: ( )</p>
+<p>A、HTTP </p>
+<p>B、 SMTP </p>
+<p><strong>C、 DHCP</strong> </p>
+<p>D、 FTP</p>
+<p>不属于路由器设备产生的分组时延是: ( )</p>
+<p><strong>A、传播时延</strong></p>
+<p>B、 传输时延</p>
+<p>C、 排队时延</p>
+<p>D、 节点处理时延</p>
+<p>下列不属于植入恶意软件的攻击方式是: ( )</p>
+<p>A、病毒 </p>
+<p>B、 蠕虫 </p>
+<p>C、木马 </p>
+<p><strong>D、DDoS攻击</strong></p>
+<blockquote>
+<ul>
+<li>病毒<ul>
+<li>基本上是破坏或修改文件</li>
+<li>递归自我复制</li>
+</ul>
+</li>
+<li>木马<ul>
+<li>通过伪装为远程攻击做准备</li>
+</ul>
+</li>
+<li>蠕虫<ul>
+<li>利用网络复制</li>
+<li>可以带有载荷，携带其他恶意行为</li>
+</ul>
+</li>
+<li>rootkit<ul>
+<li>提升到特权权限，控制计算机。</li>
+</ul>
+</li>
+<li>后门<ul>
+<li>绕过安全防护的机制</li>
+<li>可以是软件也可以是算法，甚至是硬件</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>下面不属于P2P网络应用的是: </p>
+<p>A、迅雷下载</p>
+<p>B、 BitTorrent 下载</p>
+<p><strong>C、 电子邮件</strong></p>
+<p>D、 Napster 集中式目录应用</p>
+<p>一个网页文件由1个基本HTML文件和3个引用对象文件组成，所有文件都在同一个Web服务器上，则使用带流水线的持久HTTP连接的方式，显示该网页需要的时间延迟是:( )</p>
+<p>A、2个RTT </p>
+<p>B、3个RTT</p>
+<p><strong>C、 4个RTT</strong></p>
+<p>D、5个RTT</p>
+<p>HTTP服务器使用的默认监听端口号是: ( )</p>
+<p><strong>A、80</strong></p>
+<p>B、8080</p>
+<p>C、20</p>
+<p>D、110</p>
+<p>TCP没有提供的服务是: ( )</p>
+<p>A、连接管理</p>
+<p>B、 可靠传输</p>
+<p>C、 拥塞控制</p>
+<p><strong>D、带宽保证</strong></p>
+<p>如果校验和是8位二进制序列，则数据0x8789的校验和是: ( )</p>
+<p>A、0x10 </p>
+<p><strong>B、 0x11</strong></p>
+<p>C、 0xEF</p>
+<p>D、OxEE</p>
+<p>下列不是网络层功能的是: ( )</p>
+<p>A、选路</p>
+<p>B、转发</p>
+<p><strong>C、进程通信</strong></p>
+<p>D、虚电路连接</p>
+<p>下列不属于192.168.10.0/22子网的IP是: ( )</p>
+<p>A、192.168.101.1</p>
+<p>B、192.168.102.1 </p>
+<p>C、192.168.103.1</p>
+<p><strong>D.  192.168.104.1</strong></p>
+<p>实现给定IP地址解析对应的MAC地址的协议是: </p>
+<p><strong>A、ARP</strong></p>
+<p>B、DNS </p>
+<p>C、 DHCP </p>
+<p>D. HTTP</p>
+<p>15、下列对于二层交换机描述错误的是: ( )</p>
+<p>A、交换机通过MAC帧中的源MAC地址进行自学习更新交换表</p>
+<p>B、交换机通过MAC帧中的目的MAC地址查询交换表确定输出接口</p>
+<p>C、交换机端口连接共享网段使用CSMA/CD进行介质访问</p>
+<p><strong>D、交换机对于冲突的报文进行广播转发</strong></p>
+<blockquote>
+<p>路由器能阻止广播，二层交换机不划分VLAN情况下不能阻止广播，三层交换机三层借口能阻止广播，三层交换机二层接口不能阻止广播。划分VLAN能阻止广播。原因：广播的原理是在同一网段内每个端口都发送一份同样的数据。二层交换机因为没有IP地址识。</p>
+</blockquote>
+<p>二、判断题(每小题2分，共20分)</p>
+<p>1、家庭中电脑连接WiFi的速率和运营商提供的接入带宽是相同的 X</p>
+<p>2、电路交换是面向连接的 V</p>
+<blockquote>
+<p>(单选题) 关于电路交换和分组交换,下列说法不正确的是 ( )</p>
+<p> A. 电路交换是面向连接的 </p>
+<p>B. 分组交换是面向无连接的 </p>
+<p>C. 分组交换使用的是存储转发技术 </p>
+<p>D. 电路交换的传输效率往往很高</p>
+<p>答案 D</p>
+</blockquote>
+<p>3、SSL提供加密的TCP连接 V</p>
+<p>4、两个邮件服务器之间使用POP3或IMAP实现邮件传输 X </p>
+<p>5、TCP流量控制是指发送方的发送窗口小于等于接收方的接收窗口 V</p>
+<p>6、TCP首部字段的序号是当前发送数据段第一个字节在发送缓冲区中的位置编号 V</p>
+<p>7、VPN可以实现在公网上进行加密数据传输 V</p>
+<blockquote>
+<p><strong>vpn</strong>:通过对网络数据的封包和加密传输，<strong>在公网上</strong>传输私有数据，达到私有网络的安全级别。采用<strong>vpn</strong>技术的目的是为了在不安全的信道上<strong>实现</strong>安全信息传输，保证企业内部信息在internet上传输时的机密性和完整性，同时使用鉴别对通过ineternet进行的<strong>数据传输</strong>进行确认。</p>
+<p> ssl:是一种协议； ssh:通过使用ssh，把所有传输的数据<strong>进行加密</strong>。“中间人”在传输中进行攻击就不可能<strong>实现</strong>了。能够防止dns和ip欺骗。并且传输的数据经过压缩，<strong>可以</strong>加快传输的速度。还<strong>可以</strong>代替telnet，<strong>可以</strong>为ftp、pop、甚至ppp提供一个安全的“通道”</p>
+<p>SSH(Secure shell):通过SSH，把所有传输的数据<strong>进行加密</strong>。 Secure Socket Layer，为Netscape所研发，用以保障在Internet上<strong>数据传输</strong>之安全，利用数据加密(Encryption)技术，可确保数据在网络上之传输过程中不会被截取及窃听。 二者的联系与区别：在OSI七层模型中,这两个安全传输协议其实都是建立在应用层上的: 在最初的设计意图中,SSL(Secure Sockets Layer (SSL) and Transport Layer Security (TLS))被设计为加强Web安全传输(HTTP/HTTPS/)的协议(事实上还有SMTP/NNTP等),SSH(Secure Shell)更多的则被设计为加强Telnet/FTP安全的传输协议,默认地,它使用22端口.SSL层: 借助下层协议的的信道安全的协商出一份加密密钥，并用此密钥来加密HTTP请求。</p>
+</blockquote>
+<p>8、DHCP协议使用Discover报文发现DHCP服务器(V )</p>
+<p>9、二层交换机具有路由选择的功能( X )</p>
+<p>10、PPP协议与以太网具有相同的帧格式(X )</p>
+<p>三、简答和计算题(共50分)</p>
+<p>1、简述TCP协议实现的功能? (6分)</p>
+<blockquote>
+<p>传输层用来提供端到端的服务，意思就是在这个层次，不需要关心报文的中间的转发，看上去就像两端直接在通信。<br>网络层则提供点到点的通信，用来处理网络中的报文路由转发。</p>
+<p>TCP提供的高质量服务：可靠传输、流量控制、拥塞避免。</p>
+<p>一、TCP可靠传输<br>可靠传输的话题，在数据链路层就已经得到思考与设计，TCP采用的策略与其十分类似:</p>
+<p> 1）TCP是面向字节流的传输方式，TCP将需要发送的报文以字节流的方式放进TCP缓存中，并每次向IP中传递不定大小的字节流，称为报文段或段</p>
+<p> 2）TCP发出一个报文段后，启动一个定时器，若在定时器到时前，没有收到确认，则重发该报文段。</p>
+<p> 3）TCP通过校验和来检验首部与数据是否发生错误。若是，则丢弃该报文，并不向源套接字发送确认，等待其重传。</p>
+<p> 4）通过IP协议传递过来的数据报很可能会时序到达。TCP协议根据序号可以将这些数据重新排序，最终以正确的顺序交给应用层。</p>
+<p> 5）TCP协议还会丢弃IP数据报传过来的重复数据。</p>
+<p>二、TCP流量控制<br>流量控制是指，当服务器端数据发送速率过快时，存在数据淹没的风险，客户端需要做出调整，降低服务器端的数据发送速率。</p>
+<p>TCP的流量控制依靠设置TCP报文首部中的窗口字段来完成。</p>
+<p>TCP报文窗口字段，决定了客户端接收缓存的大小，通过调整窗口字段，服务器将得知客户端预期接收的字节流大小，并随之调整发送速率。</p>
+<p>三、TCP拥塞避免<br>拥塞避免常易与流量控制混淆，但两者并不相同。</p>
+<p>流量控制是解决由发送方数据发送过快而接收方接收不过来问题的方法，作用于两台主机之间的数据传输，是局部性的。</p>
+<p>拥塞避免是解决全局网络下，由于传输数据报过多，导致带宽不够、资源不足的问题，用于调控全局网络，是宏观性的。</p>
+<p>原文链接：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44580146/article/details/106969663" >https://blog.csdn.net/weixin_44580146/article/details/106969663</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<p>2、简述使用web缓存后网页请求响应的过程? (6分)</p>
+<p>3、简述DNS服务器类型及DNS查询方法? (6分)</p>
+<p>4、假设客户端建立连接时分配的初始序号是1234,服务器分配的初始序号是2478，填充下列TCP建立连接时的首部标识、序号和确认号的值? (6 分)<br><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629100259.png" alt="image-20210629100259050"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629100317.png" alt="image-20210629100317080"></p>
+<p>6、简述路由由器存储转发分组的处理过程? (6 分)</p>
+<p>7、简述Dijsktra算法? (6分)</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629100350.png" alt="image-20210629100350736"></p>
+
+        <h2 id="题2"   >
+          <a href="#题2" class="heading-link"><i class="fas fa-link"></i></a>题2</h2>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629202542.png" alt="image-20210629202542369"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210629202724.png" alt="image-20210629202717269"></p>
+
+        <h2 id="题3"   >
+          <a href="#题3" class="heading-link"><i class="fas fa-link"></i></a>题3</h2>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210630001953.png" alt="image-20210630001953121"></p>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2014%20%E8%AE%A1%E7%BD%91%E4%B9%A0%E9%A2%98/">http://zjeff-953.gitee.io/zjeff/2021/10/12/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2014%20%E8%AE%A1%E7%BD%91%E4%B9%A0%E9%A2%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%90%8E%E7%AB%AF/">后端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/12/%E5%86%99%E5%87%BA%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BA%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">设计模式</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/12/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2013%20%E8%AE%A1%E7%BD%91%E6%80%BB%E7%BB%93/"><span class="paginator-prev__text">计算机网络 - 13 计网总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-14-%E8%AE%A1%E7%BD%91%E4%B9%A0%E9%A2%98"><span class="toc-text">
+          计算机网络 - 14 计网习题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%981"><span class="toc-text">
+          题1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%982"><span class="toc-text">
+          题2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%983"><span class="toc-text">
+          题3</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

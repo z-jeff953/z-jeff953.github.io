@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="软件工程 - 05 知识概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 - 05 知识概述">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2005%20%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="软件工程 - 05 知识概述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212003.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212024.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212051.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212056.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212102.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212058.png">
+<meta property="article:published_time" content="2020-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-27T13:21:44.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="软件工程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212003.png"><title>软件工程 - 05 知识概述 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2005%20%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">软件工程 - 05 知识概述</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-27</span></span></div></header><div class="post-body">
+        <h1 id="软件工程-05-知识概述"   >
+          <a href="#软件工程-05-知识概述" class="heading-link"><i class="fas fa-link"></i></a>软件工程 - 05 知识概述</h1>
+      <p>软件工程是什么</p>
+<span id="more"></span>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212003.png" alt="20160907175515212"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212024.png" alt="20160907175647102"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212051.png" alt="20160907175716993"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212056.png" alt="20160907175812651"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212102.png" alt="20160907175831277"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227212058.png" alt="20160907175849824"></p>
+
+        <h2 id="第一章-概述"   >
+          <a href="#第一章-概述" class="heading-link"><i class="fas fa-link"></i></a>第一章 概述</h2>
+      
+        <h3 id="软件"   >
+          <a href="#软件" class="heading-link"><i class="fas fa-link"></i></a>软件</h3>
+      <p><strong>软件是计算机程序、规程以及运行计算机系统可能需要的相关文档和数据</strong>，从软件的内容来看，软件更像是一种嵌入式的数字化知识，其形成是一个通过交互对话和抽象理解而不断演化的过程，根据软件服务对象的范围，一般分为通用和定制两种。</p>
+<ul>
+<li>通用软件(Generic Software)：由软件开发组织开发、面向市场用户公开销售的独立运行系统（优点：一次开发，多次出售 缺点：有风险）</li>
+<li>定制软件(Customized Software )：由某个特定用户委托、软件开发组织在合同的约束下开发的软件（优点：满足用户个性化需求 缺点：重复利用性差）</li>
+</ul>
+
+        <h3 id="软件的特性"   >
+          <a href="#软件的特性" class="heading-link"><i class="fas fa-link"></i></a>软件的特性</h3>
+      <p><strong>复杂性、不可见性、可变性、一致性</strong></p>
+<p>软件是复杂的，软件是人类思维和智能的一种延伸和在异体上的再现，远比任何以往人类的创造物都要复杂的多，<strong>软件的复杂性是软件的固有属性、本质特性</strong>。</p>
+<p>软件是不可见的，软件是客观世界空间和计算机空间之间的一种逻辑实体，不具有物理的形体特征。</p>
+<p>软件是不断变化的，它需要随着应用、硬件、用户和社会等各种因素的变化而不断的被修改和扩展。</p>
+<p>软件必须遵从人为的惯例并适应已有的技术和系统，软件需要随接口的不同而改变，随时间的推移而变化，而这些变化是不同的人设计的结果，许多复杂性来自保持与其他接口的一致，对软件的任何再设计，都无法简化这些复杂特性。</p>
+
+        <h3 id="软件工程三要素"   >
+          <a href="#软件工程三要素" class="heading-link"><i class="fas fa-link"></i></a>软件工程三要素</h3>
+      <p>软件工程以关注软件质量为目标，包括过程、方法和工具三要素</p>
+<ul>
+<li><strong>过程</strong> 支持软件生命周期的所有活动</li>
+<li><strong>方法</strong> 为软件开发过程提供“如何做”的技术</li>
+<li><strong>工具</strong> 为软件开发方法提供自动的或半自动的软件支撑环境</li>
+</ul>
+
+        <h3 id="ISO9126软件质量的六个一级特性"   >
+          <a href="#ISO9126软件质量的六个一级特性" class="heading-link"><i class="fas fa-link"></i></a>ISO9126软件质量的六个一级特性</h3>
+      <p><strong>功能性、可靠性、可使用性、有效性、可维护性、可移植性</strong></p>
+<ul>
+<li><strong>功能性</strong>：在指定条件下使用时，软件产品提供满足明确和隐含需求功能的能力；</li>
+<li><strong>可靠性</strong>：在指定条件下使用时，软件产品维持规定的性能级别的能力(在规定的条件下，在规定的时间内，软件不引起系统失效的概率)；</li>
+<li><strong>易用性（可使用性）</strong>：在指定条件下使用时，软件产品被理解、学习、使用及其吸引用户的能力；</li>
+<li><strong>效率（有效性）</strong>：在规定条件下，相对于所用资源的数量，软件产品可提供适当性能的能力；</li>
+<li><strong>可维护性</strong>：软件产品可被修改的能力，修改可能包括修正、改进或者适应环境、需求和功能规约的变化；</li>
+<li><strong>可移植性</strong>：软件产品从一种环境迁移到另一种环境的能力。</li>
+</ul>
+
+        <h2 id="第二章-软件过程"   >
+          <a href="#第二章-软件过程" class="heading-link"><i class="fas fa-link"></i></a>第二章 软件过程</h2>
+      
+        <h3 id="软件过程"   >
+          <a href="#软件过程" class="heading-link"><i class="fas fa-link"></i></a>软件过程</h3>
+      <p>软件过程是软件工程人员为了获得软件产品而在软件工具的支持下实施的一系列软件工程活动。</p>
+
+        <h3 id="软件过程的基本活动"   >
+          <a href="#软件过程的基本活动" class="heading-link"><i class="fas fa-link"></i></a>软件过程的基本活动</h3>
+      <p><strong>问题提出、软件需求规格说明、软件设计、软件实现、软件确认、软件演化</strong></p>
+<ul>
+<li><strong>问题提出（可行性分析）</strong>：对开发任务进行调研和分析，研究系统的可行性和可能的解决方案，确定开发总目标和范围。</li>
+<li><strong>软件需求规格说明</strong>：软件需求规格说明描述软件功能、列出约束条件、定义软件的输入和输出接口。</li>
+<li><strong>软件设计</strong>：软件设计是根据需求规格说明，确定软件体系结构，进一步设计每个系统部件的实现算法、数据结构及其接口等，编写软件设计说明书。</li>
+<li><strong>软件实现</strong>：软件实现是将所设计的各个子系统编写成计算机可接受的程序代码。</li>
+<li><strong>软件确认</strong>：检查和验证所开发的系统是否符合用户的期望。</li>
+<li><strong>软件演化</strong>：软件的内在本质是灵活的和可变的。随着业务需求的变化，软件必须进化和变更。尽管在开发过程和演化（维护）过程之间存在划分，但是现实中全新的系统越来越少。</li>
+</ul>
+
+        <h3 id="软件过程模型"   >
+          <a href="#软件过程模型" class="heading-link"><i class="fas fa-link"></i></a>软件过程模型</h3>
+      <p>软件过程模型描述软件过程的整体框架，是软件过程的一种抽象表示。</p>
+<p>软件过程模型包括：<strong>瀑布模型、快速原型模型、增量模型、螺旋模型、形式化方法模型、基于组件的开发模型</strong></p>
+<ul>
+<li><strong>瀑布模型</strong> 将软件过程划分为需求定义与分析、软件设计、软件实现、软件测试、软件运行与维护等一系列基本活动。以上活动自上而下、相互衔接的固定顺序，如瀑布流水，逐级下落。</li>
+<li><strong>快速原型模型</strong> 快速原型模型的第一步是迅速构建一个可以运行的软件原型，实现用户与系统的交互，由用户对该原型进行评价，进一步细化待开发软件需求。结果逐步调整使其满足用户的要求之后，开发人员可以将用户的真正需求确定下来。第二步则在第一步的基础上开发用户满意的软件。（特点：有效适应用户需求的变化不知循环多少次，进度难以控制）</li>
+<li><strong>增量模型</strong> 增量模型在各个阶段并不一定交付一个可运行的完整产品，而是交付满足用户需求的一个子集。第一个增量往往是实现基本需求的核心产品，交付用户使用后，经过评价形成下一个增量的开发计划，其中包括对核心产品的修改和一些新功能的发布。这个过程在每个增量发布后不断重复，直到产生最终的完善产品。</li>
+<li><strong>螺旋模型</strong> 将瀑布模型和快速原型模型结合起来，强调了风险分析，特别适合大型复杂软件系统（优点：风险驱动（关注软件的重用、关注早期错误的消除、将质量目标放在首位、将开发阶段与维护阶段结合在一起）（缺点：需要风险评估的经验适应内部大规模软件开发）</li>
+<li><strong>形式化方法模型</strong> 首先将软件需求描述提炼成采用数学符号表达的形式化描述；然后经过一系列的形式化转换将形式化描述转换成可执行程序；最后将整个系统集成起来测试。 (优点：由于数学方法具有严密性和准确性，形式化方法开发过程所交付的软件系统具有较少的缺陷和较高的安全性) (缺点：开发人员需要具备一定技能并经过特殊训练;形式化描述和转换是一项费时费力的工作,成本高，质量不一定高;现实应用的系统大多数是交互性强的软件，但是这些系统难以用形式化方法进行描述)</li>
+</ul>
+
+        <h2 id="第三章-软件项目管理"   >
+          <a href="#第三章-软件项目管理" class="heading-link"><i class="fas fa-link"></i></a>第三章 软件项目管理</h2>
+      
+        <h3 id="项目管理-PM"   >
+          <a href="#项目管理-PM" class="heading-link"><i class="fas fa-link"></i></a>项目管理(PM)</h3>
+      <p>就是在项目活动中运用相关知识, 技能, 工具和技术满足项目的要求。</p>
+
+        <h3 id="项目管理的五个阶段"   >
+          <a href="#项目管理的五个阶段" class="heading-link"><i class="fas fa-link"></i></a>项目管理的五个阶段</h3>
+      <p><strong>启动、计划、监督、控制、收尾</strong></p>
+<ul>
+<li><strong>启动</strong>: 确定项目范围、组建项目团队、建立项目环境</li>
+<li><strong>计划</strong>: 确定项目活动、预算项目成本、制定进度计划</li>
+<li><strong>实施（监督+控制）</strong>: 监控项目执行、管理项目风险、控制项目变更</li>
+<li><strong>收尾</strong>: 客户验收项目、安装培训软件、总结项目经验</li>
+</ul>
+
+        <h3 id="Albrecht的软件信息域的5个基本特征"   >
+          <a href="#Albrecht的软件信息域的5个基本特征" class="heading-link"><i class="fas fa-link"></i></a>Albrecht的软件信息域的5个基本特征</h3>
+      <ul>
+<li><strong>外部输入</strong>：用户进行添加或修改的表格。</li>
+<li><strong>外部输出</strong>：产生的报表输出和屏幕输出。</li>
+<li><strong>外部查询</strong>：独立查询。</li>
+<li><strong>内部逻辑文件</strong>：软件修改或保存的逻辑纪录集合。</li>
+<li><strong>外部接口</strong>：与其他系统进行信息交换或共享的 文件。</li>
+</ul>
+
+        <h3 id="软件风险"   >
+          <a href="#软件风险" class="heading-link"><i class="fas fa-link"></i></a>软件风险</h3>
+      <p>一个不确定的事件或者情况，若其一旦发生，会对项目的目标，例如，范围、进度、成本和质量，产生积极或消极的影响。</p>
+<ul>
+<li><strong>特点</strong>:事先难以确定；一旦发生将带来损失，影响项目实施，甚至会导致项目失败</li>
+<li><strong>类别</strong>:软件规模、商业影响、客户特性、软件过程、开发技术、开发环境、开发人员</li>
+</ul>
+
+        <h3 id="软件风险管理过程"   >
+          <a href="#软件风险管理过程" class="heading-link"><i class="fas fa-link"></i></a>软件风险管理过程</h3>
+      <p><strong>风险识别→风险评估→风险管理计划→风险监控</strong></p>
+<p>风险识别是试图采用系统化的方法，识别特定项目已知和可预测的风险 风险识别的常用方法是建立风险条目检查表，即利用一组提问来帮助项目管理者了解在项目和技术方面的一些风险。</p>
+
+        <h2 id="第四章-需求工程"   >
+          <a href="#第四章-需求工程" class="heading-link"><i class="fas fa-link"></i></a>第四章 需求工程</h2>
+      
+        <h3 id="不同角度的需求"   >
+          <a href="#不同角度的需求" class="heading-link"><i class="fas fa-link"></i></a>不同角度的需求</h3>
+      <ul>
+<li><strong>业务需求</strong>：定义了软件的远景和范围。</li>
+<li><strong>用户需求</strong>：反映了用户使用该系统需要完成的任务。</li>
+<li><strong>功能需求</strong>：系统需要具备的功能。</li>
+<li><strong>非功能需求</strong>：系统应该具备的性能。</li>
+<li><strong>系统需求</strong>：面向开发人员、详细描述系统应该做什么。 软件的功能需求必须根据用户需求来考虑，而且应该与业务需求定义的目标相一致</li>
+</ul>
+
+        <h3 id="功能需求"   >
+          <a href="#功能需求" class="heading-link"><i class="fas fa-link"></i></a>功能需求</h3>
+      <p>描述系统应该提供的功能或服务，通常涉及用户或外部系统与该系统之间的交互，一般不考虑系统的实现细节</p>
+
+        <h3 id="非功能需求"   >
+          <a href="#非功能需求" class="heading-link"><i class="fas fa-link"></i></a>非功能需求</h3>
+      <p>是从各个角度对系统的约束和限制，反映了应用对软件系统质量和特性的额外要求，包括过程需求、产品需求和外部需求等类型。</p>
+
+        <h3 id="需求工程"   >
+          <a href="#需求工程" class="heading-link"><i class="fas fa-link"></i></a>需求工程</h3>
+      <p>需求工程是应用已证实有效的原理和方法，并通过合适的工具和符号，系统地描述出待开发系统及其行为特征和相关约束。</p>
+<ul>
+<li>需求管理：在开发过程中有效地管理和控制需求变更。</li>
+<li>需求获取：开发人员聆听客户的需求，观察用户的行为；</li>
+<li>需求分析：分析和整理所收集的用户需求；</li>
+<li>需求规格说明：以文档形式，精确地阐述一个软件系统 必须提供的功能和性能以及它所要考虑的限制条件；</li>
+<li>需求验证：使用评审和商议等有效手段对其进行验证， 最终形成一个需求基线；需求获取技术</li>
+</ul>
+<p>用户面谈、需求专题讨论会、现场考察、原型化方法、基于用例的方法 基于用例的方法 通过用例模型，明确系统功能</p>
+<p>特点：以任务和用户为中心、有助于客户了解系统功能、有助于开发人员理解用户需求、可以采用面向对象分析和设计方法将用例转化为设计模型</p>
+
+        <h2 id="第六章-面向对象基础"   >
+          <a href="#第六章-面向对象基础" class="heading-link"><i class="fas fa-link"></i></a>第六章 面向对象基础</h2>
+      
+        <h3 id="关联"   >
+          <a href="#关联" class="heading-link"><i class="fas fa-link"></i></a>关联</h3>
+      <p>关联是对象属性之间的静态联系，它通过对象的属性来表现对象之间的依赖关系</p>
+
+        <h3 id="关联关系"   >
+          <a href="#关联关系" class="heading-link"><i class="fas fa-link"></i></a>关联关系</h3>
+      <p>关联关系是类与类之间最常用的一种关系，它是一种结构化关系，表示has-a关系，往往表现为B作为A的属性存在（A关联B）</p>
+
+        <h3 id="依赖关系"   >
+          <a href="#依赖关系" class="heading-link"><i class="fas fa-link"></i></a>依赖关系</h3>
+      <p>依赖关系是一种使用关系，特定事物的改变有可能会影响到使用该事物的其他事物，在需要表示一个事物使用另一个事物时使用依赖关系。大多数情况下，依赖关系体现在某个类的方法使用另一个类的对象作为参数。表示要做一件事情，离不开某个对象，往往表现为B作为A的方法参数存在（A依赖B）</p>
+
+        <h3 id="聚合关系"   >
+          <a href="#聚合关系" class="heading-link"><i class="fas fa-link"></i></a>聚合关系</h3>
+      <p>聚合关系表示一个整体与部分的关系。通常在定义一个整体类后，再去分析这个整体类的组成结构，从而找出一些成员类，该整体类和成员类之间就形成了聚合关系。</p>
+
+        <h2 id="第七章-面向对象分析"   >
+          <a href="#第七章-面向对象分析" class="heading-link"><i class="fas fa-link"></i></a>第七章 面向对象分析</h2>
+      
+        <h3 id="分析类"   >
+          <a href="#分析类" class="heading-link"><i class="fas fa-link"></i></a>分析类</h3>
+      <p>在分析模型中，分析类是概念层次上的内容，用于描述系统中较高层次的对象，分析类直接与应用逻辑相关，而不关注技术实现的问题，分析类从软件的功能需求来看分为实体类、边界类和控制类</p>
+<ul>
+<li><strong>实体类</strong>：表示系统存储和管理的永久信息 entity</li>
+<li><strong>边界类</strong>：表示参与者与系统之间的交互 boundry</li>
+<li><strong>控制类</strong>：表示系统在运行过程中的业务控制逻辑 control（一个用例可有多个控制类）</li>
+</ul>
+
+        <h3 id="分析活动"   >
+          <a href="#分析活动" class="heading-link"><i class="fas fa-link"></i></a>分析活动</h3>
+      <p>理解用例模型→识别分析类→定义交互行为→建立分析类→评审分析模型</p>
+
+        <h3 id="面向对象的分析模型"   >
+          <a href="#面向对象的分析模型" class="heading-link"><i class="fas fa-link"></i></a>面向对象的分析模型</h3>
+      <ul>
+<li><strong>功能模型</strong>：由用例和场景表示</li>
+<li><strong>对象模型</strong>：由类图和对象图表示</li>
+<li><strong>动态模型</strong>：由状态图和顺序图表示</li>
+</ul>
+
+        <h2 id="第八章-面向对象设计"   >
+          <a href="#第八章-面向对象设计" class="heading-link"><i class="fas fa-link"></i></a>第八章 面向对象设计</h2>
+      
+        <h3 id="设计原则"   >
+          <a href="#设计原则" class="heading-link"><i class="fas fa-link"></i></a>设计原则</h3>
+      <p><strong>模块化、高内聚、低耦合、复用性</strong></p>
+
+        <h3 id="软件体系结构"   >
+          <a href="#软件体系结构" class="heading-link"><i class="fas fa-link"></i></a>软件体系结构</h3>
+      <p>涉及软件系统的总体组织、全局控制、数据存取以及子系统之间的通信协议等。</p>
+<p>典型软件体系结构：<strong>仓库体系结构、分层体系结构、MVC体系结构、客户机/服务器体系结构、管道和过滤体系结构</strong></p>
+<ul>
+<li><strong>仓库体系结构</strong>：在仓库体系结构中，有两种不同的软件部件：一个表示当前的中心数据结构和一组相互独立的处理中心数据的子系统。仓库体系结构无需在子系统之间进行数据转换，因而是一种共享大量数据的高效方法，而且只要与共享模型一致，新的子系统就可以很容易的增加到系统中</li>
+<li><strong>分层体系结构</strong>：层次化是一种概念，它将软件设计组织成为类或组件的层次或集合，在同一个层次上的类或组建完成一个特定的目的，良好的层次结构可以易与系统的扩建与维护，不同的层次之间通过接口进行通信</li>
+<li><strong>MVC子系统</strong>：在MVC体系结构中，子系统划分成不同的三种类型：模型子系统负责存储系统的中心数据；视图子系统负责将模型中的数据展示给用户；控制器子系统负责管理与用户的交互控制</li>
+<li><strong>客户机/服务器子系统</strong>：在客户机/服务器体系结构中，作为服务器的子系统为其他客户的子系统提供服务，作为客户机的子系统负责与用户的交互。</li>
+<li><strong>管道和过滤体系结构</strong>：在管道和过滤体系结构中，数据在不同的子系统之间流动，每一个子系统处理输入的一组数据，并将处理结构输出给其他子系统。</li>
+</ul>
+
+        <h3 id="详细设计"   >
+          <a href="#详细设计" class="heading-link"><i class="fas fa-link"></i></a>详细设计</h3>
+      <p>方法建模、属性建模、状态建模、关系建模</p>
+
+        <h3 id="泛化关系"   >
+          <a href="#泛化关系" class="heading-link"><i class="fas fa-link"></i></a>泛化关系</h3>
+      <p>也就是继承关系，也称为“is-a-kind-of”关系，泛化关系用于描述父类与子类之间的关系，父类又称作基类或超类，子类又称作派生类。在UML中，泛化关系用带空心三角形的直线来表示。</p>
+
+        <h3 id="设计模式"   >
+          <a href="#设计模式" class="heading-link"><i class="fas fa-link"></i></a>设计模式</h3>
+      <p>广义讲，软件设计模式是可解决一类软件问题并能重复使用的软件设计方案；狭义讲，设计模式是对被用来在特定场景下解决一般设计问题的类和相互通信的对象的描述。是在类和对象的层次描述的可重复使用的软件设计问题的解决方案。 <strong>分类</strong></p>
+<ul>
+<li><p>应用角度（3）</p>
+</li>
+<li><ul>
+<li>创建型模式（用来创建对象的模式，抽象了实力化过程）</li>
+<li>结构型模式（讨论的是类和对象的结构，采用继承机制来组合接口）</li>
+<li>行为型模式（着力解决的是类实体之间的通讯关系，希望以面向对象的方式描述一个控制流程）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>模式范围（2）</p>
+</li>
+<li><ul>
+<li>类模式</li>
+<li>对象模式 - Factory模式（工厂模式） 对象型创建模式<br>父类负责定义创建对象的公共接口，而子类则负责生成具体对象，将类的实例化操作延迟到子类中完成。</li>
+</ul>
+</li>
+</ul>
+<p>- Adapter模式（适配器模式） 将一个类的接口适配成用户所期待的接口。一个适配器允许因为接口不兼容而不能在一起工作的类在一起工作。做法是将类自己的接口包装在一个已经存在的类中。 - Bridge模式（桥梁模式） 将问题的抽象和实现分离开来实现，通过用聚合代替类继承来解决子类爆炸性增长的问题。 - Façade模式（外观模式） 为子系统提供一个更高层次、更简单的接口，从而降低了子系统的复杂度，使子系统更易于使用和管理。</p>
+
+        <h2 id="第十章-软件测试"   >
+          <a href="#第十章-软件测试" class="heading-link"><i class="fas fa-link"></i></a>第十章 软件测试</h2>
+      <ul>
+<li>软件产品在交付使用前，一般需要经过<strong>单元测试、集成测试、确认测试和系统测试</strong></li>
+</ul>
+
+        <h3 id="单元测试任务："   >
+          <a href="#单元测试任务：" class="heading-link"><i class="fas fa-link"></i></a>单元测试任务：</h3>
+      <ul>
+<li>模块接口测试（单元测试的基础，主要检查数据能否正确地通过模块）</li>
+<li>模块局部数据结构测试（局部数据结构往往是错误的根源）</li>
+<li>模块中所有独立执行通路测试</li>
+<li>模块的各条错误处理通路测试</li>
+<li>模块边界条件测试</li>
+</ul>
+
+        <h3 id="集成测试"   >
+          <a href="#集成测试" class="heading-link"><i class="fas fa-link"></i></a>集成测试</h3>
+      <p>将所有模块按照设计要求组装成一个完整的系统而进行的测试，也称组装测试或联合测试，目的是发现与接口有关的各种错误方法 非增量式测试（把所有的模块按设计要求组装在一起进行的整体测试）、增量式测试（逐个把模块组装到已经测试过的模块上去，进行集成测试。每加入一个新模块进行一次集成的测试，重复此过程直至程序组装完毕）、</p>
+
+        <h3 id="确认测试"   >
+          <a href="#确认测试" class="heading-link"><i class="fas fa-link"></i></a>确认测试</h3>
+      <p>通过集成测试后，软件已经完全组装了起来，接口方面的错误也已排除，这时就可以对软件进行最后的确认测试。</p>
+<ul>
+<li><p>其任务是检查软件能否按合同要求进行工作，即是否满足需求规格说明书中的确认标准。</p>
+</li>
+<li><p>确认测试方法：黑盒测试法。</p>
+</li>
+<li><p>确认测试的2种结果</p>
+</li>
+<li><ul>
+<li>软件功能和性能指标满足软件需求说明的要求，用户可接受。</li>
+<li>软件不满足软件需求说明的要求，用户无法接受。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>步骤</p>
+</li>
+<li><ul>
+<li>有效性测试：检查软件能否按合同要求进行工作，即是否满足需求规格说明书中的确认标准。</li>
+<li>软件配置复查：保证软件配置齐全。</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="系统测试"   >
+          <a href="#系统测试" class="heading-link"><i class="fas fa-link"></i></a>系统测试</h3>
+      <p>把软件、硬件和环境连接在一起，在实际运行环境下进行全面测试，验证系统各部件是否都能够正确工作并完成任务。</p>
+<ul>
+<li>恢复测试（主要检查系统的容错能力）</li>
+<li>安全测试（主要检查系统对非法侵入的防范能力）</li>
+<li>强度测试（强度测试检查程序对异常情况的抵抗能力；是检查系 统在极限状态下运行的时候性能下降的幅度是否在允许的范围内）</li>
+<li>性能测试</li>
+</ul>
+
+        <h3 id="软件调试"   >
+          <a href="#软件调试" class="heading-link"><i class="fas fa-link"></i></a>软件调试</h3>
+      <ul>
+<li><p>调试方法</p>
+</li>
+<li><ul>
+<li>简单的调试方法</li>
+<li>归纳法调试</li>
+<li>演绎法调试</li>
+<li>回溯法调试</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="黑盒测试"   >
+          <a href="#黑盒测试" class="heading-link"><i class="fas fa-link"></i></a>黑盒测试</h3>
+      <p>该方法把被测试对象看成一个黑盒子，测试人员完全不考虑程序的内部结构和处理过程，只在软件的接口处进行测试，依据需求说明书，检查程序是否满足功能要求。</p>
+<p>方法：等价类划分、边界值分析、错误推测等</p>
+
+        <h3 id="白盒测试"   >
+          <a href="#白盒测试" class="heading-link"><i class="fas fa-link"></i></a>白盒测试</h3>
+      <p>该方法把测试对象看作一个打开的盒子，测试人员须了解程序的内部结构和处理过程，以检查处理过程的细节为基础，对程序中尽可能多的逻辑路径进行测试，检验内部控制结构和数据结构是否有错、实际的运行状态与预期的状态是否一致。</p>
+<p>方法：逻辑覆盖、基本路径测试</p>
+
+        <h3 id="等价类划分方法"   >
+          <a href="#等价类划分方法" class="heading-link"><i class="fas fa-link"></i></a>等价类划分方法</h3>
+      <p>1) 如果某个输入条件规定了取值范围或值的个数，则可确定一个合理的等价类(输入值或数在此范围内)和两个不合理的等价类（输入值或数不在此范围） 2) 如果规定了输入数据的一组值，而且程序对不同的输入值做不同的处理，则每个允许的输入值是一个合理等价类，此外还有一个不合理等价类（任何一个不允许的输入值） 3) 如果规定了输入数据必须遵循的规则，可确定一个合理等价类（符合规则）和若干个不合理等价类（从各种不同角度违反规则） 4) 如果已划分的等价类中各元素在程序中的处理方式不同，则应将此等价类进一步划分为更小的等价类</p>
+
+        <h2 id="第十一章-软件演化"   >
+          <a href="#第十一章-软件演化" class="heading-link"><i class="fas fa-link"></i></a>第十一章 软件演化</h2>
+      
+        <h3 id="软件维护"   >
+          <a href="#软件维护" class="heading-link"><i class="fas fa-link"></i></a>软件维护</h3>
+      <p>软件被投入运行使用后人们对软件产品所进行的修改 目的：为了修改软件缺陷或增加新的功能而对软件进行的变更。 软件变更通常发生在局部，不会改变整个结构</p>
+<ul>
+<li><p>类型（软件维护的不同原因）</p>
+</li>
+<li><ul>
+<li>改正性维护：修改软件中的缺陷或不足</li>
+<li>适应性维护：修改软件使其适应不同的操作环境，包括硬件变化、操作系统变化、数据库更换等其他支持软件变化。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>完善性维护：增加或修改系统的功能，使其适应业务的变化。</li>
+</ul>
+<p>特点：受开发过程影响大、维护困难多、维护成本高</p>
+<p>过程：维护申请→维护分类→影响分析→版本规划→变更实施→软件发布</p>
+
+        <h3 id="软件再工程"   >
+          <a href="#软件再工程" class="heading-link"><i class="fas fa-link"></i></a>软件再工程</h3>
+      <p>软件再工程以系统理解为基础，结合反向工程、重构和正向工程等方法，将现有系统重新构造成为新的形式。形象地说，就是“把今天的方法学用于昨天的系统以满足明天的需要”。</p>
+
+        <h3 id="反向工程"   >
+          <a href="#反向工程" class="heading-link"><i class="fas fa-link"></i></a>反向工程</h3>
+      <ul>
+<li>是一种设计恢复过程，它是从现有系统的源代码中抽取数据结构、体系结构和程序设计信息。</li>
+<li>可以使用CASE工具自动处理，也可以手工分析。</li>
+<li>尽量找出程序的基本结构，并在进一步理解的基础上添加一些设计信息，逐步抽象建立系统设计模型。</li>
+</ul>
+
+        <h3 id="正向工程"   >
+          <a href="#正向工程" class="heading-link"><i class="fas fa-link"></i></a>正向工程</h3>
+      <ul>
+<li>利用从现有程序中恢复的设计信息而修改或重构现有系统，以提高系统的整体质量。</li>
+<li>通常正向工程并不是简单地构造一个与原有系统功能等价的系统，而是结合新的用户需求和软件技术扩展原有系统的功能和性能。</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2005%20%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0/">http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2005%20%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2001%20%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">软件工程 - 01 知识总结</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2006%20%E7%94%BB%E5%9B%BE%E6%96%B9%E6%B3%95/"><span class="paginator-prev__text">软件工程 - 06 画图方法</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-05-%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0"><span class="toc-text">
+          软件工程 - 05 知识概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0"><span class="toc-text">
+          第一章 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-text">
+          软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-text">
+          软件的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-text">
+          软件工程三要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ISO9126%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E7%9A%84%E5%85%AD%E4%B8%AA%E4%B8%80%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">
+          ISO9126软件质量的六个一级特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          第二章 软件过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          软件过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B4%BB%E5%8A%A8"><span class="toc-text">
+          软件过程的基本活动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          软件过程模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="toc-text">
+          第三章 软件项目管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86-PM"><span class="toc-text">
+          项目管理(PM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E4%BA%94%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-text">
+          项目管理的五个阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Albrecht%E7%9A%84%E8%BD%AF%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%9F%9F%E7%9A%845%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-text">
+          Albrecht的软件信息域的5个基本特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E9%A3%8E%E9%99%A9"><span class="toc-text">
+          软件风险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-text">
+          软件风险管理过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          第四章 需求工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-text">
+          不同角度的需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="toc-text">
+          功能需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="toc-text">
+          非功能需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          需求工程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80"><span class="toc-text">
+          第六章 面向对象基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94"><span class="toc-text">
+          关联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          关联关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          依赖关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          聚合关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90"><span class="toc-text">
+          第七章 面向对象分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%B1%BB"><span class="toc-text">
+          分析类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%B4%BB%E5%8A%A8"><span class="toc-text">
+          分析活动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%86%E6%9E%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          面向对象的分析模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          第八章 面向对象设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">
+          设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">
+          软件体系结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          详细设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          泛化关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">
+          设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          第十章 软件测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%BB%BB%E5%8A%A1%EF%BC%9A"><span class="toc-text">
+          单元测试任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          集成测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          确认测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          系统测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95"><span class="toc-text">
+          软件调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          黑盒测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          白盒测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E4%BB%B7%E7%B1%BB%E5%88%92%E5%88%86%E6%96%B9%E6%B3%95"><span class="toc-text">
+          等价类划分方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E8%BD%AF%E4%BB%B6%E6%BC%94%E5%8C%96"><span class="toc-text">
+          第十一章 软件演化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%BB%B4%E6%8A%A4"><span class="toc-text">
+          软件维护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%86%8D%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          软件再工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          反向工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E5%B7%A5%E7%A8%8B"><span class="toc-text">
+          正向工程</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

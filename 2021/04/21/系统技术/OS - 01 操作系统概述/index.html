@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS - 01 操作系统概述">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/04/21/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/OS%20-%2001%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210315131753.png">
+<meta property="article:published_time" content="2021-04-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-12T13:41:26.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210315131753.png"><title>OS - 01 操作系统概述 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/04/21/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/OS%20-%2001%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">OS - 01 操作系统概述</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-05-12</span></span></div></header><div class="post-body">
+        <h1 id="OS-01-操作系统概述"   >
+          <a href="#OS-01-操作系统概述" class="heading-link"><i class="fas fa-link"></i></a>OS - 01 操作系统概述</h1>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43978453/category_10798535.html" > 看着他和ppt复习, 并刷题</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>操作系统相当于运行在计算机上的大的软件, 操作系统用于协调计算机资源, 提供用户交互等作用</p>
+<p>操作系统主要从一下四个角度学习, 指的注意的是, 一下四个方面学习的内容主要是理论上的实现, 实际应用中不一定采用这种方式</p>
+<p>处理器管理, 内存管理, 文件管理, 设备管理</p>
+<span id="more"></span>
+<p>处理器管理，主要是解决处理器的分配和调度；② 存储管理，主要是管理主存储器资源；⑧ 设备管理，负责有效地管理各类外围设备； ④ 文件管理，支持文件的存取、修改等操作并解决数据的存储、共享、保密和保护等问题。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210315131753.png" alt="20171220143426336"></p>
+
+        <h3 id="1-设计现代-OS-的主要目标是什么"   >
+          <a href="#1-设计现代-OS-的主要目标是什么" class="heading-link"><i class="fas fa-link"></i></a>1. 设计现代 OS 的主要目标是什么</h3>
+      <p>答： 方便性，有效性，可扩充性，开放性</p>
+<ol>
+<li><p>方便性</p>
+<p>操作系统使计算机系统更易于使用</p>
+</li>
+<li><p>有效性</p>
+<p>操作系统使资源利用率更高，系统的吞吐量更大</p>
+</li>
+<li><p>可扩充性</p>
+<p>操作系统必须能方便地增加新的功能和模块，并修改老的模块，以适应计算机硬件、体系结构以及应用发展的要求</p>
+</li>
+<li><p>开放性</p>
+<p>操作系统的开发应该遵循世界标准规范，特别是遵顼开放互联 OSI 国际标准，从而使其与其他系统之间能够彼此兼容、方便地实现互联</p>
+</li>
+</ol>
+
+        <h3 id="6-试说明推动分时系统形成和发展的主要动力是什么"   >
+          <a href="#6-试说明推动分时系统形成和发展的主要动力是什么" class="heading-link"><i class="fas fa-link"></i></a>6. 试说明推动分时系统形成和发展的主要动力是什么</h3>
+      <p>推动分时系统形成和发展的主要动力是更好地满足用户的需要。主要表现在:</p>
+<ol>
+<li><p>CPU的分时使用缩短了作业的平均周转时间，提高了CPU的利用率</p>
+</li>
+<li><p>人机交互能力使用户能直接控制自己的作业，使用户能与自己的作业交互，或者说系统能够及时响应用户的终端命令</p>
+</li>
+<li><p>主机的共享使多用户能同时使用同一台计算机，独立地处理自己的作业，提高利用率降低昂贵的计算机硬件成本呢</p>
+</li>
+</ol>
+
+        <h3 id="8-为什么要引入实时操作系统"   >
+          <a href="#8-为什么要引入实时操作系统" class="heading-link"><i class="fas fa-link"></i></a>8. 为什么要引入实时操作系统</h3>
+      <p>实时操作系统是指系统能及时响应外部事件的请求，在规定的时间内完成对该事件的处理，并控制所有实时任务协调一致地运行，引入实时 OS 是为了满足应用的需求，更好的满足实时控制领域和实时信息处理领域的需要，比如控制武器，信息查询等。实时西永的特征主要是及时性和可靠性。</p>
+
+        <h3 id="10-试从交互性，及时性以及可靠性方面将分时系统与实时系统进行比较"   >
+          <a href="#10-试从交互性，及时性以及可靠性方面将分时系统与实时系统进行比较" class="heading-link"><i class="fas fa-link"></i></a>10. 试从交互性，及时性以及可靠性方面将分时系统与实时系统进行比较</h3>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th></th>
+<th>交互性</th>
+<th>及时性</th>
+<th>可靠性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相同点</td>
+<td>两者都可让人与系统进行交互</td>
+<td>都是以人能接受的等待时间决定的</td>
+<td>两者都比较可靠</td>
+</tr>
+<tr>
+<td>不同点</td>
+<td>实时系统的交互仅限于访问系统中特定的专用服务程序，不像分时系统那样提供诗句处理和共享等服务</td>
+<td>实时系统根据用处不同，及时性的要求也不同，多媒体实时系统的要求是播放出来是视频能令人满意，实时控制系统则是以控制对象所要求的截止时间确定的，一般为秒级到毫秒级</td>
+<td>实时系统的差错可能导致非常严重的后果，实时系统对于可靠性的要求更高</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="11-OS-有那几大特征？其最基本的特征是什么？"   >
+          <a href="#11-OS-有那几大特征？其最基本的特征是什么？" class="heading-link"><i class="fas fa-link"></i></a>11. OS 有那几大特征？其最基本的特征是什么？</h3>
+      <ol>
+<li>并发性（Concurrence）</li>
+</ol>
+<p>并发性，是指两个或者多个事件在同一时间间隔内发生</p>
+<ol>
+<li>共享性（Sharing）</li>
+</ol>
+<p>共享，是指系统中的资源可供内存中多个并发执行的进程（线程）共同使用，相应的，把这种资源共同使用成为资源共享，或称为资源复用</p>
+<ol>
+<li><p>虚拟性（Virtual）</p>
+<p>虚拟，是指通过某种技术把一个物理实体变为若干逻辑上的对应物</p>
+</li>
+<li><p>异步性（Asynchronism）</p>
+</li>
+</ol>
+<p>异步性是指在多道程序的环境下，每个程序何时执行，何时暂停都是位置的，即他们以不可预知的速度向前推进。但同时操作系统应保证程序的执行结果是可在线的，即只要运行环境相同，一个作业的多次执行都会得到相同的结果。异步性也成为不确定性或者随机性</p>
+<p>其中，并发性是操作系统最基本的特征其他特征都是以并发特征为前提的</p>
+
+        <h3 id="15-处理机管理有哪些主要功能，其主要任务是什么"   >
+          <a href="#15-处理机管理有哪些主要功能，其主要任务是什么" class="heading-link"><i class="fas fa-link"></i></a>15. 处理机管理有哪些主要功能，其主要任务是什么</h3>
+      <p>处理机管理的主要功能是：进程管理、进程同步、进程通信和处理机调度</p>
+<ol>
+<li><p>进程管理：</p>
+<p>为作业创建进程，撤销已结束进程，控制进程在运行过程中的状态转换。</p>
+</li>
+<li><p>进程同步：</p>
+<p>为多个进程(含线程)的运行进行协调。</p>
+</li>
+<li><p>进程通信：</p>
+<p>用来实现在相互合作进程之间的信息交换。</p>
+</li>
+<li><p>进程调度/处理机调度：</p>
+</li>
+<li><p>作业调度</p>
+<p>从后备队里按照一定的算法，选出若干个作业，为他们分配运行所需的资源( 首选是分配内存)。</p>
+</li>
+<li><p>进程调度</p>
+<p>从进程就绪队列中，按照一定算法选出一个进程， 把处理机分配给它，并设置运行现场，使进程投入执行。</p>
+</li>
+</ol>
+
+        <h3 id="16-内存管理有哪些主要功能，其主要任务是什么"   >
+          <a href="#16-内存管理有哪些主要功能，其主要任务是什么" class="heading-link"><i class="fas fa-link"></i></a>16. 内存管理有哪些主要功能，其主要任务是什么</h3>
+      <p>存储器管理主要是为多道程序的运行提供良好的环境，它的主要功能包括：内存分配、内存保护、地址映射和内存扩充。</p>
+<ol>
+<li><p>内存分配。内存分配为每道程序分配内存空间，分配时要尽量提高内存的利用率。</p>
+</li>
+<li><p>内存保护。内存保护确保每道用户程序只在自己的内存空间中运行，从而不影响 操作系统和其他程序的运行。</p>
+</li>
+<li><p>地址映射。地址映射将程序中的逻辑地址转换成内存中的物理地址，以使程序能 正确执行。</p>
+</li>
+<li><p>内存扩充。内存扩充在逻辑上扩充内存的容量，以方便大作业的运行和增加内存 中并发作业的道数。</p>
+</li>
+</ol>
+
+        <h3 id="17-设备管理有哪些主要功能，其主要任务是什么"   >
+          <a href="#17-设备管理有哪些主要功能，其主要任务是什么" class="heading-link"><i class="fas fa-link"></i></a>17. 设备管理有哪些主要功能，其主要任务是什么</h3>
+      <p>主要功能有：缓冲管理、设备分配和设备处理以及虚拟设备</p>
+<ol>
+<li><p>缓冲管理</p>
+<p>缓冲管理利用缓冲来缓和 CPU 和 I/O 设备速度不匹配的矛盾，提高 CPU 和 V0 设备的利用率和 I/O 的速度。</p>
+</li>
+<li><p>设备分配</p>
+<p>设备分配为用户分配完成 I/O 请求所需的设备和设备控制器，在配置 有通道的系统中，还需为用户分配通道。</p>
+</li>
+<li><p>设备处理</p>
+<p>设备处理启动设备进行真正的 I/O 操作，响应并处理设备控制器发来 的中断请求。</p>
+</li>
+</ol>
+<p>主要任务:</p>
+<ol>
+<li><p>完成用户提出的I/O请求，为用户分配I/O设备</p>
+</li>
+<li><p>提高CPU和I/O设备的利用率</p>
+</li>
+<li><p>提高I/O速度;以及方便用户使用I/O设备</p>
+</li>
+</ol>
+
+        <h3 id="18-文件管理有哪些主要功能，其主要任务是什么"   >
+          <a href="#18-文件管理有哪些主要功能，其主要任务是什么" class="heading-link"><i class="fas fa-link"></i></a>18. 文件管理有哪些主要功能，其主要任务是什么</h3>
+      <ol>
+<li><p>文件管理主要是使用户能方便、安全地使用各种信息资源，它的主要功能包括：</p>
+</li>
+<li><p>文件存储空间的管理。文件存储空间的管理为文件分配必要的存储空间，并尽量 提高文件存储空间的利用率和文件访问的效能。</p>
+</li>
+<li><p>目录管理。目录管理通过目录的方式来组织文件，以实现文件的按名存取，并提 高文件的检索速度。</p>
+</li>
+<li><p>文件的读/写管理和保护。文件的读/写管理和保护实现文件的读写操作，并提供有 效的存取控制功能保护文件的安全性。</p>
+</li>
+<li><p>友好的用户接口</p>
+<p>为方便用户使用计算机，操作系统向用户提供了使用计算机的接口。该接口通常是以 下列方式提供给用户的。</p>
+</li>
+<li><p>用户接口又可分为联机用户接口、脱机用户接口和图形用户接口三种 类型。</p>
+</li>
+<li><p>联机用户接口允许用户通过一组联机命令直接控制自己的作业；</p>
+</li>
+<li><p>脱机用户接口则允 许用户通过作业控制语言间接地控制自己的作业；</p>
+</li>
+<li><p>图形用户接口提供了窗口、图标和菜单 等元素，使用户可方便地通过指点设备(如鼠标)和少量的键盘操作，取得操作系统的服务。</p>
+</li>
+<li><p>程序接口。程序接口是指操作系统提供了一组系统调用，供用户程序调用操作系 统的功能。</p>
+</li>
+</ol>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/04/21/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/OS%20-%2001%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">http://zjeff-953.gitee.io/zjeff/2021/04/21/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/OS%20-%2001%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/04/21/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/OS%20-%2002%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">OS - 02 进程管理</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/04/15/%E5%A4%A7%E5%89%8D%E7%AB%AF/react%E5%8F%8A%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><span class="paginator-prev__text">react及前端性能优化</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OS-01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-text">
+          OS - 01 操作系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E7%8E%B0%E4%BB%A3-OS-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">
+          1. 设计现代 OS 的主要目标是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%AF%95%E8%AF%B4%E6%98%8E%E6%8E%A8%E5%8A%A8%E5%88%86%E6%97%B6%E7%B3%BB%E7%BB%9F%E5%BD%A2%E6%88%90%E5%92%8C%E5%8F%91%E5%B1%95%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%A8%E5%8A%9B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">
+          6. 试说明推动分时系统形成和发展的主要动力是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BC%95%E5%85%A5%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-text">
+          8. 为什么要引入实时操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E8%AF%95%E4%BB%8E%E4%BA%A4%E4%BA%92%E6%80%A7%EF%BC%8C%E5%8F%8A%E6%97%B6%E6%80%A7%E4%BB%A5%E5%8F%8A%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%96%B9%E9%9D%A2%E5%B0%86%E5%88%86%E6%97%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E8%BF%9B%E8%A1%8C%E6%AF%94%E8%BE%83"><span class="toc-text">
+          10. 试从交互性，及时性以及可靠性方面将分时系统与实时系统进行比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-OS-%E6%9C%89%E9%82%A3%E5%87%A0%E5%A4%A7%E7%89%B9%E5%BE%81%EF%BC%9F%E5%85%B6%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%89%B9%E5%BE%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">
+          11. OS 有那几大特征？其最基本的特征是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E5%A4%84%E7%90%86%E6%9C%BA%E7%AE%A1%E7%90%86%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%85%B6%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">
+          15. 处理机管理有哪些主要功能，其主要任务是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%85%B6%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">
+          16. 内存管理有哪些主要功能，其主要任务是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%85%B6%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">
+          17. 设备管理有哪些主要功能，其主要任务是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%85%B6%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">
+          18. 文件管理有哪些主要功能，其主要任务是什么</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

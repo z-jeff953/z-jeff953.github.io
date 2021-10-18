@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端视野 - 01 性能优化和前端测试">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2001%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606231742.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606232122.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606233611.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606231459.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606233105.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082315.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082433.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082502.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082550.gif">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082610.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082712.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210610103002.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210610103036.png">
+<meta property="article:published_time" content="2021-06-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-10T04:01:44.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="性能优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606231742.png"><title>前端视野 - 01 性能优化和前端测试 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2001%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">前端视野 - 01 性能优化和前端测试</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-10</span></span></div></header><div class="post-body">
+        <h1 id="前端视野-01-性能优化和前端测试"   >
+          <a href="#前端视野-01-性能优化和前端测试" class="heading-link"><i class="fas fa-link"></i></a>前端视野 - 01 性能优化和前端测试</h1>
+      <p>性能优化是一个老生常谈的问题， 但是我们总在说优化，却没有说优化什么，优化到怎样，就是八股文背背背，这是很奇怪的一件事，我想从性能指标到性能检测再到性能优化策略进行全面梳理，为之后的码路铺平道路。</p>
+<span id="more"></span>
+
+        <h2 id="1-Web性能指标"   >
+          <a href="#1-Web性能指标" class="heading-link"><i class="fas fa-link"></i></a>1. Web性能指标</h2>
+      
+        <h3 id="1-1-Google-RAIL-性能模型"   >
+          <a href="#1-1-Google-RAIL-性能模型" class="heading-link"><i class="fas fa-link"></i></a>1.1 Google RAIL 性能模型</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606231742.png" alt="image-20210606231742011"></p>
+<ul>
+<li>立即响应用户；在 100 毫秒以内确认用户输入。</li>
+<li>设置动画或滚动时，在 10 毫秒以内生成帧。</li>
+<li>最大程度增加主线程的空闲时间。</li>
+<li>持续吸引用户；在 1000 毫秒以内呈现交互内容。</li>
+</ul>
+
+        <h4 id="1-1-1-以用户为中心"   >
+          <a href="#1-1-1-以用户为中心" class="heading-link"><i class="fas fa-link"></i></a>1.1.1 以用户为中心</h4>
+      <p>让用户成为您的性能工作的中心。用户花在网站上的大多数时间不是等待加载，而是在使用时等待<strong>响应</strong>。下表是用户时间与用户反应的关系：</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>延迟</th>
+<th>用户反应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 - 16 毫秒</td>
+<td>人们特别擅长跟踪运动，如果动画不流畅，他们就会对运动心生反感。 用户可以感知每秒渲染 60 帧的平滑动画转场。也就是每帧 16 毫秒（包括浏览器将新帧绘制到屏幕上所需的时间），留给应用大约 10 毫秒的时间来生成一帧。</td>
+</tr>
+<tr>
+<td>0 - 100 毫秒</td>
+<td>在此时间窗口内响应用户操作，他们会觉得可以立即获得结果。时间再长，操作与反应之间的连接就会中断。</td>
+</tr>
+<tr>
+<td>100 - 300 毫秒</td>
+<td>用户会遇到轻微可觉察的延迟。</td>
+</tr>
+<tr>
+<td>300 - 1000 毫秒</td>
+<td>在此窗口内，延迟感觉像是任务自然和持续发展的一部分。对于网络上的大多数用户，加载页面或更改视图代表着一个任务。</td>
+</tr>
+<tr>
+<td>1000+ 毫秒</td>
+<td>超过 1 秒，用户的注意力将离开他们正在执行的任务。</td>
+</tr>
+<tr>
+<td>10,000+ 毫秒</td>
+<td>用户感到失望，可能会放弃任务；之后他们或许不会再回来。</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="1-1-2-响应：在-100-毫秒以内响应"   >
+          <a href="#1-1-2-响应：在-100-毫秒以内响应" class="heading-link"><i class="fas fa-link"></i></a>1.1.2 响应：在 100 毫秒以内响应</h4>
+      <p>在用户注意到滞后之前您有 100 毫秒的时间可以响应用户输入。这适用于大多数输入，不管他们是在点击按钮、切换表单控件还是启动动画。<strong>但不适用于触摸拖动或滚动。</strong></p>
+<p>如果您未响应，操作与反应之间的连接就会中断。用户会注意到。</p>
+<p>尽管很明显应立即响应用户的操作，但这并不总是正确的做法。使用此 100 毫秒窗口执行其他开销大的工作，但需要谨慎，以免妨碍用户。如果可能，请在后台执行工作。</p>
+<p>对于需要超过 500 毫秒才能完成的操作，请始终提供反馈。</p>
+
+        <h4 id="1-1-3-动画：在-10-毫秒内生成一帧"   >
+          <a href="#1-1-3-动画：在-10-毫秒内生成一帧" class="heading-link"><i class="fas fa-link"></i></a>1.1.3 动画：在 10 毫秒内生成一帧</h4>
+      <p>如果动画帧率发生变化，您的用户确实会注意到。您的目标就是每秒生成 60 帧，每一帧必须完成以下所有步骤：<br><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606232122.png" alt="image-20210606232122771"></p>
+<p>从纯粹的数学角度而言，每帧的预算约为 <strong>16 毫秒（1000 毫秒 / 60 帧 = 16.66 毫秒/帧）。 但因为浏览器需要花费时间将新帧绘制到屏幕上，只有 10 毫秒来执行代码</strong>。</p>
+<p>在像动画一样的高压点中，关键是不论能不能做，什么都不要做，做最少的工作。 如果可能，请利用 100 毫秒响应预先计算开销大的工作，这样您就可以尽可能增加实现 60fps 的可能性。<br>如需了解详细信息，请参阅<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/rendering/?hl=zh-cn" >渲染性能</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。</p>
+
+        <h4 id="1-1-4-空闲：最大程度增加空闲时间"   >
+          <a href="#1-1-4-空闲：最大程度增加空闲时间" class="heading-link"><i class="fas fa-link"></i></a>1.1.4 空闲：最大程度增加空闲时间</h4>
+      <p><strong>利用空闲时间完成推迟的工作</strong>。例如，尽可能减少预加载数据，以便您的应用快速加载，并利用空闲时间加载剩余数据。</p>
+<p>推迟的工作应分成每个耗时约 50 毫秒的多个块。如果用户开始交互，优先级最高的事项是响应用户。</p>
+<p>要实现小于 100 毫秒的响应，应用必须在每 50 毫秒内将控制返回给主线程，这样应用就可以执行其像素管道、对用户输入作出反应，等等。</p>
+<p>以 50 毫秒块工作既可以完成任务，又能确保即时的响应。</p>
+<p>要想合理地应用浏览器空闲时间，最好把时间以 50 毫秒为单位分组。为什么要这么做呢？在上文里也提到的，用户做出动作后，应用应该在 100 毫秒内给出响应，不应该出现一个模板渲染 2 秒之久。</p>
+
+        <h4 id="1-1-5-加载：在-1000-毫秒以内呈现内容"   >
+          <a href="#1-1-5-加载：在-1000-毫秒以内呈现内容" class="heading-link"><i class="fas fa-link"></i></a>1.1.5 加载：在 1000 毫秒以内呈现内容</h4>
+      <p>在 1 秒钟内加载您的网站。否则，用户的注意力会分散，他们处理任务的感觉会中断。</p>
+<p>侧重于<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=zh-cn" >优化关键渲染路径</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>以取消阻止渲染。</p>
+
+        <h4 id="1-1-6-RAIL-指标-的用户操作样例"   >
+          <a href="#1-1-6-RAIL-指标-的用户操作样例" class="heading-link"><i class="fas fa-link"></i></a>1.1.6 RAIL 指标 的用户操作样例</h4>
+      <p>要根据 RAIL 指标评估您的网站，请使用 Chrome DevTools <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/timeline-tool?hl=zh-cn" >Timeline</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 工具记录用户操作。然后根据这些关键 RAIL 指标检查 Timeline 中的记录时间。</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>RAIL 步骤</th>
+<th>关键指标</th>
+<th>用户操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>响应</td>
+<td>输入延迟时间（从点按到绘制）小于 100 毫秒。</td>
+<td>用户点按按钮（例如打开导航）。</td>
+</tr>
+<tr>
+<td>动画</td>
+<td>每个帧的工作（从 JS 到绘制）完成时间小于 16 毫秒。</td>
+<td>用户滚动页面，拖动手指（例如，打开菜单）或看到动画。 拖动时，应用的响应与手指位置有关（例如，拉动刷新、滑动轮播）。 此指标仅适用于拖动的持续阶段，不适用于开始阶段。</td>
+</tr>
+<tr>
+<td>空闲</td>
+<td>主线程 JS 工作分成不大于 50 毫秒的块。</td>
+<td>用户没有与页面交互，但主线程应足够用于处理下一个用户输入。</td>
+</tr>
+<tr>
+<td>加载</td>
+<td>页面可以在 1000 毫秒内就绪。</td>
+<td>用户加载页面并看到关键路径内容。</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="1-1-7-基于RAIL的Web性能目标"   >
+          <a href="#1-1-7-基于RAIL的Web性能目标" class="heading-link"><i class="fas fa-link"></i></a>1.1.7 基于RAIL的Web性能目标</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606233611.png" alt="image-20210606233611500"></p>
+
+        <h4 id="电源和内存"   >
+          <a href="#电源和内存" class="heading-link"><i class="fas fa-link"></i></a>电源和内存?</h4>
+      <p>如果达到了上述的性能目标，但把用户的设备搞的内存一点儿不剩还只剩下 10% 的电量，那用户也会很不高兴的。</p>
+<p>现在我们还不能确定如何处理共享资源，不过可以确定在之后我们会想出解决方案，到时候就改名为 BLAIMR 或者 PRIMAL 了（B 代表电池，M 代表内存）。</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20276064" >https://zhuanlan.zhihu.com/p/20276064</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="1-2-Google-Web-Vitals-使用者体验量化指标"   >
+          <a href="#1-2-Google-Web-Vitals-使用者体验量化指标" class="heading-link"><i class="fas fa-link"></i></a>1.2 Google Web Vitals 使用者体验量化指标</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606231459.png" alt=""></p>
+<p>而在 Web Vitals 指标中，Core Web Vitals 是其中最重要的核心，目前包含三个指标：</p>
+<ul>
+<li><strong>LCP 显示最大内容元素所需时间</strong> (衡量网站初次载入速度) , 用来测量加载的性能。最好保证在 2.5 秒以内出现。</li>
+<li><strong>FID 首次输入延迟时间</strong> (衡量网站互动顺畅程度)，用于测量可交互性。应该在 100 毫秒以内。</li>
+<li><strong>CLS 累计版面配置移转</strong> (衡量网页元件视觉稳定性)，用于测量视觉稳定性。这个指标应该小于 0.1。</li>
+</ul>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210606233105.png" alt="image-20210606233105872"></p>
+<blockquote>
+<p>很多国内的文章会提到 First Meaningful Paint (FMP)，也就是首次有意义的渲染，但是这个指标其实已经在 Lighthouse 6.0 中被废弃了，原因在于页面的任何细微差异对这个指标的影响都太大了，带来了双峰分布（bimodal distribution）的不一致性问题。而且这个测量太依赖浏览器的实现细节了，意味着没法在所有浏览器中标准化。</p>
+<p>目前可以使用 Largest Contentful Paint (LCP)[7] 来替代它。</p>
+</blockquote>
+
+        <h4 id="1-2-1-LCP（Largest-Contentful-Paint）最大内容渲染时间"   >
+          <a href="#1-2-1-LCP（Largest-Contentful-Paint）最大内容渲染时间" class="heading-link"><i class="fas fa-link"></i></a>1.2.1 LCP（Largest Contentful Paint）最大内容渲染时间</h4>
+      <p>这个指标记录了视口（Viewport），即浏览器可视区域中最大的内容块画出来的时间。这个内容块可以是\<img\>、\<svg\>或者\<video\>圈出的矩形区域，也可以是文字块圈出的区域。这些区域中的留白并不会被计算。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082315.png" alt="image-20210607082315372"></p>
+<p>上图的Viewport中最大的元素为那张大图，当该图被绘制在浏览器中时代表LCP时刻。我们注意到在FCP时刻，用户并没有获得多少有用信息。LCP无疑是更加以用户为中心的衡量方式。在LCP时刻，用户获得了正常体验。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082433.png" alt="image-20210607082432991"></p>
+<p>在这个例子中Larry Page的几张图片虽然最后读出，但是并没有大过下面绿色描述的文字块。因此LCP会很早发生。通过这个几个例子，或许你已经发现<strong>首屏放大图并不是提升LCP的有效方式，更多文字展示，少分段可以有效提升LCP成绩。</strong></p>
+<p>谷歌也提供了很好的提升LCP的教程，其中也包括异步读取CSS。极诣不再展开。详见：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://web.dev/optimize-lcp/" >https://web.dev/optimize-lcp/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h4 id="1-2-2-FID（First-Input-Delay）首次输入延迟"   >
+          <a href="#1-2-2-FID（First-Input-Delay）首次输入延迟" class="heading-link"><i class="fas fa-link"></i></a>1.2.2 FID（First Input Delay）首次输入延迟</h4>
+      <p>FID衡量的是从用户首次与页面进行交互（即当他们单击链接，点击按钮或使用自定义的JavaScript驱动的控件）到浏览器实际上能够响应该交互之间的时间。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082502.png" alt="image-20210607082502720"></p>
+<p>通常，由于浏览器的主线程正忙于执行其他操作，所以会发生输入延迟，因此它（尚未）响应用户。发生这种情况的一个常见原因是浏览器正在忙于解析和执行由您的应用加载的大型JavaScript文件。这样做时，它不能运行任何事件侦听器（Event Listener），因为它正在加载的JavaScript可能会告诉它做其他事情。</p>
+<p>FID和前端脚本有很大的关联性，和用户选择与网页互动的时机也高度相关。极诣建议营销者和前端工程师一起探讨这个问题。</p>
+<p>谷歌官方也提供了优化FID的方法，包括减少JavaScript执行时间，打碎长任务等。详见：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://web.dev/optimize-fid/" >https://web.dev/optimize-fid/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h4 id="1-2-3-CLS（Cumulative-Layout-Shift）累积布局偏移"   >
+          <a href="#1-2-3-CLS（Cumulative-Layout-Shift）累积布局偏移" class="heading-link"><i class="fas fa-link"></i></a>1.2.3 CLS（Cumulative Layout Shift）累积布局偏移</h4>
+      <p>现代网页有很多互动的部分，但是许多时候这些互动部分会改变页面的布局给用户产生困扰。下面的例子很好地说明了这种现象。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082550.gif" alt="1010"></p>
+<p>有没有遇到过刚想点下去的时候目标突然变了？</p>
+<p>这种计划赶不上变化的情况是常见的布局偏移产生的负面影响，对用户体验的打击很大。因此谷歌在CWV中用CLS来衡量页面的累积布局偏移，偏移越大，得分越低。</p>
+<p>网站在开发中的功能通常与用户的体验有很大不同。个性化或第三方内容在开发中的行为通常与生产中的行为不同，测试图像通常已经存在于开发人员的浏览器缓存中，并且本地运行的API调用通常飞快，以至于延迟不明显。CLS从真正的用户体验的角度提醒我们到底我们做得怎么样。</p>
+<p>CLS由影响分和距离分的乘积得出，影响分表示了Viewport中多大面积发生了改变（不包括新加入的元素），距离分表示改变的DOM元素移动了多少距离。这两个分数都以百分比表示，因此CLS是一个0-1之间的值。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082610.png" alt="image-20210607082610622"></p>
+<p>上图左边在载入的下一帧变成了右边这个样子我们看到插入了鳄鱼、大象、狮子、老虎。视口中受影响的是两块红色虚线的矩形，在上面这个4节菜单项的矩形中狗、马、斑马离开了原来的位置，而马到了新的位置。下面这个矩形中斑马到了新的位置。这两个矩形加起来占整个视口的38%，因此影响分为0.38。请注意，狮子和老虎是新加入的DOM元素，不加入影响分计算。</p>
+<p>狗、马、斑马移动的最大距离是斑马，蓝色箭头占整个视口高度的30%，因此距离分为0.30。</p>
+<p>影响分 x 距离分 = 0.38 x 0.30 = 0.1172。这个结果超过了0.1，因此会被标记为“有待改进”。</p>
+<p>谷歌同样提供了优化CLS的建议，主要的方法是<strong>务必在图片和视频元素上包含size</strong>属性，否则请使用CSS宽高比框保留所需的空间。这种方法可确保在加载图像时浏览器可以在文档中分配正确的空间量。另外除非响应用户交互，否则<strong>切勿在现有内容上方插入内容</strong>。这样可以确保可以预期发生任何版式移位。</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.icdo.com.cn/11981.html" >http://www.icdo.com.cn/11981.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.uisdc.com/web-vitals" >https://www.uisdc.com/web-vitals</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149662237" >https://zhuanlan.zhihu.com/p/149662237</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="1-3-性能监测概述"   >
+          <a href="#1-3-性能监测概述" class="heading-link"><i class="fas fa-link"></i></a>1.3 性能监测概述</h3>
+      <p>然后需要了解一下性能监控的种类，性能监控分为两种：</p>
+<ul>
+<li>合成监控（Synthetic Monitoring，SYN）是一种模拟网页加载或者脚本运行来测量性能指标的方式，输出网页性能报告。这种方式的价值在于提前发现可能存在的性能问题，不依赖于用户上报。Lighthouse[3] 就是谷歌开发的非常著名的一种合成测试工具，它既可以作为浏览器插件运行，也可以作为 cli 脚本，甚至以程序化的方式运行在你的 Node.js 代码中。</li>
+<li>真实用户监控（Real User Monitoring，RUM）是记录用户真实操作的一种被动监控，它的特点是用户真实的网页交互中去评估和记录性能数据。比如咱们常说的性能监控 sdk，就是为此而引入的。本文所介绍的 <code>web-vitals</code> 正是为了这种类型的监控而生。</li>
+</ul>
+<p>合成监控和真实用户监控相辅相成，前者用于在实验室环境下提前发现一些性能问题；后者则深入到真实世界，和用户设备、网速、环境等息息相关。</p>
+<p>在此前提之下，谷歌也把性能指标分为两类：</p>
+<ul>
+<li>实验室指标（In the lab）：使用工具在一致的环境中模拟页面加载。</li>
+<li>真实指标（In the field）：在真实用户环境中加载并且和用户交互。</li>
+</ul>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607082712.png" alt="image-20210607082712654"></p>
+
+        <h2 id="2-Web性能监测工具-开发环境-实验室指标"   >
+          <a href="#2-Web性能监测工具-开发环境-实验室指标" class="heading-link"><i class="fas fa-link"></i></a>2. Web性能监测工具 - 开发环境/实验室指标</h2>
+      
+        <h3 id="2-1-Chrome-DevTools-performance面板"   >
+          <a href="#2-1-Chrome-DevTools-performance面板" class="heading-link"><i class="fas fa-link"></i></a>2.1 Chrome DevTools performance面板</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/netease_im/article/details/110047542" >https://blog.csdn.net/netease_im/article/details/110047542</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="2-2-Light-House"   >
+          <a href="#2-2-Light-House" class="heading-link"><i class="fas fa-link"></i></a>2.2 Light House</h3>
+      
+        <h2 id="3-Web性能监测工具-生产环境-真实指标"   >
+          <a href="#3-Web性能监测工具-生产环境-真实指标" class="heading-link"><i class="fas fa-link"></i></a>3. Web性能监测工具 - 生产环境/真实指标</h2>
+      
+        <h3 id="3-1-PerformanceObserver-Web-Api"   >
+          <a href="#3-1-PerformanceObserver-Web-Api" class="heading-link"><i class="fas fa-link"></i></a>3.1 PerformanceObserver Web Api</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/ch834301/article/details/115475033" >https://blog.csdn.net/ch834301/article/details/115475033</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceObserver/PerformanceObserver" >https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceObserver/PerformanceObserver</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>5 分钟撸一个前端性能监控工具</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/wang_yu_shun/article/details/110790205" >https://blog.csdn.net/wang_yu_shun/article/details/110790205</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/chern1992/article/details/107170107/" >https://blog.csdn.net/chern1992/article/details/107170107/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/wangchengiii/article/details/89186315" >https://blog.csdn.net/wangchengiii/article/details/89186315</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82981365" >https://zhuanlan.zhihu.com/p/82981365</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="前端异常捕获处理"   >
+          <a href="#前端异常捕获处理" class="heading-link"><i class="fas fa-link"></i></a>前端异常捕获处理</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/webcabana/p/13131769.html" >https://www.cnblogs.com/webcabana/p/13131769.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/chris-oil/p/10700642.html" >https://www.cnblogs.com/chris-oil/p/10700642.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<ul>
+<li>try-catch</li>
+<li>window.onerror = cb (DOM0)</li>
+<li>window.addEventListener(‘error’, cb, true) (DOM2)</li>
+<li>window.addEventListener(“unhandledrejection”, cb) (DOM4)</li>
+<li>Promise.then().catch(cb)</li>
+<li>定制异步请求代码</li>
+</ul>
+
+        <h3 id="前端性能埋点设计"   >
+          <a href="#前端性能埋点设计" class="heading-link"><i class="fas fa-link"></i></a>前端性能埋点设计</h3>
+      
+        <h4 id="前端监控采集信息"   >
+          <a href="#前端监控采集信息" class="heading-link"><i class="fas fa-link"></i></a>前端监控采集信息</h4>
+      <p>、网络层面</p>
+<p>从网络层面来看涉及的指标有：重定向耗时、DNS解析耗时、TCP连接耗时、SSL耗时、TTFB网络请求耗时、数据传输耗时、资源加载耗时……,各个指标的解释如下表所示：</p>
+<p>指标    解释<br>重定向耗时    重定向所耗费的时间<br>DNS解析耗时    浏览器输入网址后首先会进行DNS解析，其可以对服务器是否工作作出反馈<br>TCP连接耗时    指建立连接过程的耗时<br>SSL连接耗时    指数据安全性、完整性建立耗时<br>TTFB 网络请求耗时    表示浏览器接收第一个字节的时间<br>数据传输耗时    浏览器接收内容所耗费的时间<br>资源加载耗时    DOM构建完毕后到页面加载完毕这段时间<br>二、页面展示层面</p>
+<p>页面展示层面的指标是针对用户体验提出的几个指标，包含FP、FCP、LCP、FMP、DCL、L等，这几个指标其实就是chrome浏览器中performance模块的指标（如图所示）。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210610103002.png" alt="image-20210610103002188"></p>
+<p>各个指标的解释如下表所示。</p>
+<p>指标    解释<br>FP（First Paint）    首次绘制，标记浏览器渲染任何在视觉上不同于导航前屏幕内容之内容的时间点.<br>FCP（First Contentful Paint）    首次内容绘制，标记浏览器渲染来自 DOM 第一位内容的时间点，该内容可能是文本、图像、SVG 甚至 元素.<br>LCP（Largest Contentful Paint）    最大内容渲染，表示可视区“内容”最大的可见元素开始出现在屏幕上的时间点。<br>FMP（First Meaningful Paint）    首次有效绘制，表示页面的“主要内容”开始出现在屏幕上的时间点。它是我们测量用户加载体验的主要指标。<br>DCL（DomContentLoaded）    当 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，无需等待样式表、图像和子框架的完成加载.<br>L（onLoad）    当依赖的资源全部加载完毕之后才会触发<br>TTI（Time to Interactive）    可交互时间，用于标记应用已进入视觉渲染并能可靠响应用户输入的时间点<br>FID（First Input Delay）    首次输入延迟，用户首次和页面交互（单击链接、点击按钮等）到页面响应交互的时间</p>
+<p>3.1.2.2 指标求解</p>
+<blockquote>
+<p>上述这么多指标该怎么获取呢？浏览器给我们留了相应的接口——神奇的window.performance，通过该接口可以获取一些列与性能相关的参数，下面以<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://baidu.com" >https://baidu.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 为例来看一下与这些指标相关的参数：</p>
+</blockquote>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210610103036.png" alt="image-20210610103036241"></p>
+<p>window.onerror </p>
+
+        <h2 id="4-Web性能调优策略"   >
+          <a href="#4-Web性能调优策略" class="heading-link"><i class="fas fa-link"></i></a>4. Web性能调优策略</h2>
+      <p>雅虎军规<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cuggz.blog.csdn.net/article/details/107804152" >https://cuggz.blog.csdn.net/article/details/107804152</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="5-前端单元测试工具"   >
+          <a href="#5-前端单元测试工具" class="heading-link"><i class="fas fa-link"></i></a>5. 前端单元测试工具</h2>
+      <p>mocha</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_31900531/article/details/89203427" >https://blog.csdn.net/sinat_31900531/article/details/89203427</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.jestjs.cn/docs/getting-started" >https://www.jestjs.cn/docs/getting-started</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/73579095" >https://zhuanlan.zhihu.com/p/73579095</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340615580" >https://zhuanlan.zhihu.com/p/340615580</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="6-前端UI测试工具"   >
+          <a href="#6-前端UI测试工具" class="heading-link"><i class="fas fa-link"></i></a>6. 前端UI测试工具</h2>
+      
+        <h2 id="7-React-性能优化"   >
+          <a href="#7-React-性能优化" class="heading-link"><i class="fas fa-link"></i></a>7. React 性能优化</h2>
+      <ol>
+<li>useMemo缓存组件</li>
+</ol>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.ptbird.cn/react-hook-useMemo-purerender.html" >http://www.ptbird.cn/react-hook-useMemo-purerender.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2001%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/">http://zjeff-953.gitee.io/zjeff/2021/06/10/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2001%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/10/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2000%20%E4%BD%A0%E8%A7%89%E5%BE%97%E5%89%8D%E7%AB%AF%E7%9A%84%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF%E6%98%AF%E4%BB%80%E4%B9%88/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">前端视野 - 00 你觉得前端的发展趋势是什么</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/10/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2002%20%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88/"><span class="paginator-prev__text">前端视野 - 02 大前端意味着什么</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E-01-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95"><span class="toc-text">
+          前端视野 - 01 性能优化和前端测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Web%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">
+          1. Web性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Google-RAIL-%E6%80%A7%E8%83%BD%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          1.1 Google RAIL 性能模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E4%BB%A5%E7%94%A8%E6%88%B7%E4%B8%BA%E4%B8%AD%E5%BF%83"><span class="toc-text">
+          1.1.1 以用户为中心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%93%8D%E5%BA%94%EF%BC%9A%E5%9C%A8-100-%E6%AF%AB%E7%A7%92%E4%BB%A5%E5%86%85%E5%93%8D%E5%BA%94"><span class="toc-text">
+          1.1.2 响应：在 100 毫秒以内响应</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E5%8A%A8%E7%94%BB%EF%BC%9A%E5%9C%A8-10-%E6%AF%AB%E7%A7%92%E5%86%85%E7%94%9F%E6%88%90%E4%B8%80%E5%B8%A7"><span class="toc-text">
+          1.1.3 动画：在 10 毫秒内生成一帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-%E7%A9%BA%E9%97%B2%EF%BC%9A%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%A2%9E%E5%8A%A0%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4"><span class="toc-text">
+          1.1.4 空闲：最大程度增加空闲时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-5-%E5%8A%A0%E8%BD%BD%EF%BC%9A%E5%9C%A8-1000-%E6%AF%AB%E7%A7%92%E4%BB%A5%E5%86%85%E5%91%88%E7%8E%B0%E5%86%85%E5%AE%B9"><span class="toc-text">
+          1.1.5 加载：在 1000 毫秒以内呈现内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-6-RAIL-%E6%8C%87%E6%A0%87-%E7%9A%84%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%A0%B7%E4%BE%8B"><span class="toc-text">
+          1.1.6 RAIL 指标 的用户操作样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-7-%E5%9F%BA%E4%BA%8ERAIL%E7%9A%84Web%E6%80%A7%E8%83%BD%E7%9B%AE%E6%A0%87"><span class="toc-text">
+          1.1.7 基于RAIL的Web性能目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%BA%90%E5%92%8C%E5%86%85%E5%AD%98"><span class="toc-text">
+          电源和内存?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Google-Web-Vitals-%E4%BD%BF%E7%94%A8%E8%80%85%E4%BD%93%E9%AA%8C%E9%87%8F%E5%8C%96%E6%8C%87%E6%A0%87"><span class="toc-text">
+          1.2 Google Web Vitals 使用者体验量化指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-LCP%EF%BC%88Largest-Contentful-Paint%EF%BC%89%E6%9C%80%E5%A4%A7%E5%86%85%E5%AE%B9%E6%B8%B2%E6%9F%93%E6%97%B6%E9%97%B4"><span class="toc-text">
+          1.2.1 LCP（Largest Contentful Paint）最大内容渲染时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-FID%EF%BC%88First-Input-Delay%EF%BC%89%E9%A6%96%E6%AC%A1%E8%BE%93%E5%85%A5%E5%BB%B6%E8%BF%9F"><span class="toc-text">
+          1.2.2 FID（First Input Delay）首次输入延迟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-CLS%EF%BC%88Cumulative-Layout-Shift%EF%BC%89%E7%B4%AF%E7%A7%AF%E5%B8%83%E5%B1%80%E5%81%8F%E7%A7%BB"><span class="toc-text">
+          1.2.3 CLS（Cumulative Layout Shift）累积布局偏移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%80%A7%E8%83%BD%E7%9B%91%E6%B5%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">
+          1.3 性能监测概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Web%E6%80%A7%E8%83%BD%E7%9B%91%E6%B5%8B%E5%B7%A5%E5%85%B7-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%8C%87%E6%A0%87"><span class="toc-text">
+          2. Web性能监测工具 - 开发环境&#x2F;实验室指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Chrome-DevTools-performance%E9%9D%A2%E6%9D%BF"><span class="toc-text">
+          2.1 Chrome DevTools performance面板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Light-House"><span class="toc-text">
+          2.2 Light House</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Web%E6%80%A7%E8%83%BD%E7%9B%91%E6%B5%8B%E5%B7%A5%E5%85%B7-%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83-%E7%9C%9F%E5%AE%9E%E6%8C%87%E6%A0%87"><span class="toc-text">
+          3. Web性能监测工具 - 生产环境&#x2F;真实指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-PerformanceObserver-Web-Api"><span class="toc-text">
+          3.1 PerformanceObserver Web Api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7%E5%A4%84%E7%90%86"><span class="toc-text">
+          前端异常捕获处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E5%9F%8B%E7%82%B9%E8%AE%BE%E8%AE%A1"><span class="toc-text">
+          前端性能埋点设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF"><span class="toc-text">
+          前端监控采集信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Web%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5"><span class="toc-text">
+          4. Web性能调优策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%89%8D%E7%AB%AF%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">
+          5. 前端单元测试工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%89%8D%E7%AB%AFUI%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">
+          6. 前端UI测试工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-React-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">
+          7. React 性能优化</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="软件工程 - 06 画图方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 - 06 画图方法">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2006%20%E7%94%BB%E5%9B%BE%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="软件工程 - 06 画图方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225214923.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225220354.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225220918.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225220929.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225221008.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225221028.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225221151.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225222024.png">
+<meta property="article:published_time" content="2020-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-27T08:46:26.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="软件工程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225214923.png"><title>软件工程 - 06 画图方法 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2006%20%E7%94%BB%E5%9B%BE%E6%96%B9%E6%B3%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">软件工程 - 06 画图方法</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-27</span></span></div></header><div class="post-body">
+        <h1 id="软件工程-06-画图方法"   >
+          <a href="#软件工程-06-画图方法" class="heading-link"><i class="fas fa-link"></i></a>软件工程 - 06 画图方法</h1>
+      <p>软件工程的三要素, 过程,方法,工具. 过程是关键, 对过程的把控是使得软件开发工程化的重要因素.方法为各个过程提供了解决方案, 工具能够帮助我们更好的实践方法.</p>
+<p>画各种图是工具的一种</p>
+<span id="more"></span>
+
+        <h2 id="1-需要掌握的图"   >
+          <a href="#1-需要掌握的图" class="heading-link"><i class="fas fa-link"></i></a>1. 需要掌握的图</h2>
+      <ol>
+<li><p>面向过程 结构化分析</p>
+<ol>
+<li>可行性研究<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149291955" >数据流图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+<li>总体设计<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149298213" >系统结构图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+<li>组件设计<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149299710" >流程图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149300143" >盒图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/pdl%E8%AF%AD%E8%A8%80/8411985?fr=aladdin" >PDL语言(Program Design Language)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YZ4y1x7LX?p=30" >判定图-&gt;无多分支-&gt;常用于软件测试</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>面向对象(统一建模语言/Unified Modeling Language) </p>
+<ol>
+<li><p>需求分析</p>
+<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149069217" >用例图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+<li><p>架构设计</p>
+<ol>
+<li><p>物理模型</p>
+<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149285600" >部署图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+<li><p>设计子系统</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201227164601.png" >子系统设计图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>非功能需求设计</p>
+</li>
+</ol>
+</li>
+<li><p>用例设计和类设计</p>
+<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149035395" >类图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201223214812.png" >分析类图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+<li><p>交互图</p>
+<ul>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149209000" >顺序图</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+        <h2 id="2-UML"   >
+          <a href="#2-UML" class="heading-link"><i class="fas fa-link"></i></a>2. UML</h2>
+      <p>统一建模语言(Unified Modeling Language，UML)是一种为<strong>面向对象系统</strong>的产品进行说明、可视化和编制文档的一种标准语言，是非专利的第三代建模和规约语言。UML是面向对象设计的建模工具，独立于任何具体程序设计语言。</p>
+<p>UML用与面向对象分析和建模</p>
+
+        <h3 id="2-1-类图-Class-Diagram"   >
+          <a href="#2-1-类图-Class-Diagram" class="heading-link"><i class="fas fa-link"></i></a>2.1 类图(Class Diagram)</h3>
+      <p>类图描述面向对象设计的静态结构, 用于表示类和它们之间的关系</p>
+<p>核心是类的表示和类之间关系的表示</p>
+
+        <h4 id="2-1-1-类的表示"   >
+          <a href="#2-1-1-类的表示" class="heading-link"><i class="fas fa-link"></i></a>2.1.1 类的表示</h4>
+      
+        <h5 id="1-基本表示形式"   >
+          <a href="#1-基本表示形式" class="heading-link"><i class="fas fa-link"></i></a>1. 基本表示形式</h5>
+      <p>类图标由<strong>三个部分</strong>组成：最上面是<strong>类名</strong>，中间是<strong>属性</strong>，下面是<strong>操作</strong>。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225214923.png" alt="image-20201225214923192" style="zoom: 67%;" /></p>
+
+        <h5 id="2-属性和操作的基本格式"   >
+          <a href="#2-属性和操作的基本格式" class="heading-link"><i class="fas fa-link"></i></a>2. 属性和操作的基本格式</h5>
+      <ul>
+<li><strong>属性</strong>规格说明格式：</li>
+</ul>
+<p><strong>可见性 属性名称：类型 [多重性] = 默认值 {特性字符串}</strong></p>
+<ul>
+<li><strong>操作</strong>规格说明格式：</li>
+</ul>
+<p><strong>可见性 操作名称（参数名称：类型）：返回值 {特性字符串}</strong></p>
+
+        <h5 id="3-命名规范"   >
+          <a href="#3-命名规范" class="heading-link"><i class="fas fa-link"></i></a>3. 命名规范</h5>
+      <p><strong>类名</strong>在它的命名空间中唯一。类名以<strong>大写字母开头</strong>，省略多个单词之间的空格。</p>
+<p><strong>属性和操作</strong>在类的范围内必须无二义。属性和操作是<strong>以小写字母开头</strong>，<strong>后续单词的首字母大写</strong>，且同样省略空格。</p>
+<p><strong>抽象类</strong>和<strong>抽象操作</strong>用<strong>斜体</strong>表示。</p>
+
+        <h5 id="4-可见性类别"   >
+          <a href="#4-可见性类别" class="heading-link"><i class="fas fa-link"></i></a>4. 可见性类别</h5>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>标志</th>
+<th>可见性类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>Public</td>
+</tr>
+<tr>
+<td>#</td>
+<td>Protected</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Private</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="2-1-2-类的关系表示"   >
+          <a href="#2-1-2-类的关系表示" class="heading-link"><i class="fas fa-link"></i></a>2.1.2 类的关系表示</h4>
+      <p>类的关系有关联, 泛化, 聚合, 组合, 依赖</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表示方法</th>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225220354.png" alt="image-20201225220354657"></td>
+<td>关联</td>
+<td>动宾短语, 有联系就算, 有其他关系就不用关联关系</td>
+</tr>
+<tr>
+<td><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225220918.png" alt="image-20201225220918059"></td>
+<td>泛化</td>
+<td>继承和接口关系, 由子类指向父类, 或者由实现指向接口</td>
+</tr>
+<tr>
+<td><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225220929.png" alt="image-20201225220929180"></td>
+<td>聚合</td>
+<td>表示has a关系, 汽车聚合了轮胎和引擎, 但是那天汽车不用了, 轮胎也可以拿去干别的<br />也就是<strong>两个对象的生命周期是相互独立的</strong></td>
+</tr>
+<tr>
+<td><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225221008.png" alt="image-20201225221008001" style="zoom: 67%;" /></td>
+<td>组合</td>
+<td>表示contain a关系, <strong>部分在整体之外就没有任何意义，整体拥有部分，部分的生命周期与整体式一样的</strong>。</td>
+</tr>
+<tr>
+<td><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225221028.png" alt="image-20201225221028938"></td>
+<td>依赖</td>
+<td>一个类的实现需要另一个类的协助，比如人吃苹果, 需要任何苹果两个类</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225221151.png" alt="image-20201225221151441"></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/yhy_it/article/details/83389222" >类关系的Java代码实现</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201225222024.png" alt="image-20201225222024850"></p>
+
+        <h3 id="2-1-用例图"   >
+          <a href="#2-1-用例图" class="heading-link"><i class="fas fa-link"></i></a>2.1 用例图</h3>
+      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2006%20%E7%94%BB%E5%9B%BE%E6%96%B9%E6%B3%95/">http://zjeff-953.gitee.io/zjeff/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2006%20%E7%94%BB%E5%9B%BE%E6%96%B9%E6%B3%95/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2005%20%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">软件工程 - 05 知识概述</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%20-%2007%20UESTC%E8%BD%AF%E5%B7%A5%E5%A4%8D%E4%B9%A0/"><span class="paginator-prev__text">软件工程 - 07 UESTC软工复习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-06-%E7%94%BB%E5%9B%BE%E6%96%B9%E6%B3%95"><span class="toc-text">
+          软件工程 - 06 画图方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9C%80%E8%A6%81%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%9B%BE"><span class="toc-text">
+          1. 需要掌握的图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-UML"><span class="toc-text">
+          2. UML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%B1%BB%E5%9B%BE-Class-Diagram"><span class="toc-text">
+          2.1 类图(Class Diagram)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E7%B1%BB%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">
+          2.1.1 类的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E8%A1%A8%E7%A4%BA%E5%BD%A2%E5%BC%8F"><span class="toc-text">
+          1. 基本表示形式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%B1%9E%E6%80%A7%E5%92%8C%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="toc-text">
+          2. 属性和操作的基本格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">
+          3. 命名规范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%8F%AF%E8%A7%81%E6%80%A7%E7%B1%BB%E5%88%AB"><span class="toc-text">
+          4. 可见性类别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB%E8%A1%A8%E7%A4%BA"><span class="toc-text">
+          2.1.2 类的关系表示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%94%A8%E4%BE%8B%E5%9B%BE"><span class="toc-text">
+          2.1 用例图</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

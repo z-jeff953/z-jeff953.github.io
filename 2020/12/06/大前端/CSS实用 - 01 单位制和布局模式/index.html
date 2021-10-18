@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="CSS实用布局模式,flex,grid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS实用 - 01 单位制和布局模式">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/06/%E5%A4%A7%E5%89%8D%E7%AB%AF/CSS%E5%AE%9E%E7%94%A8%20-%2001%20%E5%8D%95%E4%BD%8D%E5%88%B6%E5%92%8C%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="CSS实用布局模式,flex,grid">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201208142645.gif">
+<meta property="article:published_time" content="2020-12-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-01T02:25:20.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201208142645.gif"><title>CSS实用 - 01 单位制和布局模式 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/06/%E5%A4%A7%E5%89%8D%E7%AB%AF/CSS%E5%AE%9E%E7%94%A8%20-%2001%20%E5%8D%95%E4%BD%8D%E5%88%B6%E5%92%8C%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">CSS实用 - 01 单位制和布局模式</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-01</span></span></div></header><div class="post-body">
+        <h1 id="CSS实用-01-单位制和布局模式"   >
+          <a href="#CSS实用-01-单位制和布局模式" class="heading-link"><i class="fas fa-link"></i></a>CSS实用 - 01 单位制和布局模式</h1>
+      <p>CSS常用布局模式 , 单位制</p>
+<span id="more"></span>
+<p>[toc]</p>
+
+        <h2 id="1-单位制和百分比"   >
+          <a href="#1-单位制和百分比" class="heading-link"><i class="fas fa-link"></i></a>1. 单位制和百分比</h2>
+      
+        <h3 id="1-1-百分比"   >
+          <a href="#1-1-百分比" class="heading-link"><i class="fas fa-link"></i></a>1.1 百分比</h3>
+      
+        <h4 id="1-1-1-盒子模型"   >
+          <a href="#1-1-1-盒子模型" class="heading-link"><i class="fas fa-link"></i></a>1.1.1 盒子模型</h4>
+      
+        <h5 id="width-height"   >
+          <a href="#width-height" class="heading-link"><i class="fas fa-link"></i></a>width   height</h5>
+      <p>百分比计算是基于包裹它的父元素的宽和高来计算</p>
+<p>父元素没有明确的高度定义 [ <strong>指的是不定义height或者使用min/max-height这种，都属于不明确的高度定义</strong> ]，并且子元素使用百分比并且不是绝对定位，那么这时候的百分比等同于auto</p>
+
+        <h5 id="margin-padding"   >
+          <a href="#margin-padding" class="heading-link"><i class="fas fa-link"></i></a>margin   padding</h5>
+      <ol>
+<li>百分比的计算是基于其包含块的<strong>宽度</strong></li>
+<li>百分比的计算规则适用于 margin 和 padding 的四个方向</li>
+<li>如果包含块的宽度取决于该元素，那么百分比的使用结果是未定义的</li>
+</ol>
+<p>注: </p>
+<ol>
+<li>margin : auto<ul>
+<li>垂直方向: 平分可用空间</li>
+<li>水平方向:  其计算值为0</li>
+</ul>
+</li>
+<li>padding: auto 不存在</li>
+</ol>
+
+        <h5 id="边框圆角-border-radius"   >
+          <a href="#边框圆角-border-radius" class="heading-link"><i class="fas fa-link"></i></a>边框圆角 border-radius</h5>
+      <p>边框宽度不存在百分比</p>
+<p>边框圆角 : 横纵方向根据元素的宽高计算百分比 , 负数无效</p>
+<p>tips: border-radius 的顺序: 左上开始 , 顺时针方向</p>
+
+        <h4 id="1-1-2-布局定位"   >
+          <a href="#1-1-2-布局定位" class="heading-link"><i class="fas fa-link"></i></a>1.1.2 布局定位</h4>
+      <p>bottom、left、right、top</p>
+<p>根据本身高宽调整</p>
+
+        <h4 id="1-1-3-背景设置"   >
+          <a href="#1-1-3-背景设置" class="heading-link"><i class="fas fa-link"></i></a>1.1.3 背景设置</h4>
+      
+        <h5 id="background-position"   >
+          <a href="#background-position" class="heading-link"><i class="fas fa-link"></i></a>background-position</h5>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-position</span>: <span class="number">25%</span> <span class="number">75%</span>;</span><br><span class="line"><span class="comment">/* 等价于 */</span></span><br><span class="line"><span class="comment">/*  表示上下留出的空间占比 , 基于父元素 */</span></span><br><span class="line"><span class="attribute">background-position</span>: bottom <span class="number">25%</span> right <span class="number">75%</span>;</span><br><span class="line"><span class="comment">/* 也可设置单一数值 , 表示右边和下边都留白 */</span></span><br><span class="line"><span class="attribute">background-position</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="comment">/* 也可设置关键字top ,bottom ,left , right ,center */</span></span><br><span class="line"><span class="attribute">background-position</span>: center;</span><br><span class="line"><span class="comment">/* 关键字也可组合 */</span></span><br><span class="line"><span class="attribute">background-position</span>: center left;</span><br></pre></td></tr></table></div></figure>
+
+        <h5 id="background-radius"   >
+          <a href="#background-radius" class="heading-link"><i class="fas fa-link"></i></a>background-radius</h5>
+      <p>同border</p>
+
+        <h4 id="1-1-4-文本字体"   >
+          <a href="#1-1-4-文本字体" class="heading-link"><i class="fas fa-link"></i></a>1.1.4 文本字体</h4>
+      
+        <h5 id="字体大小-font-size"   >
+          <a href="#字体大小-font-size" class="heading-link"><i class="fas fa-link"></i></a>字体大小 font-size</h5>
+      <p>基于父元素的字体大小数值 , 不设置不起作用</p>
+
+        <h5 id="行间距-line-height"   >
+          <a href="#行间距-line-height" class="heading-link"><i class="fas fa-link"></i></a>行间距 line-height</h5>
+      <p>参照自身字体大小变化</p>
+
+        <h5 id="垂直对齐方式-vertical-align"   >
+          <a href="#垂直对齐方式-vertical-align" class="heading-link"><i class="fas fa-link"></i></a>垂直对齐方式 vertical-align</h5>
+      <p>参照自身行间距变化 , 正数为向上移动 , 负数为向下移动</p>
+
+        <h4 id="1-1-5-动画变化"   >
+          <a href="#1-1-5-动画变化" class="heading-link"><i class="fas fa-link"></i></a>1.1.5 动画变化</h4>
+      <p>transform: translate</p>
+<p>translate(-50%,-50%) 作用是，往上（x轴）,左（y轴）移动自身长宽的 50%，以使其居于中心位置。</p>
+
+        <h4 id="百分比的继承"   >
+          <a href="#百分比的继承" class="heading-link"><i class="fas fa-link"></i></a>百分比的继承</h4>
+      <p>如果某个元素设置了百分比的属性，则后代元素继承的是计算后的值。例如：</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">font-size</span>: <span class="number">10px</span>;<span class="attribute">line-height</span>: <span class="number">120%</span>; &#125;</span><br></pre></td></tr></table></div></figure>
+<p>那么p的子元素继承到的值是 line-height: 12px，而不是 line-height: 120%。</p>
+
+        <h3 id="1-2-单位制"   >
+          <a href="#1-2-单位制" class="heading-link"><i class="fas fa-link"></i></a>1.2 单位制</h3>
+      <p>分类 </p>
+<p>绝对单位长度 : 不会因为其他元素的尺寸变化而变化 </p>
+<p>相对单位长度 : 对于另一长度的长度</p>
+
+        <h4 id="绝对单位长度"   >
+          <a href="#绝对单位长度" class="heading-link"><i class="fas fa-link"></i></a>绝对单位长度</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>单位</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cm</td>
+<td>厘米</td>
+</tr>
+<tr>
+<td>mm</td>
+<td>毫米</td>
+</tr>
+<tr>
+<td>in</td>
+<td>英寸 (1in = 96px = 2.54cm)</td>
+</tr>
+<tr>
+<td>px *</td>
+<td>像素 (1px = 1/96th of 1in)</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>point，大约1/72英寸； (1pt = 1/72in)</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>pica，大约6pt，1/6英寸； (1pc = 12 pt)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="相对长度单位"   >
+          <a href="#相对长度单位" class="heading-link"><i class="fas fa-link"></i></a>相对长度单位</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>单位</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>em</td>
+<td>如果用于font-size属性本身，则是相对于父元素的font-size<br />若用于其他属性（width,height），则是相对于本身元素的font-size。<br />一般浏览器字体大小默认为16px，则2em == 32px；</td>
+</tr>
+<tr>
+<td>ex</td>
+<td>依赖于英文字母小 x 的高度</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>数字 0 的宽度</td>
+</tr>
+<tr>
+<td>rem</td>
+<td>rem 是根 em（root em）的缩写，rem作用于非根元素时，相对于根元素字体大小；rem作用于根元素字体大小时，相对于其出初始字体大小。</td>
+</tr>
+<tr>
+<td><strong>vw</strong></td>
+<td>viewpoint width，视窗宽度，1vw=视窗宽度的1%</td>
+</tr>
+<tr>
+<td><strong>vh</strong></td>
+<td>viewpoint height，视窗高度，1vh=视窗高度的1%</td>
+</tr>
+<tr>
+<td>vmin</td>
+<td>vw和vh中较小的那个</td>
+</tr>
+<tr>
+<td>vmax</td>
+<td>vw和vh中较大的那个</td>
+</tr>
+<tr>
+<td>%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">62.5%</span>; &#125; </span><br><span class="line"><span class="comment">/*浏览器的默认字体大小都是16px</span></span><br><span class="line"><span class="comment">这就使em值变为 16px*62.5%=10px</span></span><br><span class="line"><span class="comment">或者直接写成10px*/</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">font-size</span>:<span class="number">12px</span>;<span class="attribute">font-size</span>:<span class="number">1.2rem</span> ;&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">font-size</span>:<span class="number">14px</span>;<span class="attribute">font-size</span>:<span class="number">1.4rem</span>;&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h2 id="2-布局模式演变史"   >
+          <a href="#2-布局模式演变史" class="heading-link"><i class="fas fa-link"></i></a>2. 布局模式演变史</h2>
+      <p>Web1.0 文字图片+表格拼装$\longrightarrow$ Web2.0 网页软件化交互布局  $\longrightarrow$Web3.0 简单数据处理和跨网站信息交互</p>
+<p>布局模式: </p>
+<ol>
+<li>早期布局<ul>
+<li>表格布局(table,处理简单信息) </li>
+</ul>
+</li>
+<li>CSS2<ul>
+<li>定位布局(position) </li>
+<li>浮动布局(float)<ul>
+<li>以上两种布局容易造成高度塌陷</li>
+<li>圣杯和双飞燕是此时期产物</li>
+</ul>
+</li>
+<li>inline-block</li>
+</ul>
+</li>
+<li>CSS3<ul>
+<li>弹性盒子布局(flex)</li>
+<li>栅格布局(grid)</li>
+</ul>
+</li>
+</ol>
+
+        <h2 id="3-设计角度的布局模式"   >
+          <a href="#3-设计角度的布局模式" class="heading-link"><i class="fas fa-link"></i></a>3. 设计角度的布局模式</h2>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201208142645.gif" alt="bg2015071001"></p>
+
+        <h2 id="4-CSS3高级布局模式"   >
+          <a href="#4-CSS3高级布局模式" class="heading-link"><i class="fas fa-link"></i></a>4. CSS3高级布局模式</h2>
+      
+        <h3 id="3-1-Flex布局"   >
+          <a href="#3-1-Flex布局" class="heading-link"><i class="fas fa-link"></i></a>3.1 Flex布局</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zxuqian.cn/css-flex-box-layout/" >https://zxuqian.cn/css-flex-box-layout/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" >http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://flexboxfroggy.com/#zh-cn" >https://flexboxfroggy.com/#zh-cn</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="3-2-Grid布局"   >
+          <a href="#3-2-Grid布局" class="heading-link"><i class="fas fa-link"></i></a>3.2 Grid布局</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18p411A7JB" >https://www.bilibili.com/video/BV18p411A7JB</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" >http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://cssgridgarden.com/#zh-cn" >https://cssgridgarden.com/#zh-cn</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="5-Bootstrap栅格系统"   >
+          <a href="#5-Bootstrap栅格系统" class="heading-link"><i class="fas fa-link"></i></a>5. Bootstrap栅格系统</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aJ411i7jz?p=32" >https://www.bilibili.com/video/BV1aJ411i7jz?p=32</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="6-认识其他布局模式"   >
+          <a href="#6-认识其他布局模式" class="heading-link"><i class="fas fa-link"></i></a>6. 认识其他布局模式</h2>
+      
+        <h3 id="浮动布局-两栏布局"   >
+          <a href="#浮动布局-两栏布局" class="heading-link"><i class="fas fa-link"></i></a>浮动布局-两栏布局</h3>
+      <figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>CSS 布局<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">*&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-class">.left</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">background-color</span>: yellow; </span></span><br><span class="line"><span class="css">    <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.right</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">background-color</span>: red; </span></span><br><span class="line"><span class="css">    <span class="attribute">margin-left</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">    <span class="attribute">visibility</span>: hidden;</span></span><br><span class="line"><span class="css">    <span class="attribute">clear</span>: both</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">container</span>&gt;</span>       </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">left</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">right</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<p>上面代码中最重要的是 <code>margin-left: 100px;</code>，这一句将浮动元素的位置空了出来，所以右边栏里面的元素不会影响到浮动的 div。</p>
+
+        <h3 id="浮动布局-三栏布局"   >
+          <a href="#浮动布局-三栏布局" class="heading-link"><i class="fas fa-link"></i></a>浮动布局-三栏布局</h3>
+      <p>左右固定 , 中间自适应 , 使用flex可以更轻松实现</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>CSS 布局<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">*&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-class">.left</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">background-color</span>: yellow; </span></span><br><span class="line"><span class="css">    <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.right</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">background-color</span>: green; </span></span><br><span class="line"><span class="css">    <span class="attribute">float</span>: right;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.middle</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">background-color</span>: red; </span></span><br><span class="line"><span class="css">    <span class="attribute">margin-left</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">margin-right</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span><span class="selector-pseudo">::after</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">    <span class="attribute">visibility</span>: hidden;</span></span><br><span class="line"><span class="css">    <span class="attribute">clear</span>: both</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span>       </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;middle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--浮动元素会把块级元素的位置空出来, 所以要这样写 不能把middle写中间--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/06/%E5%A4%A7%E5%89%8D%E7%AB%AF/CSS%E5%AE%9E%E7%94%A8%20-%2001%20%E5%8D%95%E4%BD%8D%E5%88%B6%E5%92%8C%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F/">http://zjeff-953.gitee.io/zjeff/2020/12/06/%E5%A4%A7%E5%89%8D%E7%AB%AF/CSS%E5%AE%9E%E7%94%A8%20-%2001%20%E5%8D%95%E4%BD%8D%E5%88%B6%E5%92%8C%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/CSS/">CSS</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/09/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94%20-%2005%20%E8%AE%B0%E5%8D%9A%E5%AE%A2%E5%92%8C%E7%AC%94%E8%AE%B0%E7%9A%84%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">生活随笔 - 05 记博客和笔记的方式</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/06/%E5%A4%A7%E5%89%8D%E7%AB%AF/CSS%E5%AE%9E%E7%94%A8%20-%2002%20%E5%B1%85%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__text">CSS实用 - 02 居中实现方式</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS%E5%AE%9E%E7%94%A8-01-%E5%8D%95%E4%BD%8D%E5%88%B6%E5%92%8C%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F"><span class="toc-text">
+          CSS实用 - 01 单位制和布局模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8D%95%E4%BD%8D%E5%88%B6%E5%92%8C%E7%99%BE%E5%88%86%E6%AF%94"><span class="toc-text">
+          1. 单位制和百分比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%99%BE%E5%88%86%E6%AF%94"><span class="toc-text">
+          1.1 百分比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          1.1.1 盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#width-height"><span class="toc-text">
+          width   height</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#margin-padding"><span class="toc-text">
+          margin   padding</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BE%B9%E6%A1%86%E5%9C%86%E8%A7%92-border-radius"><span class="toc-text">
+          边框圆角 border-radius</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%B8%83%E5%B1%80%E5%AE%9A%E4%BD%8D"><span class="toc-text">
+          1.1.2 布局定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E8%83%8C%E6%99%AF%E8%AE%BE%E7%BD%AE"><span class="toc-text">
+          1.1.3 背景设置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#background-position"><span class="toc-text">
+          background-position</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#background-radius"><span class="toc-text">
+          background-radius</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-%E6%96%87%E6%9C%AC%E5%AD%97%E4%BD%93"><span class="toc-text">
+          1.1.4 文本字体</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F-font-size"><span class="toc-text">
+          字体大小 font-size</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%8C%E9%97%B4%E8%B7%9D-line-height"><span class="toc-text">
+          行间距 line-height</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F-vertical-align"><span class="toc-text">
+          垂直对齐方式 vertical-align</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-5-%E5%8A%A8%E7%94%BB%E5%8F%98%E5%8C%96"><span class="toc-text">
+          1.1.5 动画变化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BE%E5%88%86%E6%AF%94%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">
+          百分比的继承</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8D%95%E4%BD%8D%E5%88%B6"><span class="toc-text">
+          1.2 单位制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%8D%95%E4%BD%8D%E9%95%BF%E5%BA%A6"><span class="toc-text">
+          绝对单位长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D"><span class="toc-text">
+          相对长度单位</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F%E6%BC%94%E5%8F%98%E5%8F%B2"><span class="toc-text">
+          2. 布局模式演变史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%AE%BE%E8%AE%A1%E8%A7%92%E5%BA%A6%E7%9A%84%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F"><span class="toc-text">
+          3. 设计角度的布局模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-CSS3%E9%AB%98%E7%BA%A7%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F"><span class="toc-text">
+          4. CSS3高级布局模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Flex%E5%B8%83%E5%B1%80"><span class="toc-text">
+          3.1 Flex布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Grid%E5%B8%83%E5%B1%80"><span class="toc-text">
+          3.2 Grid布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Bootstrap%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-text">
+          5. Bootstrap栅格系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%AE%A4%E8%AF%86%E5%85%B6%E4%BB%96%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F"><span class="toc-text">
+          6. 认识其他布局模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80-%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80"><span class="toc-text">
+          浮动布局-两栏布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80-%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80"><span class="toc-text">
+          浮动布局-三栏布局</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

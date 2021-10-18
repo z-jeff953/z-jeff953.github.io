@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="问题解决记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问题解决记录 - 01 - AUJL遇到的问题">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/06/%E6%8A%80%E6%9C%AF%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95%20-%2001%20-%20%E5%9C%A8%E5%81%9AAUJL-website%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="问题解决记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201206195510.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212095832.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212182529.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212182546.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212182700.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212183121.png">
+<meta property="article:published_time" content="2020-12-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-11T06:38:34.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="问题解决日记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201206195510.png"><title>问题解决记录 - 01 - AUJL遇到的问题 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/06/%E6%8A%80%E6%9C%AF%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95%20-%2001%20-%20%E5%9C%A8%E5%81%9AAUJL-website%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">问题解决记录 - 01 - AUJL遇到的问题</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-04-11</span></span></div></header><div class="post-body">
+        <h1 id="AUJL遇到的问题"   >
+          <a href="#AUJL遇到的问题" class="heading-link"><i class="fas fa-link"></i></a>AUJL遇到的问题</h1>
+      <p>Html, CSS, JavaScript, Vue</p>
+<span id="more"></span>
+
+        <h2 id="1-技术问题"   >
+          <a href="#1-技术问题" class="heading-link"><i class="fas fa-link"></i></a>1. 技术问题</h2>
+      
+        <h3 id="1-1-无名白条"   >
+          <a href="#1-1-无名白条" class="heading-link"><i class="fas fa-link"></i></a>1.1 无名白条</h3>
+      
+        <h4 id="方案一"   >
+          <a href="#方案一" class="heading-link"><i class="fas fa-link"></i></a>方案一 :</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201206195510.png" alt="image-20201206195510148"></p>
+<p>像这样, 右边多出白条</p>
+<p>Step1 找出问题发生的部位</p>
+<p>分块二分注释法Debug ,找出出问题的地方</p>
+<p>Step2 找出出错的样式</p>
+<p>逐条注释 , 观察效果</p>
+<p>Step3 解决: </p>
+<p>在出错的地方的父级元素增加</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br></pre></td></tr></table></div></figure>
+<p>使用BFC限定区域</p>
+
+        <h4 id="问题二"   >
+          <a href="#问题二" class="heading-link"><i class="fas fa-link"></i></a>问题二:</h4>
+      <p><strong>内部元素宽度撑开了页面</strong></p>
+<p>可以依次删除页面元素，看删掉哪个元素的时候横向滚动条消失了，就说明溢出的元素在其内部。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">overflow-x</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="拓展"   >
+          <a href="#拓展" class="heading-link"><i class="fas fa-link"></i></a>拓展 :</h4>
+      <p>微信内置浏览器适配</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">    -webkit-<span class="attribute">overflow</span>-scrolling: touch;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-2-nav切换莫名格式变化"   >
+          <a href="#1-2-nav切换莫名格式变化" class="heading-link"><i class="fas fa-link"></i></a>1.2 nav切换莫名格式变化</h3>
+      <p>因为有的页面有滚动条 , flex布局会因为宽度变化而出现这种情况 </p>
+
+        <h4 id="解决方法"   >
+          <a href="#解决方法" class="heading-link"><i class="fas fa-link"></i></a>解决方法 :</h4>
+      <p>去除滚动条</p>
+<p>在根元素的样式添加 : (这是Vue , 其他也同理)</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#app</span> &#123;</span><br><span class="line">    <span class="comment">/* 去除滚动条 </span></span><br><span class="line"><span class="comment">    火狐用上两条</span></span><br><span class="line"><span class="comment">    chore用伪元素那条*/</span></span><br><span class="line">    -ms-<span class="attribute">overflow</span>-style:none;</span><br><span class="line">    scrollbar-<span class="attribute">width</span>: none;</span><br><span class="line">  &#125;::-webkit-scrollbar&#123;</span><br><span class="line">    display:none</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-3-添加Svg图"   >
+          <a href="#1-3-添加Svg图" class="heading-link"><i class="fas fa-link"></i></a>1.3 添加Svg图</h3>
+      <p>css和<code>&lt;img&gt;</code>都可以直接使用svg , 无需插件</p>
+
+        <h3 id="1-4-手机适配问题"   >
+          <a href="#1-4-手机适配问题" class="heading-link"><i class="fas fa-link"></i></a>1.4 手机适配问题</h3>
+      <p>调试模式下 , 手机模式有的元素会被强制压缩</p>
+
+        <h4 id="解决方法-1"   >
+          <a href="#解决方法-1" class="heading-link"><i class="fas fa-link"></i></a>解决方法:</h4>
+      <p>在被压缩的内容的父级元素添加</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">min-width</span>: XXX;</span><br></pre></td></tr></table></div></figure>
+<p>具体大小自行尝试 </p>
+<p>这样可以让你的网页在小于该大小的时候 , 保持大小 , 并且可以滚动 , 也就是在手机上可以显示部分画面 , 可以通过拖拽展示其他部分</p>
+
+        <h3 id="1-5-竖边线实现"   >
+          <a href="#1-5-竖边线实现" class="heading-link"><i class="fas fa-link"></i></a>1.5 竖边线实现</h3>
+      <p>使用<code>&lt;div&gt;</code>实现竖边线</p>
+
+        <h4 id="方案一-1"   >
+          <a href="#方案一-1" class="heading-link"><i class="fas fa-link"></i></a>方案一</h4>
+      <figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;divider&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.divider</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">120px</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="方案二"   >
+          <a href="#方案二" class="heading-link"><i class="fas fa-link"></i></a>方案二</h4>
+      <figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.line</span>&#123;</span><br><span class="line"> 	<span class="attribute">background</span>:<span class="number">#E7E7E7</span>;<span class="comment">/*背景色为浅灰色*/</span></span><br><span class="line">	<span class="attribute">width</span>:<span class="number">0.6px</span>;<span class="comment">/*设置宽高*/</span></span><br><span class="line">	<span class="attribute">height</span>:<span class="number">45px</span>;</span><br><span class="line">	<span class="attribute">position</span>:relative;<span class="comment">/*调整位置*/</span></span><br><span class="line">	<span class="attribute">left</span>:<span class="number">150px</span>;</span><br><span class="line">	<span class="attribute">float</span><span class="selector-pseudo">:left</span>;<span class="comment">/*让此div与前面的并排显示*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-6-Footer组件无效"   >
+          <a href="#1-6-Footer组件无效" class="heading-link"><i class="fas fa-link"></i></a>1.6 Footer组件无效</h3>
+      <p>和 <code>html</code> 内置语义化标签冲突了 不要用footer </p>
+
+        <h3 id="1-7-两张背景图"   >
+          <a href="#1-7-两张背景图" class="heading-link"><i class="fas fa-link"></i></a>1.7 两张背景图</h3>
+      <p>可以实现两张背景图 , 不过他们的位置不能单独设置 , </p>
+<p>所以划分<code>&lt;div&gt;</code>然后添加背景图</p>
+
+        <h3 id="1-8-创建组件和模板字符串"   >
+          <a href="#1-8-创建组件和模板字符串" class="heading-link"><i class="fas fa-link"></i></a>1.8 创建组件和模板字符串</h3>
+      <p>有的时候在一个页面需要多个相同的组件 , 但是 , 你又不需要创建一个新的 <code>component</code> ,因为它只在当前页面使用到 , 我们可以创建组件对象 , 然后注册一下使用</p>
+<p>中间可以使用模板字符串 , 让代码格式变得好看</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">const NavItem = &#123;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  name: &#x27;NavItem&#x27;,</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  props: &#123;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    cn: String,</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    en: String</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  &#125;,</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  template:</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">      `<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cn-item&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123; <span class="name">cn</span> &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;en-item&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123; <span class="name">en</span> &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>`</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">&#125;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span></span><br><span class="line"><span class="xml"><span class="handlebars">export default &#123;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  name: &#x27;Navigator&#x27;,</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  date () &#123;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    return &#123;&#125;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  &#125;,</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  components: &#123;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">    NavItem</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">  &#125;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars">&#125;</span></span></span><br><span class="line"><span class="xml"><span class="handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-9-无法在vue-cli中添加网页icon"   >
+          <a href="#1-9-无法在vue-cli中添加网页icon" class="heading-link"><i class="fas fa-link"></i></a>1.9 无法在vue-cli中添加网页icon</h3>
+      <ol>
+<li>html 头中添加icon</li>
+</ol>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">rel</span> =<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/x-icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./icon.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<ol>
+<li>添加pwa</li>
+</ol>
+<p>工程文件根目录创建 <code>vue.config.js</code> 文件</p>
+<p>添加如下代码 :</p>
+<p>可以把png格式改成你用的icon的格式</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">baseUrl</span>: <span class="string">&#x27;./&#x27;</span>,</span><br><span class="line">    <span class="attr">assetsDir</span>: <span class="string">&#x27;static&#x27;</span>,</span><br><span class="line">    <span class="attr">productionSourceMap</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">pwa</span>: &#123;</span><br><span class="line">        <span class="attr">iconPaths</span>: &#123;</span><br><span class="line">            <span class="attr">favicon32</span>: <span class="string">&#x27;./icon.png&#x27;</span>,</span><br><span class="line">            <span class="attr">favicon16</span>: <span class="string">&#x27;./icon.png&#x27;</span>,</span><br><span class="line">            <span class="attr">appleTouchIcon</span>: <span class="string">&#x27;./icon.png&#x27;</span>,</span><br><span class="line">            <span class="attr">maskIcon</span>: <span class="string">&#x27;./icon.png&#x27;</span>,</span><br><span class="line">            <span class="attr">msTileImage</span>: <span class="string">&#x27;./icon.png&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-10-透明度的设置"   >
+          <a href="#1-10-透明度的设置" class="heading-link"><i class="fas fa-link"></i></a>1.10 透明度的设置</h3>
+      <p>透明可以通过CSS两种方式设置</p>
+<ol>
+<li><p>RGBA</p>
+<p>特点 : 不可被子元素继承</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-color</span>: <span class="built_in">rgba</span>(红色,绿色,蓝色(<span class="number">0</span>-<span class="number">255</span>),透明度(<span class="number">0</span>-<span class="number">1</span>));</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>opacity</p>
+<p>特点 : 子元素继承</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">opacity</span>: 透明度(<span class="number">0</span>-<span class="number">1</span>);</span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+
+        <h3 id="1-11-媒体查询失效"   >
+          <a href="#1-11-媒体查询失效" class="heading-link"><i class="fas fa-link"></i></a>1.11 媒体查询失效 ?</h3>
+      <p>写在后面的css覆盖了写在前面的css , 把媒体查询部分写在最后面即可</p>
+<p>网上其他问题</p>
+<ol>
+<li>注意and后面的空格</li>
+</ol>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">200px</span>)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-12-assets下图片路径找不到"   >
+          <a href="#1-12-assets下图片路径找不到" class="heading-link"><i class="fas fa-link"></i></a>1.12 assets下图片路径找不到?</h3>
+      <p>方案一 : 添加需求</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">&quot;imgsrc2&quot;</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">   <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="attr">imgsrc2</span>: <span class="built_in">require</span>(<span class="string">&#x27;../assets/logo4.png&#x27;</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>方案二 : </p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> backImg <span class="keyword">from</span> <span class="string">&quot;../../assets/images/backimg.jpg&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">backImg</span>: backImg,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="1-13-Svg背景拉伸"   >
+          <a href="#1-13-Svg背景拉伸" class="heading-link"><i class="fas fa-link"></i></a>1.13 Svg背景拉伸?</h3>
+      <p>不能,转png吧</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://svgtopng.com/zh/" >转png</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="1-14-手撸表单太麻烦了"   >
+          <a href="#1-14-手撸表单太麻烦了" class="heading-link"><i class="fas fa-link"></i></a>1.14 手撸表单太麻烦了</h3>
+      <p>上element</p>
+
+        <h3 id="1-15-element表单验证一直失败"   >
+          <a href="#1-15-element表单验证一直失败" class="heading-link"><i class="fas fa-link"></i></a>1.15 element表单验证一直失败</h3>
+      <p>表头和元素都要v-model</p>
+
+        <h3 id="1-16-修改element元素样式失败"   >
+          <a href="#1-16-修改element元素样式失败" class="heading-link"><i class="fas fa-link"></i></a>1.16 修改element元素样式失败?</h3>
+      <p>去掉块级作用域</p>
+<p>找到对应的元素的class</p>
+
+        <h3 id="1-17-文字失衡"   >
+          <a href="#1-17-文字失衡" class="heading-link"><i class="fas fa-link"></i></a>1.17 文字失衡</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212095832.png" alt="image-20201212095832763"></p>
+<p>文字不对其</p>
+<p>解决:</p>
+<p>方法一: 添加div作为填充</p>
+<p>方法二: 添加<code>padding-left: 0.5em;</code></p>
+
+        <h3 id="1-18div套双div宽度设置无效"   >
+          <a href="#1-18div套双div宽度设置无效" class="heading-link"><i class="fas fa-link"></i></a>1.18div套双div宽度设置无效</h3>
+      <p>将内层设置成<code>display:inline-block</code></p>
+
+        <h3 id="1-19-giteePages-部署失败"   >
+          <a href="#1-19-giteePages-部署失败" class="heading-link"><i class="fas fa-link"></i></a>1.19 giteePages 部署失败</h3>
+      <p>js和css路径是绝对路径, 不对</p>
+<p>解决方法</p>
+<p>build前</p>
+<ol>
+<li>去log<ul>
+<li><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212182529.png" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li>加一点,解决js问题<ul>
+<li><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212182546.png" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li>加一句, 解决css问题<ul>
+<li><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212182700.png" alt="在这里插入图片描述"></li>
+</ul>
+</li>
+<li>build 后在link icon上面也加一个点<ul>
+<li><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201212183121.png" alt="image-20201212183120970"></li>
+</ul>
+</li>
+</ol>
+
+        <h3 id="1-20-上文修改element的样式后build打包后失效"   >
+          <a href="#1-20-上文修改element的样式后build打包后失效" class="heading-link"><i class="fas fa-link"></i></a>1.20 上文修改element的样式后build打包后失效</h3>
+      <p>解决 : 给失效的类前面加 <code>#app</code> 提高权重</p>
+
+        <h2 id="2-感悟规划"   >
+          <a href="#2-感悟规划" class="heading-link"><i class="fas fa-link"></i></a>2. 感悟规划</h2>
+      <p>学Sass /Lass 吧 , css 太乱了</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/06/%E6%8A%80%E6%9C%AF%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95%20-%2001%20-%20%E5%9C%A8%E5%81%9AAUJL-website%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">http://zjeff-953.gitee.io/zjeff/2020/12/06/%E6%8A%80%E6%9C%AF%E5%A5%87%E6%80%9D%E5%A6%99%E6%83%B3/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95%20-%2001%20-%20%E5%9C%A8%E5%81%9AAUJL-website%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%97%A5%E8%AE%B0/">问题解决日记</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/06/%E5%A4%A7%E5%89%8D%E7%AB%AF/CSS%E5%AE%9E%E7%94%A8%20-%2004%20%E8%AE%A4%E8%AF%86%E5%92%8C%E4%BD%BF%E7%94%A8less%E5%92%8Csass/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">CSS实用 - 04 认识和使用less和sass</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/06/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94%20-%2004%20%E8%AE%A4%E8%AF%86%E8%87%AA%E5%B7%B1%E7%9A%84%E6%80%9D%E7%BB%B4%E7%89%B9%E7%82%B9/"><span class="paginator-prev__text">生活随笔 - 04 认识自己的思维特点</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AUJL%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">
+          AUJL遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98"><span class="toc-text">
+          1. 技术问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%97%A0%E5%90%8D%E7%99%BD%E6%9D%A1"><span class="toc-text">
+          1.1 无名白条</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="toc-text">
+          方案一 :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C"><span class="toc-text">
+          问题二:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-text">
+          拓展 :</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-nav%E5%88%87%E6%8D%A2%E8%8E%AB%E5%90%8D%E6%A0%BC%E5%BC%8F%E5%8F%98%E5%8C%96"><span class="toc-text">
+          1.2 nav切换莫名格式变化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">
+          解决方法 :</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%B7%BB%E5%8A%A0Svg%E5%9B%BE"><span class="toc-text">
+          1.3 添加Svg图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%89%8B%E6%9C%BA%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98"><span class="toc-text">
+          1.4 手机适配问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-1"><span class="toc-text">
+          解决方法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E7%AB%96%E8%BE%B9%E7%BA%BF%E5%AE%9E%E7%8E%B0"><span class="toc-text">
+          1.5 竖边线实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80-1"><span class="toc-text">
+          方案一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-text">
+          方案二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Footer%E7%BB%84%E4%BB%B6%E6%97%A0%E6%95%88"><span class="toc-text">
+          1.6 Footer组件无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E4%B8%A4%E5%BC%A0%E8%83%8C%E6%99%AF%E5%9B%BE"><span class="toc-text">
+          1.7 两张背景图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E5%88%9B%E5%BB%BA%E7%BB%84%E4%BB%B6%E5%92%8C%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">
+          1.8 创建组件和模板字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E6%97%A0%E6%B3%95%E5%9C%A8vue-cli%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%BD%91%E9%A1%B5icon"><span class="toc-text">
+          1.9 无法在vue-cli中添加网页icon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E9%80%8F%E6%98%8E%E5%BA%A6%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-text">
+          1.10 透明度的设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%A4%B1%E6%95%88"><span class="toc-text">
+          1.11 媒体查询失效 ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-assets%E4%B8%8B%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0"><span class="toc-text">
+          1.12 assets下图片路径找不到?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-Svg%E8%83%8C%E6%99%AF%E6%8B%89%E4%BC%B8"><span class="toc-text">
+          1.13 Svg背景拉伸?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-%E6%89%8B%E6%92%B8%E8%A1%A8%E5%8D%95%E5%A4%AA%E9%BA%BB%E7%83%A6%E4%BA%86"><span class="toc-text">
+          1.14 手撸表单太麻烦了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-element%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E4%B8%80%E7%9B%B4%E5%A4%B1%E8%B4%A5"><span class="toc-text">
+          1.15 element表单验证一直失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-%E4%BF%AE%E6%94%B9element%E5%85%83%E7%B4%A0%E6%A0%B7%E5%BC%8F%E5%A4%B1%E8%B4%A5"><span class="toc-text">
+          1.16 修改element元素样式失败?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-17-%E6%96%87%E5%AD%97%E5%A4%B1%E8%A1%A1"><span class="toc-text">
+          1.17 文字失衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-18div%E5%A5%97%E5%8F%8Cdiv%E5%AE%BD%E5%BA%A6%E8%AE%BE%E7%BD%AE%E6%97%A0%E6%95%88"><span class="toc-text">
+          1.18div套双div宽度设置无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-19-giteePages-%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5"><span class="toc-text">
+          1.19 giteePages 部署失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-20-%E4%B8%8A%E6%96%87%E4%BF%AE%E6%94%B9element%E7%9A%84%E6%A0%B7%E5%BC%8F%E5%90%8Ebuild%E6%89%93%E5%8C%85%E5%90%8E%E5%A4%B1%E6%95%88"><span class="toc-text">
+          1.20 上文修改element的样式后build打包后失效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%84%9F%E6%82%9F%E8%A7%84%E5%88%92"><span class="toc-text">
+          2. 感悟规划</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

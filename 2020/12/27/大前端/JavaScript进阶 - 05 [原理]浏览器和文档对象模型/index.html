@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="JavaScript进阶 - 05 [原理]浏览器和文档对象模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript进阶 - 05 [原理]浏览器和文档对象模型">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/27/%E5%A4%A7%E5%89%8D%E7%AB%AF/JavaScript%E8%BF%9B%E9%98%B6%20-%2005%20[%E5%8E%9F%E7%90%86]%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="JavaScript进阶 - 05 [原理]浏览器和文档对象模型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165447.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165508.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165632.png">
+<meta property="article:published_time" content="2020-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T08:56:42.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="面向对象">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165447.png"><title>JavaScript进阶 - 05 [原理]浏览器和文档对象模型 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/27/%E5%A4%A7%E5%89%8D%E7%AB%AF/JavaScript%E8%BF%9B%E9%98%B6%20-%2005%20[%E5%8E%9F%E7%90%86]%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">JavaScript进阶 - 05 [原理]浏览器和文档对象模型</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-07</span></span></div></header><div class="post-body">
+        <h1 id="JavaScript进阶-05-原理-浏览器-Js编译原理-文档对象模型"   >
+          <a href="#JavaScript进阶-05-原理-浏览器-Js编译原理-文档对象模型" class="heading-link"><i class="fas fa-link"></i></a>JavaScript进阶 - 05 [原理] 浏览器, Js编译原理, 文档对象模型</h1>
+      <span id="more"></span>
+
+        <h2 id="浏览器原理"   >
+          <a href="#浏览器原理" class="heading-link"><i class="fas fa-link"></i></a>浏览器原理</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47407398" >https://zhuanlan.zhihu.com/p/47407398</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007991284" >https://segmentfault.com/a/1190000007991284</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="多进程的浏览器"   >
+          <a href="#多进程的浏览器" class="heading-link"><i class="fas fa-link"></i></a>多进程的浏览器</h3>
+      
+        <h4 id="浏览器内的进程"   >
+          <a href="#浏览器内的进程" class="heading-link"><i class="fas fa-link"></i></a>浏览器内的进程</h4>
+      <p>知道了进程与线程之间的关系之后，下面是浏览器与进程的关系了。首先，浏览器是多进程的，之所以浏览器能够运行，是因为系统给浏览器分配了资源，如cpu、内存，简单的说就是，浏览器每打开一个标签页，就相当于创建了一个独立的浏览器进程。例如我们查看chrome里面的任务管理器。</p>
+<p><strong>注意：</strong> 在这里浏览器应该也有自己的优化机制，有时候打开多个tab页后，可以在Chrome任务管理器中看到，有些进程被合并了（譬如打开多个空白标签页后，会发现多个空白标签页被合并成了一个进程），所以每一个Tab标签对应一个进程并不一定是绝对的。</p>
+<p>除了浏览器的标签页进程之外，浏览器还有一些其他进程来辅助支撑标签页的进程，如下：<br>① Browser进程：浏览器的主进程（负责协调、主控），只有一个。作用有</p>
+<ul>
+<li>负责浏览器界面显示，与用户交互。如前进，后退等</li>
+<li>负责各个页面的管理，创建和销毁其他进程</li>
+<li>网络资源的管理，下载等</li>
+</ul>
+<p>② 第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建<br>③ GPU进程：最多一个，用于3D绘制等<br>④ 浏览器渲染进程（浏览器内核），Renderer进程，内部是多线程的，也就是我们每个标签页所拥有的进程，互不影响，负责页面渲染，脚本执行，事件处理等</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165447.png" alt="image-20210607165447230" style="zoom:33%;" /></p>
+
+        <h4 id="浏览器内核"   >
+          <a href="#浏览器内核" class="heading-link"><i class="fas fa-link"></i></a>浏览器内核</h4>
+      <p>浏览器内核，即我们的渲染进程，有名Renderer进程，我们页面的渲染，js的执行，事件的循环都在这一进程内进行，也就是说，该进程下面拥有着多个线程，靠着这些现成共同完成渲染任务。那么这些线程是什么呢，如下：</p>
+<p>① 图形用户界面GUI渲染线程</p>
+<ul>
+<li>负责渲染浏览器界面，包括解析HTML、CSS、构建DOM树、Render树、布局与绘制等</li>
+<li>当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行</li>
+</ul>
+<p>② JS引擎线程</p>
+<ul>
+<li>JS内核，也称JS引擎，负责处理执行javascript脚本</li>
+<li>等待任务队列的任务的到来，然后加以处理，浏览器无论什么时候都只有一个JS引擎在运行JS程序</li>
+</ul>
+<p>③ 事件触发线程</p>
+<ul>
+<li>听起来像JS的执行，但是其实归属于浏览器，而不是JS引擎，用来控制时间循环（可以理解，JS引擎自己都忙不过来，需要浏览器另开线程协助）</li>
+<li>当JS引擎执行代码块如setTimeout时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX异步请求等），会将对应任务添加到事件线程中</li>
+<li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理</li>
+<li>注意：由于JS的单线程关系，所以这些待处理队列中的事件都得排队等待JS引擎处理（当JS引擎空闲时才会去执行）</li>
+</ul>
+<p>④ 定时触发器线程</p>
+<ul>
+<li><code>setInterval</code>与<code>setTimeout</code>所在线程</li>
+<li>定时计时器并不是由JS引擎计时的，因为如果JS引擎是单线程的，如果JS引擎处于堵塞状态，那会影响到计时的准确</li>
+<li>当计时完成被触发，事件会被添加到事件队列，等待JS引擎空闲了执行</li>
+<li>注意：W3C的HTML标准中规定，setTimeout中低与<code>4ms</code>的时间间隔算为<code>4ms</code></li>
+</ul>
+<p>⑤ 异步HTTP请求线程</p>
+<ul>
+<li>在XMLHttpRequest在连接后新启动的一个线程</li>
+<li>线程如果检测到请求的状态变更，如果设置有回调函数，该线程会把回调函数添加到事件队列，同理，等待JS引擎空闲了执行</li>
+</ul>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165508.png" alt="image-20210607165508615" style="zoom:33%;" /></p>
+
+        <h4 id="浏览器内核中线程之间的关系"   >
+          <a href="#浏览器内核中线程之间的关系" class="heading-link"><i class="fas fa-link"></i></a>浏览器内核中线程之间的关系</h4>
+      
+        <h5 id="GUI渲染线程与JS引擎线程互斥"   >
+          <a href="#GUI渲染线程与JS引擎线程互斥" class="heading-link"><i class="fas fa-link"></i></a>GUI渲染线程与JS引擎线程互斥</h5>
+      <p>因为JS引擎可以修改DOM树，那么如果JS引擎在执行修改了DOM结构的同时，GUI线程也在渲染页面，那么这样就会导致渲染线程获取的DOM的元素信息可能与JS引擎操作DOM后的结果不一致。为了防止这种现象，GUI线程与JS线程需要设计为互斥关系，当JS引擎执行的时候，GUI线程需要被冻结，但是GUI的渲染会被保存在一个队列当中，等待JS引擎空闲的时候执行渲染。<br>由此也可以推出，如果JS引擎正在进行CPU密集型计算，那么JS引擎将会阻塞，长时间不空闲，导致渲染进程一直不能执行渲染，页面就会看起来卡顿卡顿的，渲染不连贯，所以，要尽量避免JS执行时间过长。</p>
+
+        <h5 id="JS引擎线程与事件触发线程、定时触发器线程、异步HTTP请求线程"   >
+          <a href="#JS引擎线程与事件触发线程、定时触发器线程、异步HTTP请求线程" class="heading-link"><i class="fas fa-link"></i></a>JS引擎线程与事件触发线程、定时触发器线程、异步HTTP请求线程</h5>
+      <p>事件触发线程、定时触发器线程、异步HTTP请求线程三个线程有一个共同点，那就是使用回调函数的形式，当满足了特定的条件，这些回调函数会被执行。这些回调函数被浏览器内核理解成事件，在浏览器内核中拥有一个事件队列，这三个线程当满足了内部特定的条件，会将这些回调函数添加到事件队列中，等待JS引擎空闲执行。例如异步HTTP请求线程，线程如果检测到请求的状态变更，如果设置有回调函数，回调函数会被添加事件队列中，等待JS引擎空闲了执行。<br>但是，JS引擎对事件队列（宏任务）与JS引擎内的任务（微任务）执行存在着先后循序，当每执行完一个事件队列的时间，JS引擎会检测内部是否有未执行的任务，如果有，将会优先执行（微任务）。</p>
+
+        <h3 id="WebWorker"   >
+          <a href="#WebWorker" class="heading-link"><i class="fas fa-link"></i></a>WebWorker</h3>
+      <p>因为JS引擎是单线程的，当JS执行时间过长会页面阻塞，那么JS就真的对CPU密集型计算无能为力么？</p>
+<p>来自MDN的官方解释</p>
+<blockquote>
+<p>Web Workers 使得一个Web应用程序可以在与主执行线程分离的后台线程中运行一个脚本操作。这样做的好处是可以在一个单独的线程中执行费时的处理任务，从而允许主（通常是UI）线程运行而不被阻塞/放慢。</p>
+</blockquote>
+<p>注意点：</p>
+<ul>
+<li>WebWorker可以想浏览器申请一个子线程，该子线程服务于主线程，完全受主线程控制。</li>
+<li>JS引擎线程与worker线程间通过特定的方式通信（postMessage API，需要通过序列化对象来与线程交互特定的数据）</li>
+</ul>
+<p>所以，如果需要进行一些高耗时的计算时，可以单独开启一个WebWorker线程，这样不管这个WebWorker子线程怎么密集计算、怎么阻塞，都不会影响JS引擎主线程，只需要等计算结束，将结果通过postMessage传输给主线程就可以了。</p>
+<p>另外，还有个东西叫 <code>SharedWorker</code>，与WebWorker在概念上所不同。</p>
+<ul>
+<li>WebWorker 只属于某一个页面，不会和其他标签页的Renderer进程共享，WebWorker是属于Renderer进程创建的进程。</li>
+<li>SharedWorker 是由浏览器单独创建的进程来运行的JS程序，它被所有的Renderer进程所共享，在浏览器中，最多只能存在一个SharedWorker进程。</li>
+</ul>
+<p>SharedWorker由进程管理，WebWorker是某一个Renderer进程下的线程。</p>
+
+        <h2 id="浏览器的渲染流程"   >
+          <a href="#浏览器的渲染流程" class="heading-link"><i class="fas fa-link"></i></a>浏览器的渲染流程</h2>
+      <p>每个浏览器内核的渲染流程不一样，下面我们主要以<code>webkit</code>为主。<br>首先是渲染的前奏：</p>
+<ol>
+<li>浏览器输入url，浏览器主进程接管，开了一个下载线程</li>
+<li>然后进行HTTP请求（DNS查询、IP寻址等等），等待响应，开始下载响应报文。</li>
+<li>将下载完的内容转交给Renderer进程管理</li>
+<li>开始渲染…</li>
+</ol>
+<p>在说渲染之前，需要理解一些概念：</p>
+<ul>
+<li>DOM Tree： 浏览器将HTML解析成树形的数据结构。</li>
+<li>CSS Rule Tree：浏览器将CSS解析成树形的数据结构。</li>
+<li>Render Tree：DOM树和CSS规则树合并后生产Render树。</li>
+<li>layout：有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系，从而去计算出每个节点在屏幕中的位置。</li>
+<li>painting: 按照算出来的规则，通过显卡，把内容画到屏幕上。</li>
+<li>reflow（回流）：当浏览器发现某个部分发生了点变化影响了布局，需要倒回去重新渲染，内行称这个回退的过程叫 <code>reflow</code>。reflow 会从 <html> 这个 root frame 开始递归往下，依次计算所有的结点几何尺寸和位置。reflow 几乎是无法避免的。现在界面上流行的一些效果，比如树状目录的折叠、展开（实质上是元素的显 示与隐藏）等，都将引起浏览器的 reflow。鼠标滑过、点击……只要这些行为引起了页面上某些元素的占位面积、定位方式、边距等属性的变化，都会引起它内部、周围甚至整个页面的重新渲 染。通常我们都无法预估浏览器到底会 reflow 哪一部分的代码，它们都彼此相互影响着。</li>
+<li>repaint（重绘）：改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性时，屏幕的一部分要重画，但是元素的几何尺寸没有变。</li>
+</ul>
+<p>注意：<code>display:none</code>的节点不会被加入Render Tree，而<code>visibility: hidden</code>则会，所以<code>display:none</code>会触发<code>reflow</code>，<code>visibility: hidden</code>会触发<code>repaint</code>。</p>
+<p>浏览器内核拿到响应报文之后，渲染大概分为以下步骤</p>
+<ol>
+<li>解析html生产DOM树。</li>
+<li>解析CSS规则。</li>
+<li>根据DOM Tree和CSS Tree生成Render Tree。</li>
+<li>根据Render树进行layout，负责各个元素节点的尺寸、位置计算。</li>
+<li>绘制Render树(painting)，绘制页面像素信息。</li>
+<li>浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上。</li>
+</ol>
+<p>详细步骤略去，大概步骤如下，渲染完毕后JS引擎开始执行<code>load</code>事件，绘制流程见下图。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607165632.png" alt="image-20210607165632582"></p>
+<p>由图中可以看出，css在加载过程中不会影响到DOM树的生成，但是会影响到Render树的生成，进而影响到layout，所以一般来说，style的link标签需要尽量放在head里面，因为在解析DOM树的时候是自上而下的，而css样式又是通过异步加载的，这样的话，解析DOM树下的body节点和加载css样式能尽可能的并行，加快Render树的生成的速度，当然，如果css是通过js动态添加进来的，会引起页面的重绘或重新布局。<br>从有html标准以来到目前为止（2017年5月），标准一直是规定style元素不应出现在body元素中。</p>
+<p>前面提到了<code>load</code>事件，那么与<code>DOMContentLoaded</code>事件有什么分别。</p>
+<ul>
+<li>当 DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片。 (譬如如果有async加载的脚本就不一定完成)</li>
+<li>当 onLoad 事件触发时，页面上所有的DOM，样式表，脚本，图片都已经加载完成了。 （渲染完毕了）</li>
+</ul>
+<p>顺序是：<code>DOMContentLoaded -&gt; load</code></p>
+<p>参考资料:</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/articles/12055380.html" >https://www.cnblogs.com/wj-1314/articles/12055380.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/articles/12118771.html" >https://www.cnblogs.com/wj-1314/articles/12118771.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/27/%E5%A4%A7%E5%89%8D%E7%AB%AF/JavaScript%E8%BF%9B%E9%98%B6%20-%2005%20[%E5%8E%9F%E7%90%86]%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/">http://zjeff-953.gitee.io/zjeff/2020/12/27/%E5%A4%A7%E5%89%8D%E7%AB%AF/JavaScript%E8%BF%9B%E9%98%B6%20-%2005%20[%E5%8E%9F%E7%90%86]%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/JavaScript/">JavaScript</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/27/%E5%A4%A7%E5%89%8D%E7%AB%AF/JavaScript%E8%BF%9B%E9%98%B6%20-%2004%20%5B%E5%8E%9F%E7%90%86%5D%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0XXX%20(%E8%BF%9B%E9%98%B6)/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">JavaScript进阶 - 04 [原理]手写实现XXX</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/27/%E5%A4%A7%E5%89%8D%E7%AB%AF/JavaScript%E8%BF%9B%E9%98%B6%20-%2003%20%5B%E5%8E%9F%E7%90%86%5D%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0XXX(%E5%9F%BA%E7%A1%80)/"><span class="paginator-prev__text">JavaScript进阶 - 03 [原理]手写实现XXX</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript%E8%BF%9B%E9%98%B6-05-%E5%8E%9F%E7%90%86-%E6%B5%8F%E8%A7%88%E5%99%A8-Js%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          JavaScript进阶 - 05 [原理] 浏览器, Js编译原理, 文档对象模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86"><span class="toc-text">
+          浏览器原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">
+          多进程的浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-text">
+          浏览器内的进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"><span class="toc-text">
+          浏览器内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E4%B8%AD%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          浏览器内核中线程之间的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#GUI%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B%E4%B8%8EJS%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B%E4%BA%92%E6%96%A5"><span class="toc-text">
+          GUI渲染线程与JS引擎线程互斥</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JS%E5%BC%95%E6%93%8E%E7%BA%BF%E7%A8%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E7%BA%BF%E7%A8%8B%E3%80%81%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8%E7%BA%BF%E7%A8%8B%E3%80%81%E5%BC%82%E6%AD%A5HTTP%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"><span class="toc-text">
+          JS引擎线程与事件触发线程、定时触发器线程、异步HTTP请求线程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebWorker"><span class="toc-text">
+          WebWorker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B"><span class="toc-text">
+          浏览器的渲染流程</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

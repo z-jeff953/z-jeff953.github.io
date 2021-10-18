@@ -1,0 +1,1413 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="概率论与数理统计 - 最核心知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论与数理统计 - 最核心知识">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/01/03/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="概率论与数理统计 - 最核心知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210106112329.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210101152147.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210101153809.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210101160140.jpg">
+<meta property="article:published_time" content="2021-01-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-16T08:07:53.327Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="概率论与数理统计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210106112329.png"><title>概率论与数理统计 - 最核心知识 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/01/03/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">概率论与数理统计 - 最核心知识</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-01-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-10-16</span></span></div></header><div class="post-body">
+        <h1 id="概率论与数理统计-最核心知识"   >
+          <a href="#概率论与数理统计-最核心知识" class="heading-link"><i class="fas fa-link"></i></a>概率论与数理统计 - 最核心知识</h1>
+      <p>概率论与数理统计最核心知识</p>
+<blockquote>
+<p>The basic problem that we study in probability is:<br>Given a data generating process, what are the properities of the outcomes?</p>
+<p>The basic problem of statistical inference is the inverse of probability:<br> Given the outcomes, what can we say about the process that generated the data?</p>
+</blockquote>
+<p>统计分析的最终目的是推断，而概率论是推论统计的数学基础。</p>
+<p>区分一个问题是概率论问题还是数理统计问题的关键 : 看输入的分布是不是明确已知的</p>
+<p>概率论是用已知分布去求特定事件的概率, 数字特征</p>
+<p>数理统计是不知道分布,或者不知道参数,通过抽样推断分布</p>
+<p>数理统计是现在的机器学习的基础和理论依据,深度学习就会不会无所谓了(XD).</p>
+<p>题目是核心, 知识是辅助, 就像机器学习一样, 数据是核心, 模型相对较次要一点.</p>
+<span id="more"></span>
+<p>[toc]</p>
+
+        <h2 id="1-概率论-随机事件和概率"   >
+          <a href="#1-概率论-随机事件和概率" class="heading-link"><i class="fas fa-link"></i></a>1. [概率论]随机事件和概率</h2>
+      
+        <h2 id="2-概率论-一维随机变量及其分布"   >
+          <a href="#2-概率论-一维随机变量及其分布" class="heading-link"><i class="fas fa-link"></i></a>2. [概率论]一维随机变量及其分布</h2>
+      <p>把随机事件用集合角度描述</p>
+<p>随机事件-&gt;样本点</p>
+<p>随机事件的集合-&gt;样本空间</p>
+<p>样本点的描述多种多样, 比如抛两枚硬币有四种情况,我们想要他是一个实数这样好研究它</p>
+<p><strong>我们可以定义一个函数, 输入是样本点, 输出是一个实数, 把样本点映射在数轴上</strong></p>
+<p><strong>这个被映射的因变量就是随机变量</strong></p>
+<p>随机变量取某个值的概率就是反应落到这个取值的所有样本点的概率</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/268870366" >https://zhuanlan.zhihu.com/p/268870366</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="2-1-一维随机变量的分布"   >
+          <a href="#2-1-一维随机变量的分布" class="heading-link"><i class="fas fa-link"></i></a>2.1 一维随机变量的分布</h3>
+      
+        <h4 id="2-1-1-分布函数"   >
+          <a href="#2-1-1-分布函数" class="heading-link"><i class="fas fa-link"></i></a>2.1.1 分布函数</h4>
+      <p>分布函数是右连续的$\Longrightarrow$分布函数的取值范围中只能出现$a\le x &lt; b$这样的形式</p>
+<p>求$P{X=a}=F(x)-F(x-0)$</p>
+<p>求$P{a&lt;X\le b}=F(b)-F(a)$</p>
+<p>求$P{a \le X\le b}=P{X=a}+P{a &lt; X\le b}$</p>
+
+        <h3 id="2-2-常见随机变量的分布"   >
+          <a href="#2-2-常见随机变量的分布" class="heading-link"><i class="fas fa-link"></i></a>2.2 常见随机变量的分布</h3>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>分布</th>
+<th>符号</th>
+<th>表达式(分布律/概率密度函数)</th>
+<th>期望</th>
+<th>方差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二项分布</td>
+<td>$X \sim B(n,p)$</td>
+<td>$P(X=k)=C_n^kp^k(1-p)^{n-k}, (0\le k\le n)$</td>
+<td>$np$</td>
+<td>$np(1-p)$</td>
+</tr>
+<tr>
+<td>泊松分布</td>
+<td>$X \sim P(\lambda)$</td>
+<td>$P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda},(k=0,1,2,…)$</td>
+<td>$\lambda$</td>
+<td>$\lambda$</td>
+</tr>
+<tr>
+<td>几何分布</td>
+<td>$X \sim G(p)$</td>
+<td>$P(X=k)=p(1-p)^{k-1},(k=0,1,2,…)$</td>
+<td>不需掌握</td>
+<td>不需掌握</td>
+</tr>
+<tr>
+<td>均匀分布</td>
+<td>$X \sim U(a,b)$</td>
+<td>$f(x)=\left{\begin{array}{} \frac{1}{b-a}&amp; ,a\le x\le b\ 0&amp; ,其他 \end{array}\right.$</td>
+<td>$\frac{1}{b-a}$</td>
+<td>$\frac{(b-a)^2}{12}$</td>
+</tr>
+<tr>
+<td>指数分布</td>
+<td>$X \sim E(\lambda)$</td>
+<td><script type="math/tex">f(x)=\left\{\begin{array}{} \lambda e^{-\lambda x}&,x\ge 0\\ 0& ,x<0 \end{array}\right.(\lambda>0)</script></td>
+<td>$\frac{1}{\lambda}$</td>
+<td>$\frac{1}{\lambda^2}$</td>
+</tr>
+<tr>
+<td>正态分布</td>
+<td>$X\sim N(\mu,\sigma^2)$</td>
+<td><script type="math/tex">f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}(-\infin<X<+\infin)</script></td>
+<td>$\mu$</td>
+<td>$\sigma^2$</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<ol>
+<li><p>二项分布泊松分布超几何分布是离散型的, 均匀分布指数分布正态分布是连续型的</p>
+</li>
+<li><p>两点分布使用$n=1$的二项分布表示</p>
+</li>
+<li><p>连续型分布均匀分布和指数分布的分布函数需要记住</p>
+<p>| 分布     | 符号                | 分布函数                                                     |<br>| ———— | —————————- | —————————————————————————————— |<br>| 均匀分布 | $X \sim U(a,b)$     | <script type="math/tex">F(x)=\left\{\begin{array}{} \frac{x-a}{b-a}& ,a\le x\le b\\ 0& ,其他 \end{array}\right.</script> |<br>| 指数分布 | $X \sim E(\lambda)$ | <script type="math/tex">F(x)=\left\{\begin{array}{} 1-e^{-\lambda x}& ,x\ge 0\\ 0& ,x<0 \end{array}\right.(\lambda>0)</script> |</p>
+</li>
+<li><p>标准正态分布需要记住, 当$\mu=0,\sigma=1$有</p>
+<script type="math/tex; mode=display">
+\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}(-\infin<x<+\infin)</script><p>他的分布函数是</p>
+<script type="math/tex; mode=display">
+\Phi(x)=\int_{-\infin}^x \varphi(t)dt</script><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210106112329.png" alt="image-20210106112328351"></p>
+</li>
+</ol>
+
+        <h2 id="3-概率论-多维随机变量及其分布"   >
+          <a href="#3-概率论-多维随机变量及其分布" class="heading-link"><i class="fas fa-link"></i></a>3. [概率论]多维随机变量及其分布</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/269261634" >https://zhuanlan.zhihu.com/p/269261634</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="3-4-几种特殊函数的分布"   >
+          <a href="#3-4-几种特殊函数的分布" class="heading-link"><i class="fas fa-link"></i></a>3.4 几种特殊函数的分布</h3>
+      
+        <h4 id="3-4-1-极值分布-Z-min-X-Y-Z-max-X-Y"   >
+          <a href="#3-4-1-极值分布-Z-min-X-Y-Z-max-X-Y" class="heading-link"><i class="fas fa-link"></i></a>3.4.1 极值分布 Z=min{X,Y}/Z=max{X,Y}</h4>
+      <p>极值分布建立在$X,Y$相互独立的基础上,分布函数分别是$F_X(x),F_Y(y)$</p>
+<p>$Z=max{X,Y}$ </p>
+<p>最大的小于,就是都小于</p>
+<p>$F_Z(z)=P(Z\le z) = P(X\le x)P(Y\le y)=F_X(x)F_Y(y),z \in R$</p>
+<p>$Z=min{X,Y}$</p>
+<p>最小的小于, 考察反面</p>
+<p>$F_Z(z)=P(Z\le z) =1-P(Z&gt;z) = 1-P(X&gt;x)P(Y&gt;y)=1-[1-F_X(x)][1-F_Y(y)],z \in R$</p>
+
+        <h4 id="3-4-2-和的分布-Z-X-Y"   >
+          <a href="#3-4-2-和的分布-Z-X-Y" class="heading-link"><i class="fas fa-link"></i></a>3.4.2 和的分布 Z=X+Y</h4>
+      <p>设$X,Y$的联合概率密度$f(x,y)$,$Z=X+Y$, 则$Z$的分布函数是</p>
+<script type="math/tex; mode=display">
+f_Z(z)=\int_{-\infin}^{+\infin}f(x,z-x)dx</script><p>$y=z-x$带入</p>
+
+        <h4 id="3-4-3-商的分布-Z-X-Y"   >
+          <a href="#3-4-3-商的分布-Z-X-Y" class="heading-link"><i class="fas fa-link"></i></a>3.4.3 商的分布 Z=X/Y</h4>
+      <p>设$X,Y$的联合概率密度$f(x,y)$,$Z=X/Y$, 则$Z$的分布函数是</p>
+<script type="math/tex; mode=display">
+f_Z(z)=\int_{-\infin}^{+\infin}|y|f(zy,y)dy</script><p>$x=zy$带入</p>
+
+        <h2 id="4-概率论-随机变量的数字特征"   >
+          <a href="#4-概率论-随机变量的数字特征" class="heading-link"><i class="fas fa-link"></i></a>4. [概率论]随机变量的数字特征</h2>
+      
+        <h3 id="4-1-数学期望"   >
+          <a href="#4-1-数学期望" class="heading-link"><i class="fas fa-link"></i></a>4.1 数学期望</h3>
+      <p>随机变量$X$的数学期望$E(X)$反映的随机变量$X$取值的平均值</p>
+
+        <h4 id="4-1-1-求数学期望的6种情况"   >
+          <a href="#4-1-1-求数学期望的6种情况" class="heading-link"><i class="fas fa-link"></i></a>4.1.1 求数学期望的6种情况</h4>
+      <p>离散型求和, 连续性积分, 一维求和一次, 二维求和两次</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>随机变量</th>
+<th><strong>离散型随机变量</strong></th>
+<th><strong>连续型随机变量</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一维随机变量</strong></td>
+<td>一次求和</td>
+<td>反常积分</td>
+</tr>
+<tr>
+<td><strong>一维随机变量的函数</strong></td>
+<td>一次求和</td>
+<td>反常积分</td>
+</tr>
+<tr>
+<td><strong>二维随机变量</strong></td>
+<td>两次求和</td>
+<td>二重反常积分</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h5 id="一维随机变量"   >
+          <a href="#一维随机变量" class="heading-link"><i class="fas fa-link"></i></a>一维随机变量</h5>
+      
+        <h6 id="一维离散型随机变量"   >
+          <a href="#一维离散型随机变量" class="heading-link"><i class="fas fa-link"></i></a>一维离散型随机变量</h6>
+      <p>对一维离散型随机变量$X$,  $p_k=P(X=x_k)$ </p>
+<script type="math/tex; mode=display">
+E(X)=\sum\limits_{i=1}^{\infin}x_ip_i</script><p>对一维离散型随机变量X的函数$Y=g(x)$ , $p_k=P(X=x_k)$ </p>
+<script type="math/tex; mode=display">
+E(X) = \sum\limits_{i=1}^{\infin}g(X_i)p_i</script>
+        <h6 id="一维连续型随机变量"   >
+          <a href="#一维连续型随机变量" class="heading-link"><i class="fas fa-link"></i></a>一维连续型随机变量</h6>
+      <p>对一维连续型随机变量$X$, 有概率密度函数$f(X)$</p>
+<script type="math/tex; mode=display">
+E(X)=\int_{-\infin}^{+\infin}xf(x)dx</script><p>对一维连续型随机变量X的函数$Y=g(x)$, 随机变量$X$的概率密度函数$f(X)$</p>
+<p>$f(X)$为的概率密度函数</p>
+<script type="math/tex; mode=display">
+E(X)=\int_{-\infin}^{+\infin}g(x)f(x)dx</script>
+        <h5 id="二维随机变量"   >
+          <a href="#二维随机变量" class="heading-link"><i class="fas fa-link"></i></a>二维随机变量</h5>
+      <p>期望方差计算的是一个变量的数量特征, 对于二维随机变量$(X,Y)$, 可以研究他们通过一个函数组成的变量$Z=G(X,Y)$的期望方差</p>
+
+        <h6 id="二维离散型随机变量"   >
+          <a href="#二维离散型随机变量" class="heading-link"><i class="fas fa-link"></i></a>二维离散型随机变量</h6>
+      <p>对二维离散型随机变量$(X,Y)$, 其中 $p_{ij}=P{X_i=x_i,Y_i=y_i}$, 研究变量$Z=G(X,Y)$</p>
+<script type="math/tex; mode=display">
+E(Z) =E[G(X,Y)]= \sum\limits_{i=1}^{\infin}\sum\limits_{j=1}^{\infin}G(x_i,y_i)p_{ij}</script>
+        <h6 id="二维连续性随机变量"   >
+          <a href="#二维连续性随机变量" class="heading-link"><i class="fas fa-link"></i></a>二维连续性随机变量</h6>
+      <p>对二维离散型随机变量$(X,Y)$, 其联合概率密度为$f(x,y)$, 研究变量$Z=G(X,Y)$</p>
+<script type="math/tex; mode=display">
+E(Z) =E[G(X,Y)]=\int_{-\infin}^{-\infin}\int_{-\infin}^{-\infin}G(x,y)f(x,y)dxdy</script>
+        <h4 id="4-1-2-数学期望的3个性质"   >
+          <a href="#4-1-2-数学期望的3个性质" class="heading-link"><i class="fas fa-link"></i></a>4.1.2 数学期望的3个性质</h4>
+      <p>数学期望的性质主要用来计算期望的时候节约时间</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>描述</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>常数的期望还是常数本身</td>
+<td>$E(C)=C$</td>
+</tr>
+<tr>
+<td>随机变量<strong>线性组合</strong>的期望等于随机变量期望的线性组合</td>
+<td>$E(kX)=kE(X)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$E(X+Y)=E(X)+E(Y)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$E(aX+bY)=aE(X)+bE(Y)$</td>
+</tr>
+<tr>
+<td><strong>独立</strong>的两个随机变量积的期望等于期望的积,反之不成立</td>
+<td>$E(XY)=E(X)E(Y)$, 其中$X,Y$相互独立</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>尽量找线性关系</p>
+
+        <h3 id="4-2-方差"   >
+          <a href="#4-2-方差" class="heading-link"><i class="fas fa-link"></i></a>4.2 方差</h3>
+      <p>随机变量$X$的方差$D(X)$反应的是随机变量$X$的取值相对于均值$E(X)$的偏离程度</p>
+
+        <h4 id="4-2-1-求方差的2种方法"   >
+          <a href="#4-2-1-求方差的2种方法" class="heading-link"><i class="fas fa-link"></i></a>4.2.1 求方差的2种方法</h4>
+      
+        <h5 id="通过定义求方法"   >
+          <a href="#通过定义求方法" class="heading-link"><i class="fas fa-link"></i></a>通过定义求方法</h5>
+      <p>方差也是通过期望定义的, 求方差的时候常常用到求期望的方法</p>
+<script type="math/tex; mode=display">
+D(X)=E(X-E(X))^2</script>
+        <h5 id="通过推导公式求方差-常用"   >
+          <a href="#通过推导公式求方差-常用" class="heading-link"><i class="fas fa-link"></i></a>通过推导公式求方差(常用)</h5>
+      <p>方差的推导公式核心也是求期望, 以及随机变量函数的期望</p>
+<script type="math/tex; mode=display">
+D(X)=E(X^2)-[E(X)]^2</script>
+        <h4 id="4-2-1-方差的3个性质"   >
+          <a href="#4-2-1-方差的3个性质" class="heading-link"><i class="fas fa-link"></i></a>4.2.1 方差的3个性质</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>描述</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>常数的方差是0</td>
+<td>$D(C)=0$</td>
+</tr>
+<tr>
+<td>方差为0的随机变量以概率1取$E(X)$</td>
+<td>$D(X)=0\Longleftrightarrow P{X=E(X)}=1$</td>
+</tr>
+<tr>
+<td>随机变量线性组合的方差公式 :</td>
+<td>$D(CX)=C^2D(X)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$D(X\pm Y)=D(X)+D(Y)\pm2cov(X,Y)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$D(aX\pm bY)=a^2D(X)+b^2D(Y)\pm2cov(aX,bY)$</td>
+</tr>
+<tr>
+<td></td>
+<td>当两个随机变量独立,则有: <br />$D(X\pm Y)=D(X)+D(Y)$<br />$D(aX\pm bY)=a^2D(X)+b^2D(Y)$</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="4-3-常见随机变量的期望方差"   >
+          <a href="#4-3-常见随机变量的期望方差" class="heading-link"><i class="fas fa-link"></i></a>4.3 常见随机变量的期望方差</h3>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>分布</th>
+<th>符号</th>
+<th>期望</th>
+<th>方差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二项分布</td>
+<td>$X\sim B(n,p)$</td>
+<td>$E(X)=np$</td>
+<td>$D(X)=np(1-p)$</td>
+</tr>
+<tr>
+<td>泊松分布</td>
+<td>$X \sim P(\lambda)$</td>
+<td>$E(X)=\lambda$</td>
+<td>$D(X)=\lambda$</td>
+</tr>
+<tr>
+<td>均匀分布</td>
+<td>$X \sim U(a,b)$</td>
+<td>$E(X)=\frac{a+b}{2}$</td>
+<td>$D(X)=\frac{(b-a)^2}{12}$</td>
+</tr>
+<tr>
+<td>指数分布</td>
+<td>$X \sim E(\lambda)$</td>
+<td>$E(X)=\frac{1}{\lambda}$</td>
+<td>$E(X)=\frac{1}{\lambda^2}$</td>
+</tr>
+<tr>
+<td>正态分布</td>
+<td>$X \sim N(\mu,\sigma^2)$</td>
+<td>$E(X)=\mu$</td>
+<td>$D(X)=\sigma^2$</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h3 id="4-4-协方差和相关系数"   >
+          <a href="#4-4-协方差和相关系数" class="heading-link"><i class="fas fa-link"></i></a>4.4 协方差和相关系数</h3>
+      <p>协方差和相关系数是描述两个随机变量相关性的数</p>
+
+        <h4 id="4-4-1-求协方差的3种方式"   >
+          <a href="#4-4-1-求协方差的3种方式" class="heading-link"><i class="fas fa-link"></i></a>4.4.1 求协方差的3种方式</h4>
+      
+        <h5 id="通过定义求协方差"   >
+          <a href="#通过定义求协方差" class="heading-link"><i class="fas fa-link"></i></a>通过定义求协方差</h5>
+      <script type="math/tex; mode=display">
+cov(X,Y)=E\{[X-E(X)]\}E\{[Y-E(Y)]\}</script>
+        <h5 id="通过推导公式求协方差-优先"   >
+          <a href="#通过推导公式求协方差-优先" class="heading-link"><i class="fas fa-link"></i></a>通过推导公式求协方差(优先)</h5>
+      <script type="math/tex; mode=display">
+cov(X,Y)=E(XY)-E(X)E(Y)</script>
+        <h5 id="利用相关系数求协方差-二维正态分布"   >
+          <a href="#利用相关系数求协方差-二维正态分布" class="heading-link"><i class="fas fa-link"></i></a>利用相关系数求协方差(二维正态分布)</h5>
+      <script type="math/tex; mode=display">
+cov(X,Y) = \rho_{XY}\sqrt{D(X)}\sqrt{D(Y)}</script>
+        <h4 id="4-4-2-协方差的3个性质"   >
+          <a href="#4-4-2-协方差的3个性质" class="heading-link"><i class="fas fa-link"></i></a>4.4.2 协方差的3个性质</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>描述</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自己和自己协方差就是自己的方差</td>
+<td>$cov(X,X)=D(X)$</td>
+</tr>
+<tr>
+<td>$Y,X$的协方差等于$X,Y$的协方差</td>
+<td>$cov(X,Y)=cov(Y,X)$</td>
+</tr>
+<tr>
+<td>协方差的线性组合公式:</td>
+<td>$cov(aX,bY)=abcov(X,Y)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$cov(X_1+X_2,Y) = cov(X_1,Y)+cov(X_2,Y)$</td>
+</tr>
+<tr>
+<td>当$(X,Y)$独立,则协方差为0, 反之不成立</td>
+<td>$(X,Y)$独立, $cov(X,Y)=0$</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="4-4-3-认识相关系数"   >
+          <a href="#4-4-3-认识相关系数" class="heading-link"><i class="fas fa-link"></i></a>4.4.3 认识相关系数</h4>
+      <script type="math/tex; mode=display">
+\rho_{XY}=\frac{cov(X,Y)}{\sqrt{D(X)D(Y)}}</script><p>① 对于任意$X,Y$恒有$|\rho_{XY}|\le 1$</p>
+<p>② 相关系数的值反应了$X,Y$的线性相关关系: </p>
+<ol>
+<li>若$\rho_{XY}=0$,则$X,Y$不相关,也就是不线性相关</li>
+<li>若$\rho_{XY}=-1$,则$X,Y$完全负线性相关</li>
+<li>若$\rho_{XY}=1$,则$X,Y$完全正线性相关</li>
+<li>若$0&lt;\rho_{XY}&lt;1$,则$X,Y$正线性相关</li>
+<li>若$-1&lt;\rho_{XY}&lt;0$,则$X,Y$负线性相关</li>
+</ol>
+
+        <h4 id="4-4-4-相关性和独立性"   >
+          <a href="#4-4-4-相关性和独立性" class="heading-link"><i class="fas fa-link"></i></a>4.4.4 相关性和独立性</h4>
+      <p>$X,Y$ 独立 $\Longrightarrow$ $X,Y$ 不相关 , 反之不成立</p>
+<p>$X,Y$ 相关 $\Longrightarrow$ $X,Y$ 不独立 , 反之不成立</p>
+<p>不相关的范围更大</p>
+<p>若$\rho_{XY}=0$,则称$X,Y$不相关,但不能称他们独立</p>
+<p><strong>证明不相关性和独立性的方法 : </strong></p>
+<p>不相关性: </p>
+<ol>
+<li>$\rho_{XY}=0$</li>
+<li>$E(XY)=E(X)E(Y)$</li>
+</ol>
+<p>独立性: </p>
+<ol>
+<li><p>$g(XY)=g(X)g(Y)$</p>
+<p>其中, $g$可以表示成分布函数, 概率, 概率密度函数, 分布律</p>
+</li>
+<li><p>联合分布律和边缘分布率</p>
+</li>
+</ol>
+<p>如果想证明相关性和不独立性, 只要等于变不等于, 不等于变等于即可.也可以把证明不独立变成证明相关,即当$X,Y$相关[$E(XY)\ne E(X)E(Y)$],则$X,Y$不独立</p>
+<p><strong>特别的</strong> : </p>
+<p>对 $(X,Y)\sim N(\mu_1,\sigma_1^2;\mu_2,\sigma_2^2;\rho)$ , 有 $X,Y$ 独立 $\Longleftrightarrow$ $X,Y$ 不相关 </p>
+
+        <h3 id="4-5-两个一维正态分布和二维正态分布的性质"   >
+          <a href="#4-5-两个一维正态分布和二维正态分布的性质" class="heading-link"><i class="fas fa-link"></i></a>4.5 两个一维正态分布和二维正态分布的性质</h3>
+      
+        <h4 id="4-5-1-两个一维正态分布的性质"   >
+          <a href="#4-5-1-两个一维正态分布的性质" class="heading-link"><i class="fas fa-link"></i></a>4.5.1 两个一维正态分布的性质</h4>
+      
+        <h5 id="正态分布的可加性"   >
+          <a href="#正态分布的可加性" class="heading-link"><i class="fas fa-link"></i></a>正态分布的可加性</h5>
+      <p>$X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_2,\sigma_2^2)$, 且$X,Y$相互独立, 有</p>
+<ol>
+<li>$X+Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$</li>
+<li>$X-Y\sim N(\mu_1-\mu_2,\sigma_1^2+\sigma_2^2)$</li>
+</ol>
+<p>注意两个的方差都是加</p>
+<p>推广得到: </p>
+<script type="math/tex; mode=display">
+aX+bY+c\sim N(a\mu_1+b\mu_2+c,a^2\sigma_1^2+b^2\sigma_2^2)</script>
+        <h4 id="4-5-2-二维正态分布的性质"   >
+          <a href="#4-5-2-二维正态分布的性质" class="heading-link"><i class="fas fa-link"></i></a>4.5.2 二维正态分布的性质</h4>
+      
+        <h5 id="二维正态分布可拆分"   >
+          <a href="#二维正态分布可拆分" class="heading-link"><i class="fas fa-link"></i></a>二维正态分布可拆分</h5>
+      <p>对 $(X,Y)\sim N(\mu_1,\sigma_1^2;\mu_2,\sigma_2^2;\rho)$ ,有</p>
+<p>$X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_2,\sigma_2^2)$</p>
+<p>也就是二维正态分布的两个边缘分布仍然是正态分布</p>
+
+        <h5 id="二维正态随机变量的不相关和相互独立是等价的"   >
+          <a href="#二维正态随机变量的不相关和相互独立是等价的" class="heading-link"><i class="fas fa-link"></i></a>二维正态随机变量的不相关和相互独立是等价的</h5>
+      <p>对 $(X,Y)\sim N(\mu_1,\sigma_1^2;\mu_2,\sigma_2^2;\rho)$ , 有 </p>
+<p>$X,Y$ 独立 $\Longleftrightarrow$ $X,Y$ 不相关 $\Longleftrightarrow$ $\rho_{XY}=0$ </p>
+
+        <h5 id="X-Y与X-Y相互独立的条件"   >
+          <a href="#X-Y与X-Y相互独立的条件" class="heading-link"><i class="fas fa-link"></i></a>X-Y与X+Y相互独立的条件</h5>
+      <p>$(X,Y)\sim N(\mu_1,\sigma_1^2;\mu_2,\sigma_2^2;\rho)$, 且$\sigma_1^2=\sigma_2^2$</p>
+<p>$X-Y$与$X+Y$相互独立</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.doc88.com/p-4661667285041.html" >参考文章</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="5-概率论与数理统计-数理统计的基本思想和理论依据"   >
+          <a href="#5-概率论与数理统计-数理统计的基本思想和理论依据" class="heading-link"><i class="fas fa-link"></i></a>5. [概率论与数理统计]数理统计的基本思想和理论依据</h2>
+      <p>梳理统计的基本思想是用样本估计总体,理论依据是大数定理和中心极限定理</p>
+
+        <h3 id="5-1-样本和总体"   >
+          <a href="#5-1-样本和总体" class="heading-link"><i class="fas fa-link"></i></a>5.1 样本和总体</h3>
+      
+        <h4 id="5-1-1-总体"   >
+          <a href="#5-1-1-总体" class="heading-link"><i class="fas fa-link"></i></a>5.1.1 总体</h4>
+      <p>总体是我们的研究对象的全体</p>
+<p>每一研究对象称为个体</p>
+<p>我们的<strong>研究对象</strong>的是一个可以量化的数值指标</p>
+<p>每个个体就是一个数值,总体就是一个随机变量$X$</p>
+
+        <h4 id="5-1-2-样本-简单随机样本"   >
+          <a href="#5-1-2-样本-简单随机样本" class="heading-link"><i class="fas fa-link"></i></a>5.1.2 样本(简单随机样本)</h4>
+      <p>样本是按一个确定规则在总体中抽取出的一部分个体, 这个按照特定规则抽取的过程叫抽样</p>
+<p>样本是数值, 也随机变量.</p>
+<p>当样本没有被抽出的时候,或者我们探究一般性规律的时候, 他就是随机变量$X_i$</p>
+<p>这个随机变量<strong>具有和总体相同的分布</strong>, 而且每个样本表示的随机变量<strong>相互独立</strong></p>
+<p>当样本被抽出的时候, 或者我们想研究具体问题的时候, 他就是数值$x_i$, 这个数值成为样本观测值</p>
+<p>当抽出$n$个样本的时候, $n$成为样本容量/样本大小/样本量</p>
+<p>一个样本容量为$n$的样本常被表示为: 样本$(X_1,X_2,…,X_n)$</p>
+<p>它的观察值是$(x_1,x_2,…,x_n)$</p>
+
+        <h3 id="5-2-切比雪夫不等式"   >
+          <a href="#5-2-切比雪夫不等式" class="heading-link"><i class="fas fa-link"></i></a>5.2 切比雪夫不等式</h3>
+      <p>切比雪夫不等式用来证明大数定理, 但也有自己的作用</p>
+<p>切比雪夫不等式描述了随机变量$X$偏离中心某个程度下$\varepsilon$的概率, 这个概率在偏离程度小的时比较小,偏离程度大时比较大.</p>
+<p><strong>切比雪夫不等式</strong> : </p>
+<p>对随机变量$X$ , 期望$E(X)$方差$D(X)$, $\varepsilon$ 表示任意正实数(一般表示很大的数)</p>
+<p>有: </p>
+<script type="math/tex; mode=display">
+P(|X-E(X)|\ge \varepsilon) \le \frac{D(X)}{\varepsilon^2}</script><script type="math/tex; mode=display">
+P(|X-E(X)|<\varepsilon)\ge1-\frac{D(X)}{\varepsilon^2}</script><p>变形上面的式子可以得到</p>
+<script type="math/tex; mode=display">
+P\{E(X)-\varepsilon<X<E(X)+\varepsilon\}\ge1-\frac{D(X)}{\varepsilon^2}</script><p>可以看到, 大括号的表示随机变量的取值在均值范围左右之内, 当我们选取的 $\varepsilon$ 越大, 这个概率的下限越小</p>
+<p><strong>*注意: 对于$P{}$中间的式子我们可以进行等式/不等式变形,可以加减乘除,去绝对值 </strong></p>
+<p>切比雪夫不等式可以用来估计随机变量落在某个区域的概率下限</p>
+
+        <h3 id="5-3-大数定理"   >
+          <a href="#5-3-大数定理" class="heading-link"><i class="fas fa-link"></i></a>5.3 大数定理</h3>
+      <p>大数定理反应的是抽样数量足够多的时候, <strong>样本和</strong>的均值趋近于于总体均值,也就是样本依概率收敛均值, 下面最常用的是辛钦大数定理</p>
+
+        <h4 id="5-3-2-切比雪夫大数定理"   >
+          <a href="#5-3-2-切比雪夫大数定理" class="heading-link"><i class="fas fa-link"></i></a>5.3.2 切比雪夫大数定理</h4>
+      <p>切比雪夫大数定理使用切比雪夫不等式推得,不怎们常用,他是一般形式的式子, 常用独立同分布的形式(辛钦大数定理),也就是在数理统计抽样中使用</p>
+<p><strong>切比雪夫大数定理 :</strong></p>
+<p>对于<strong>相互独立</strong>的若干个随机变量$X_1,X_2,…,X_n,..$ ,每个随机变量的<strong>期望</strong>$E(X_i)$和<strong>方差</strong>$D(X_i)$都存在, 且方差有界, 对任意整数$\varepsilon$有:</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}P\left\{\left|\frac{1}{n}\sum\limits_{i=1}^n X_i-\frac{1}{n}\sum\limits_{i=1}^nEX_i\right|<\varepsilon\right\}=1</script><p>这个式子表示依概率收敛, 就是收敛概率是1</p>
+<p>可以记为: </p>
+<script type="math/tex; mode=display">
+\frac{1}{n}\sum\limits_{i=1}^nX_k\xrightarrow[n\rightarrow\infin]{P}\frac{1}{n}\sum\limits_{i=1}^nEX_i</script><p>也就是$n$趋近于无穷的时候, 独立同分布的随机变量和的算术平均趋近于每个随机变量均值的和</p>
+
+        <h4 id="5-3-3-辛钦大数定理"   >
+          <a href="#5-3-3-辛钦大数定理" class="heading-link"><i class="fas fa-link"></i></a>5.3.3 辛钦大数定理</h4>
+      <p>辛钦大数定理给出了若干独立同分布的随机变量序列的算术平局之取景于$\mu$ ,是随机试验估计均值的理论依据, 独立同分布大数定理比辛钦大数定理弱, 用辛钦大数定理就对了</p>
+<p><strong>辛钦大数定理: </strong></p>
+<p>对若干<strong>独立同分布</strong>的随机变量$X_1,X_2,…,X_n,..$, 每个随机变量的都存在数学<strong>期望</strong>$E(X_i)=\mu \space (i=1,2,…)$, 对任意整数$\varepsilon$有: </p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}P\left\{\left|\frac{1}{n}\sum\limits_{i=1}^n X_i-\mu\right|<\varepsilon\right\}=1</script><p>即: </p>
+<script type="math/tex; mode=display">
+\frac{1}{n}\sum\limits_{i=1}^nX_k\xrightarrow[n\rightarrow\infin]{P}\mu=E(X_k)</script><p>也就是$n$趋近于无穷的时候, 独立同分布的随机变量和的算术平均趋近于总体的均值</p>
+<p>也可以用来计算这个求和式: (此式比较好用)</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin} \frac{1}{n}\sum\limits_{i=1}^nX_k=\mu=E(X_k)</script><p>也就是$n$趋近于无穷的时候, 样本均值趋近于总体均值</p>
+
+        <h4 id="5-3-4-伯努利大数定理"   >
+          <a href="#5-3-4-伯努利大数定理" class="heading-link"><i class="fas fa-link"></i></a>5.3.4 伯努利大数定理</h4>
+      <p>贝努利大数定理是辛钦大数定理的推论, 把二项分布拆开成独立同分布的两点分布带进去就可以推得:</p>
+<p><strong>伯努利大数定理</strong>:</p>
+<p>$n$重伯努利试验, 事件$A$发生次数为$m$ , 事件$A$在每次试验中发生的概率为$p$,对任意整数$\varepsilon$有: </p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}P\left\{\left|\frac{m}{n}-p\right|<\varepsilon\right\}=1</script><p>也即: </p>
+<script type="math/tex; mode=display">
+\frac{m}{n}\xrightarrow[n\rightarrow\infin]{P}p=P(A)</script><p>也就是$n$趋近于无穷的时候,可以使用频率估计概率</p>
+
+        <h3 id="5-4-中心极限定理"   >
+          <a href="#5-4-中心极限定理" class="heading-link"><i class="fas fa-link"></i></a>5.4 中心极限定理</h3>
+      <p>虽然中心极限定理中没有明确表述样本的分布, 但从意义上讲, 中心极限定理描述的是对于某个总体进行抽样,每次抽取几个样本, 这样, 当抽样次数够多的时候, 抽样的结果将会服从中心极限定理, 因为抽样的时候可能会跑偏了, 但是总体在均值附近, 存在一些列我们现在的条件观察不到, 计算不到的因素.</p>
+
+        <h4 id="5-4-1-独立同分布中心极限定理"   >
+          <a href="#5-4-1-独立同分布中心极限定理" class="heading-link"><i class="fas fa-link"></i></a>5.4.1 独立同分布中心极限定理</h4>
+      <p>样本是独立同分布的随机变量, 当试验次数足够多, 这些随机变量的和是服从正态分布的, 为了方便计算, 我们会把他们化简成标准的正态分布.</p>
+<p>注意 : 1. 这并不意味着总体是服从正态分布的. 2. 当你抽取了总体中的所有样本就不服从中心极限定理了</p>
+<p>样本和的均值和方差: </p>
+<script type="math/tex; mode=display">
+E(\sum \limits ^{n}_{i=1}x_{i})=\sum \limits ^{n}_{i=1}E(x_{i})=n\mu</script><script type="math/tex; mode=display">
+D(\sum \limits ^{n}_{i=1}x_{i})=\sum \limits ^{n}_{i=1}D(x_{i})=n\sigma^2</script><p>标准化的意义统一, 好查表, 标准化的方法是减去均值,除以标准差(方差不可能为负): </p>
+<script type="math/tex; mode=display">
+若 X\sim N(\mu,\sigma^2), 则 \frac{X-\mu}{\sigma} \sim N(0,1)</script><p>对于$\sum \limits ^{n}<em>{i=1}x</em>{i} \sim N(n\mu,n\sigma^2)$ 进行标准化, 就可以得到独立同分布中心极限定理</p>
+<p><strong>独立同分布中心极限定理</strong> : </p>
+<p>设$X_1,X_2,…,X_n,..$ 是相互独立同分布(①相互独立②同分布)的随机变量序列, 每个随机变量都有相同的数学期望和方差</p>
+<script type="math/tex; mode=display">
+E(x_i)=\mu, \space D(x_i)=\sigma^2 \space \space \space (i=1,2,...)</script><p>则有: </p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow \infin} \left\{\frac{\sum \limits ^{n}_{i=1}x_{i}-n\mu }{\sqrt{n}\sigma }\le x\right\}=\Phi(x)</script><p>其中$\Phi(x)$表示标准正态分布的分布函数</p>
+<p>除了用来研究抽样分布, 使用中心极限定理可以帮我们估计一些随机变量的和取值在某个范围的概率</p>
+
+        <h4 id="5-4-2-棣莫弗-—-拉普拉斯中心极限定理"   >
+          <a href="#5-4-2-棣莫弗-—-拉普拉斯中心极限定理" class="heading-link"><i class="fas fa-link"></i></a>5.4.2 棣莫弗 — 拉普拉斯中心极限定理</h4>
+      <p>二项分布可以看成多个相互独立的两点分布的随机变量的和, 可以带入独立同分布中心极限定理,得到此定理:</p>
+<p><strong>棣莫弗 — 拉普拉斯中心极限定理</strong>: </p>
+<p>设随机变量 $Y_n \sim B(n,p),\space(n=1,2,…)$ ,则对于任意实数$x$, 有 :</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow \infin} \left\{\frac{Y_n-np }{\sqrt{np(1-p)}}\le x\right\}=\Phi(x)</script><p>棣莫弗 — 拉普拉斯中心极限定理给出了我们泊松分布之外的一种估计二项分布数值的方法.</p>
+<p> 一般而言, 对于一个二项分布的样本, 计算随机变量取某个区间的概率, $n$比较小的时候可以直接算, 稍微大一点$(8\sim 40)$就用泊松分布, 再多就用棣莫弗 — 拉普拉斯中心极限定理,按照正态分布来算.</p>
+<p>一般题目中会给出一个比较夸张的数字$(100,1000,10000…)$暗示使用中心极限定理估计</p>
+
+        <h2 id="6-数理统计-样本的分布函数-统计量和点估计"   >
+          <a href="#6-数理统计-样本的分布函数-统计量和点估计" class="heading-link"><i class="fas fa-link"></i></a>6. [数理统计]样本的分布函数,统计量和点估计</h2>
+      <p>点估计是估计已知总体分布中的未知参数的方法, 有距估计和极大似然估计两种方法, 使用点估计的时候我么需要认识一些常用的统计量, 使用极大似然估计时需要我们知道样本的分布函数</p>
+
+        <h3 id="6-1-样本的分布函数"   >
+          <a href="#6-1-样本的分布函数" class="heading-link"><i class="fas fa-link"></i></a>6.1 样本的分布函数</h3>
+      <p>样本是独立同分布的, 根据这个性质, 我们可以计算样本组成的随机变量序列的分布函数和连续型的概率密度函数, 离散型的分布律, 就是把这些相同的量乘起来就可以了</p>
+<p><strong>样本的分布函数: </strong></p>
+<p>总体$X$的分布函数$F(X)$,取样本容量为$n$的样本$(X_1,X_2,…,X_n)$, 样本的联合分布函数为: </p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+F(x_1,x_2,...,x_n)&=F_{X_1}(x_1)F_{X_2}(x_2)\cdots F_{X_n}(x_n)\\&=F(x_1)F(x_2)\cdots F(x_n)\\&=\prod_{i=1}^nF(x_i)
+\end{aligned}
+\end{equation}</script><p>也就是 :</p>
+<script type="math/tex; mode=display">
+F(x_1,x_2,...,x_n)=\prod_{i=1}^nF(x_i)</script><p><strong>连续型样本的概率密度函数(极大似然估计要用的式子):</strong></p>
+<p>同理, 对于连续性总体, 概率密度函数为$f(x)$,有</p>
+<script type="math/tex; mode=display">
+f(x_1,x_2,...,x_n)=\prod_{i=1}^nf(x_i)</script><p><strong>离散型样本的概率密度函数:</strong></p>
+<p>同理, 对于离散型总体, 分布律为$P{X=x_i}=p_i$,有</p>
+<script type="math/tex; mode=display">
+P\{X_1=x_1,X_2=x_2,...X_n=x_n\}=\prod_{i=1}^nP\{X=x_1\}</script>
+        <h3 id="6-2-常用统计量"   >
+          <a href="#6-2-常用统计量" class="heading-link"><i class="fas fa-link"></i></a>6.2 常用统计量</h3>
+      
+        <h4 id="6-2-1-认识统计量"   >
+          <a href="#6-2-1-认识统计量" class="heading-link"><i class="fas fa-link"></i></a>6.2.1 认识统计量</h4>
+      <p>统计量是样本的<strong>函数</strong>, 这个函数<strong>不能有未知参数.</strong></p>
+<p>对于样本$(X_1,X_2,…,X_n)$, 它的统计量统称为$g(X_1,X_2,…,X_n)$. 举例:$aX_1+X_2+X_3$是一个统计量</p>
+<p>把统计量中的样本(随机变量)替换成观察值,就可以得到统计量的观察值: $g(x_1,x_2,…,x_n)$ </p>
+
+        <h4 id="6-2-2-常用统计量1-—-样本均值和样本方差"   >
+          <a href="#6-2-2-常用统计量1-—-样本均值和样本方差" class="heading-link"><i class="fas fa-link"></i></a>6.2.2 常用统计量1 — 样本均值和样本方差</h4>
+      <p>样本均值和样本方差是最常用的统计量</p>
+<p>下面的阐述基于总体$X$, 总体的样本$(X_1,X_2,…,X_n)$, 样本观察值$(x_1,x_2,…,x_n)$</p>
+<p>下面只给出统计量形式, 观察值带入观察值, 表示符号变成小写即可</p>
+
+        <h5 id="样本均值"   >
+          <a href="#样本均值" class="heading-link"><i class="fas fa-link"></i></a>样本均值</h5>
+      <p>样本均值用来估计总体均值</p>
+<script type="math/tex; mode=display">
+\overline X = \frac{1}{n}\sum \limits ^{n}_{i=1}X_{i}</script><ol>
+<li>观察值$\overline x$</li>
+</ol>
+
+        <h5 id="样本方差"   >
+          <a href="#样本方差" class="heading-link"><i class="fas fa-link"></i></a>样本方差</h5>
+      <p>样本方差用来估计总体方差</p>
+<script type="math/tex; mode=display">
+S^2 = \frac{1}{n-1}\sum \limits ^{n}_{i=1}(X_i-\overline X)^2</script><p>也可化为</p>
+<script type="math/tex; mode=display">
+S^2 = \frac{1}{n-1}\left[\sum \limits ^{n}_{i=1}{X_i}^2-n\overline X^2\right]</script><ol>
+<li>观察值$s^2$</li>
+<li>取正根号就是样本标准差$S$</li>
+<li>为什么是$n-1$? 因为这样化简出来是无偏估计(无偏见5.4+书)</li>
+</ol>
+
+        <h4 id="6-2-3-常用统计量2-—-样本的原点矩和中心矩"   >
+          <a href="#6-2-3-常用统计量2-—-样本的原点矩和中心矩" class="heading-link"><i class="fas fa-link"></i></a>6.2.3 常用统计量2 — 样本的原点矩和中心矩</h4>
+      <p>原点矩和中心矩是拓展的统计量, 矩估计是基于此的</p>
+<p>下面的阐述基于总体$X$, 总体的样本$(X_1,X_2,…,X_n)$, 样本观察值$(x_1,x_2,…,x_n)$</p>
+<p>下面只给出统计量形式, 观察值带入观察值, 表示符号变成小写即可</p>
+
+        <h5 id="样本的k阶原点矩"   >
+          <a href="#样本的k阶原点矩" class="heading-link"><i class="fas fa-link"></i></a>样本的k阶原点矩</h5>
+      <script type="math/tex; mode=display">
+A_{k}=\dfrac{1}{n}\sum ^{n}_{i=1}Xi^{k},k=1,2,3\ldots</script><ol>
+<li>样本均值是1阶原点矩</li>
+<li>观察值$a_k$</li>
+<li>样本的$k$阶原点矩反映的是总体的$k$阶原点矩$E(X^k)$<ul>
+<li>虽然这是数字特征部分的内容,但是没有用到所以没说,求法见期望的求法</li>
+</ul>
+</li>
+</ol>
+
+        <h5 id="样本的k阶中心矩-了解"   >
+          <a href="#样本的k阶中心矩-了解" class="heading-link"><i class="fas fa-link"></i></a>样本的k阶中心矩(了解)</h5>
+      <script type="math/tex; mode=display">
+M_{k}=\dfrac{1}{n}\sum ^{n}_{i=1}(X_i-\overline X)^k,k=1,2,3\ldots</script><ol>
+<li>样本方差不是1阶中心矩,关系: $M^2=\frac{n-1}{n}S^2=A_2-A_1^2$</li>
+<li>观察值$m_k$</li>
+<li>样本的$k$阶中心矩反映的是总体的$k$阶中心矩$E([X-E(X)]^k)$<ul>
+<li>不常用</li>
+<li>总体的二阶中心矩就是方差了</li>
+</ul>
+</li>
+</ol>
+
+        <h3 id="6-3-点估计"   >
+          <a href="#6-3-点估计" class="heading-link"><i class="fas fa-link"></i></a>6.3 点估计</h3>
+      <p>点估计和区间估计的区别是估计值是怎样的形式, 点估计的估计值是一个数, 区间估计的估计值是一个区间.</p>
+<p>我们研究的对象是样本(随机变量), 点估计得到的是估计量(随机变量),估计量的观察值是将抽样结果(样本观察值/具体数值)带入的结果.</p>
+<p>对于不同的估计量需要有评价标准帮我们选择更好的估计量</p>
+<p>点估计常用方法有矩估计和极大似然估计,他们得到的是矩估计量和极大似然估计量, 也有对应的观察值.</p>
+
+        <h4 id="6-3-1-矩估计"   >
+          <a href="#6-3-1-矩估计" class="heading-link"><i class="fas fa-link"></i></a>6.3.1 矩估计</h4>
+      <p>核心思想 : 是样本的$k$阶<strong>原点矩</strong>近似于总体的$k$阶<strong>原点矩</strong>(注意是原点矩, 不用中心距)</p>
+<p>理论依据 : 根据中心极限定理可以推得. $n\rightarrow\infin$时, 样本的$k$阶<strong>原点矩</strong>趋近于总体的$k$阶<strong>原点矩</strong></p>
+
+        <h5 id="一般步骤-3"   >
+          <a href="#一般步骤-3" class="heading-link"><i class="fas fa-link"></i></a>一般步骤(3):</h5>
+      <ol>
+<li>求总体原点矩 </li>
+<li>求样本原点矩/表示样本原点矩</li>
+<li>总体$k$阶原点矩 = 样本$k$阶原点矩</li>
+</ol>
+<p><strong>详细步骤</strong>: </p>
+<ol>
+<li><p>求总体原点矩</p>
+<ol>
+<li>根据未知数的数量想好求到几阶矩, 一个未知数求一阶,一般为1阶或2阶</li>
+<li>求总体矩, 比如: $E(X),E(X^2)$, 根据求期望的方式求<ul>
+<li>比如: $E(X^2)=D(X)+[E(X)]^2$ </li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>求样本原点矩</p>
+<ol>
+<li><p>求出对应的样本原点矩</p>
+<script type="math/tex; mode=display">
+A_{1}=\dfrac{1}{n}\sum \limits ^{n}_{i=1}Xi=\overline X\\ A_{2}=\dfrac{1}{n}\sum \limits ^{n}_{i=1}Xi^2</script></li>
+<li><p>如果题中没有给出具体数据, 写出上式即可</p>
+<script type="math/tex; mode=display">
+A_{1}=\overline X\\ A_{2}=\dfrac{1}{n}\sum \limits ^{n}_{i=1}Xi^2</script></li>
+<li><p>如果题中给了样本方差, 注意变成样本原点矩的形式</p>
+<script type="math/tex; mode=display">
+A_2=\frac{n-1}{n}S^2+A_1^2</script></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>总体$k$阶原点矩 = 样本$k$阶原点矩</p>
+<ol>
+<li><p>最后需要解出如下形式</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\hat{a}&=g(X_1,X_2,...,X_n)\\
+[某个参数(带尖)]&=[某个统计量]
+\end{aligned}
+\end{equation}</script></li>
+<li><p>如果我们想要求出估计量观测值只需要带入即可</p>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>小结论: </strong>无论是什么分布都有:</p>
+<script type="math/tex; mode=display">
+{\hat E(X)=\hat\mu =\overline X\\
+\hat D(X)=\hat{\sigma^2} =\frac{1}{n}\sum \limits ^{n}_{i=1}(X_i-\overline X)^2}</script>
+        <h4 id="6-3-2-极大似然估计法"   >
+          <a href="#6-3-2-极大似然估计法" class="heading-link"><i class="fas fa-link"></i></a>6.3.2 极大似然估计法</h4>
+      <p>核心思想: 一次抽样中取得样本值$(x_1,x_2,…,x_n)$, 认为取得这一样本的概率$L(x_1,x_2,…x_n;\theta_1,\theta_2,…\theta_m)$[此处使用样本的联合分布函数/联合分布律] 是较大的, 所以固定观察值样本值$(x_1,x_2,…,x_n)$, 挑选合适的$\hat\theta_i(x_1,x_2,…,x_n)$ 使得似然函数$L(\theta_1,\theta_2,…\theta_m)$ 取到最大值, 这些$\hat\theta_i$就是极大似然估计值, 对应的把观察值换成随机变量就可以得到极大似然估计量$\hat\theta_i(X_1,X_2,…,X_n)$</p>
+<p>我们可以发现极大似然估计是从样本值出发, 找出估计量, 矩估计是找出估计量, 带入相关样本值</p>
+
+        <h5 id="一般步骤-6"   >
+          <a href="#一般步骤-6" class="heading-link"><i class="fas fa-link"></i></a>一般步骤(6):</h5>
+      <ol>
+<li>写极大似然函数 </li>
+<li>两边取对数化简 </li>
+<li>对未知数求偏导 </li>
+<li>求导式等于0列方程组 </li>
+<li>求出使得似然函数的最大的极大似然估计值 </li>
+<li>换成估计量</li>
+</ol>
+<p>一般使用极大似然估计法的时候只有一个参数,下给出只有一个参数的极大似然估计法详细过程,对于样本观察值$(x_1,x_2,…x_n)$ ,一个未知参数$\theta$, 对多个未知参数可以改成解方程组</p>
+<p><strong>详细步骤: </strong></p>
+<ol>
+<li><p>写极大似然函数</p>
+<ol>
+<li><p>形式: </p>
+<ul>
+<li><p>常用连续型</p>
+<script type="math/tex; mode=display">
+L(\theta)=\prod_{i=1}^nf(x_i)</script></li>
+<li><p>对于离散型</p>
+<script type="math/tex; mode=display">
+L(\theta)=\prod_{i=1}^nP\{X=x_1\}</script></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>两边取对数化为加法式</p>
+<ol>
+<li><p>取对数的原因是乘法难算, 加减法好算</p>
+</li>
+<li><p>形式:</p>
+<ul>
+<li><p>常用连续型</p>
+<script type="math/tex; mode=display">
+lnL(\theta)=\sum_{i=1}^nlnf(x_i)</script></li>
+<li><p>对于离散型</p>
+<script type="math/tex; mode=display">
+lnL(\theta)=\sum_{i=1}^nlnP\{X=x_1\}</script></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>对未知数$\theta$求偏导</p>
+<ol>
+<li>形式 :<script type="math/tex; mode=display">
+\frac{\partial lnL(\theta)}{\partial \theta}</script></li>
+</ol>
+</li>
+<li><p>等于0列方程组 </p>
+<ol>
+<li>形式 :<script type="math/tex; mode=display">
+\frac{\partial lnL(\theta)}{\partial \theta}=0</script></li>
+</ol>
+</li>
+<li><p>求出使得似然函数的最大的极大似然估计值</p>
+<ol>
+<li><p>形式 :</p>
+<script type="math/tex; mode=display">
+\hat\theta_i=g(x_1,x_2,...,x_n)</script></li>
+<li><p>如果无解, 那使用单调性找出使得函数取得极大值的$\theta_i$</p>
+</li>
+</ol>
+</li>
+<li><p>换成估计量</p>
+<ol>
+<li>形式 : <script type="math/tex; mode=display">
+\hat\theta_i=g(X_1,X_2,...,X_n)</script></li>
+</ol>
+</li>
+</ol>
+
+        <h4 id="6-3-3-估计量的评价标准"   >
+          <a href="#6-3-3-估计量的评价标准" class="heading-link"><i class="fas fa-link"></i></a>6.3.3 估计量的评价标准</h4>
+      <p>对于一个估计量我们比较关心这几个指标</p>
+<ol>
+<li>[无偏性]它能不能正确的反映想估计的参数</li>
+<li>[有效性]这个估计量是不是稳定的, 偶然情况越少越好</li>
+<li>[相合性]当我们无限抽样下去, 能不能正确的反应待估参数的真实值</li>
+</ol>
+<p>在这几个评价标准中, 无偏性和相合性是基本的要求</p>
+<p>有效性是相对而言的, 考察两个估计量的有效性的时候先要考察两个估计量的无偏性</p>
+<p>对于待估参数$\theta$的估计量$\hat\theta_i(X_1,X_2,…,X_n)$ :</p>
+
+        <h5 id="验证无偏性"   >
+          <a href="#验证无偏性" class="heading-link"><i class="fas fa-link"></i></a>验证无偏性</h5>
+      <script type="math/tex; mode=display">
+E(\hat \theta)=\theta</script>
+        <h5 id="验证有效性"   >
+          <a href="#验证有效性" class="heading-link"><i class="fas fa-link"></i></a>验证有效性</h5>
+      <p>考察两估计量的有效性,要先满足他们都是无偏估计$E(\hat \theta_1)=E(\hat \theta_2)=\theta$</p>
+<p>然后我们验证这两个估计量的方差, 方差小则更有效</p>
+<p>所以验证有效性有两步: </p>
+<ol>
+<li>$E(\hat \theta_1)=E(\hat \theta_2)=\theta$</li>
+<li>求出$D(\hat \theta_1),D(\hat \theta_2)$ . 对比大小越小越有效</li>
+</ol>
+
+        <h5 id="验证相合性"   >
+          <a href="#验证相合性" class="heading-link"><i class="fas fa-link"></i></a>验证相合性</h5>
+      <p>求相合性需要使用切比雪夫不等式,或者辛钦大数定理</p>
+<p>对于参数$\theta$的估计量$\hat\theta_i(X_1,X_2,…,X_n)$ ,对于任意正整数$\varepsilon&gt;0$, 有:  (此式常结合辛钦大数定理)</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}P\{|\hat\theta_n-\theta|<\varepsilon\}=1</script><p>则称$\hat\theta_n$是$\theta$的相合估计量</p>
+<p>也就是 :</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}\hat\theta_n\rightarrow\theta</script><p>也即:</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin} \hat\theta_n=\theta</script><p>或者 : (此式常结合切比雪夫不等式)</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}P\{|\hat\theta_n-\theta|\ge\varepsilon\}=0</script><p>我们可以验证样本均值和样本方差是总体均值和总体方差的无偏, 相合,较为有效的估计量</p>
+<p>一般的, 验证相合性会使用辛钦大数定理</p>
+<script type="math/tex; mode=display">
+\lim_{n\rightarrow\infin}P\left\{\left|\frac{1}{n}\sum\limits_{i=1}^n X_i-\mu\right|<\varepsilon\right\}=1</script><p>将大数定理中的$X<em>i$替换成样本, 则$\frac{1}{n}\sum\limits</em>{i=1}^n X_i=\overline{X}$</p>
+
+        <h2 id="7-数理统计-抽样分布-区间估计和假设检验"   >
+          <a href="#7-数理统计-抽样分布-区间估计和假设检验" class="heading-link"><i class="fas fa-link"></i></a>7. [数理统计]抽样分布,区间估计和假设检验</h2>
+      
+        <h3 id="7-1-抽样分布"   >
+          <a href="#7-1-抽样分布" class="heading-link"><i class="fas fa-link"></i></a>7.1 抽样分布</h3>
+      <p>统计量的分布叫做抽样分布, 很多总体符合正态分布$N(\mu,\sigma^2)$.样本$(X_1,X_2,…,X_n)$[随机变量]也符合正态分布$N(\mu,\sigma^2)$, 将标准正态分布变形, 可以得到一系列其他常用的分布, 帮助我们估计总体.</p>
+<p>当然,正态分布也是很重要的抽样分布,我们常常把他统一成<strong>标准正态分布</strong>$N(0,1)$来研究.</p>
+<p>四个重要的抽样分布 : </p>
+<ol>
+<li>标准正态分布</li>
+<li>卡方分布</li>
+<li>t分布</li>
+<li>F分布</li>
+</ol>
+<p>分位点: $X$分布的$\alpha$分位点反应的是$P(X\ge \alpha)$的概率, 注意, 这里是大于, 如果要计算$P(X &lt; \alpha)$则需要换成 $1-P(X\ge \alpha)$</p>
+
+        <h4 id="7-1-1-卡方分布"   >
+          <a href="#7-1-1-卡方分布" class="heading-link"><i class="fas fa-link"></i></a>7.1.1 卡方分布</h4>
+      <p>相互独立,且符合标准正态分布$N(0,1)$的随机变量序列$(X_1,X_2,…,X_n)$,则随机变量$\chi^2=X_1^2+X_2^2+…+X_n^2$服从自由度为$n$的$\chi^2$分布. </p>
+<p>记作: $\chi^2\sim\chi^2(n)$. </p>
+<p>也就是 : $X_1^2+X_2^2+…+X_n^2\sim \chi^2(n)$</p>
+<p>顺便一提, 自由度是式子中不能相互表出的随机变量值的数量</p>
+
+        <h5 id="助记式"   >
+          <a href="#助记式" class="heading-link"><i class="fas fa-link"></i></a>助记式:</h5>
+      <script type="math/tex; mode=display">
+X_1^2+X_2^2+...+X_n^2 \sim \chi^2(n)</script>
+        <h5 id="性质"   >
+          <a href="#性质" class="heading-link"><i class="fas fa-link"></i></a>性质</h5>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210101152147.png" alt="image-20210101152147171" style="zoom:25%;" /></p>
+<ol>
+<li><p>相互独立可加性</p>
+<p>对相互独立的$X,Y$, $X\sim\chi^2(n),Y\sim\chi^2(m)$, 有: </p>
+<script type="math/tex; mode=display">
+X+Y\sim\chi^2(n+m)</script></li>
+<li><p>期望方差</p>
+<p>对$X\sim\chi^2(n)$,有$E(X)=n,D(X)=2n$</p>
+</li>
+</ol>
+
+        <h4 id="7-1-2-t分布"   >
+          <a href="#7-1-2-t分布" class="heading-link"><i class="fas fa-link"></i></a>7.1.2 t分布</h4>
+      <p>相互独立的随机变量$X\sim N(0,1)$,$Y\sim\chi^2(n)$, 则随机变量$t=\frac{X}{\sqrt{Y/n}}$服从自由度为$n$的$t$分布</p>
+<p>记为$t\sim t(n)$</p>
+<p>也就是 : $\frac{X}{\sqrt{Y/n}}\sim t(n)$</p>
+
+        <h5 id="助记式-1"   >
+          <a href="#助记式-1" class="heading-link"><i class="fas fa-link"></i></a>助记式:</h5>
+      <script type="math/tex; mode=display">
+\frac{N(0,1)}{\sqrt{\frac{\chi^2(n)}{n}}}\sim t(n)</script>
+        <h5 id="性质-1"   >
+          <a href="#性质-1" class="heading-link"><i class="fas fa-link"></i></a>性质</h5>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210101153809.png" alt="image-20210101153809229" style="zoom:25%;" /></p>
+<ol>
+<li>对称: 上侧分位数满足$t<em>\alpha(n)=-t</em>{1-\alpha}(n)$</li>
+</ol>
+
+        <h4 id="7-1-3-F分布"   >
+          <a href="#7-1-3-F分布" class="heading-link"><i class="fas fa-link"></i></a>7.1.3 F分布</h4>
+      <p>相互独立的随机变量$X\sim \chi^2(n_1)$,$Y\sim\chi^2(n_2)$, 则随机变量$F=\frac{X/n_1}{Y/n_2}$服从第一自由度为$n_1$,第二自由度为$n_2$的$F$分布</p>
+<p>记为$F\sim F(n_1,n_2)$ </p>
+<p>也就是 : $\frac{X/n_1}{Y/n_2}\sim F(n_1,n_2)$</p>
+
+        <h5 id="助记式-2"   >
+          <a href="#助记式-2" class="heading-link"><i class="fas fa-link"></i></a>助记式:</h5>
+      <script type="math/tex; mode=display">
+\frac{\frac{\chi^2(n_1)}{n_1}}{\frac{\chi^2(n_2)}{n_2}}\sim F(n_1,n_2)</script>
+        <h5 id="性质-2"   >
+          <a href="#性质-2" class="heading-link"><i class="fas fa-link"></i></a>性质</h5>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210101160140.jpg" alt="6a63f6246b600c33ef6739a9154c510fd9f9a1b1" style="zoom: 33%;" /></p>
+<ol>
+<li>若$F\sim F(n_1,n_2)$, 则$\frac{1}{F}\sim F(n_2,n_1)$</li>
+<li>上侧分位数: $F<em>{1-\alpha}(n_1,n_2)=\frac{1}{F</em>{\alpha}(n_2,n_1)}$</li>
+</ol>
+
+        <h4 id="7-1-4-抽样分布定理"   >
+          <a href="#7-1-4-抽样分布定理" class="heading-link"><i class="fas fa-link"></i></a>7.1.4 抽样分布定理</h4>
+      
+        <h5 id="一个正态总体的性质"   >
+          <a href="#一个正态总体的性质" class="heading-link"><i class="fas fa-link"></i></a>一个正态总体的性质</h5>
+      <p>正态总体$N(\mu,\sigma^2)$的样本$(X_1,X_2,…,X_n)$, 样本均值$\overline{X}$, 样本方差$S^2$, 有:</p>
+<ol>
+<li>$E(\overline X)=E(X)$ , $D(\overline X)=\frac{D(X)}{n}$ , $E(S^2)=D(X)$</li>
+<li>$\overline{X}$和$S^2$相互独立</li>
+<li>$\overline{X}\sim N(\mu,\frac{\sigma^2}{n})$<ul>
+<li>$\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)$</li>
+<li>$\sum\limits^{n}_{i=1}X_i^2\sim N(n\mu,n\sigma^2)$</li>
+</ul>
+</li>
+<li>$\frac{(n-1)}{\sigma^2}S^2\sim \chi^2(n-1)$<ul>
+<li>$\frac{1}{\sigma^2}\sum\limits^{n}_{i=1}(X_i-\overline X)^2 = \frac{(n-1)}{\sigma^2}S^2\sim \chi^2(n-1)$</li>
+</ul>
+</li>
+<li>$\frac{\overline{X}-\mu}{s/\sqrt{n}}\sim t(n-1)$</li>
+</ol>
+<p>结合这些公式, 还有期望的性质,以及三大分布的助记式,可以帮助我们进行一些证明</p>
+
+        <h5 id="两个正态总体的性质"   >
+          <a href="#两个正态总体的性质" class="heading-link"><i class="fas fa-link"></i></a>两个正态总体的性质</h5>
+      <p>正态总体$N(\mu<em>1,\sigma_1^2)$的容量为$n_1$样本$(X_1,X_2,…,X</em>{n_1})$, 样本均值$\overline{X}$, 样本方差$S^2_1$, </p>
+<p>正态总体$N(\mu<em>2,\sigma^2_2)$的容量为$n_2$样本$(Y_1,Y_2,…,Y</em>{n_2})$, 样本均值$\overline{Y}$, 样本方差$S^2_2$, </p>
+<p>有:</p>
+<ol>
+<li><p>$\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}\sim F(n_1-1,n_2-1)$</p>
+<ul>
+<li>此式由单个正态总体的性质4推得, 上下都除以自由度即可</li>
+</ul>
+</li>
+<li><p>当满足$\sigma_1^2=\sigma_2^2=\sigma^2$时</p>
+<script type="math/tex; mode=display">
+T=\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}</script><p>其中,</p>
+<script type="math/tex; mode=display">
+S_w=\sqrt{\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2}}</script></li>
+</ol>
+
+        <h3 id="7-2-区间估计"   >
+          <a href="#7-2-区间估计" class="heading-link"><i class="fas fa-link"></i></a>7.2 区间估计</h3>
+      <p>点估计给出的点不能给出这个点的正确率, 我们使用区间估计可以给出待估参数落在某个区间的概率,也就是可信程度</p>
+<p>估计的区间越长, 可行度越高, 但是效用也低了, 所以我们一般取可信度$95\%\sim99\%$</p>
+<p>通过区间估计找出的区间是<strong>置信区间</strong></p>
+<p>区间估计中我们只研究<strong>正态总体</strong></p>
+<p><strong>置信区间</strong>: </p>
+<p>设总体$X$的分布函数为$F(x,\theta)$, 含有一个未知参数$\theta$ </p>
+<p>对于参数$\theta$的所有可能取值, 都给定很小的定值$\alpha(0&lt;\alpha&lt;1)$有</p>
+<script type="math/tex; mode=display">
+P\{\hat\theta_1(X_1,X_2,...,X_n)\le\theta\le\hat\theta_2(X_1,X_2,...,X_n)\}=1-\alpha</script><p>则称随机区间$[\hat\theta_1,\hat\theta_2]$是$\theta$的<strong>置信度</strong>为$1-\alpha$的<strong>置信区间</strong></p>
+<p>区间估计的核心思想是构造一个统计量, 能够使用抽样分布算出他们对应置信度的分位点, 解出待估参数的范围.</p>
+
+        <h4 id="7-2-1-区间估计的一般步骤"   >
+          <a href="#7-2-1-区间估计的一般步骤" class="heading-link"><i class="fas fa-link"></i></a>7.2.1 区间估计的一般步骤</h4>
+      <p>建议先直接看题, 文字表述比较干瘪</p>
+<ol>
+<li>找到待估参数$\theta$的一个良好估计量, 一般估计$\mu$和$\sigma$, 就找样本均值和样本方差就好了</li>
+<li>构造枢轴变量, 枢轴变量中的未知数只能含有且必须含有待估参数和估计量</li>
+<li>列出枢轴变量取值在中间部分,概率为$1-\alpha$的等式</li>
+<li>反解括号内的不等式,得到$A\le\theta\le B$的形式</li>
+<li>计算置信度, 计算估计量, 找到分位数, 带入式子即可</li>
+</ol>
+
+        <h4 id="7-2-2-统计量选取"   >
+          <a href="#7-2-2-统计量选取" class="heading-link"><i class="fas fa-link"></i></a>7.2.2 统计量选取</h4>
+      <p>我们研究的都是正态总体</p>
+
+        <h5 id="单个正态总体"   >
+          <a href="#单个正态总体" class="heading-link"><i class="fas fa-link"></i></a>单个正态总体</h5>
+      <p>根据我们的待故参数,以及已知条件情况,可得下表: </p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>待估参数</th>
+<th>条件</th>
+<th>统计量</th>
+<th>置信区间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\mu$</td>
+<td>$\sigma^2$已知</td>
+<td>$U=\frac{\overline{X}-\mu}{\sigma\sqrt{n}}\sim N(0,1)$</td>
+<td>$\left(\overline{X} \pm\mu_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$\sigma^2$未知</td>
+<td>$T=\frac{\overline{X}-\mu}{S\sqrt{n}}\sim t(n-1)$</td>
+<td>$\left(\overline{X} \pm t_{\frac{\alpha}{2}}\frac{S}{\sqrt{n}}\right)$</td>
+</tr>
+<tr>
+<td>$\sigma^2$</td>
+<td>$\mu$  已知</td>
+<td>$\frac{1}{\sigma^2}\sum\limits^{n}_{i=1}(X_i-\mu)^2 \sim \chi^2(n)$</td>
+<td>$\left(\frac{\sum\limits^{n}<em>{i=1}(X_i-\mu)^2 }{\chi^2</em>\frac{\alpha}{2}(n)},\frac{\sum\limits^{n}<em>{i=1}(X_i-\mu)^2 }{\chi^2</em>{1-\frac{\alpha}{2}}(n)}\right)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$\mu$  未知</td>
+<td>$\frac{(n-1)}{\sigma^2}S^2\sim \chi^2(n-1)$</td>
+<td>$\left(\frac{(n-1)S^2}{\chi^2<em>\frac{\alpha}{2}(n-1)},\frac{(n-1)S^2}{\chi^2</em>{1-\frac{\alpha}{2}}(n-1)}\right)$</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>置信区间眼熟即可, 统计量需要记住</p>
+<blockquote>
+<p>交叉记忆 : 均值的估计量都是关于y轴对称的</p>
+<p>一个变量的方差估计量都是卡方估计</p>
+</blockquote>
+<p>一共四种情况, 估计$\mu$ 分知不知道$\sigma^2$,估计$\sigma^2$ 分知不知道$\mu$ </p>
+<ol>
+<li>估计$\mu$<ol>
+<li>如果$\sigma^2$已知,比较简单,标准化正态分布即可</li>
+<li>如果$\sigma^2$未知, 比较复杂, 根据抽样分布定理构造$t$分布</li>
+</ol>
+</li>
+<li>估计$\sigma^2$ 一定是$\chi^2$分布<ol>
+<li>如果$\mu$已知, 利用卡方分布的判定, 标准化正态分布即可</li>
+<li>如果$\mu$未知, 利用抽样分布定理, 构造$\chi^2$分布<ul>
+<li>其实此式和上面的式子区别就在于,将$\mu$替换成样本均值,这样自由度就减小了1,因为样本均值”占了”一个自由度</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+        <h5 id="两个正态总体"   >
+          <a href="#两个正态总体" class="heading-link"><i class="fas fa-link"></i></a>两个正态总体</h5>
+      <p>两个正态总体我们研究的是他们的比较,也就是做差做商, 同样有表:</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>待估参数</th>
+<th>条件</th>
+<th>统计量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\mu_1-\mu_2$</td>
+<td>$\sigma_1^2,\sigma_2^2$已知</td>
+<td>$U=\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\sim N(0,1)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$\sigma_1^2,\sigma_2^2$未知<br/>但是$\sigma_1^2=\sigma_2^2$</td>
+<td>$U=\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\sim t(n_1+n_2-2)$<br/>其中$S_w=\sqrt{\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2}}$</td>
+</tr>
+<tr>
+<td>$\frac{\sigma_1^2}{\sigma_2^2}$</td>
+<td>$\mu_1,\mu_2$已知</td>
+<td>$F=\frac{n<em>2\sigma_2^2\sum\limits^{n}</em>{i=1}(X<em>i-\mu_1)^2}{n_1\sigma_1^2\sum\limits^{n}</em>{i=1}(Y_i-\mu_2)^2}\sim F(n_1,n_2)$</td>
+</tr>
+<tr>
+<td></td>
+<td>$\mu_1,\mu_2$未知</td>
+<td>$F=\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}\sim F(n_1-1,n_2-1)$</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>一共四种情况, 估计$\mu_1,\mu_2$关系的时候做差,$\sigma_1^2,\sigma_2^2$已知, $\sigma_1^2,\sigma_2^2$未知但相等两种情况. 估计$\sigma^2_1,\sigma^2_2$的关系用商, 分$\mu_1,\mu_2$已知,和$\mu_1,\mu_2$未知两种情况</p>
+<ol>
+<li><p>估计$\mu_1 - \mu_2$</p>
+<ol>
+<li>如果$\sigma_1^2,\sigma_2^2$已知,比较简单,标准化正态分布即可</li>
+<li>如果$\sigma_1^2,\sigma_2^2$未知,但$\sigma_1^2=\sigma_2^2$ 比较复杂, 根据抽样分布定理构造$t$分布</li>
+</ol>
+</li>
+<li><p>估计$\frac{\sigma^2_1}{\sigma^2_2}$ , 一定是$F$分布</p>
+<ol>
+<li>如果$\mu_1,\mu_2$已知, 类似一个的情况, 构造两个卡方分布, 然后做比化简就是这个式子</li>
+</ol>
+</li>
+</ol>
+<pre><code>  $$
+  F=\frac&#123;\frac&#123;\sum\limits^&#123;n&#125;_&#123;i=1&#125;(X_i-\mu_1)^2&#125;&#123;n_1\sigma_1^2&#125;&#125;&#123;\frac&#123;\sum\limits^&#123;n&#125;_&#123;i=1&#125;(Y_i-\mu_2)^2&#125;&#123;n_2\sigma_2^2&#125;&#125;\sim F(n_1,n_2)
+  $$
+</code></pre><ol>
+<li>如果$\mu_1,\mu_2$未知, 根据抽样分布定理构造$F$分布</li>
+</ol>
+
+        <h3 id="7-3-假设检验"   >
+          <a href="#7-3-假设检验" class="heading-link"><i class="fas fa-link"></i></a>7.3 假设检验</h3>
+      <p>假设检验的核心思想是小概率事件很难发生</p>
+<p>假设检验的核心思想是构造一个统计量, 能够使用抽样分布算出他们对应显著性水平的分位点, 解出带入数值得到一个统计量小概率事件的范围,然后计算样本的统计量的估计值, 然后判断拒绝假设还是接受假设.</p>
+
+        <h4 id="7-3-1-假设检验的一般步骤"   >
+          <a href="#7-3-1-假设检验的一般步骤" class="heading-link"><i class="fas fa-link"></i></a>7.3.1 假设检验的一般步骤</h4>
+      <ol>
+<li>提出原假设$H_0$和备选假设$H_1$</li>
+<li>建立检验统计量</li>
+<li>确定$H_0$基于统计量的拒绝域</li>
+<li>计算样本的的统计量观测值</li>
+<li>对比拒绝域和观测值, 得出拒绝还是接受</li>
+</ol>
+<p>假设检验的两类错误: 弃真,纳伪</p>
+<p>放大显著性水平可以减小纳伪的概率,但是会增加弃真的概率</p>
+<p>对于正态总体, 选择检验统计量的方式和参数估计一致</p>
+<p>提出假设的方法: 构造总体和样本的等式/不等式, 备选假设是假设的补集.</p>
+<p>比如$H_0:\mu=\mu_0=a,H_0:\mu\ne\mu_0=a$</p>
+
+        <h2 id="8-数理统计-回归分析"   >
+          <a href="#8-数理统计-回归分析" class="heading-link"><i class="fas fa-link"></i></a>8. [数理统计]回归分析</h2>
+      <p>变量的关系是我们研究的重要内容, 一般而言,变量有两种关系: </p>
+<ol>
+<li>确定性关系: 数学中用明确的函数来表示的关系. 比如: $x=vt$</li>
+<li>相关关系: 是指变量之间相互制约,  却又没有达到可以相互确认的程度</li>
+</ol>
+<p>自然界中有很多关系我们暂时不能明确确定确定性关系的变量,我们又想研究他们的关系和走势变化, 就需要使用回归分析</p>
+<p>回归分析的研究对象:具有相关关系的随机变量.</p>
+<p>回归分析的目的: 建立模型, 将相关关系用函数关系式 + 误差表示出来</p>
+<p>回归分析的主要任务: </p>
+<ol>
+<li>求出回归模型</li>
+<li>检验回归模型是否恰当</li>
+</ol>
+<p>回归模型 :</p>
+<script type="math/tex; mode=display">
+Y=\mu(x_1,x_2,...,x_k)+\varepsilon\space\space E(\varepsilon)=0 ,D(\varepsilon)=\sigma^2</script><p>定义回归方程为:</p>
+<script type="math/tex; mode=display">
+Y=\mu(x_1,x_2,...,x_k)</script><p>$\sigma$ 表示误差的方差, 误差的方差反应回归模型的有效性</p>
+<p>我们主要研究一元线性相关关系 , 要求两个变量的线性相关关系 , 我们可以先求线性回归方程再检验, 也可以先检验是不是线性相关的, 再求回归方程, 后者比较常用.常采用的方法是使用相关系数检验法和最小二乘法.</p>
+
+        <h3 id="8-1-检验线性相关关系"   >
+          <a href="#8-1-检验线性相关关系" class="heading-link"><i class="fas fa-link"></i></a>8.1 检验线性相关关系</h3>
+      
+        <h4 id="8-1-1-相关系数R检验法-gt-求出回归方程之前检验"   >
+          <a href="#8-1-1-相关系数R检验法-gt-求出回归方程之前检验" class="heading-link"><i class="fas fa-link"></i></a>8.1.1 相关系数R检验法-&gt;求出回归方程之前检验</h4>
+      
+        <h5 id="样本相关系数怎们算"   >
+          <a href="#样本相关系数怎们算" class="heading-link"><i class="fas fa-link"></i></a>样本相关系数怎们算?</h5>
+      <p>相关系数检验法不需要先求出一元回归方程</p>
+<p>利用相关系数描述两个变量的线性相关程度</p>
+<p>一元线性回归分析中,  定义样本相关系数为:</p>
+<script type="math/tex; mode=display">
+\hat\rho = R = \frac{\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\overline x)(y_i-\overline y)}{\sqrt{\frac{1}{n}\sum\limits_{i=1}^{n}(x_i-\overline x)^2}\sqrt{\frac{1}{n}\sum\limits_{i=1}^{n}(y_i-\overline y)^2}}</script>
+        <h5 id="样本相关系数怎们看"   >
+          <a href="#样本相关系数怎们看" class="heading-link"><i class="fas fa-link"></i></a>样本相关系数怎们看?</h5>
+      <p>样本相关系数 $R$ 有类似于$\rho<em>{XY}$ 的性质, 如:   $| R |≤1$; 当向量$X$与 $Y$ 线性相关时, $|R|=1$ . $|R|$越接近1,$Y$ 与$X$的线性相关关系就越显著. 给定显著性水平$\alpha$ ,计算样本相关系数$R$, 如果$|R|&gt;R</em>\alpha(n-2)$, 则认为$Y$与$X$之间的线性相关关系在显著性水平$\alpha$ 下显著.</p>
+
+        <h5 id="回归分析的助记符"   >
+          <a href="#回归分析的助记符" class="heading-link"><i class="fas fa-link"></i></a>回归分析的助记符</h5>
+      <p>回归分析的公式比较复杂, 我们可以使用助记符表示,记:</p>
+<script type="math/tex; mode=display">
+l_{xy}=\sum\limits_{i=1}^{n}(x_i-\overline x)(y_i-\overline y)</script><script type="math/tex; mode=display">
+l_{xx}=\sum\limits_{i=1}^{n}(x_i-\overline x)^2</script><script type="math/tex; mode=display">
+l_{yy}=\sum\limits_{i=1}^{n}(y_i-\overline y)^2</script><p>那么相关系数的定义式可以表示为</p>
+<script type="math/tex; mode=display">
+R = \frac{l_{xy}}{\sqrt{l_{xx}}\sqrt{l_{yy}}}</script>
+        <h5 id="助记符变形式"   >
+          <a href="#助记符变形式" class="heading-link"><i class="fas fa-link"></i></a>助记符变形式</h5>
+      <p>有的时候题目不会给我们$l<em>{xy}$,$l</em>{xx}$,$l_{yy}$这些量的数值,有的时候会给我们计算式的数值,我们可以记住这些助记符变形来更快的计算</p>
+<script type="math/tex; mode=display">
+l_{xy}=\sum\limits_{i=1}^{n}(x_i-\overline x)(y_i-\overline y)=\sum\limits_{i=1}^{n}x_iy_i-n\overline{x}\overline{y}</script><script type="math/tex; mode=display">
+l_{xx}=\sum\limits_{i=1}^{n}(x_i-\overline x)^2=\sum\limits_{i=1}^{n}x_i^2-n\overline{x}^2</script><script type="math/tex; mode=display">
+l_{yy}=\sum\limits_{i=1}^{n}(y_i-\overline y)^2=\sum\limits_{i=1}^{n}y_i^2-n\overline{y}^2</script><p>那么相关系数的定义式可以变形为</p>
+<script type="math/tex; mode=display">
+R = \frac{\sum\limits_{i=1}^{n}x_iy_i-n\overline{x}\overline{y}}{\sqrt{\sum\limits_{i=1}^{n}x_i^2-n\overline{x}^2}\sqrt{\sum\limits_{i=1}^{n}y_i^2-n\overline{y}^2}}</script><p>我们可以提取出变形式子中用到的数值,我们知道这些数值就可以计算相关系数了:</p>
+<p>$\sum\limits<em>{i=1}^{n}x_i^2$ , $\sum\limits</em>{i=1}^{n}y<em>i^2$ , $\sum\limits</em>{i=1}^{n}x_iy_i$ , $\overline{x}$ , $\overline{y}$ </p>
+<p>其中$\overline{x}$ 可以表示为 $\frac{\sum\limits<em>{i=1}^{n}x_i}{n}$,中$\overline{y}$ 可以表示为 $\frac{\sum\limits</em>{i=1}^{n}y_i}{n}$, 所以我们也可以知道下面这些式子的值来计算相关系数:</p>
+<p> $\sum\limits<em>{i=1}^{n}x_i^2$ , $\sum\limits</em>{i=1}^{n}y<em>i^2$ , $\sum\limits</em>{i=1}^{n}x<em>iy_i$ , $\sum\limits</em>{i=1}^{n}x<em>i$ , $\sum\limits</em>{i=1}^{n}y_i$ </p>
+<p>当给出这些值的时候不需要把他们化成均值形式, 式子中的$n$可以约掉化简</p>
+
+        <h4 id="8-1-2-离差平方和F检验法-gt-求出回归方程之后检验"   >
+          <a href="#8-1-2-离差平方和F检验法-gt-求出回归方程之后检验" class="heading-link"><i class="fas fa-link"></i></a>8.1.2 离差平方和F检验法-&gt;求出回归方程之后检验</h4>
+      <p>离差平方和检验法需要先求出一元回归方程</p>
+<script type="math/tex; mode=display">
+F=\frac{Q_R}{Q_E/(n-2)}\sim F(1,n-2) \\
+Q_R=\hat{b^2}l_{xx} \\
+Q_E=l_{yy}-\hat{b^2}l_{xx}</script><p>验证给定$\alpha$,$F&gt;F_\alpha(1,n-2)$则相关性显著</p>
+
+        <h3 id="8-2-求一元回归模型"   >
+          <a href="#8-2-求一元回归模型" class="heading-link"><i class="fas fa-link"></i></a>8.2 求一元回归模型</h3>
+      <p>线性相关关系的回归模型可以表示为</p>
+<script type="math/tex; mode=display">
+Y=a+bx+\varepsilon,E(\varepsilon)=0,D(\varepsilon )=σ^2</script><p>通常为了方便研究, 我们假定误差满足正态分布,构造<strong>一元线性正态回归模型</strong>:</p>
+<script type="math/tex; mode=display">
+Y=a+bx+\varepsilon,\varepsilon\sim N(0,\sigma^2)</script><p> $a$,$b$为常系数, $b$称为 $Y$对 $X$的回归系数, $a$称为回归常数.</p>
+<p>所以求回归模型的主要工作求参数$a,b,\sigma^2$的估计值</p>
+
+        <h4 id="8-2-1-估计-a-b​"   >
+          <a href="#8-2-1-估计-a-b​" class="heading-link"><i class="fas fa-link"></i></a>8.2.1 估计 a,b​</h4>
+      <p>做n次独立试验, 取自变量$x_i$和对应的$y_i$为一对观察值, 使用观测值$(x_i,y_i)$ ,$i=1,2,..,n,$ 对 $a,b$ 进行估计, 得到估计值$\hat{a},\hat{b}$.</p>
+<p>得到这个估计值, 对于新的自变量$x_i$, 有经验回归值$\hat{y_i}=\hat{a}+\hat{b}x_i$</p>
+<p>也有经验回归方程 : $y=\hat{a}+\hat{b}x$</p>
+<p>我们常常使用最小二乘法估计, 最小二乘法主要是找到总残差最小的那条直线, 进过求和求偏导解方程我们可以得到公式</p>
+<script type="math/tex; mode=display">
+\hat{b}=\frac{\sum\limits_{i=1}^{n}(x_i-\overline x)(y_i-\overline y)}{\sum\limits_{i=1}^{n}(x_i-\overline x)^2}</script><script type="math/tex; mode=display">
+\hat{a}=\overline{y}-\hat{b}\overline{x}</script><p>由$a$的估计式子我们也可得到推论, <strong>观测值的平均值一定在经验回归方程上</strong>, $\hat a$计算的时候需要带入没有舍入的原始数据才能准确</p>
+<p>$a$估计式很简单, $b$的估计比较复杂, 我们可以使用助记符和推导式方便记忆和计算</p>
+<p>助记符:</p>
+<script type="math/tex; mode=display">
+\hat{b}=\frac{l_{xy}}{l_{xx}}</script><p>变形式:</p>
+<script type="math/tex; mode=display">
+\hat{b}=\frac{\sum\limits_{i=1}^{n}x_iy_i-n\overline{x}\overline{y}}{\sum\limits_{i=1}^{n}x_i^2-n\overline{x}^2}</script><p>求$\hat{b}$需要的统计量有: </p>
+<p> $\sum\limits<em>{i=1}^{n}x_i^2$ , $\sum\limits</em>{i=1}^{n}x<em>iy_i$ , $\sum\limits</em>{i=1}^{n}x_i$  </p>
+
+        <h4 id="8-2-1-估计-σ方"   >
+          <a href="#8-2-1-估计-σ方" class="heading-link"><i class="fas fa-link"></i></a>8.2.1 估计 σ方</h4>
+      <p>由于$\sigma^2=D(\varepsilon)=E(\varepsilon^2)$ ,估计 $\sigma^2$ 转化为估计$\varepsilon^2$</p>
+<p>使用距估计, 原式子变形得到$\varepsilon$的计算值, 可以得到估计值</p>
+<script type="math/tex; mode=display">
+\sigma^2=\frac{1}{n-2}\sum\limits_{i=1}^{n}(y_i-\hat{y_i})^2</script><p>带入$\hat{y_i}$的估计式,可以得到</p>
+<script type="math/tex; mode=display">
+\sigma^2=\frac{1}{n-2}(l_{yy}-\hat{b}^2l_{xx})</script><p>带入推导式太复杂,给出$l<em>{yy}$和$l</em>{xx}$:</p>
+<script type="math/tex; mode=display">
+l_{xx}=\sum\limits_{i=1}^{n}(x_i-\overline x)^2</script><script type="math/tex; mode=display">
+l_{yy}=\sum\limits_{i=1}^{n}(y_i-\overline y)^2</script>
+        <h3 id="8-3-本部分的常规解题步骤"   >
+          <a href="#8-3-本部分的常规解题步骤" class="heading-link"><i class="fas fa-link"></i></a>8.3 本部分的常规解题步骤</h3>
+      <p>一般两问, 第一问求相关系数, 第二问求经验方程</p>
+<ol>
+<li>看情况, 求$\overline{x},\overline{y}$</li>
+<li>求$l<em>{xy}$,$l</em>{xx}$,$l_{yy}$</li>
+<li>求$R$</li>
+<li>验证 $|R|&gt;R_\alpha(n-2)$ 说明线性相关性</li>
+<li>求$\hat b$</li>
+<li>求$\hat{a}$</li>
+<li>求$\hat{\sigma^2}$</li>
+</ol>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/01/03/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/">http://zjeff-953.gitee.io/zjeff/2021/01/03/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/01/07/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20-%20%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB%E7%BB%9F%E8%AE%A1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">概率论与数理统计 - 重点题型</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/01/02/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2005%20%E6%80%BB%E7%BA%BF%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/"><span class="paginator-prev__text">计算机组成原理 - 05 总线和输入输出系统</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1-%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86"><span class="toc-text">
+          概率论与数理统计 - 最核心知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E7%8E%87%E8%AE%BA-%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E5%92%8C%E6%A6%82%E7%8E%87"><span class="toc-text">
+          1. [概率论]随机事件和概率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A6%82%E7%8E%87%E8%AE%BA-%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83"><span class="toc-text">
+          2. [概率论]一维随机变量及其分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83"><span class="toc-text">
+          2.1 一维随机变量的分布</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0"><span class="toc-text">
+          2.1.1 分布函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%B8%B8%E8%A7%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83"><span class="toc-text">
+          2.2 常见随机变量的分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A6%82%E7%8E%87%E8%AE%BA-%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83"><span class="toc-text">
+          3. [概率论]多维随机变量及其分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%87%A0%E7%A7%8D%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83"><span class="toc-text">
+          3.4 几种特殊函数的分布</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-%E6%9E%81%E5%80%BC%E5%88%86%E5%B8%83-Z-min-X-Y-Z-max-X-Y"><span class="toc-text">
+          3.4.1 极值分布 Z&#x3D;min{X,Y}&#x2F;Z&#x3D;max{X,Y}</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-%E5%92%8C%E7%9A%84%E5%88%86%E5%B8%83-Z-X-Y"><span class="toc-text">
+          3.4.2 和的分布 Z&#x3D;X+Y</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-3-%E5%95%86%E7%9A%84%E5%88%86%E5%B8%83-Z-X-Y"><span class="toc-text">
+          3.4.3 商的分布 Z&#x3D;X&#x2F;Y</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A6%82%E7%8E%87%E8%AE%BA-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81"><span class="toc-text">
+          4. [概率论]随机变量的数字特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B"><span class="toc-text">
+          4.1 数学期望</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E6%B1%82%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E7%9A%846%E7%A7%8D%E6%83%85%E5%86%B5"><span class="toc-text">
+          4.1.1 求数学期望的6种情况</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-text">
+          一维随机变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-text">
+          二维随机变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E7%9A%843%E4%B8%AA%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          4.1.2 数学期望的3个性质</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%96%B9%E5%B7%AE"><span class="toc-text">
+          4.2 方差</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%B1%82%E6%96%B9%E5%B7%AE%E7%9A%842%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-text">
+          4.2.1 求方差的2种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%AE%9A%E4%B9%89%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-text">
+          通过定义求方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8E%A8%E5%AF%BC%E5%85%AC%E5%BC%8F%E6%B1%82%E6%96%B9%E5%B7%AE-%E5%B8%B8%E7%94%A8"><span class="toc-text">
+          通过推导公式求方差(常用)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%96%B9%E5%B7%AE%E7%9A%843%E4%B8%AA%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          4.2.1 方差的3个性质</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%B8%B8%E8%A7%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%9F%E6%9C%9B%E6%96%B9%E5%B7%AE"><span class="toc-text">
+          4.3 常见随机变量的期望方差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%92%8C%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="toc-text">
+          4.4 协方差和相关系数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E6%B1%82%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9A%843%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">
+          4.4.1 求协方差的3种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%AE%9A%E4%B9%89%E6%B1%82%E5%8D%8F%E6%96%B9%E5%B7%AE"><span class="toc-text">
+          通过定义求协方差</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%8E%A8%E5%AF%BC%E5%85%AC%E5%BC%8F%E6%B1%82%E5%8D%8F%E6%96%B9%E5%B7%AE-%E4%BC%98%E5%85%88"><span class="toc-text">
+          通过推导公式求协方差(优先)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E6%B1%82%E5%8D%8F%E6%96%B9%E5%B7%AE-%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="toc-text">
+          利用相关系数求协方差(二维正态分布)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2-%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9A%843%E4%B8%AA%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          4.4.2 协方差的3个性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-3-%E8%AE%A4%E8%AF%86%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="toc-text">
+          4.4.3 认识相关系数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-4-%E7%9B%B8%E5%85%B3%E6%80%A7%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="toc-text">
+          4.4.4 相关性和独立性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E4%B8%A4%E4%B8%AA%E4%B8%80%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%92%8C%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          4.5 两个一维正态分布和二维正态分布的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-1-%E4%B8%A4%E4%B8%AA%E4%B8%80%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          4.5.1 两个一维正态分布的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%8F%AF%E5%8A%A0%E6%80%A7"><span class="toc-text">
+          正态分布的可加性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-2-%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          4.5.2 二维正态分布的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%8F%AF%E6%8B%86%E5%88%86"><span class="toc-text">
+          二维正态分布可拆分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%8D%E7%9B%B8%E5%85%B3%E5%92%8C%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B%E6%98%AF%E7%AD%89%E4%BB%B7%E7%9A%84"><span class="toc-text">
+          二维正态随机变量的不相关和相互独立是等价的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#X-Y%E4%B8%8EX-Y%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text">
+          X-Y与X+Y相互独立的条件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E5%92%8C%E7%90%86%E8%AE%BA%E4%BE%9D%E6%8D%AE"><span class="toc-text">
+          5. [概率论与数理统计]数理统计的基本思想和理论依据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%A0%B7%E6%9C%AC%E5%92%8C%E6%80%BB%E4%BD%93"><span class="toc-text">
+          5.1 样本和总体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-1-%E6%80%BB%E4%BD%93"><span class="toc-text">
+          5.1.1 总体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-2-%E6%A0%B7%E6%9C%AC-%E7%AE%80%E5%8D%95%E9%9A%8F%E6%9C%BA%E6%A0%B7%E6%9C%AC"><span class="toc-text">
+          5.1.2 样本(简单随机样本)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-text">
+          5.2 切比雪夫不等式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.3 大数定理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-2-%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.3.2 切比雪夫大数定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-3-%E8%BE%9B%E9%92%A6%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.3.3 辛钦大数定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-4-%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.3.4 伯努利大数定理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.4 中心极限定理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-1-%E7%8B%AC%E7%AB%8B%E5%90%8C%E5%88%86%E5%B8%83%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.4.1 独立同分布中心极限定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-2-%E6%A3%A3%E8%8E%AB%E5%BC%97-%E2%80%94-%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="toc-text">
+          5.4.2 棣莫弗 — 拉普拉斯中心极限定理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1-%E6%A0%B7%E6%9C%AC%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0-%E7%BB%9F%E8%AE%A1%E9%87%8F%E5%92%8C%E7%82%B9%E4%BC%B0%E8%AE%A1"><span class="toc-text">
+          6. [数理统计]样本的分布函数,统计量和点估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%A0%B7%E6%9C%AC%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0"><span class="toc-text">
+          6.1 样本的分布函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="toc-text">
+          6.2 常用统计量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-1-%E8%AE%A4%E8%AF%86%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="toc-text">
+          6.2.1 认识统计量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-2-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E9%87%8F1-%E2%80%94-%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E5%92%8C%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE"><span class="toc-text">
+          6.2.2 常用统计量1 — 样本均值和样本方差</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC"><span class="toc-text">
+          样本均值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE"><span class="toc-text">
+          样本方差</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-3-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E9%87%8F2-%E2%80%94-%E6%A0%B7%E6%9C%AC%E7%9A%84%E5%8E%9F%E7%82%B9%E7%9F%A9%E5%92%8C%E4%B8%AD%E5%BF%83%E7%9F%A9"><span class="toc-text">
+          6.2.3 常用统计量2 — 样本的原点矩和中心矩</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E7%9A%84k%E9%98%B6%E5%8E%9F%E7%82%B9%E7%9F%A9"><span class="toc-text">
+          样本的k阶原点矩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E7%9A%84k%E9%98%B6%E4%B8%AD%E5%BF%83%E7%9F%A9-%E4%BA%86%E8%A7%A3"><span class="toc-text">
+          样本的k阶中心矩(了解)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E7%82%B9%E4%BC%B0%E8%AE%A1"><span class="toc-text">
+          6.3 点估计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-1-%E7%9F%A9%E4%BC%B0%E8%AE%A1"><span class="toc-text">
+          6.3.1 矩估计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4-3"><span class="toc-text">
+          一般步骤(3):</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-2-%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E6%B3%95"><span class="toc-text">
+          6.3.2 极大似然估计法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4-6"><span class="toc-text">
+          一般步骤(6):</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-3-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86"><span class="toc-text">
+          6.3.3 估计量的评价标准</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%97%A0%E5%81%8F%E6%80%A7"><span class="toc-text">
+          验证无偏性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%9C%89%E6%95%88%E6%80%A7"><span class="toc-text">
+          验证有效性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%9B%B8%E5%90%88%E6%80%A7"><span class="toc-text">
+          验证相合性</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1-%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83-%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1%E5%92%8C%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-text">
+          7. [数理统计]抽样分布,区间估计和假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83"><span class="toc-text">
+          7.1 抽样分布</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-1-%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83"><span class="toc-text">
+          7.1.1 卡方分布</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A9%E8%AE%B0%E5%BC%8F"><span class="toc-text">
+          助记式:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          性质</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-2-t%E5%88%86%E5%B8%83"><span class="toc-text">
+          7.1.2 t分布</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A9%E8%AE%B0%E5%BC%8F-1"><span class="toc-text">
+          助记式:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8-1"><span class="toc-text">
+          性质</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-3-F%E5%88%86%E5%B8%83"><span class="toc-text">
+          7.1.3 F分布</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A9%E8%AE%B0%E5%BC%8F-2"><span class="toc-text">
+          助记式:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8-2"><span class="toc-text">
+          性质</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-4-%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83%E5%AE%9A%E7%90%86"><span class="toc-text">
+          7.1.4 抽样分布定理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          一个正态总体的性质</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-text">
+          两个正态总体的性质</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-text">
+          7.2 区间估计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">
+          7.2.1 区间估计的一般步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2-%E7%BB%9F%E8%AE%A1%E9%87%8F%E9%80%89%E5%8F%96"><span class="toc-text">
+          7.2.2 统计量选取</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93"><span class="toc-text">
+          单个正态总体</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93"><span class="toc-text">
+          两个正态总体</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-text">
+          7.3 假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-1-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">
+          7.3.1 假设检验的一般步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1-%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90"><span class="toc-text">
+          8. [数理统计]回归分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%A3%80%E9%AA%8C%E7%BA%BF%E6%80%A7%E7%9B%B8%E5%85%B3%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          8.1 检验线性相关关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-1-%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0R%E6%A3%80%E9%AA%8C%E6%B3%95-gt-%E6%B1%82%E5%87%BA%E5%9B%9E%E5%BD%92%E6%96%B9%E7%A8%8B%E4%B9%8B%E5%89%8D%E6%A3%80%E9%AA%8C"><span class="toc-text">
+          8.1.1 相关系数R检验法-&gt;求出回归方程之前检验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E6%80%8E%E4%BB%AC%E7%AE%97"><span class="toc-text">
+          样本相关系数怎们算?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E6%80%8E%E4%BB%AC%E7%9C%8B"><span class="toc-text">
+          样本相关系数怎们看?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E7%9A%84%E5%8A%A9%E8%AE%B0%E7%AC%A6"><span class="toc-text">
+          回归分析的助记符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A9%E8%AE%B0%E7%AC%A6%E5%8F%98%E5%BD%A2%E5%BC%8F"><span class="toc-text">
+          助记符变形式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-1-2-%E7%A6%BB%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8CF%E6%A3%80%E9%AA%8C%E6%B3%95-gt-%E6%B1%82%E5%87%BA%E5%9B%9E%E5%BD%92%E6%96%B9%E7%A8%8B%E4%B9%8B%E5%90%8E%E6%A3%80%E9%AA%8C"><span class="toc-text">
+          8.1.2 离差平方和F检验法-&gt;求出回归方程之后检验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E6%B1%82%E4%B8%80%E5%85%83%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          8.2 求一元回归模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1-%E4%BC%B0%E8%AE%A1-a-b%E2%80%8B"><span class="toc-text">
+          8.2.1 估计 a,b​</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1-%E4%BC%B0%E8%AE%A1-%CF%83%E6%96%B9"><span class="toc-text">
+          8.2.1 估计 σ方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E6%9C%AC%E9%83%A8%E5%88%86%E7%9A%84%E5%B8%B8%E8%A7%84%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="toc-text">
+          8.3 本部分的常规解题步骤</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

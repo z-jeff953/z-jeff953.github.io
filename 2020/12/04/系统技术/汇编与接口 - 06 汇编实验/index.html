@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="微机原理 汇编和接口技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编与接口 - 06 汇编实验">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2020/12/04/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2006%20%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="微机原理 汇编和接口技术">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126202553.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203206.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203218.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203245.jpg">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203302.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126205633.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126205148.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126210215.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126210445.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110164002.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110163358.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110163744.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110164031.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110164052.png">
+<meta property="article:published_time" content="2020-12-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-11T05:47:46.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="微机原理和接口技术">
+<meta property="article:tag" content="计算机体系结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126202553.jpg"><title>汇编与接口 - 06 汇编实验 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2020/12/04/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2006%20%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">汇编与接口 - 06 汇编实验</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-11</span></span></div></header><div class="post-body">
+        <h1 id="汇编与接口-06-汇编实验"   >
+          <a href="#汇编与接口-06-汇编实验" class="heading-link"><i class="fas fa-link"></i></a>汇编与接口 - 06 汇编实验</h1>
+      <p>汇编和接口 , 汇编编程 DOS Debug 速查表 以及汇编实验内容</p>
+<span id="more"></span>
+<p>[TOC]</p>
+
+        <h2 id="Debug"   >
+          <a href="#Debug" class="heading-link"><i class="fas fa-link"></i></a>Debug</h2>
+      <p>在DOSBox中进入debug</p>
+
+        <h4 id="1-DEBUG核心功能和六条核心指令"   >
+          <a href="#1-DEBUG核心功能和六条核心指令" class="heading-link"><i class="fas fa-link"></i></a>1. DEBUG核心功能和六条核心指令</h4>
+      
+        <h5 id="查看和改变寄存器内容"   >
+          <a href="#查看和改变寄存器内容" class="heading-link"><i class="fas fa-link"></i></a>查看和改变寄存器内容</h5>
+      
+        <h6 id="1-1-R-查看和改写-CPU-寄存器中的内容"   >
+          <a href="#1-1-R-查看和改写-CPU-寄存器中的内容" class="heading-link"><i class="fas fa-link"></i></a>1.1 R 查看和改写 CPU 寄存器中的内容</h6>
+      <ol>
+<li><p>R </p>
+<p>查看寄存器内容</p>
+</li>
+<li><p>R [寄存器号]</p>
+<p>修改指定寄存器内容</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126202553.jpg" alt="R"></p>
+
+        <h5 id="查看和修改内存中的内容"   >
+          <a href="#查看和修改内存中的内容" class="heading-link"><i class="fas fa-link"></i></a>查看和修改内存中的内容</h5>
+      
+        <h6 id="1-2-D-查看内存中的内容"   >
+          <a href="#1-2-D-查看内存中的内容" class="heading-link"><i class="fas fa-link"></i></a>1.2 D 查看内存中的内容</h6>
+      <ol>
+<li><p>D</p>
+<p>显示128个字节</p>
+<p>最左边是内存的起始地址，中间以十六进制的形式显示内存值，最右边是以ASCII码的形式显示内存值。每行最多显示16个字节的内容</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203206.jpg" alt="D"></p>
+</li>
+<li><p>D [起始地址]  </p>
+<p>地址形式 : 段基地址(段寄存器号/地址):偏移地址</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203218.jpg" alt="D"></p>
+</li>
+<li><p>D [起始地址] [结束偏移地址]</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203245.jpg" alt="d"></p>
+</li>
+<li><p>D [起始地址] [L长度]</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126203302.png" alt="D"></p>
+</li>
+</ol>
+
+        <h6 id="1-3-E-改写内存中的内容"   >
+          <a href="#1-3-E-改写内存中的内容" class="heading-link"><i class="fas fa-link"></i></a>1.3 E 改写内存中的内容</h6>
+      <ol>
+<li><p>E [起始改写地址] [数据 数据 数据 … ]</p>
+<p>‘字符’和”字符串”将被转换成ASCII码储存</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126205633.png" alt="image-20201126205633174"></p>
+<ol>
+<li><p>E [起始改写地址]</p>
+<p>然后依次输入数据</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126205148.png" alt=""></p>
+
+        <h5 id="查看-执行和编写汇编指令"   >
+          <a href="#查看-执行和编写汇编指令" class="heading-link"><i class="fas fa-link"></i></a>查看, 执行和编写汇编指令</h5>
+      
+        <h6 id="1-4-U-将内存中的机器指令翻译成汇编指令"   >
+          <a href="#1-4-U-将内存中的机器指令翻译成汇编指令" class="heading-link"><i class="fas fa-link"></i></a>1.4 U 将内存中的机器指令翻译成汇编指令</h6>
+      <ol>
+<li><p>U [程序段偏移地址]</p>
+<p>默认显示20条</p>
+</li>
+<li><p>U [起始地址]</p>
+</li>
+<li><p>U [程序段起始偏移地址] [程序段种终止移地址]</p>
+</li>
+<li><p>U [起始地址] [终止地址]</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126210215.png" alt="image-20201126210214845"></p>
+
+        <h6 id="1-5-T-执行一条机器指令"   >
+          <a href="#1-5-T-执行一条机器指令" class="heading-link"><i class="fas fa-link"></i></a>1.5 T 执行一条机器指令</h6>
+      <ol>
+<li><p>T</p>
+<p>执行 CS:IP 处的指令</p>
+</li>
+<li><p>T [=程序段偏移地址] [指令数]</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201126210445.png" alt="image-20201126210445679"></p>
+</li>
+</ol>
+
+        <h6 id="1-6-A-以汇编指令的格式在内存中写入一条机器指令"   >
+          <a href="#1-6-A-以汇编指令的格式在内存中写入一条机器指令" class="heading-link"><i class="fas fa-link"></i></a>1.6 A 以汇编指令的格式在内存中写入一条机器指令</h6>
+      <ol>
+<li><p>A [地址]</p>
+<p>连续的写入数条汇编指令</p>
+<p>在没有输入时输入Enter可以推出输入模式</p>
+</li>
+</ol>
+
+        <h4 id="2-DEBUG指令速查表"   >
+          <a href="#2-DEBUG指令速查表" class="heading-link"><i class="fas fa-link"></i></a>2. DEBUG指令速查表</h4>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>英文全称</th>
+<th>含义</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td><strong>assemble</strong></td>
+<td><strong>汇编 , 写入汇编指令</strong></td>
+<td><strong>A [地址]</strong></td>
+</tr>
+<tr>
+<td>C</td>
+<td>compare</td>
+<td>比较</td>
+<td>C [范围] [指定地址]</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td><strong>dump</strong></td>
+<td><strong>转储 , 显示内存区域的内容</strong></td>
+<td><strong>d [起始位置]<br />d [起始位置] [结束位置]<br />d [起始位置] [L长度]</strong></td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td><strong>enter</strong></td>
+<td><strong>改变内存单位的内容</strong></td>
+<td><strong>E [起始位置]</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>fill</td>
+<td>使用指定的值填充指定内存区域中的地址</td>
+<td>F [范围] [填充列表]</td>
+</tr>
+<tr>
+<td>G</td>
+<td>go</td>
+<td>执行汇编指令 , 从起始地址开始执行到断点地址<br />如果不设置断点，则程序一直运行到中止指令才停止。</td>
+<td>G [=起始地址] [断点地址]</td>
+</tr>
+<tr>
+<td>H</td>
+<td>hex</td>
+<td>十六进制 求和</td>
+<td></td>
+</tr>
+<tr>
+<td>I</td>
+<td>input</td>
+<td>从计算机输入端口读取数据并显示</td>
+<td>I [端口地址]</td>
+</tr>
+<tr>
+<td>L</td>
+<td>load</td>
+<td>从磁盘中将文件或扇区内容读入内存 配合N</td>
+<td></td>
+</tr>
+<tr>
+<td>M</td>
+<td>move</td>
+<td>将文件或者特定扇区写入磁盘 配合N</td>
+<td>M [范围] [指定地址]</td>
+</tr>
+<tr>
+<td>N</td>
+<td>name</td>
+<td>设置文件名，为将刚才编写的汇编程序存盘做准备</td>
+<td>N E:\FIRST.COM</td>
+</tr>
+<tr>
+<td>O</td>
+<td>output</td>
+<td>向计算机输出端口送出数据</td>
+<td>O [端口地址] [字节值]</td>
+</tr>
+<tr>
+<td>P</td>
+<td>proceed</td>
+<td>执行汇编程序，单步跟踪 , 不会跟踪进入子程序或软中断</td>
+<td>P [=地址] [数值]</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>quit</td>
+<td>退出DEBUG，回到DOS状态</td>
+<td>-Q</td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td><strong>register</strong></td>
+<td><strong>显示, 观看和修改寄存器的值</strong></td>
+<td>R / R[寄存器名]</td>
+</tr>
+<tr>
+<td>S</td>
+<td>search</td>
+<td>在指定的内存区域中搜索指定的串</td>
+<td>S [范围] [指定串]</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td><strong>trace</strong></td>
+<td><strong>执行汇编程序，单步跟踪</strong></td>
+<td><strong>T [=地址] ([指令数])</strong></td>
+</tr>
+<tr>
+<td><strong>U</strong></td>
+<td><strong>unassenmble</strong></td>
+<td><strong>对机器代码反汇编显示</strong></td>
+<td><strong>U [范围]</strong></td>
+</tr>
+<tr>
+<td>W</td>
+<td>write</td>
+<td>将文件或者特定扇区写入磁盘</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h2 id="实验内容"   >
+          <a href="#实验内容" class="heading-link"><i class="fas fa-link"></i></a>实验内容</h2>
+      
+        <h3 id="实验一-计算表达式的值"   >
+          <a href="#实验一-计算表达式的值" class="heading-link"><i class="fas fa-link"></i></a>实验一 计算表达式的值</h3>
+      <p>编写8086汇编程序计算以下表达式: Z=(5X+2Y-7)/2</p>
+<p>设X、Y的值放在字节变量VARX、VARY中，结果存放在字节单元VARZ中</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110164002.png" alt="image-20210110164002636"></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">	VARX DB 20</span><br><span class="line">	VARY DB 20</span><br><span class="line">	VARZ DB ?</span><br><span class="line">DATA ENDS</span><br><span class="line">; 定义数据段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">STACK ENDS</span><br><span class="line">; 定义并设置堆栈段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,SS:STACK,DS:DATA</span><br><span class="line">MAIN PROC FAR; 定义主程序</span><br><span class="line">START:;程序的开始</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX;设置数据段</span><br><span class="line">	</span><br><span class="line">	MOV AL,VARX;将数据VARX放入累加器</span><br><span class="line">	MOV AH,VARY;将数据VARY放入累加器</span><br><span class="line">	</span><br><span class="line">	MOV CL,2; 将位移位数放入CL</span><br><span class="line">	SAL AL,CL; AL * 4 -&gt; AL</span><br><span class="line">	ADD AL,VARX; AL + VARX -&gt; AL</span><br><span class="line">	; 使用算数左移和加法指令完成 *5 的计算, AL * 5 -&gt; AL </span><br><span class="line">	</span><br><span class="line">	SAL AH,1</span><br><span class="line">	; 使用算数左移指令完成 *2 运算, AL * 2 -&gt; AL</span><br><span class="line">	ADD AL,AH;AL+AH -&gt; AL</span><br><span class="line">	</span><br><span class="line">	SUB AL,7;AL-7-&gt;AL</span><br><span class="line">	</span><br><span class="line">	SHR AL,1; 使用逻辑右移指令完成无符号数的除以2运算, AL/2 -&gt; AL</span><br><span class="line">	</span><br><span class="line">	MOV VARZ,AL; 将数据送入VARZ</span><br><span class="line">	</span><br><span class="line">	MOV AH,4CH;退出程序,返回DOS</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP; 主程序结束</span><br><span class="line">CODE ENDS; 代码段结束</span><br><span class="line">	END START; 程序结束</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">	VARX DB 20</span><br><span class="line">	VARY DB 20</span><br><span class="line">	VARZ DB ?</span><br><span class="line">DATA ENDS</span><br><span class="line">; 定义数据段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">STACK ENDS</span><br><span class="line">; 定义并设置堆栈段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,SS:STACK,DS:DATA</span><br><span class="line">MAIN PROC FAR; 定义主程序</span><br><span class="line">START:;程序的开始</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX;设置数据段</span><br><span class="line">	</span><br><span class="line">	MOV AL,VARX;将数据VARX放入累加器</span><br><span class="line">	MOV AH,VARY;将数据VARY放入累加器</span><br><span class="line">	</span><br><span class="line">	MOV CL,2; 将位移位数放入CL</span><br><span class="line">	SAL AL,CL; AL * 4 -&gt; AL</span><br><span class="line">	ADD AL,VARX; AL + VARX -&gt; AL</span><br><span class="line">	; 使用算数左移和加法指令完成 *5 的计算, AL * 5 -&gt; AL </span><br><span class="line">	</span><br><span class="line">	SAL AH,1</span><br><span class="line">	; 使用算数左移指令完成 *2 运算, AL * 2 -&gt; AL</span><br><span class="line">	ADD AL,AH</span><br><span class="line">	</span><br><span class="line">	SUB AL,7</span><br><span class="line">	</span><br><span class="line">	SAR AL,1; 使用算数右移指令完成 /2 运算, AL/2 -&gt; AL</span><br><span class="line">	</span><br><span class="line">	MOV VARZ,AL; 将数据送入VARZ</span><br><span class="line">	</span><br><span class="line">	MOV AH,4CH;退出程序,返回DOS</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP; 主程序结束</span><br><span class="line">CODE ENDS; 代码段结束</span><br><span class="line">	END START; 程序结束</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">	VARX DB 20</span><br><span class="line">	VARY DB 20</span><br><span class="line">	VARZ DB ?</span><br><span class="line">DATA ENDS</span><br><span class="line">; 定义数据段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">STACK ENDS</span><br><span class="line">; 定义并设置堆栈段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,SS:STACK,DS:DATA</span><br><span class="line">MAIN PROC FAR; 定义主程序</span><br><span class="line">START:;程序的开始</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX;设置数据段</span><br><span class="line">	</span><br><span class="line">	MOV AL,VARX;将数据VARX放入累加器</span><br><span class="line"></span><br><span class="line">	MOV DL,5; 将乘数5放入DL</span><br><span class="line">	MUL DL; AL * 5 -&gt; AL </span><br><span class="line">	MOV DL,AL; 将AL中数据暂时存在这里</span><br><span class="line">	</span><br><span class="line">	MOV AL,VARY;将数据VARY放入累加器</span><br><span class="line"></span><br><span class="line">	MOV CL,2; 将乘数2放入CL</span><br><span class="line">	MUL CL; AL * 2 -&gt; AL</span><br><span class="line">	</span><br><span class="line">	ADD AL,DL; AL+DL -&gt; AL</span><br><span class="line">	</span><br><span class="line">	SUB AL,7</span><br><span class="line">	</span><br><span class="line">	MOV CH,0; 高位清零</span><br><span class="line">	DIV CL; 此时CL仍然是2,可以直接使用</span><br><span class="line">	</span><br><span class="line">	MOV VARZ,AL; 将商送入VARZ</span><br><span class="line">	</span><br><span class="line">	MOV AH,4CH;退出程序,返回DOS</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP; 主程序结束</span><br><span class="line">CODE ENDS; 代码段结束</span><br><span class="line">	END START; 程序结束</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="实验二-统计数字串的大小"   >
+          <a href="#实验二-统计数字串的大小" class="heading-link"><i class="fas fa-link"></i></a>实验二 统计数字串的大小</h3>
+      <p>分别统计数据段下列20个数中大于5、大于等于零且小于等于5、小于零的数据个数，并分别存入附加段的字节单元RES1、RES2和RES3中。</p>
+<pre><code>BUF DB -1,20,3,30,-5,15,100,-54,0
+    DB -12,32,3,23,-7,24,60,-51
+</code></pre><p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110163358.png" alt="image-20210110163357678" style="zoom: 67%;" /></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">;定义数据段</span><br><span class="line">DATA SEGMENT</span><br><span class="line">	BUF DB -1,20,3,30,-5,15,100,-54,0</span><br><span class="line">	    DB -12,32,3,23,-7,24,60,-51</span><br><span class="line">DATA ENDS</span><br><span class="line">;定义堆栈段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">	DB 10 DUP(?)</span><br><span class="line">STACK ENDS</span><br><span class="line">;定义附加段</span><br><span class="line">EXTRA SEGMENT</span><br><span class="line">	RES1 DB 0</span><br><span class="line">	RES2 DB 0</span><br><span class="line">	RES3 DB 0</span><br><span class="line">EXTRA ENDS</span><br><span class="line">;定义代码段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,ES:EXTRA,DS:DATA</span><br><span class="line">;定义主函数</span><br><span class="line">MAIN PROC FAR</span><br><span class="line">;定义程序的入口</span><br><span class="line">START:</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX;初始化数据段</span><br><span class="line">	MOV AX,EXTRA</span><br><span class="line">	MOV ES,AX;初始化附加段</span><br><span class="line">	</span><br><span class="line">	MOV SI,OFFSET BUF;获取数据的开头</span><br><span class="line">	</span><br><span class="line">	MOV RES1,0</span><br><span class="line">	MOV RES2,0</span><br><span class="line">	MOV RES3,0;初始化计数器</span><br><span class="line">	</span><br><span class="line">	MOV CX,20;初始化循环的次数</span><br><span class="line">LOOP1:</span><br><span class="line">	MOV AL,[SI];取出SI指向的内存中的数据</span><br><span class="line">	</span><br><span class="line">	CMP AL,5;和5比较</span><br><span class="line">	JG UP5;大于5则跳转</span><br><span class="line">	</span><br><span class="line">	CMP AL,0;和0比较</span><br><span class="line">	JG UP0;大于0则跳转</span><br><span class="line"></span><br><span class="line">	INC RES3;小于0则增加计数器</span><br><span class="line">	JMP NEXT;进入下一步</span><br><span class="line">UP0:</span><br><span class="line">	INC RES2;大于0小于等于5增加计数器</span><br><span class="line">	JMP NEXT;下一步</span><br><span class="line">UP5:</span><br><span class="line">	INC RES1;大于5则增加计数器</span><br><span class="line">NEXT:</span><br><span class="line">	INC SI;增加SI指向下一个地址</span><br><span class="line">	LOOP LOOP1;循环LOOP1</span><br><span class="line"></span><br><span class="line">	MOV AH,4CH;退出程序,返回DOS</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP;结束主函数</span><br><span class="line">CODE ENDS;结束代码段</span><br><span class="line">     END START;结束程序</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="实验三-十六进制显示"   >
+          <a href="#实验三-十六进制显示" class="heading-link"><i class="fas fa-link"></i></a>实验三 十六进制显示</h3>
+      <p>将数据段某一字单元的数据以十六进制的形式显示到屏幕上，</p>
+<p>要求：</p>
+<p>（1）显示内容为XXXXH，字母以大写表示。</p>
+<p>（2）显示部分采用子程序设计。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110163744.png" alt="image-20210110163743979"></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">;定义数据段</span><br><span class="line">DATA SEGMENT</span><br><span class="line">	NUM DW 0ABD5H;需要输出的数据</span><br><span class="line">DATA ENDS</span><br><span class="line">;定义堆栈段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">	DB 10 DUP(?)</span><br><span class="line">STACK ENDS</span><br><span class="line">;定义代码段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,DS:DATA</span><br><span class="line"></span><br><span class="line">;定义主程序</span><br><span class="line">MAIN PROC FAR</span><br><span class="line">;定义程序的入口</span><br><span class="line">START:</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX;初始化数据段</span><br><span class="line"></span><br><span class="line">	MOV CX,4;定义循环次数</span><br><span class="line"></span><br><span class="line">	MOV AX,NUM;取出需要显示的数据</span><br><span class="line">;循环入口</span><br><span class="line">NEXT:</span><br><span class="line">	ROL AX,1;循环左移四次,从最高位开始输出</span><br><span class="line">	ROL AX,1</span><br><span class="line">	ROL AX,1</span><br><span class="line">	ROL AX,1</span><br><span class="line"></span><br><span class="line">	CALL DISP;转显示十六进制数的子程序</span><br><span class="line"></span><br><span class="line">	LOOP NEXT;循环</span><br><span class="line"></span><br><span class="line">	MOV AL,48H;循环结束后输出表示16进制数的H</span><br><span class="line">	CALL SHOW;转输出AL子程序</span><br><span class="line"></span><br><span class="line">	MOV AH,4CH;退出程序,返回DOS</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP</span><br><span class="line"></span><br><span class="line">;定义子程序</span><br><span class="line">DISP PROC</span><br><span class="line">;输出16进制子程序</span><br><span class="line">	;将需要输出的数字放在AL低八位然后输出数字本身,而非ASCII码</span><br><span class="line"></span><br><span class="line">	PUSH AX;将AX中内容压栈保存</span><br><span class="line">	AND AL,0FH;取出AL低四位</span><br><span class="line"></span><br><span class="line">	CLC;清除CF</span><br><span class="line">	CMP AL,9;和9比较</span><br><span class="line">	JC  AD30;出现借位则只需要加30H</span><br><span class="line">	ADD AL,07H;加37的数字只需要额外增加7H</span><br><span class="line">AD30:</span><br><span class="line">	ADD AL,30H</span><br><span class="line"></span><br><span class="line">	CALL SHOW;转输出AL子程序</span><br><span class="line">	POP AX;恢复AX进行下一步操作</span><br><span class="line">	RET;返回</span><br><span class="line">DISP ENDP;结束子程序</span><br><span class="line"></span><br><span class="line">;定义子程序</span><br><span class="line">SHOW PROC</span><br><span class="line">;显示AL子程序</span><br><span class="line">	;将需要显示的数据的ASCII码写入AL然后输出</span><br><span class="line">	MOV DL,AL</span><br><span class="line">	MOV AH,2;显示字符</span><br><span class="line">	INT 21H</span><br><span class="line">	RET;返回</span><br><span class="line">SHOW ENDP;结束子程序</span><br><span class="line"></span><br><span class="line">CODE ENDS;结束代码段</span><br><span class="line">	END START;结束程序</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="实验四-右对齐数据"   >
+          <a href="#实验四-右对齐数据" class="heading-link"><i class="fas fa-link"></i></a>实验四 右对齐数据</h3>
+      <p>将数据段某一字单元的数据以十六进制的形式显示到屏幕上，</p>
+<p>要求：</p>
+<p>（1）显示内容为XXXXH，字母以大写表示。</p>
+<p>（2）显示部分采用子程序设计。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110164031.png" alt="image-20210110164031153"></p>
+<p>存储起来再处理版:</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">;定义数据段,为两个输入留足空间</span><br><span class="line">DATA SEGMENT</span><br><span class="line">	BUF DB 25; 缓冲区长度（含回车）</span><br><span class="line">    ACTHAR DB 0; 保留单元, 存放输入的实际字符个数（不含回车）</span><br><span class="line">	CHAR DB 25 DUP(0); 数据缓冲区</span><br><span class="line">	     DB &#x27;$&#x27;; 缓冲区结尾</span><br><span class="line">    ; 提示输入字段</span><br><span class="line">	HINT1 DB &quot;Please enter a string:&quot;,0DH,0AH,&#x27;$&#x27;</span><br><span class="line">	; 提示输出字段</span><br><span class="line">	HINT2 DB &quot;This is the right align String:&quot;,0DH,0AH,&#x27;$&#x27;</span><br><span class="line">	; 输入处理的字符串1</span><br><span class="line">	STR1 DB 25 DUP(0)</span><br><span class="line">	     DB 0DH,0AH,&#x27;$&#x27;</span><br><span class="line">	; 输入处理的字符串2</span><br><span class="line">	STR2 DB 25 DUP(0)</span><br><span class="line">	     DB 0DH,0AH,&#x27;$&#x27;</span><br><span class="line">	; 记录两个字符串的长度</span><br><span class="line">	LENTH1 DW 1</span><br><span class="line">	LENTH2 DW 2</span><br><span class="line">DATA ENDS</span><br><span class="line"></span><br><span class="line">;定义堆栈段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">	DB 10 DUP(0)</span><br><span class="line">STACK ENDS</span><br><span class="line"></span><br><span class="line">;定义代码段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,DS:DATA</span><br><span class="line">;定义主函数</span><br><span class="line">MAIN PROC FAR</span><br><span class="line">START:</span><br><span class="line">	;设置数据段,附加段</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX</span><br><span class="line">	MOV ES,AX;让数据段和附加段段基地址相同, 可以方便使用段传送指令</span><br><span class="line"></span><br><span class="line">	;输入第一个字符串</span><br><span class="line">	MOV DI,OFFSET STR1</span><br><span class="line">	CALL PUTS;转输入子函数</span><br><span class="line">	MOV LENTH1,BX;将字符串的长度存储起来</span><br><span class="line"></span><br><span class="line">	;输入第二个字符串</span><br><span class="line">	MOV DI,OFFSET STR2</span><br><span class="line">	CALL PUTS;转输入子函数</span><br><span class="line">	MOV LENTH2,BX;将字符串长度存储起来</span><br><span class="line"></span><br><span class="line">	;输出提示2</span><br><span class="line">	MOV DX,OFFSET HINT2</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line">	</span><br><span class="line">	;右对齐字符串1</span><br><span class="line">	MOV DX,OFFSET STR1;将字符串1首地址放入DX</span><br><span class="line">	MOV BX,LENTH1;将字符串1长度放入BX</span><br><span class="line">	CALL ALIGNS;转右对齐子程序</span><br><span class="line"></span><br><span class="line">	;右对齐字符串2</span><br><span class="line">	MOV DX,OFFSET STR2;将字符串2首地址放入DX</span><br><span class="line">	MOV BX,LENTH2;将字符串2长度放入BX</span><br><span class="line">	CALL ALIGNS;转右对齐子程序</span><br><span class="line"></span><br><span class="line">	;输出字符串1</span><br><span class="line">	MOV DX,OFFSET STR1</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line">	</span><br><span class="line">	;输出字符串2</span><br><span class="line">	MOV DX,OFFSET STR2</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	;退出</span><br><span class="line">	MOV AH,4CH</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP</span><br><span class="line"></span><br><span class="line">;输入子程序</span><br><span class="line">	;输入: OFFSET STR-&gt;(DI)</span><br><span class="line">	;输出: 输入字符串的长度-&gt;(BX)</span><br><span class="line"></span><br><span class="line">PUTS PROC</span><br><span class="line">	;输出提示文字</span><br><span class="line">	MOV DX,OFFSET HINT1</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	;输入内容到缓冲区</span><br><span class="line">	MOV DX,OFFSET BUF</span><br><span class="line">	MOV AH,0AH</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	;将长度放到BX中</span><br><span class="line">	MOV BH,0</span><br><span class="line">	MOV BL,ACTHAR</span><br><span class="line"></span><br><span class="line">	;串传送源地址和长度</span><br><span class="line">	MOV SI,OFFSET CHAR</span><br><span class="line">	MOV CL,ACTHAR</span><br><span class="line"></span><br><span class="line">	;串传送</span><br><span class="line">	CLD</span><br><span class="line">	REP MOVSB</span><br><span class="line">	RET</span><br><span class="line">PUTS ENDP</span><br><span class="line"></span><br><span class="line">;右对齐子程序</span><br><span class="line">    ; 输入:字符串长度-&gt;(BX)</span><br><span class="line">    ;	  源地址-&gt;(DX)</span><br><span class="line">    ; 输出:右对齐的字符串-&gt;(DX)</span><br><span class="line">ALIGNS PROC ;BX放字符长度, DX放源地址</span><br><span class="line">	MOV AX,24</span><br><span class="line">	SUB AX,BX;AX就是需要位移长度</span><br><span class="line">	MOV CX,BX</span><br><span class="line">	</span><br><span class="line">	MOV SI,DX;设置SI</span><br><span class="line">	MOV DI,DX</span><br><span class="line">	ADD DI,AX;设置(DI)&lt;-(AX)+(DX)</span><br><span class="line">	REP MOVSB;转移字符串到最后</span><br><span class="line"></span><br><span class="line">	MOV CX,BX;设置填充长度</span><br><span class="line">	MOV BX,20H;设置填充</span><br><span class="line">	MOV DI,DX;设置目的地址</span><br><span class="line">NEXT:</span><br><span class="line">	MOV [DI],BX;填充空格</span><br><span class="line">	INC DI</span><br><span class="line">	LOOP NEXT</span><br><span class="line">	</span><br><span class="line">	RET;返回</span><br><span class="line">ALIGNS ENDP;结束子程序</span><br><span class="line"></span><br><span class="line">CODE ENDS;结束代码段</span><br><span class="line">	END START;结束主程序</span><br></pre></td></tr></table></div></figure>
+<p>输入后及时输出</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210110164052.png" alt=""></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">;定义数据段</span><br><span class="line">DATA SEGMENT</span><br><span class="line">	BUF DB 25; 缓冲区长度（含回车）</span><br><span class="line">    	ACTHAR DB 0; 保留单元, 存放输入的实际字符个数（不含回车）</span><br><span class="line">	CHAR DB 25 DUP(0); 数据缓冲区</span><br><span class="line">	     DB 0AH,&#x27;$&#x27;; 缓冲区结尾</span><br><span class="line">    ; 提示输入字段</span><br><span class="line">	HINT1 DB &quot;Please enter a string:&quot;,0DH,0AH,&#x27;$&#x27;</span><br><span class="line">	; 提示输出字段</span><br><span class="line">	HINT2 DB &quot;This is the right align String:&quot;,0DH,0AH,&#x27;$&#x27;</span><br><span class="line">DATA ENDS</span><br><span class="line">;定义堆栈段</span><br><span class="line">STACK SEGMENT PARA STACK</span><br><span class="line">	DB 10 DUP(?)</span><br><span class="line">STACK ENDS</span><br><span class="line">;定义代码段</span><br><span class="line">CODE SEGMENT</span><br><span class="line">	ASSUME CS:CODE,DS:DATA</span><br><span class="line">MAIN PROC FAR</span><br><span class="line">;定义主函数</span><br><span class="line">START:;程序入口</span><br><span class="line">	MOV AX,DATA</span><br><span class="line">	MOV DS,AX</span><br><span class="line">	MOV ES,AX;对齐附加段和数据段</span><br><span class="line"></span><br><span class="line">	MOV CX,02H</span><br><span class="line">NEXT:</span><br><span class="line">	PUSH CX</span><br><span class="line">	CALL PUTS;转输入子程序</span><br><span class="line">	CALL ALIGNS;转对齐子程序</span><br><span class="line"></span><br><span class="line">	;输出提示语</span><br><span class="line">	MOV DX,OFFSET HINT2</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	;输出对齐后数据</span><br><span class="line">	MOV DX,OFFSET CHAR</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	POP CX</span><br><span class="line"></span><br><span class="line">	LOOP NEXT</span><br><span class="line"></span><br><span class="line">	;退出</span><br><span class="line">	MOV AH,4CH</span><br><span class="line">	INT 21H</span><br><span class="line">MAIN ENDP</span><br><span class="line"></span><br><span class="line">PUTS PROC</span><br><span class="line">;输入子程序</span><br><span class="line">	; 输入内容到缓冲区</span><br><span class="line"></span><br><span class="line">	;输出提示文字</span><br><span class="line">	MOV DX,OFFSET HINT1</span><br><span class="line">	MOV AH,09H</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	;输入内容到缓冲区</span><br><span class="line">	MOV DX,OFFSET BUF</span><br><span class="line">	MOV AH,0AH</span><br><span class="line">	INT 21H</span><br><span class="line"></span><br><span class="line">	RET;返回</span><br><span class="line">PUTS ENDP</span><br><span class="line"></span><br><span class="line">ALIGNS PROC</span><br><span class="line">;右对齐子程序</span><br><span class="line">	; 右对齐缓冲区的字符串</span><br><span class="line"></span><br><span class="line">	MOV DX,OFFSET CHAR</span><br><span class="line">	MOV BH,0</span><br><span class="line">	MOV BL,ACTHAR</span><br><span class="line">	MOV AX,24</span><br><span class="line">	SUB AX,BX;AX就是需要位移长度</span><br><span class="line">	MOV CX,BX</span><br><span class="line">	</span><br><span class="line">	MOV SI,DX;设置SI</span><br><span class="line">	MOV DI,DX</span><br><span class="line">	ADD DI,AX;设置(DI)&lt;-(AX)+(DX)</span><br><span class="line">	REP MOVSB;转移字符串到最后</span><br><span class="line"></span><br><span class="line">	MOV CX,BX;设置填充长度</span><br><span class="line">	MOV BX,20H;设置填充</span><br><span class="line">	MOV DI,DX;设置目的地址</span><br><span class="line">NEXT2:</span><br><span class="line">	MOV [DI],BX;填充空格</span><br><span class="line">	INC DI</span><br><span class="line">	LOOP NEXT2</span><br><span class="line">	</span><br><span class="line">	RET;返回</span><br><span class="line">ALIGNS ENDP;结束子程序</span><br><span class="line"></span><br><span class="line">CODE ENDS;结束代码段</span><br><span class="line">	END START;结束主程序</span><br></pre></td></tr></table></div></figure>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2020/12/04/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2006%20%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C/">http://zjeff-953.gitee.io/zjeff/2020/12/04/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3%20-%2006%20%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/">微机原理和接口技术</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/04/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94%20-%2002%20%E5%85%B3%E6%B3%A8%E6%97%B6%E9%97%B4%20,%20%E5%85%B3%E6%B3%A8%E7%9F%A5%E8%AF%86/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">生活随笔 - 02 关注时间 , 关注知识</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/02/%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94%20-%2001%20%E8%AE%A4%E8%AF%86%E8%87%AA%E5%B7%B1%20,%20%E6%AD%A3%E8%A7%86%E7%8E%B0%E5%AE%9E/"><span class="paginator-prev__text">生活随笔 - 01 认识自己 , 正视现实</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E4%B8%8E%E6%8E%A5%E5%8F%A3-06-%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C"><span class="toc-text">
+          汇编与接口 - 06 汇编实验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug"><span class="toc-text">
+          Debug</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-DEBUG%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E5%92%8C%E5%85%AD%E6%9D%A1%E6%A0%B8%E5%BF%83%E6%8C%87%E4%BB%A4"><span class="toc-text">
+          1. DEBUG核心功能和六条核心指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%92%8C%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%85%E5%AE%B9"><span class="toc-text">
+          查看和改变寄存器内容</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%92%8C%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">
+          查看和修改内存中的内容</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-%E6%89%A7%E8%A1%8C%E5%92%8C%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="toc-text">
+          查看, 执行和编写汇编指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-DEBUG%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-text">
+          2. DEBUG指令速查表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-text">
+          实验内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%80-%E8%AE%A1%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%80%BC"><span class="toc-text">
+          实验一 计算表达式的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%BA%8C-%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%AD%97%E4%B8%B2%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="toc-text">
+          实验二 统计数字串的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%98%BE%E7%A4%BA"><span class="toc-text">
+          实验三 十六进制显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%9B%9B-%E5%8F%B3%E5%AF%B9%E9%BD%90%E6%95%B0%E6%8D%AE"><span class="toc-text">
+          实验四 右对齐数据</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

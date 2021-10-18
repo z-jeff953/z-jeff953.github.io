@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="开始ndoe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node -01 - 开始 Node">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%A4%A7%E5%89%8D%E7%AB%AF/Node%20-%2001%20%E5%BC%80%E5%A7%8BNode/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="开始ndoe">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217123246.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217123528.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217125542.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217125838.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217132754.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217133330.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217133539.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217135442.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217142716.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217160739.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217162338.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217162435.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217164026.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217163948.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217164247.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217164313.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217165730.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217182418.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217184307.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217184342.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217185215.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217185331.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217185338.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217190242.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217192841.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217205909.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217210746.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217210728.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217211027.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217211644.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217212815.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217213123.png">
+<meta property="article:published_time" content="2021-10-12T06:34:25.317Z">
+<meta property="article:modified_time" content="2021-01-03T01:49:08.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Node.js">
+<meta property="article:tag" content="前端工程化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217123246.png"><title>Node -01 - 开始 Node | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%A4%A7%E5%89%8D%E7%AB%AF/Node%20-%2001%20%E5%BC%80%E5%A7%8BNode/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Node -01 - 开始 Node</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-03</span></span></div></header><div class="post-body">
+        <h1 id="Node-01-开始-Node"   >
+          <a href="#Node-01-开始-Node" class="heading-link"><i class="fas fa-link"></i></a>Node -01 - 开始 Node</h1>
+      <p>Node.js让js跑后端,还能为前端工程化提供支持.还有方便的包管理工具,前端必学</p>
+<p>内容速览 : </p>
+<p>学习Node的项目创建, 包管理工具npm和yarn, 使用express搭建后端, MongoDB基本使用,通过express和MongoDB交互</p>
+<span id="more"></span>
+<p>[toc]</p>
+
+        <h2 id="1-安装Node-js"   >
+          <a href="#1-安装Node-js" class="heading-link"><i class="fas fa-link"></i></a>1. 安装Node.js</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://nodejs.org/en/" >node官方下载地址</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://nodejs.org/en/" >node中文网下载地址(非官方)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>下载安装文件(.msi)一直下一步安装好了就行了</p>
+<p>安装好打开命令行, 输入</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></div></figure>
+<p>成功显示版本号就行了</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217123246.png" alt="image-20201217123246803"></p>
+
+        <h2 id="2-创建第一个Node项目"   >
+          <a href="#2-创建第一个Node项目" class="heading-link"><i class="fas fa-link"></i></a>2. 创建第一个Node项目</h2>
+      <p>使用命令行在你的工作目录:</p>
+<ol>
+<li>mkdir 新建文件夹<code>hello_node</code></li>
+<li>cd 进去</li>
+<li>npm init</li>
+</ol>
+<p>他会给你如下提示信息 : </p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217123528.png" alt="image-20201217123528684"></p>
+<p>让你选择你的报名什么的信息, 不想写, 回车取默认就好了, 此外你也可以创建项目的时候就使用 <code>npm init -y</code> 全部使用默认值.</p>
+<p>然后就会在你的项目目录下创建一个 <code>package.json</code> 文件, 这就标志着这是一个node项目.</p>
+<p>你创建的项目都可以发布到<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.npmjs.com/" >npm(Node Package Manager)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>供人下载和使用,比如React就是在这里发布的</p>
+
+        <h2 id="3-Hello-Node"   >
+          <a href="#3-Hello-Node" class="heading-link"><i class="fas fa-link"></i></a>3. Hello Node</h2>
+      
+        <h3 id="3-1-Hello-Node"   >
+          <a href="#3-1-Hello-Node" class="heading-link"><i class="fas fa-link"></i></a>3.1 Hello Node</h3>
+      <p>按照我的习惯, 现在使用vscode打开项目文件夹</p>
+<p>然后新建文件</p>
+<p><code>index.js</code></p>
+<p>在文件中写入</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Hello Node&#x27;</span>)</span><br></pre></td></tr></table></div></figure>
+<p>然后我们就可以在控制台中<code>package.json</code>同级目录下输入</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node index.js</span><br></pre></td></tr></table></div></figure>
+<p>运行代码</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217125542.png" alt="image-20201217125542218"></p>
+
+        <h3 id="3-2-项目化管理"   >
+          <a href="#3-2-项目化管理" class="heading-link"><i class="fas fa-link"></i></a>3.2 项目化管理</h3>
+      <p>对于单个文件, 我们可以简单的使用node运行 , 但对于工程化项目, 我们需要使用<code>npm</code>或者<code>yarn</code>进行管理, 对于项目的运行也需要一些配置</p>
+<p>现在打开<code>package.json</code> 在”script”下添加一项</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;hello_node&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;First project&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>:<span class="string">&quot;node index.js&quot;</span>,<span class="comment">//添加了这一项</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;z-jeff&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<p>保存后, 在控制台输入</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></div></figure>
+<p>调用<code>node index.js</code>命令</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217125838.png" alt="image-20201217125838267"></p>
+<p>如果我们工程比较大, 需要更多的命令使用这种方式更方便</p>
+
+        <h2 id="4-包管理-npm和yarn"   >
+          <a href="#4-包管理-npm和yarn" class="heading-link"><i class="fas fa-link"></i></a>4. 包管理(npm和yarn)</h2>
+      
+        <h3 id="4-1-使用npm进行包管理"   >
+          <a href="#4-1-使用npm进行包管理" class="heading-link"><i class="fas fa-link"></i></a>4.1 使用npm进行包管理</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.npmjs.com/" >npm官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>npm是Node package manager的缩写</p>
+<p>npm能帮助我们管理项目中使用的包</p>
+<p>使用npm管理包能够更省心的下载和使用包</p>
+<p>在你上传你的项目的时候, 也可以不上传体积庞大的包, 让下载者使用npm安装, 能够节省空间</p>
+<p>node 自带了 npm</p>
+<p>上面我们介绍了使用npm命令来运行我们的node项目, 下面我们介绍使用npm管理我们的包</p>
+
+        <h4 id="4-1-1-npm-全局安装包"   >
+          <a href="#4-1-1-npm-全局安装包" class="heading-link"><i class="fas fa-link"></i></a>4.1.1 npm 全局安装包</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g 包名</span><br></pre></td></tr></table></div></figure>
+<p>比如我们可以使用npm下载 <code>creat-react-app</code>: </p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="4-1-2-npm在项目中安装包"   >
+          <a href="#4-1-2-npm在项目中安装包" class="heading-link"><i class="fas fa-link"></i></a>4.1.2 npm在项目中安装包</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save 包名</span><br></pre></td></tr></table></div></figure>
+<p>使用这种方式安装包, 包只会安装在项目文件夹中, 而且他还会再你的 <code>package.json</code> 中添加依赖</p>
+<p>比如我们可以使用npm安装一个<code>ramda</code>包</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ramda --save</span><br></pre></td></tr></table></div></figure>
+<p><code>--save</code> 的位置比较随意</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217132754.png" alt="image-20201217132754762"></p>
+<p>这样就安装好了.</p>
+<p>现在可以打开<code>package.json</code>文件查看</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;hello_node&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;First project&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;node index.js&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;z-jeff&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123; </span><br><span class="line">     <span class="comment">//多了这部分</span></span><br><span class="line">    <span class="attr">&quot;ramda&quot;</span>: <span class="string">&quot;^0.27.0&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>发现和之前相比多了一项,这就表示我们项目中使用的包</p>
+<p>而项目中多了一个文件夹<code>node_modeules</code>则用来存放我们的项目包(全局也有这个文件夹, 你可以修改它的位置, 不过还要进行一系列设置, 详情自查)</p>
+<p>我们可以在这里查看到安装的包的代码和源码</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217133330.png" alt="image-20201217133330014"></p>
+<p>我们发现还多了一个文件 <code>package-lock.json</code> 这个文件中记录的是我们的包的版本号, 保证你发布代码的时候 ,别人用的也是一样的版本</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;hello_node&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;lockfileVersion&quot;</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">&quot;requires&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;ramda&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.26.0&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;resolved&quot;</span>: <span class="string">&quot;https://registry.npm.taobao.org/ramda/download/ramda-0.26.0.tgz?cache=0&amp;other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Framda%2Fdownload%2Framda-0.26.0.tgz&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;integrity&quot;</span>: <span class="string">&quot;sha1-PL4Fn1wY+8DrhvI5arH4MgcFQkw=&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>有的地方我们使用的包在运行的时候不需要 , 就可以把他添加为开发时依赖</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 包名 --save-dev</span><br></pre></td></tr></table></div></figure>
+<p>这样这个包在打包的时候就不会安装了</p>
+<p>但是我们使用<code>npm install</code>(见下文)的时候还是可以安装的</p>
+
+        <h4 id="4-1-3-使用npm安装特定版本的包"   >
+          <a href="#4-1-3-使用npm安装特定版本的包" class="heading-link"><i class="fas fa-link"></i></a>4.1.3 使用npm安装特定版本的包</h4>
+      <p>这里我们可以看到我们安装的是ramda的0.27.1版本, 也就是默认是最新版本</p>
+<p>我们可以指定版本安装包</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save 包名@版本号</span><br></pre></td></tr></table></div></figure>
+<p>比如我们可以安装ramda的0.26.0版本</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217133539.png" alt="image-20201217133539423"></p>
+<p>这是我们发现我们的版本更新了, <code>package.json</code>和<code>package-lock.json</code>的内容也更新了</p>
+
+        <h4 id="4-1-4-使用npm卸载包"   >
+          <a href="#4-1-4-使用npm卸载包" class="heading-link"><i class="fas fa-link"></i></a>4.1.4 使用npm卸载包</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall --save 包名</span><br></pre></td></tr></table></div></figure>
+<p>比如我们可以使用</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall --save ramda</span><br></pre></td></tr></table></div></figure>
+<p>卸载<code>ramda</code>包, 然后我们发现<code>node_modeules</code>文件夹没了, 两个<code>.json</code>文件中的依赖项也没了</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;hello_node&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;First project&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;node index.js&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;z-jeff&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;&#125;<span class="comment">// 这里发生了改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="4-1-5-使用npm安装项目中依赖的包"   >
+          <a href="#4-1-5-使用npm安装项目中依赖的包" class="heading-link"><i class="fas fa-link"></i></a>4.1.5 使用npm安装项目中依赖的包</h4>
+      <p>前面提到了你可以使用npm管理你的依赖, 你发布的时候就可以不把包发走, 那我们如何使用没有包, 只有配置文件的项目呢?</p>
+<p>在项目目录下使用</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></div></figure>
+<p>就会安装对应的依赖了</p>
+<p>比如我们可以按照<code>4.1.2</code>中<code>package.json</code>中来修改我们的代码也就是在<code>&quot;dependencies&quot;</code>项中添加依赖的包和版本, 然后保存, 运行指令<code>npm install</code></p>
+<p>然后我们可以发现依赖文件又回来了, <code>package-lock.json</code>中也有了对应的项</p>
+<p>有的时候我们使用了指令后会看到飘红和飘黄的子, 查着修改一下吧</p>
+
+        <h4 id="4-1-6-使用npm查看项目中安装的包"   >
+          <a href="#4-1-6-使用npm查看项目中安装的包" class="heading-link"><i class="fas fa-link"></i></a>4.1.6 使用npm查看项目中安装的包</h4>
+      <p>一直查看<code>node_modules</code>和项目文件不太方便</p>
+<p>我们可以使用指令</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list</span><br></pre></td></tr></table></div></figure>
+<p>来查看我们的包</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217135442.png" alt="image-20201217135442125"></p>
+<p>我们还可以查看全局安装的包</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list -g</span><br></pre></td></tr></table></div></figure>
+<p>有的包还有其他依赖包 , 所以我们还可以配合一些参数之查看第一层的包</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls -g --depth=0</span><br></pre></td></tr></table></div></figure>
+<p><code>--depth=n</code>表示 查看到第几层</p>
+
+        <h4 id="4-1-7-npm-简写"   >
+          <a href="#4-1-7-npm-简写" class="heading-link"><i class="fas fa-link"></i></a>4.1.7 npm 简写</h4>
+      <p>我们可以使用一些简写来使用npm指令</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>指令作用</th>
+<th>指令全称</th>
+<th>指令简写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安装项目中所有依赖</td>
+<td>npm i</td>
+<td>npm install</td>
+</tr>
+<tr>
+<td></td>
+<td>npm install webpack —save-dev</td>
+<td>npm i webpack -D</td>
+</tr>
+<tr>
+<td></td>
+<td>npm install webapck —save</td>
+<td>npm i webpack -S</td>
+</tr>
+<tr>
+<td>卸载包</td>
+<td>npm uninstall</td>
+<td>npm uni</td>
+</tr>
+<tr>
+<td>查看安装的包</td>
+<td>npm list</td>
+<td>npm ls</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h4 id="4-1-8-npm包的开发规范"   >
+          <a href="#4-1-8-npm包的开发规范" class="heading-link"><i class="fas fa-link"></i></a>.4.1.8 npm包的开发规范</h4>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://javascript.ruanyifeng.com/nodejs/module.html" >CommonJS规范</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>如果你不是要开发包 或者阅读某些包的源码,先不要纠结于很复杂的东西</p>
+<p>我们暂时只需要知道使用, 在npm中</p>
+<p> <code>module.exports</code>是导出包</p>
+<p><code>require</code>使用包就可以了</p>
+<p>一般的npm包都会叫你怎么使用,暂时不用多管</p>
+<p>接触过其他包和框架, 可以尝试阅读拓展阅读:</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/05/require.html" >require源码</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35087256/article/details/84144647" >require和import区别</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="4-2-使用yarn进行包管理"   >
+          <a href="#4-2-使用yarn进行包管理" class="heading-link"><i class="fas fa-link"></i></a>4.2 使用yarn进行包管理</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://yarn.bootcss.com/" >yarn官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>和npm几乎一样</p>
+<p>但是缓存管理更好 ,更快, 下载更稳定, 更安全, 更能锁定包的版本,指令也更短</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019299845" >yarn npm cnpm对比</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>我们可以进入yarn 官网下载yarn</p>
+<p>也可以使用npm全局安装yarn(套娃是吧)</p>
+<p>我们先使用yarn1.x版本</p>
+<p>我选择从官网下载, 最新的稳定版yarn</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://classic.yarnpkg.com/en/docs/install#windows-stable" >英文yarn官网, 中文偶尔会抽</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>装了运行</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></div></figure>
+<p>来确认安装成功与否(注意安装完成后重启命令行工具)</p>
+
+        <h4 id="4-2-1-使用-yarn"   >
+          <a href="#4-2-1-使用-yarn" class="heading-link"><i class="fas fa-link"></i></a>4.2.1 使用 yarn</h4>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217142716.png" alt="image-20201217142715969"></p>
+<p>和<code>2</code>中一样, 不过我们这次不用npm init</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn init</span><br></pre></td></tr></table></div></figure>
+<p>初始化之后使用</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code .</span><br></pre></td></tr></table></div></figure>
+<p>能够使用vscode打开文件夹(非yarn特性)</p>
+<p>进去后一样, 可以看到<code>package.json</code>,不过条目更简洁</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;yarn_test&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>尝试安装ramda</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add ramda</span><br></pre></td></tr></table></div></figure>
+<p>这里我们会发现生成的是<code>yarn.lock</code>文件, 他比npm的文件对于版本控制的更加严格, 也会自动save</p>
+<p>卸载包使用</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn remove ramda</span><br></pre></td></tr></table></div></figure>
+<p>yarn卸载完了, 不会删除文件夹</p>
+<p>安装依赖</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></div></figure>
+<p>全局指令</p>
+<p>如果你使用npm安装yarn ,则需要<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/saysmy/p/9485648.html" >配置环境变量</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add 包名</span><br></pre></td></tr></table></div></figure>
+<p>查看安装包</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn list</span><br></pre></td></tr></table></div></figure>
+<p>npm安装的时候可以图形化选择环境变量,  yarn 要手动设置, 尤其是c盘吃紧的情况. 由于yarn会把安装过的东西缓存起来, 最好配到其他地方.源就不必要换了,本身就挺快的 , 不配置可以保持版本更新更快什么的.</p>
+<p>不过全局安装的时候不一定要使用yarn更好, 因为不会生成配置文件, 也不与要产生缓存什么的, 可以直接使用npm</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/hellomrr/p/13237653.html" >配置yarn源, 缓存 , 全局安装位置</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>添加yarn脚本命令</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;express_test&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>:<span class="string">&quot;node index.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;express&quot;</span>: <span class="string">&quot;^4.17.1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>然后你就可以使用</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn start</span><br></pre></td></tr></table></div></figure>
+<p>调用脚本了</p>
+
+        <h4 id="4-2-3-yarn和npm的命令对比"   >
+          <a href="#4-2-3-yarn和npm的命令对比" class="heading-link"><i class="fas fa-link"></i></a>4.2.3 yarn和npm的命令对比</h4>
+      <p>对比学习, 顺便体会一下为什么yarn 指令好用</p>
+<div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th style="text-align:left">Npm</th>
+<th style="text-align:left">Yarn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">npm init</td>
+<td style="text-align:left">yarn init</td>
+</tr>
+<tr>
+<td style="text-align:left">npm install</td>
+<td style="text-align:left">yarn install</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm install [package]</strong></td>
+<td style="text-align:left"><strong>yarn add [package]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm install —save [package]</strong></td>
+<td style="text-align:left"><strong>yarn add [package]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm install —save-dev [package]</strong></td>
+<td style="text-align:left"><strong>yarn add [package] [—dev/-D]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">npm install -g [package]</td>
+<td style="text-align:left">yarn global add [package]</td>
+</tr>
+<tr>
+<td style="text-align:left">npm rebuild</td>
+<td style="text-align:left">yarn install —force</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm uninstall [package]</strong></td>
+<td style="text-align:left"><strong>yarn remove [package]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm uninstall —save [package]</strong></td>
+<td style="text-align:left"><strong>yarn remove [package]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm uninstall —save-dev [package]</strong></td>
+<td style="text-align:left"><strong>yarn remove [package]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm uninstall —save-optional [package]</strong></td>
+<td style="text-align:left"><strong>yarn remove [package]</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">npm cache clean</td>
+<td style="text-align:left">yarn cache clean</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>npm update —save</strong></td>
+<td style="text-align:left"><strong>yarn upgrade</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">npm list</td>
+<td style="text-align:left">yarn list</td>
+</tr>
+<tr>
+<td style="text-align:left">npm list -g —depth 0</td>
+<td style="text-align:left">yarn global list</td>
+</tr>
+<tr>
+<td style="text-align:left">npm list —depth 0</td>
+<td style="text-align:left">yarn <em>list</em> —<em>depth</em>=0</td>
+</tr>
+<tr>
+<td style="text-align:left">npm i -g [package]</td>
+<td style="text-align:left">yarn global add [package]</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+
+        <h2 id="5-使用express进行后端api开发"   >
+          <a href="#5-使用express进行后端api开发" class="heading-link"><i class="fas fa-link"></i></a>5. 使用express进行后端api开发</h2>
+      <p>express是node中最火的后端框架</p>
+
+        <h3 id="5-1-开始使用express"   >
+          <a href="#5-1-开始使用express" class="heading-link"><i class="fas fa-link"></i></a>5.1 开始使用express</h3>
+      <p>初始化项目, 安装express包</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add express</span><br></pre></td></tr></table></div></figure>
+<p>新建<code>app.js</code>文件</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>) <span class="comment">// 导入包</span></span><br><span class="line"><span class="keyword">const</span> app = express() <span class="comment">// 新建对象</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span> <span class="comment">// 定义端口</span></span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 开始监听</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>然后我们可以打开端口查看,这时啥都没有</p>
+<p>因为我们没有对于请求处理</p>
+
+        <h3 id="5-2-Hello-Express"   >
+          <a href="#5-2-Hello-Express" class="heading-link"><i class="fas fa-link"></i></a>5.2 Hello Express</h3>
+      <p>我们可以简单的处理一下请求</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 监听到get请求后返回&quot;Hello Express&quot;</span></span><br><span class="line">    <span class="comment">// 设置监听的端口</span></span><br><span class="line">    <span class="comment">// request是请求的内容, 是别人给你发的</span></span><br><span class="line">    <span class="comment">// response是你的回应, 是你发给别人的</span></span><br><span class="line">  response.status(<span class="number">200</span>).send(<span class="string">&#x27;Hello Express&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217160739.png" alt="image-20201217160739415"></p>
+
+        <h3 id="5-3-Post请求和解析json"   >
+          <a href="#5-3-Post请求和解析json" class="heading-link"><i class="fas fa-link"></i></a>5.3 Post请求和解析json</h3>
+      <p>发送东西的时候一般使用post请求</p>
+<p>现在的网络请求都是通过<code>json</code>格式发送的, 我们可以使用express中间件来处理<code>json</code>格式</p>
+<p>中间件是自定义的, 用来扩展express功能, 能够在请求前, 响应前做特定的操作,使用use来使用中间件,默认使用端口<code>&#39;/&#39;</code></p>
+<p>比如上面我们对根路径使用use（），那么他下面所有的子路径都要经过use之后才能继续下去</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/abc_123456___/article/details/99960436?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control" >use和中间件解释</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.use(express.json())</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.send(<span class="string">&#x27;Hello Express&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求体:&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">201</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>postman测试:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217162338.png" alt="image-20201217162338412"></p>
+<p>可以看到右侧的返回状态码, 以及控制台输出的内容</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217162435.png" alt="image-20201217162435081"></p>
+<p>拓展阅读</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/dupd/p/6716386.html" >Vue.use源码解读</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="5-4-Put请求"   >
+          <a href="#5-4-Put请求" class="heading-link"><i class="fas fa-link"></i></a>5.4 Put请求</h3>
+      <p>put需要参数, 一般用来增加数据库资源, 需要数据的唯一标识</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.use(express.json())</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.send(<span class="string">&#x27;Hello Express&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.put(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求参数:&#x27;</span>, request.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求体:&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">202</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>postman</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217164026.png" alt="image-20201217164026469"></p>
+<p>结果: </p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217163948.png" alt="image-20201217163948577"></p>
+
+        <h3 id="5-5-Delete请求"   >
+          <a href="#5-5-Delete请求" class="heading-link"><i class="fas fa-link"></i></a>5.5 Delete请求</h3>
+      <p>和put一样, 只是用来删除东西的</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.use(express.json())</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.send(<span class="string">&#x27;Hello Express&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.delete(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求参数:&#x27;</span>, request.params.id)</span><br><span class="line">  response.status(<span class="number">204</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>postman</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217164247.png" alt="image-20201217164247168"></p>
+<p>结果</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217164313.png" alt="image-20201217164313162"></p>
+<p>拓展阅读: <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.what21.com/sys/view/java_http-java_1469118794265.html" >四种网络请求</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="6-使用多组路由处理多组api"   >
+          <a href="#6-使用多组路由处理多组api" class="heading-link"><i class="fas fa-link"></i></a>6. 使用多组路由处理多组api</h2>
+      
+        <h3 id="6-1-编写一个路由"   >
+          <a href="#6-1-编写一个路由" class="heading-link"><i class="fas fa-link"></i></a>6.1 编写一个路由</h3>
+      <p>在正常的开发中, 要又多组api处理不同的情境 </p>
+<p>这是需要使用路由</p>
+<p>路由就是不同的请求地址会交给路由处理来转发给相应的控制器处理，所以说路由就可以在转发前修改转发地址，你可以在这上面大作文章</p>
+<p>假如说, 你有设计一个系统有产品’/product’,订单’/order’等路由需要怎么管理呢?</p>
+<p>先创建路由文件夹用来管理不同的路由:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217165730.png" alt="image-20201217165730305"></p>
+<p>现在给出order的一个可能的情况</p>
+<p>order.js</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> route = express.Router()</span><br><span class="line"></span><br><span class="line">route.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.send(&#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">items</span>: <span class="string">&#x27;banana&#x27;</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">route.post(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单&#x27;</span>, req.body)</span><br><span class="line">  res.status(<span class="number">201</span>).send(&#123; <span class="attr">id</span>: <span class="number">2</span>, ...req.body &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">route.put(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单增加请求id&#x27;</span>, req.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到清单增加请求&#x27;</span>, req.body)</span><br><span class="line">  res.status(<span class="number">202</span>).send(&#123; <span class="attr">id</span>: req.params.id, ...req.body &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">route.delete(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单删除请求id&#x27;</span>, req.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到清单删除请求&#x27;</span>, req.body)</span><br><span class="line">  res.status(<span class="number">204</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = route</span><br><span class="line"><span class="comment">// 导出</span></span><br></pre></td></tr></table></div></figure>
+<p>修改app.js的内容使用路由</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> order = <span class="built_in">require</span>(<span class="string">&#x27;./routes/order&#x27;</span>) <span class="comment">// 添加依赖</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.use(express.json())</span><br><span class="line">app.use(<span class="string">&#x27;/order&#x27;</span>, order) <span class="comment">// 增加新的监听端口</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.send(<span class="string">&#x27;please order&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到Post信息&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">201</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.put(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到Put请求,请求id&#x27;</span>, request.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到Put请求&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">202</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.delete(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求参数:&#x27;</span>, request.params.id)</span><br><span class="line">  response.status(<span class="number">204</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>然后</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></div></figure>
+<p>我们测试一下效果</p>
+<p>首先测试get</p>
+<p>只需要在浏览器中访问 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://localhost:300/order" >http://localhost:300/order</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 即可看到效果</p>
+<p>然后我们可以使用postman测试其他请求</p>
+<p>post:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217182418.png" alt=""></p>
+<p>PUT:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217184307.png" alt="image-20201217184307787"></p>
+<p>DELETE:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217184342.png" alt="image-20201217184341974"></p>
+
+        <h3 id="6-2-处理多个路由"   >
+          <a href="#6-2-处理多个路由" class="heading-link"><i class="fas fa-link"></i></a>6.2 处理多个路由</h3>
+      <p>正常情况下, 我们需要处理多个子路由, 所以我们可以在routes新建一个index.js来管理路由</p>
+<p>现在的目录结构</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217185215.png" alt="image-20201217185215559"></p>
+<p>index.js</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> order = <span class="built_in">require</span>(<span class="string">&#x27;./order&#x27;</span>)</span><br><span class="line"><span class="built_in">module</span>.export = <span class="function">(<span class="params">app</span>) =&gt;</span> &#123;</span><br><span class="line">  app.use(<span class="string">&#x27;/order&#x27;</span>, order)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>order.js</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> route = express.Router()</span><br><span class="line"></span><br><span class="line">route.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.send(&#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">items</span>: <span class="string">&#x27;banana&#x27;</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">route.post(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单&#x27;</span>, req.body)</span><br><span class="line">  res.status(<span class="number">201</span>).send(&#123; <span class="attr">id</span>: <span class="number">2</span>, ...req.body &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">route.put(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单增加请求id&#x27;</span>, req.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单增加请求&#x27;</span>, req.body)</span><br><span class="line">  res.status(<span class="number">202</span>).send(&#123; <span class="attr">id</span>: req.params.id, ...req.body &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">route.delete(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单删除请求id&#x27;</span>, req.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到订单删除请求&#x27;</span>, req.body)</span><br><span class="line">  res.status(<span class="number">204</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = route</span><br></pre></td></tr></table></div></figure>
+<p>app.js</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"><span class="keyword">const</span> routes = <span class="built_in">require</span>(<span class="string">&#x27;./routes&#x27;</span>) <span class="comment">// 添加依赖</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.use(express.json())</span><br><span class="line"></span><br><span class="line">routes(app)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  response.send(<span class="string">&#x27;please order&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到Post信息&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">201</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.put(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到Put请求,请求id&#x27;</span>, request.params.id)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到Put请求&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">202</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.delete(<span class="string">&#x27;/:id&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求参数:&#x27;</span>, request.params.id)</span><br><span class="line">  response.status(<span class="number">204</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>postman 测试:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217185331.png" alt="image-20201217185330975"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217185338.png" alt="image-20201217185338391"></p>
+
+        <h2 id="7-使用MongoDB"   >
+          <a href="#7-使用MongoDB" class="heading-link"><i class="fas fa-link"></i></a>7. 使用MongoDB</h2>
+      
+        <h3 id="7-1-安装MongoDB"   >
+          <a href="#7-1-安装MongoDB" class="heading-link"><i class="fas fa-link"></i></a>7.1 安装MongoDB</h3>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.mongodb.org/dl/win32/x86_64-2008plus-ssl?_ga=2.22095099.1329461862.1496453972-720204989.1496453972" >镜像网站</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/" >官方下载教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/crud/" >官方文档</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>只需要通过镜像网站下载安装文件(.msi)安装即可 , 安装完整版 , 设置项如下</p>
+<p>最下面两项填成你想要的目录,取他不用改</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217190242.png" alt="image-20201217190242851"></p>
+<p>不要勾选这一项, 不然他会从网上下载他的图形化版本, 就会卡住</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://robomongo.org/" >图形化可以用这个</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217192841.png" alt="image-20201217192841439"></p>
+<p>配置环境变量, 把文件路径<code>C:\Program Files\MongoDB\Server\4.0\bin</code> 配置到环境变量</p>
+<p>这样我们可以通过命令行</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></div></figure>
+<p>打开mongoDB</p>
+<p>或者你直接每次都打开这个目录的<code>mongo.exe</code>也可以</p>
+<p>也可以创建快捷方式到顺手的地方</p>
+
+        <h3 id="7-2-介绍MongoDB"   >
+          <a href="#7-2-介绍MongoDB" class="heading-link"><i class="fas fa-link"></i></a>7.2 介绍MongoDB</h3>
+      
+        <h4 id="7-2-1-MongoDB"   >
+          <a href="#7-2-1-MongoDB" class="heading-link"><i class="fas fa-link"></i></a>7.2.1 MongoDB</h4>
+      <p>MongoDB是一个文档型数据库, 把数据存储成类似JSON的格式(BSON)</p>
+<p>面向文档的NoSql数据库重要解决的问题不是高性能的并发读写问题，而是保证海量数据存储的同时，具有比一般数据库更加良好的查询性能。</p>
+<p>MongoDB适合与读操作比较多的情况</p>
+
+        <h4 id="7-2-2-BSON"   >
+          <a href="#7-2-2-BSON" class="heading-link"><i class="fas fa-link"></i></a>7.2.2 BSON</h4>
+      <p>BSON文档（对象）由一个有序的元素列表构成。每个元素由一个字段名、一个类型和一个值组成。字段名为字符串。类型包括：</p>
+<ul>
+<li>string</li>
+<li>integer（32或64位）</li>
+<li>double（64位IEEE 754浮点数）</li>
+<li>decimal128（128位IEEE 754-2008浮点数；Binary Integer Decimal变体），适合作为任意精度为34个十进制数字的数字载体，最大值近似10</li>
+<li>date（整数，自UNIX时间的毫秒数)</li>
+<li>byte array（二进制数组）</li>
+<li>布尔（true或false）</li>
+<li>null</li>
+<li>BSON对象</li>
+<li>BSON数组</li>
+<li>JavaScript代码</li>
+<li>MD5二进制数据</li>
+<li>正则表达式（Perl兼容的正则表达式，即PCRE，版本8.41，含UTF-8支持；与Python不完全兼容）</li>
+</ul>
+<p>BSON的类型名义上是JSON类型的一个超集（JSON没有date或字节数组类型），但一个例外是没有像JSON那样的通用“数字”（number）类型。</p>
+
+        <h3 id="7-3-MongoDB的基本使用"   >
+          <a href="#7-3-MongoDB的基本使用" class="heading-link"><i class="fas fa-link"></i></a>7.3 MongoDB的基本使用</h3>
+      <p>打开mongoDB</p>
+<p>默认的端口地址<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://localhost:27017/" >http://localhost:27017/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>打开显示这句话</p>
+<blockquote>
+<p>It looks like you are trying to access MongoDB over HTTP on the native driver port.</p>
+</blockquote>
+
+        <h4 id="7-3-1-添加一个数据库"   >
+          <a href="#7-3-1-添加一个数据库" class="heading-link"><i class="fas fa-link"></i></a>7.3.1 添加一个数据库</h4>
+      <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 库名</span><br></pre></td></tr></table></div></figure>
+<p>然后他会提示</p>
+<blockquote>
+<p>switched to db myblog</p>
+</blockquote>
+<p>就是把db指针切换到了myblog数据库,使用</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></div></figure>
+<p>可以查看当前使用的数据库</p>
+<p>以后就可以使用db.xxx来进行操作</p>
+
+        <h4 id="7-3-2-设计文档结构"   >
+          <a href="#7-3-2-设计文档结构" class="heading-link"><i class="fas fa-link"></i></a>7.3.2 设计文档结构</h4>
+      <figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  title:<span class="string">&quot;Node - 01 开始Node&quot;</span>,</span><br><span class="line">  author:&#123;</span><br><span class="line">    name:<span class="string">&quot;z-jeff&quot;</span>,</span><br><span class="line">    avatar:<span class="string">&quot;https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  createdAT:<span class="string">&quot;2020-12-17&quot;</span>,</span><br><span class="line">  content:<span class="string">&quot;Node.js让js跑后端,还能为前端工程化提供支持.还有方便的包管理工具,前端必学&quot;</span>,</span><br><span class="line">  comments:[</span><br><span class="line">    &#123;</span><br><span class="line">      user:<span class="string">&quot;路人甲&quot;</span></span><br><span class="line">      comment:<span class="string">&quot;路过&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      user:<span class="string">&quot;小白&quot;</span>,</span><br><span class="line">      comment:<span class="string">&quot;哎呦不错哦&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      user:<span class="string">&quot;大神&quot;</span>,</span><br><span class="line">      comment:<span class="string">&quot;还行不错&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>也可以使用规整的json格式</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;title&quot;</span>: <span class="string">&quot;Node - 01 开始Node&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;z-jeff&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;avatar&quot;</span>: <span class="string">&quot;https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;createdAT&quot;</span>: <span class="string">&quot;2020-12-17&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;content&quot;</span>: <span class="string">&quot;Node.js让js跑后端,还能为前端工程化提供支持.还有方便的包管理工具,前端必学&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;comments&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;路人甲&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;comment&quot;</span>: <span class="string">&quot;路过&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;小白&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;comment&quot;</span>: <span class="string">&quot;哎呦不错哦&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;大神&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;comment&quot;</span>: <span class="string">&quot;还行不错&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="7-3-3-增删改查"   >
+          <a href="#7-3-3-增删改查" class="heading-link"><i class="fas fa-link"></i></a>7.3.3 增删改查</h4>
+      <ol>
+<li><strong>增加</strong></li>
+</ol>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.insertOne(内容)</span><br></pre></td></tr></table></div></figure>
+<p>对于上述例子就是</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.insertOne(&#123;</span><br><span class="line">  title:&quot;Node - 01 开始Node&quot;,</span><br><span class="line">  author:&#123;</span><br><span class="line">    name:&quot;z-jeff&quot;,</span><br><span class="line">    avatar:&quot;https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  createdAT:&quot;2020-12-17&quot;,</span><br><span class="line">  content:&quot;Node.js让js跑后端,还能为前端工程化提供支持.还有方便的包管理工具,前端必学&quot;,</span><br><span class="line">  comments:[</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">user</span>:&quot;路人甲&quot;</span><br><span class="line">      comment:&quot;路过&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">user</span>:&quot;小白&quot;,</span><br><span class="line">      comment:&quot;哎呦不错哦&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">user</span>:&quot;大神&quot;,</span><br><span class="line">      comment:&quot;还行不错&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>成功后返回如下内容:</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217205909.png" alt="image-20201217205908975"></p>
+<p>第一个表示成功插入了, 第二个是唯一标识ID</p>
+<p>增加多个对象</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.collection.insertMany([</span><br><span class="line">    <span class="operator">&lt;</span>document <span class="number">1</span><span class="operator">&gt;</span>,</span><br><span class="line">    <span class="operator">&lt;</span>document <span class="number">2</span><span class="operator">&gt;</span>,</span><br><span class="line">])</span><br></pre></td></tr></table></div></figure>
+<ol>
+<li>查找</li>
+</ol>
+<p>查看数据库中的数据可以使用</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.find(&#123;&#125;)</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 传递一个空对象</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217210746.png" alt="image-20201217210746542"></p>
+<p>查询具有某个属性的对象</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.find(&#123;title:&quot;Node - 01 开始Node&quot;&#125;)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217210728.png" alt="image-20201217210728275"></p>
+<p>查询具有某个属性的属性的对象</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.find(&#123;&quot;author.name&quot;:&quot;z-jeff&quot;&#125;)</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 双引号引起来, 用.运算符找对应属性</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217211027.png" alt="image-20201217211027469"></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/knowledgesea/p/4634464.html" >拓展</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<ol>
+<li>修改数据/更新数据</li>
+</ol>
+<p>修改一条数据</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.updateOne(查询条件,修改对象)</span><br></pre></td></tr></table></div></figure>
+<p>查询对象就是查询利用的参数</p>
+<p>修改对象使用{$set:{新的参数对象}}</p>
+<p>示例:</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.updateOne(&#123;title:&quot;Node - 01 开始Node&quot;&#125;,&#123;$<span class="keyword">set</span>:&#123;title:&quot;Node - 01 Start Node&quot;&#125;&#125;)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217211644.png" alt="image-20201217211644853"></p>
+<p>以上语句只会修改第一条发现的文档，如果你要修改多条相同的文档，则需要设置 multi 参数为 true。</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.update(&#123;title:&quot;Node - 01 开始Node&quot;&#125;,&#123;$<span class="keyword">set</span>:&#123;title:&quot;Node - 01 Start Node&quot;&#125;&#125;,&#123;multi:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>不只可以修改查询对象</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.updateOne(&#123;title:&quot;Node - 01 Start Node&quot;&#125;,&#123;$<span class="keyword">set</span>:&#123;createdAT:&quot;2020-12-18&quot;&#125;&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>还可以求改嵌套对象</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.updateOne(&#123;title:&quot;Node - 01 Start Node&quot;&#125;,&#123;$<span class="keyword">set</span>:&#123;&quot;author.name&quot;:&quot;Zjeff&quot;&#125;&#125;)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217212815.png" alt="image-20201217212815664"></p>
+<p>修改成功,返回修改成功, 匹配数量, 修改数量</p>
+<ol>
+<li>删除数据</li>
+</ol>
+<p>也是有one和many两种方式</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.postCollection.deleteOne(&#123;_id:ObjectId(&quot;5fdb55e2a3b48e2ffd780b7f&quot;)&#125;)</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20201217213123.png" alt="image-20201217213123454"></p>
+
+        <h2 id="8-express-MongoDB"   >
+          <a href="#8-express-MongoDB" class="heading-link"><i class="fas fa-link"></i></a>8. express + MongoDB</h2>
+      <p>待完成</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Et4y1C7BZ" >https://www.bilibili.com/video/BV1Et4y1C7BZ</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>参考资料:</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://space.bilibili.com/302954484" >峰华前端工程师</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%A4%A7%E5%89%8D%E7%AB%AF/Node%20-%2001%20%E5%BC%80%E5%A7%8BNode/">http://zjeff-953.gitee.io/zjeff/2021/10/12/%E5%A4%A7%E5%89%8D%E7%AB%AF/Node%20-%2001%20%E5%BC%80%E5%A7%8BNode/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%90%8E%E7%AB%AF/">后端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/Node-js/">Node.js</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/12/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/OS%20-%2003%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">OS - 03 内存管理</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/12/%E5%A4%A7%E5%89%8D%E7%AB%AF/MERN%20+%20Taro%20%E6%8A%A5%E8%AD%A6%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"><span class="paginator-prev__text">MERN + Taro 报警程序开发</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-01-%E5%BC%80%E5%A7%8B-Node"><span class="toc-text">
+          Node -01 - 开始 Node</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85Node-js"><span class="toc-text">
+          1. 安装Node.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AANode%E9%A1%B9%E7%9B%AE"><span class="toc-text">
+          2. 创建第一个Node项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hello-Node"><span class="toc-text">
+          3. Hello Node</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Hello-Node"><span class="toc-text">
+          3.1 Hello Node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%A1%B9%E7%9B%AE%E5%8C%96%E7%AE%A1%E7%90%86"><span class="toc-text">
+          3.2 项目化管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8C%85%E7%AE%A1%E7%90%86-npm%E5%92%8Cyarn"><span class="toc-text">
+          4. 包管理(npm和yarn)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BD%BF%E7%94%A8npm%E8%BF%9B%E8%A1%8C%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-text">
+          4.1 使用npm进行包管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-npm-%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text">
+          4.1.1 npm 全局安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-npm%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text">
+          4.1.2 npm在项目中安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E4%BD%BF%E7%94%A8npm%E5%AE%89%E8%A3%85%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84%E5%8C%85"><span class="toc-text">
+          4.1.3 使用npm安装特定版本的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-4-%E4%BD%BF%E7%94%A8npm%E5%8D%B8%E8%BD%BD%E5%8C%85"><span class="toc-text">
+          4.1.4 使用npm卸载包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-5-%E4%BD%BF%E7%94%A8npm%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BE%9D%E8%B5%96%E7%9A%84%E5%8C%85"><span class="toc-text">
+          4.1.5 使用npm安装项目中依赖的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-6-%E4%BD%BF%E7%94%A8npm%E6%9F%A5%E7%9C%8B%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85"><span class="toc-text">
+          4.1.6 使用npm查看项目中安装的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-7-npm-%E7%AE%80%E5%86%99"><span class="toc-text">
+          4.1.7 npm 简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-8-npm%E5%8C%85%E7%9A%84%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83"><span class="toc-text">
+          .4.1.8 npm包的开发规范</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%BD%BF%E7%94%A8yarn%E8%BF%9B%E8%A1%8C%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-text">
+          4.2 使用yarn进行包管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E4%BD%BF%E7%94%A8-yarn"><span class="toc-text">
+          4.2.1 使用 yarn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-yarn%E5%92%8Cnpm%E7%9A%84%E5%91%BD%E4%BB%A4%E5%AF%B9%E6%AF%94"><span class="toc-text">
+          4.2.3 yarn和npm的命令对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8express%E8%BF%9B%E8%A1%8C%E5%90%8E%E7%AB%AFapi%E5%BC%80%E5%8F%91"><span class="toc-text">
+          5. 使用express进行后端api开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8express"><span class="toc-text">
+          5.1 开始使用express</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Hello-Express"><span class="toc-text">
+          5.2 Hello Express</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Post%E8%AF%B7%E6%B1%82%E5%92%8C%E8%A7%A3%E6%9E%90json"><span class="toc-text">
+          5.3 Post请求和解析json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-Put%E8%AF%B7%E6%B1%82"><span class="toc-text">
+          5.4 Put请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-Delete%E8%AF%B7%E6%B1%82"><span class="toc-text">
+          5.5 Delete请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BB%84%E8%B7%AF%E7%94%B1%E5%A4%84%E7%90%86%E5%A4%9A%E7%BB%84api"><span class="toc-text">
+          6. 使用多组路由处理多组api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%B7%AF%E7%94%B1"><span class="toc-text">
+          6.1 编写一个路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E8%B7%AF%E7%94%B1"><span class="toc-text">
+          6.2 处理多个路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%BD%BF%E7%94%A8MongoDB"><span class="toc-text">
+          7. 使用MongoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%AE%89%E8%A3%85MongoDB"><span class="toc-text">
+          7.1 安装MongoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E4%BB%8B%E7%BB%8DMongoDB"><span class="toc-text">
+          7.2 介绍MongoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-1-MongoDB"><span class="toc-text">
+          7.2.1 MongoDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-2-BSON"><span class="toc-text">
+          7.2.2 BSON</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-MongoDB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">
+          7.3 MongoDB的基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-1-%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">
+          7.3.1 添加一个数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-2-%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E7%BB%93%E6%9E%84"><span class="toc-text">
+          7.3.2 设计文档结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-3-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">
+          7.3.3 增删改查</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-express-MongoDB"><span class="toc-text">
+          8. express + MongoDB</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

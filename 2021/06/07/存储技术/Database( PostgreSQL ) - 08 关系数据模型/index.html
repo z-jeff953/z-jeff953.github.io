@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database( PostgreSQL ) - 08 关系数据模型">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2021/06/07/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2008%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102654.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101708.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101905.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101930.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101939.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102531.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102543.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102621.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102836.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102918.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102927.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102945.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607103042.png">
+<meta property="og:image" content="c:/Users/15727/AppData/Roaming/Typora/typora-user-images/image-20210607103847290.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104004.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104035.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104104.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104134.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104143.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104158.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104211.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104217.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104224.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104229.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104252.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104438.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104600.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104607.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104617.png">
+<meta property="og:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607103455.png">
+<meta property="article:published_time" content="2021-06-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-08T01:17:54.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102654.png"><title>Database( PostgreSQL ) - 08 关系数据模型 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2021/06/07/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2008%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 08 关系数据模型</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-08</span></span></div></header><div class="post-body">
+        <h1 id="Database-PostgreSQL-08-关系数据模型"   >
+          <a href="#Database-PostgreSQL-08-关系数据模型" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 08 关系数据模型</h1>
+      <p>关系模型是现代数据库的核心</p>
+<span id="more"></span>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102654.png" alt="image-20210607102654676"></p>
+
+        <h2 id="1-DBMS的逻辑模型的概念"   >
+          <a href="#1-DBMS的逻辑模型的概念" class="heading-link"><i class="fas fa-link"></i></a>1. DBMS的逻辑模型的概念</h2>
+      <p><strong>关系</strong>：用于描述数据本身、数据之间联系，俗称“<strong>表</strong>”。</p>
+<p><strong>域（Domain）</strong>:是一组具有<strong>相同数据类型</strong>的值的<strong>集合</strong>，具有数据类型及长度、域名、取值范围。</p>
+<p><strong>关系模式</strong>：由<strong>关系名</strong>、<strong>各个属性</strong>、<strong>属性的域</strong>以及<strong>属性的依赖关系</strong>构成。</p>
+<p><strong>关系实例</strong>：由真实<strong>记录</strong>或<strong>元组</strong>构成的<strong>集合</strong>，称为关系实例，简称关系；</p>
+<p>关系实例的每个元组的字段必须对应关系模式中的字段。</p>
+
+        <h2 id="2-关系数据模型"   >
+          <a href="#2-关系数据模型" class="heading-link"><i class="fas fa-link"></i></a>2. 关系数据模型</h2>
+      <p>关系模型有三部分：关系数据结构、关系操作集合、关系的完整性</p>
+
+        <h3 id="2-1-相关概念"   >
+          <a href="#2-1-相关概念" class="heading-link"><i class="fas fa-link"></i></a>2.1 相关概念</h3>
+      
+        <h4 id="2-1-1-实体"   >
+          <a href="#2-1-1-实体" class="heading-link"><i class="fas fa-link"></i></a>2.1.1 实体</h4>
+      <p>实体（entity）——是指包含有数据特征的事物对象在概念模型世界中的抽象名称。</p>
+
+        <h4 id="2-1-2-关系"   >
+          <a href="#2-1-2-关系" class="heading-link"><i class="fas fa-link"></i></a>2.1.2 关系</h4>
+      <p><strong>关系</strong>是指在<strong>集合域</strong> D1、…、Dn 上运算<strong>笛卡儿积</strong>的<strong>有意义子集</strong>，其数学描述为 R ⊆ D1 × … × Dn。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101708.png" alt="image-20210607101708418"></p>
+<p>说明：关系R只是该笛卡儿积的有意义子集，即关系R的元组数&lt;=笛卡儿积的元组数。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101905.png" alt="image-20210607101905077"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101930.png" alt="image-20210607101930513"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607101939.png" alt="image-20210607101939215"></p>
+
+        <h4 id="2-1-3-关系特征"   >
+          <a href="#2-1-3-关系特征" class="heading-link"><i class="fas fa-link"></i></a>2.1.3 关系特征</h4>
+      <ol>
+<li>在关系表中，单元格必须是原子值，即仅存储单个值<br>（也就是说数组，JSON在关系行数据库中是不能有的）</li>
+<li>在关系表中每个属性列定义统一数据类型或同一取值域<br>（方便查找排序等操作）</li>
+<li>在关系表中,任意两个元组不能完全相同(防止冗余)</li>
+<li>在关系表中,不同属性列定义不同列名(防止混淆和冗余)</li>
+<li>在关系表中,行的顺序可以任意交换(满足不同的查询需求)</li>
+<li>在关系表中,列的顺序可以任意交换</li>
+</ol>
+
+        <h4 id="2-1-4-键"   >
+          <a href="#2-1-4-键" class="heading-link"><i class="fas fa-link"></i></a>2.1.4 键</h4>
+      <p>在关系中，可以用来唯一标识元组的属性列，称为键（Key），其它属性列都为非键列。</p>
+
+        <h5 id="复合键"   >
+          <a href="#复合键" class="heading-link"><i class="fas fa-link"></i></a>复合键</h5>
+      <p>复合键（Compound Key）——是指关系中用来唯一标识元组的多列作为键。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102531.png" alt="image-20210607102531194"></p>
+
+        <h5 id="候选键"   >
+          <a href="#候选键" class="heading-link"><i class="fas fa-link"></i></a>候选键</h5>
+      <p>候选键（Candidate Key）——关系中可能有多个列均适合作为键，将其中每个都称为候选键。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102543.png" alt="image-20210607102543122"></p>
+
+        <h5 id="主键"   >
+          <a href="#主键" class="heading-link"><i class="fas fa-link"></i></a>主键</h5>
+      <p>主键（Primary key）是关系表中最有代表性的一个候选键，每个关系表中只能定义一个主键。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102621.png" alt="image-20210607102620848"></p>
+<p>主键作用：</p>
+<ul>
+<li>唯一标识关系表的每行（元组）</li>
+<li>与关联表的外键建立联系，实现关系表之间连接</li>
+<li>数据库文件使用主键值来组织关系表的数据存储</li>
+<li>数据库使用主键索引快速检索数据</li>
+</ul>
+<p>总的来说主键主要作用是索引和约束</p>
+
+        <h5 id="代理键"   >
+          <a href="#代理键" class="heading-link"><i class="fas fa-link"></i></a>代理键</h5>
+      <p>代理键——采用DBMS自动生成的数字序列作为关系表的主键。</p>
+<p>代理键有什么用途?</p>
+<p>由DBMS自动生成的数字序列作为主键，可替代复合主键，以便获得更高性能的数据访问操作处理。 </p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102836.png" alt=""></p>
+
+        <h5 id="外键"   >
+          <a href="#外键" class="heading-link"><i class="fas fa-link"></i></a>外键</h5>
+      <p>外键（Foreign key）——在关联的两个关系中，它们具有一个或多个相同属性。若关联列在第一个关系中作为主键，则在第二个关系中作为外键。</p>
+
+        <h3 id="2-2-关系数据结构"   >
+          <a href="#2-2-关系数据结构" class="heading-link"><i class="fas fa-link"></i></a>2.2 关系数据结构</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102918.png" alt="image-20210607102918393"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102927.png" alt="image-20210607102927617"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607102945.png" alt="image-20210607102945789"></p>
+
+        <h3 id="2-3-关系操作-传统的集合运算操作"   >
+          <a href="#2-3-关系操作-传统的集合运算操作" class="heading-link"><i class="fas fa-link"></i></a>2.3 关系操作 - 传统的集合运算操作</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607103042.png" alt="image-20210607103042824"></p>
+<p>  常见关系运算包括选择（select）、投影（project）、连接（join）、除（Divide）、并（union）、交（intersection）、差（difference）等，也包含插入（Insert）、更新（Update）、删除（Delete）等数据操纵。</p>
+
+        <h4 id="2-3-1-UNION-并-：R∪S"   >
+          <a href="#2-3-1-UNION-并-：R∪S" class="heading-link"><i class="fas fa-link"></i></a>2.3.1 UNION(并)：R∪S</h4>
+      <p>概念：包含R和S中的所有元组，要求R和S兼容(字段个数、类型[名字])，结果模式与R一致。</p>
+<p><img src="C:\Users\15727\AppData\Roaming\Typora\typora-user-images\image-20210607103847290.png" alt="image-20210607103847290" style="zoom:50%;" /></p>
+
+        <h4 id="2-3-2-INTERSECT-交-：R∩S"   >
+          <a href="#2-3-2-INTERSECT-交-：R∩S" class="heading-link"><i class="fas fa-link"></i></a>2.3.2 INTERSECT (交)：R∩S</h4>
+      <p>概念：包含R、S中相同的元组，R、S须兼容。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104004.png" alt="image-20210607104004804" style="zoom:50%;" /></p>
+
+        <h4 id="2-3-3-SET-DIFFERENCE-差-：R－S"   >
+          <a href="#2-3-3-SET-DIFFERENCE-差-：R－S" class="heading-link"><i class="fas fa-link"></i></a>2.3.3 SET-DIFFERENCE(差)：R－S</h4>
+      <p>概念：包含在R中而不在S中的元组，R、S兼容。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104035.png" alt="image-20210607104035136" style="zoom:50%;" /></p>
+
+        <h4 id="2-3-4-CROSS-PRODUCT-笛卡尔积-：R×S"   >
+          <a href="#2-3-4-CROSS-PRODUCT-笛卡尔积-：R×S" class="heading-link"><i class="fas fa-link"></i></a>2.3.4 CROSS-PRODUCT(笛卡尔积)：R×S</h4>
+      <p>概念：结果包含R和S中所有字段。如果有相同的字段名，则在结果字段来源的表。也叫“笛卡尔乘积”。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104104.png" alt="image-20210607104104650" style="zoom:50%;" /></p>
+<p>②由于R∩S=R－(R－S)，故R∩S实际上是多余的。说明：<br>①以上定义中，R、S本身也可以是关系代数表达式；</p>
+
+        <h3 id="2-4-关系操作-专门的关系运算操作"   >
+          <a href="#2-4-关系操作-专门的关系运算操作" class="heading-link"><i class="fas fa-link"></i></a>2.4 关系操作 - 专门的关系运算操作</h3>
+      <p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104134.png" alt="image-20210607104134111"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104143.png" alt="image-20210607104143059"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104158.png" alt="image-20210607104158475"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104211.png" alt="image-20210607104211894"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104217.png" alt="image-20210607104217543"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104224.png" alt="image-20210607104224083"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104229.png" alt="image-20210607104229389"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104252.png" alt="image-20210607104252460"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104438.png" alt="image-20210607104438584"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104600.png" alt="image-20210607104600664"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104607.png" alt="image-20210607104607485"></p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607104617.png" alt="image-20210607104617165"></p>
+
+        <h3 id="2-4-数据关系约束"   >
+          <a href="#2-4-数据关系约束" class="heading-link"><i class="fas fa-link"></i></a>2.4 数据关系约束</h3>
+      <p>在关系模型中，关系模型的数据约束包括实体完整性约束、参照完整性约束和用户自定义完整性约束。一般由业务需求来确定。</p>
+<p>在关系模型中，可定义关系表的数据约束如下：</p>
+<p>• 属性列取值类型</p>
+<p>• 属性列取值范围</p>
+<p>• 属性列取值是否唯一</p>
+<p>• 属性列是否允许空值</p>
+<p>• 关联表的参照完整性约束</p>
+<p>关系模型完整性是指在关系数据模型中对关系实施的完整性约束。</p>
+<p>完整性约束作用：</p>
+<ul>
+<li>消除关系表的元组重复存储</li>
+<li>保持关联表的数据一致性</li>
+<li>实现业务数据规则</li>
+</ul>
+<p>关系模型完整性约束组成：</p>
+<ul>
+<li>实体完整性约束</li>
+<li>参照完整性约束</li>
+<li>用户自定义完整性约束</li>
+</ul>
+
+        <h4 id="2-4-1-实体完整性（Entity-Integrity）"   >
+          <a href="#2-4-1-实体完整性（Entity-Integrity）" class="heading-link"><i class="fas fa-link"></i></a>2.4.1 实体完整性（Entity Integrity）</h4>
+      <p>实体完整性是指在关系表中实施的主键取值约束，以保证关系表中的每个元组可以被唯一标识。</p>
+<p>实体完整性约束规则：</p>
+<p>①每个关系表中的<strong>主键属性列</strong>都<strong>不允许为空值</strong>（NULL），否则就不可能标识实体。</p>
+<p>②现实世界中的实体是靠主键来标识，<strong>主键取值应该唯一</strong>，并区分关系表中的每个元组。</p>
+
+        <h4 id="2-4-2-参照完整性（Referential-Integrity）"   >
+          <a href="#2-4-2-参照完整性（Referential-Integrity）" class="heading-link"><i class="fas fa-link"></i></a>2.4.2 参照完整性（Referential Integrity）</h4>
+      <p>参照完整性是指关系表之间需要遵守的数据约束，以保证关系之间关联列的数据一致性。</p>
+<p>参照完整性约束规则：若关系R中的外键F与关系S中的主键K相关联，则R中外键F值必须与S中主键K值一致。</p>
+<p>外键（Foreign key）——在关联的两个关系中，它们具有一个或多个相同属性。若关联列在第一个关系中作为主键，则在第二个关系中作为外键。</p>
+<p><img src="https://gitee.com/zjeff-953/picsBed/raw/master/image/20210607103455.png" alt="image-20210607103455112"></p>
+<p>参照完整性检查：对于存在参照引用的关系相关表，无论是操作主表还是操作子表的元组数据，都应保证关联表之间的数据一致性。以下情况都会带来关联表的参照完整性问题。</p>
+<p>1）修改主表中某元组的关键字值后，子表对应的外键值未做相应改变，<strong>两表关联数据不一致</strong>。</p>
+<p>2）删除主表的某元组记录后，子表的相应元组未删除，致使这些元组成为<strong>孤立元组</strong>。</p>
+<p>3）对于子表<strong>插入</strong>的新元组，所采用的<strong>外键值在主表的主键属性列中没有对应的值</strong>匹配。</p>
+<p>4）<strong>修改子表中的外键值</strong>，<strong>没有与主表的主键属性列值匹配。</strong></p>
+
+        <h4 id="2-4-3-用户自定义完整性"   >
+          <a href="#2-4-3-用户自定义完整性" class="heading-link"><i class="fas fa-link"></i></a>2.4.3 用户自定义完整性</h4>
+      <p>用户自定义完整性是指用户根据具体业务对数据处理规则要求所定义的数据约束。</p>
+<p>用户可以定义如下类型的完整性约束：</p>
+<ul>
+<li>定义列的数据类型与取值范围</li>
+<li>定义列的缺省值</li>
+<li>定义列是否允许取空值</li>
+<li>定义列取值唯一性</li>
+<li>定义列之间的数据依赖性</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2021/06/07/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2008%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/">http://zjeff-953.gitee.io/zjeff/2021/06/07/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2008%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/09/%E5%89%8D%E7%AB%AF%E5%BA%94%E8%AF%95/%E5%88%B7%E9%9D%A2%E7%AD%8B%20-07%20HR%E9%9D%A2%E4%B8%93%E9%A2%98/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">刷面筋 -07 HR面专题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/07/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2011%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%BC%96%E7%A8%8B%E9%A2%98/"><span class="paginator-prev__text">Database( PostgreSQL ) - 11 数据库设计编程题</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Database-PostgreSQL-08-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          Database( PostgreSQL ) - 08 关系数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-DBMS%E7%9A%84%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">
+          1. DBMS的逻辑模型的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">
+          2. 关系数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">
+          2.1 相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E5%AE%9E%E4%BD%93"><span class="toc-text">
+          2.1.1 实体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E5%85%B3%E7%B3%BB"><span class="toc-text">
+          2.1.2 关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E5%85%B3%E7%B3%BB%E7%89%B9%E5%BE%81"><span class="toc-text">
+          2.1.3 关系特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-4-%E9%94%AE"><span class="toc-text">
+          2.1.4 键</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E9%94%AE"><span class="toc-text">
+          复合键</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%80%99%E9%80%89%E9%94%AE"><span class="toc-text">
+          候选键</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE"><span class="toc-text">
+          主键</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E9%94%AE"><span class="toc-text">
+          代理键</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%96%E9%94%AE"><span class="toc-text">
+          外键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">
+          2.2 关系数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C-%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97%E6%93%8D%E4%BD%9C"><span class="toc-text">
+          2.3 关系操作 - 传统的集合运算操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-UNION-%E5%B9%B6-%EF%BC%9AR%E2%88%AAS"><span class="toc-text">
+          2.3.1 UNION(并)：R∪S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-INTERSECT-%E4%BA%A4-%EF%BC%9AR%E2%88%A9S"><span class="toc-text">
+          2.3.2 INTERSECT (交)：R∩S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-SET-DIFFERENCE-%E5%B7%AE-%EF%BC%9AR%EF%BC%8DS"><span class="toc-text">
+          2.3.3 SET-DIFFERENCE(差)：R－S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-4-CROSS-PRODUCT-%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%EF%BC%9AR%C3%97S"><span class="toc-text">
+          2.3.4 CROSS-PRODUCT(笛卡尔积)：R×S</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C-%E4%B8%93%E9%97%A8%E7%9A%84%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E6%93%8D%E4%BD%9C"><span class="toc-text">
+          2.4 关系操作 - 专门的关系运算操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%95%B0%E6%8D%AE%E5%85%B3%E7%B3%BB%E7%BA%A6%E6%9D%9F"><span class="toc-text">
+          2.4 数据关系约束</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7%EF%BC%88Entity-Integrity%EF%BC%89"><span class="toc-text">
+          2.4.1 实体完整性（Entity Integrity）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7%EF%BC%88Referential-Integrity%EF%BC%89"><span class="toc-text">
+          2.4.2 参照完整性（Referential Integrity）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-text">
+          2.4.3 用户自定义完整性</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">185</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">29</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
