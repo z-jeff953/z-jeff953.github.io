@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译原理-01-实现一个简单的编译器">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2022/03/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-13T06:21:41.769Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="标签">
+<meta name="twitter:card" content="summary"><title>编译原理-01-实现一个简单的编译器 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2022/03/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">编译原理-01-实现一个简单的编译器</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-03-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-03-13</span></span></div></header><div class="post-body">
+        <h1 id="编译原理-01-实现一个简单的编译器"   >
+          <a href="#编译原理-01-实现一个简单的编译器" class="heading-link"><i class="fas fa-link"></i></a>编译原理-01-实现一个简单的编译器</h1>
+      <p>使用 <code>TypeScript / Python / Golang</code> 实现一个简单的 <code>Lisp</code> 部分语法的编译器</p>
+<span id="more"></span>
+
+        <h2 id="1-认识编译器"   >
+          <a href="#1-认识编译器" class="heading-link"><i class="fas fa-link"></i></a>1 认识编译器</h2>
+      
+        <h3 id="1-1-编译器的定义-作用"   >
+          <a href="#1-1-编译器的定义-作用" class="heading-link"><i class="fas fa-link"></i></a>1.1 编译器的定义/作用</h3>
+      <p>编译器就是将“一种语言（通常为高级语言）”翻译为“另一种语言（通常为低级语言）”的程序</p>
+<p>所以在这里我们将要实现的是将 <code>Lisp</code> 语言翻译成 <code>TypeScript / Python / Golang</code> </p>
+
+        <h3 id="1-2-常见的编译器"   >
+          <a href="#1-2-常见的编译器" class="heading-link"><i class="fas fa-link"></i></a>1.2 常见的编译器</h3>
+      <p>常见的编译器是讲编程语言翻译成及机器码, 在这个过程中通常要经历中间阶段</p>
+<p>中间阶段的引入使得编译器的架构更加模块分离, 能在编译器编写团队之间实现更好的分工, 也能讲不通阶段的中间代码赋予不同的意义</p>
+
+        <h4 id="1-2-1-C语言"   >
+          <a href="#1-2-1-C语言" class="heading-link"><i class="fas fa-link"></i></a>1.2.1 C语言</h4>
+      <p>C语言的编译器经历了四个阶段：预处理，编译，汇编，链接</p>
+<p>预处理：C语言 -&gt; C语言(宏定义展开、头文件展开、条件编译)</p>
+<p>编译：检查语法，C语言 -&gt; 汇编语言</p>
+<p>汇编: 汇编语言 -&gt; 01机器码</p>
+<p>链接：找到依赖的库文件，将目标文件链接为可执行程序</p>
+
+        <h4 id="1-2-2-Java"   >
+          <a href="#1-2-2-Java" class="heading-link"><i class="fas fa-link"></i></a>1.2.2 Java</h4>
+      <p>Java程序从源文件创建到程序运行要经过两大步骤：</p>
+<p>1、Java文件会由编译器编译成class文件（字节码文件），会经过编译原理简单过程的前三步(词法分析 —&gt; 语法分析 —&gt; 语义分析和中间代码生成 —&gt; 优化 —&gt; 目标代码生成)；</p>
+<p><code>.Java</code> -&gt; <code>.Class</code> 在这个过程中会压缩文件体积，解析部分注解</p>
+<p>2、字节码由java虚拟机解释运行，解释执行即为目标代码生成并执行。因为java程序既要编译的同时也要经过JVM的解释运行</p>
+<p><code>.Class</code> -&gt; <code>Java汇编代码</code> 将 Class 文件 检查语法，执行，编译成中间代码</p>
+
+        <h3 id="1-3-编译器的工作阶段"   >
+          <a href="#1-3-编译器的工作阶段" class="heading-link"><i class="fas fa-link"></i></a>1.3 编译器的工作阶段</h3>
+      <p>大多数编译器可以分成三个阶段：解析，转换以及代码生成</p>
+<ol>
+<li>解析（Parsing）是将最初原始的代码转换为一种更加抽象的表示（译者注：即AST）。</li>
+<li>转换（Transformation）将对这个抽象的表示做一些处理，让它能做到编译器期望它做到的事情。</li>
+<li>代码（Code Generation）生成接收处理之后的代码表示，然后把它转换成新的代码。</li>
+</ol>
+
+        <h2 id="2-实现一个简易-类Lisp语法-编译器"   >
+          <a href="#2-实现一个简易-类Lisp语法-编译器" class="heading-link"><i class="fas fa-link"></i></a>2 实现一个简易 类Lisp语法 编译器</h2>
+      
+        <h2 id="参考"   >
+          <a href="#参考" class="heading-link"><i class="fas fa-link"></i></a>参考</h2>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/superyc/p/9987793.html" >Java编译程序和运行过程详解 - helloworldhaha - 博客园 (cnblogs.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/361250220" >即时编译（JIT） - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/6a8997560b05" >通过javap命令分析java汇编指令 - 简书 (jianshu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/yongqiang/p/6217962.html#:~:text=C代码通过编译器,译、汇编、链接。" >C代码编译成可执行程序的过程 - yqzheng - 博客园 (cnblogs.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/starkwang/the-super-tiny-compiler-cn/blob/master/super-tiny-compiler-chinese.js" >the-super-tiny-compiler-cn (github.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43758377/article/details/112666201" >(52条消息) the-super-tiny-compiler_月将明的博客-CSDN博客_the-super-tiny-compiler</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/hazbo/the-super-tiny-compiler" >hazbo/the-super-tiny-compiler: Like The Super Tiny Compiler, but in Go (github.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28989326" >（如何（用Python）写一个（Lisp）解释器（上）） - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/xrlin/goscheme/blob/ab13895bf199b7edbfbc33416cd56b6b8cb2255d/type.go#L12" >goscheme/type.go at ab13895bf199b7edbfbc33416cd56b6b8cb2255d · xrlin/goscheme (github.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://norvig.com/lispy.html" >(How to Write a (Lisp) Interpreter (in Python)) (norvig.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29186794" >（如何（用Python）写一个（Lisp）解释器（下）） - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/269798069" >实现JavaScript语言解释器（一） - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://gitee.com/picasso250/jsp" >jsp: lisp(scheme) compile to js (gitee.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2022/03/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8/">http://zjeff-953.gitee.io/zjeff/2022/03/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E6%A0%87%E7%AD%BE/">标签</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/06/02/%E3%80%8A%E9%87%8D%E6%9E%84%E3%80%8B/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">《重构---改善既有代码的设计》</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/01/15/NFT%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/%E5%9F%BA%E4%BA%8E%20ruoyi%20%E5%BC%80%E5%8F%91%20NFT%20%E7%B3%BB%E7%BB%9F%20-%2001%20-%20%E6%90%AD%E5%BB%BA%20CI%20%E6%B5%81%E6%B0%B4%E7%BA%BF%EF%BC%8C%E5%90%AF%E5%8A%A8%20ruoyi%20%E9%A1%B9%E7%9B%AE/"><span class="paginator-prev__text">基于 ruoyi 开发 NFT 系统 - 01 - 搭建 CI 流水线，启动 ruoyi 项目</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">
+          编译原理-01-实现一个简单的编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%A4%E8%AF%86%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">
+          1 认识编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9A%E4%B9%89-%E4%BD%9C%E7%94%A8"><span class="toc-text">
+          1.1 编译器的定义&#x2F;作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">
+          1.2 常见的编译器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-C%E8%AF%AD%E8%A8%80"><span class="toc-text">
+          1.2.1 C语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-Java"><span class="toc-text">
+          1.2.2 Java</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E9%98%B6%E6%AE%B5"><span class="toc-text">
+          1.3 编译器的工作阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93-%E7%B1%BBLisp%E8%AF%AD%E6%B3%95-%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">
+          2 实现一个简易 类Lisp语法 编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">
+          参考</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">186</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">50</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

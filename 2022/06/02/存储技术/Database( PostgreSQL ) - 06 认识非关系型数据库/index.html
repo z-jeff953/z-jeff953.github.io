@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database( PostgreSQL ) - 06 认识非关系型数据库">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2006%20%E8%AE%A4%E8%AF%86%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20210530085747.png">
+<meta property="article:published_time" content="2022-06-02T07:24:09.720Z">
+<meta property="article:modified_time" content="2022-05-27T02:37:26.191Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20210530085747.png"><title>Database( PostgreSQL ) - 06 认识非关系型数据库 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2006%20%E8%AE%A4%E8%AF%86%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Database( PostgreSQL ) - 06 认识非关系型数据库</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-06-02</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-05-27</span></span></div></header><div class="post-body">
+        <h1 id="Database-PostgreSQL-06-认识非关系型数据库"   >
+          <a href="#Database-PostgreSQL-06-认识非关系型数据库" class="heading-link"><i class="fas fa-link"></i></a>Database( PostgreSQL ) - 06 认识非关系型数据库</h1>
+      <p>认识非关系型数据库, 并能作出合理的技术选型</p>
+<span id="more"></span>
+
+        <h2 id="1-关系数据库的局限"   >
+          <a href="#1-关系数据库的局限" class="heading-link"><i class="fas fa-link"></i></a>1. 关系数据库的局限</h2>
+      <blockquote>
+<p> 数据库管理目标与内容</p>
+<ol>
+<li>数据类型多样化，数字、字符、文本等，还需要视频、音频、图形、图像、动画、HTML/XML、流数据等更复杂的数据类型</li>
+<li>数据结构需要结构化、半结构化、非结构化等各种结构</li>
+<li>数据存储方式多样化（列式存储、键值存储、图存储、文档存储等）</li>
+<li>存储位置—分布透明，存储量—海量</li>
+<li>查询要求多层次：时空、关联、分析、挖掘等</li>
+<li>自定义操作、各种数据统计分析、分类、聚类、预测、离群点发现等操作</li>
+<li>数据库的发展必须满足不断发展的新的领域需求</li>
+</ol>
+</blockquote>
+<p>关系数据库局限</p>
+<p>关系数据库特点是数据结构化、数据的共享性高、冗余度低、易扩充、数据独立性高，数据由数据库管理系统统一管理和控制等。</p>
+<p><strong>优点是：容易理解，使用方便，易于维护，支持复杂查询。</strong></p>
+<p><strong>缺点是：不擅长大量数据的写入处理、表结构变更、字段不固定时的应用和对简单查询需要快速返回结果的处理的应用。</strong></p>
+<p>关系型数据库在面对这些方面的时略显疲惫</p>
+<p>（1）数据库高并发读写需求。  </p>
+<p>（2）海量数据的高效存储和处理。</p>
+<p>（3）数据库高扩展性和高可用性需求。</p>
+<p>（4）数据库在大数据处理方面的要求。</p>
+<p><strong>大数据</strong>的5V特征： 超量Volume、高速Velocity、异构Variety、真实Veracity、价值Value。</p>
+<p><strong>以下需求催生了NoSQL:</strong></p>
+<ol>
+<li><strong>分布式数据库</strong>必须具有高可扩展性、高并发性、高可用性等特征，即动态增添存储节点(容量的线性扩展)，<strong>响应大规模用户的读/写请求，对海量数据进行随机读/写；</strong></li>
+<li>提供容错机制，实现对数据的<strong>冗余备份</strong>，保证数据和服务的高度可靠性。</li>
+</ol>
+
+        <h2 id="2-NoSQL理论基础"   >
+          <a href="#2-NoSQL理论基础" class="heading-link"><i class="fas fa-link"></i></a>2. NoSQL理论基础</h2>
+      <p><strong>关系型数据库的局限
+</strong></p>
+<p>   NoSql出现在关系型数据库之后，主要是为了解决关系型数据库的短板，我们先来看看随着软件行业的发展，关系型数据库面临了哪些挑战：</p>
+<p>   1、高并发</p>
+<p>   一个最典型的就是电商网站，例如双11，几亿大军的点击造成在某一时刻的并发量是很高的，传统的关系型数据库肯定已经是不堪重负了，如Oracle的Session数量推荐的才只有500。</p>
+<p>   2、高效率存储海量数据</p>
+<p>   大数据时代，数据量已经不是用GB、TB来衡量了，而是EB、ZB了，面对这海量的数据，如何高效率的存储这些数据，关系型数据库无法解决这个问题，以Oracle为例，单机的物理扩展不仅成本高，而且难度也加大了。</p>
+<p>   3、高可用&amp;高扩展</p>
+<p>   Oracle即使RAC能扩展数台机器，但数量也是有限。</p>
+<p>   NoSql的出现即是为了解决这些问题了，但是NoSql并不是用来替代关系型数据库的，因为它本身也有着不可克服的缺陷，俗话说，好处不可能都让你占了。</p>
+<p><strong>关系型数据库与NoSql一致性的比较
+</strong></p>
+<p>   一般来说,构建NoSql，为了高可用和海量数据存储，我们会选择牺牲一致性，但这并不意味着我们不要一致性，而是我们可以选择不实现强一致性，而实现弱一致性或者最终一致性。无论是在关系型数据库或者NoSql中，我们都是通过事务来实现一致性，下面我们来讨论两者在一致性方面的差异：</p>
+<p>   关系型数据库事务的4个基本特性ACID，即原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）。</p>
+<p>   而对于分布式事务的特性BASE，则是反这个标准的，即基本可用（<strong>B</strong>asically <strong>A</strong>vailble）、软状态/柔性事务（Soft-state）、最终一致性（Eventual Consistency）。下面是Brewer教授在PODC大会展示的ACID vs BASE：</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20210530085747.png" alt="647994-20180103141201643-1782568971"></p>
+<p>   前面我们说过，NoSql的出现是为了解决高并发、海量数据、高可用等问题的，因而一般分布式是最优选项，我们先来说一下分布式系统的特性：CAP理论，当然，这也是NoSql的特性：</p>
+<p>   CAP理论是Brewer教授提出的：一个分布式系统不能同时满足一致性（Consistency）、可用性（Availability）和分区容错性（Tolerance of network Partition）。<strong>鱼和熊掌不可兼得。</strong></p>
+<p>​    <strong>一致性：</strong>任何一个读操作总是能读取到之前完成的写操作结果，也就是在分布式环境中，多点的数据是一致的。</p>
+<p>   <strong>可用性：</strong>每一个操作总是能在确定的时间内返回，也不是系统随时都是可用的。</p>
+<p>   <strong>分区容错性：</strong>在出现网络分区（如断网）的情况下，分离的系统也能正常运行。</p>
+<p>   PS：这里有人可能会问，可用性与分区容错性是不是一个意思（既然分区都可以容错了，不就是可用么），个人理解这里可用性说的是调用不会被阻塞。</p>
+<p>   而市场上的NoSql则以CAP理论为指导，大多选择实现了CAP理论的两点（如CA、CP、AP），未实现的即其缺陷部分。下面则是常见NoSql系统的特性：</p>
+
+        <h2 id="3-常见NoSql的分类"   >
+          <a href="#3-常见NoSql的分类" class="heading-link"><i class="fas fa-link"></i></a>3. 常见NoSql的分类</h2>
+      <div class="table-container">
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>部分代表</strong></th>
+<th style="text-align:center"><strong>特点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列存储</td>
+<td>Hbase<br />Cassandra<br />Hypertable</td>
+<td style="text-align:center">顾名思义，是按列存储数据的。最大的特点是方便存储结构化和半结构化数据，方便做数据压缩，对针对某一列或者某几列的查询有非常大的IO优势。</td>
+</tr>
+<tr>
+<td>文档存储</td>
+<td>MongoDB<br />CouchDB</td>
+<td style="text-align:center">文档存储一般用类似json的格式存储，存储的内容是文档型的。这样也就有有机会对某些字段建立索引，实现关系数据库的某些功能。</td>
+</tr>
+<tr>
+<td>kv存储</td>
+<td>Tokyo Cabinet<br />TyrantBerkeley <br />DBMemcacheDB<br />Redis</td>
+<td style="text-align:center">可以通过key快速查询到其value。一般来说，存储不管value的格式，照单全收。（Redis包含了其他功能）</td>
+</tr>
+<tr>
+<td>图存储</td>
+<td>Neo4J<br />FlockDB</td>
+<td style="text-align:center">图形关系的最佳存储。使用传统关系数据库来解决的话性能低下，而且设计使用不方便。</td>
+</tr>
+<tr>
+<td>对象存储</td>
+<td>db4o<br />Versant</td>
+<td style="text-align:center">通过类似面向对象语言的语法操作数据库，通过对象的方式存取数据。</td>
+</tr>
+<tr>
+<td>xml数据库</td>
+<td>Berkeley<br />DBXML</td>
+<td style="text-align:center">高效的存储XML数据，并支持XML的内部查询语法，比如XQuery,Xpath。</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2006%20%E8%AE%A4%E8%AF%86%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2006%20%E8%AE%A4%E8%AF%86%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/database/">database</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2007%20%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Database( PostgreSQL ) - 07 数据库理论</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/06/02/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/Database(%20PostgreSQL%20)%20-%2005%20%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%20(%20TCL%20)%E5%92%8CJDBC%20/"><span class="paginator-prev__text">Database( PostgreSQL ) - 05 事务管理 ( TCL )和JDBC</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Database-PostgreSQL-06-%E8%AE%A4%E8%AF%86%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">
+          Database( PostgreSQL ) - 06 认识非关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%B1%80%E9%99%90"><span class="toc-text">
+          1. 关系数据库的局限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-NoSQL%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-text">
+          2. NoSQL理论基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B8%B8%E8%A7%81NoSql%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">
+          3. 常见NoSql的分类</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">186</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">50</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

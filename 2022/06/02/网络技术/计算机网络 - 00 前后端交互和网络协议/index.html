@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="计算机网络 - 00 前后端交互和网络协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络 - 00 前后端交互和网络协议">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2000%20%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%92%8C%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="计算机网络 - 00 前后端交互和网络协议">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135410.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135430.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135524.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135658.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141136.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141227.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141615.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141400.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141831.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141750.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141949.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219142052.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219142105.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219142124.png">
+<meta property="article:published_time" content="2022-06-02T07:24:09.997Z">
+<meta property="article:modified_time" content="2022-05-27T02:37:26.151Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135410.png"><title>计算机网络 - 00 前后端交互和网络协议 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2000%20%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%92%8C%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机网络 - 00 前后端交互和网络协议</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-06-02</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-05-27</span></span></div></header><div class="post-body">
+        <h1 id="计算机网络-00-前后端交互和网络协议"   >
+          <a href="#计算机网络-00-前后端交互和网络协议" class="heading-link"><i class="fas fa-link"></i></a>计算机网络 - 00 前后端交互和网络协议</h1>
+      <p>现代软件开发模式是如何形成的? 前端和后端是如何交互的 ? </p>
+<span id="more"></span>
+
+        <h2 id="1-前后端怎样通信的"   >
+          <a href="#1-前后端怎样通信的" class="heading-link"><i class="fas fa-link"></i></a>1. 前后端怎样通信的</h2>
+      <p>以Web端为例 </p>
+<p> *移动端和Web端类似, 类比即可</p>
+<p>最基础的部分: 前端写网页, 后端写Api接口</p>
+<p>前端运行在浏览器上, 后端运行在服务器上</p>
+<p>以前, 都是一个人干</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135410.png" alt="image-20201219135410669"></p>
+<p>后来移动端崛起</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135430.png" alt="image-20201219135430744"></p>
+<p>为了统一Api,前后端就分开了</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135501.png" alt="image-20201219135501668"></p>
+<p>那用户怎么得到服务呢</p>
+<p>浏览器先请求得到前端应用</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135524.png" alt="image-20201219135524641"></p>
+<p>然后前端给处理后面的请求</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219135658.png" alt="image-20201219135658002"></p>
+<p>后端基本上由三部分组成:</p>
+<ol>
+<li>服务器程序(Apache,Nginx,Tomcat,Node.js),用来接收处理请求发送响应</li>
+<li>后端应用程序(Java, Python,JavaScript),处理请求,完成业务逻辑</li>
+<li>数据库(MySQL,MongoDB),存储业务数据</li>
+</ol>
+<p>后端程序跑在服务器上, 有一个的叫单机, 有好几个的叫集群</p>
+<p>后端应用程序的第二部分也有很多细分领域</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XV411d7Cg" >更多了解后端结构</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="2-HTTP-协议"   >
+          <a href="#2-HTTP-协议" class="heading-link"><i class="fas fa-link"></i></a>2. HTTP 协议</h2>
+      <p>http协议</p>
+
+        <h3 id="两个实体"   >
+          <a href="#两个实体" class="heading-link"><i class="fas fa-link"></i></a>两个实体:</h3>
+      <p>客户端, 服务端</p>
+<p>客户端发送请求, 接受响应</p>
+<p>服务端监听请求, 发出响应</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141136.png" alt="image-20201219141135924"></p>
+
+        <h3 id="资源"   >
+          <a href="#资源" class="heading-link"><i class="fas fa-link"></i></a>资源</h3>
+      <p>数据称为资源, 可以是任何东西</p>
+<p>资源通过URL(统一资源定位器)定位</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141227.png" alt="image-20201219141227875"></p>
+
+        <h3 id="请求"   >
+          <a href="#请求" class="heading-link"><i class="fas fa-link"></i></a>请求</h3>
+      <p>请求有三部分组成</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141615.png" alt="image-20201219141615877"></p>
+
+        <h4 id="请求方式-路径与参数和http版本"   >
+          <a href="#请求方式-路径与参数和http版本" class="heading-link"><i class="fas fa-link"></i></a>请求方式,路径与参数和http版本</h4>
+      <p>在RESTful开发方式下有四种请求</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141400.png" alt="image-20201219141359955"></p>
+<p>get和delete一般有参数</p>
+<p>get和post没有参数</p>
+<p>默认是get</p>
+
+        <h4 id="请求头"   >
+          <a href="#请求头" class="heading-link"><i class="fas fa-link"></i></a>请求头</h4>
+      <p>包含额外参数, 用帮助服务器如何响应</p>
+
+        <h4 id="请求体"   >
+          <a href="#请求体" class="heading-link"><i class="fas fa-link"></i></a>请求体</h4>
+      <p>接受相应的数据</p>
+
+        <h3 id="响应"   >
+          <a href="#响应" class="heading-link"><i class="fas fa-link"></i></a>响应</h3>
+      <p>响应有三部分</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141831.png" alt="image-20201219141831554"></p>
+
+        <h4 id="http版本和响应状态码"   >
+          <a href="#http版本和响应状态码" class="heading-link"><i class="fas fa-link"></i></a>http版本和响应状态码</h4>
+      <p>一般约定如下状态码</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141750.png" alt="image-20201219141750650"></p>
+
+        <h4 id="响应头"   >
+          <a href="#响应头" class="heading-link"><i class="fas fa-link"></i></a>响应头</h4>
+      <p>告诉前端如何处理内容,比如cookie和session</p>
+
+        <h4 id="响应体"   >
+          <a href="#响应体" class="heading-link"><i class="fas fa-link"></i></a>响应体</h4>
+      <p>相应的数据</p>
+
+        <h3 id="http2"   >
+          <a href="#http2" class="heading-link"><i class="fas fa-link"></i></a>http2</h3>
+      <p>原来的http无状态,认证需要cookie和session</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219141949.png" alt="image-20201219141949831"></p>
+
+        <h2 id="3-HTTPS-协议"   >
+          <a href="#3-HTTPS-协议" class="heading-link"><i class="fas fa-link"></i></a>3. HTTPS 协议</h2>
+      <p>http不安全, 明文传输不加密</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219142052.png" alt="image-20201219142052797"></p>
+<p>https比http安全, 可以给数据加密 , 可以用来认证身份</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219142105.png" alt="image-20201219142105011"></p>
+<p>加密通过tls完成, 后面学</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/20201219142124.png" alt="image-20201219142124745"></p>
+
+        <h2 id="4-实践"   >
+          <a href="#4-实践" class="heading-link"><i class="fas fa-link"></i></a>4. 实践</h2>
+      
+        <h3 id="前端请求实例"   >
+          <a href="#前端请求实例" class="heading-link"><i class="fas fa-link"></i></a>前端请求实例</h3>
+      <p>前端常用<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://axios-js.com/" >axios</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>库完成http请求</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为给定 ID 的 user 创建请求</span></span><br><span class="line">axios.get(<span class="string">&#x27;/user?ID=12345&#x27;</span>) <span class="comment">// 请求方式, 请求地址, 请求参数</span></span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123; <span class="comment">// 对于响应内容的处理</span></span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123; <span class="comment">// 相应失败的处理</span></span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面的请求也可以这样做</span></span><br><span class="line">axios.get(<span class="string">&#x27;/user&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;</span><br><span class="line">      <span class="attr">ID</span>: <span class="number">12345</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="后端监听处理示例"   >
+          <a href="#后端监听处理示例" class="heading-link"><i class="fas fa-link"></i></a>后端监听处理示例</h3>
+      <p>使用Node.js下的<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.expressjs.com.cn/" >express</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>框架</p>
+<p>先安装Node, 再用Npm安装express, 详见<code>开始Node</code></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> express()</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 定义get请求 , 返回前端界面</span></span><br><span class="line">  response.send(<span class="string">&#x27;Hello Express&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 定义post请求, 返回状态码和空内容</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;收到请求体:&#x27;</span>, request.body)</span><br><span class="line">  response.status(<span class="number">201</span>).send()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 监听并服务</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Express server listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+<p>这里有个小问题, 为什么接收到前端的内容就是页面, 其他的就是数据呢?</p>
+<p>其实页面也是数据</p>
+<p>浏览器接收到数据后, 会对数据进行处理,他会识别html,css和js文件, 然后进行对应的解析和渲染</p>
+<p>这就涉及浏览器的工作原理了</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://wenku.baidu.com/view/d285d109bed5b9f3f90f1cad.html" >浏览器是如何工作的</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1x54y1B7RE" >视频</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>Keep Curious , Keep Learning !</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2000%20%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%92%8C%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2000%20%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%92%8C%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%90%8E%E7%AB%AF/">后端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%2001%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E5%92%8C%E6%A6%82%E8%BF%B0/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">计算机网络 - 01 计网发展历程</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/Web%E5%BC%80%E5%8F%91%E8%80%85%E5%B8%B8%E8%AF%86%20-%20Web%E7%BC%93%E5%AD%98(%E5%89%8D+%E5%90%8E)/"><span class="paginator-prev__text">标题</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-00-%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E5%92%8C%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE"><span class="toc-text">
+          计算机网络 - 00 前后端交互和网络协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%80%8E%E6%A0%B7%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="toc-text">
+          1. 前后端怎样通信的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HTTP-%E5%8D%8F%E8%AE%AE"><span class="toc-text">
+          2. HTTP 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%AE%9E%E4%BD%93"><span class="toc-text">
+          两个实体:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90"><span class="toc-text">
+          资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82"><span class="toc-text">
+          请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F-%E8%B7%AF%E5%BE%84%E4%B8%8E%E5%8F%82%E6%95%B0%E5%92%8Chttp%E7%89%88%E6%9C%AC"><span class="toc-text">
+          请求方式,路径与参数和http版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-text">
+          请求头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="toc-text">
+          请求体</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94"><span class="toc-text">
+          响应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#http%E7%89%88%E6%9C%AC%E5%92%8C%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-text">
+          http版本和响应状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-text">
+          响应头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E4%BD%93"><span class="toc-text">
+          响应体</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http2"><span class="toc-text">
+          http2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HTTPS-%E5%8D%8F%E8%AE%AE"><span class="toc-text">
+          3. HTTPS 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9E%E8%B7%B5"><span class="toc-text">
+          4. 实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%AE%9E%E4%BE%8B"><span class="toc-text">
+          前端请求实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E7%9B%91%E5%90%AC%E5%A4%84%E7%90%86%E7%A4%BA%E4%BE%8B"><span class="toc-text">
+          后端监听处理示例</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">186</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">50</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="//cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.css" rel="stylesheet" type="text/css"><script src="//cdn.jsdelivr.net/npm/katex@0/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

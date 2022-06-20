@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="还是得撸一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go - 02 - 阅读 gin-vue-admin 代码">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/Go%20-%2002%20-%20%E9%98%85%E8%AF%BB%20gin-vue-admin%20%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="还是得撸一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151113056.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151354549.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151409100.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111170951599.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171026435.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171009671.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171029793.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171036566.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171049787.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171057295.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171059580.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171059645.png">
+<meta property="article:published_time" content="2022-06-02T07:24:09.985Z">
+<meta property="article:modified_time" content="2022-05-27T02:37:26.161Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151113056.png"><title>Go - 02 - 阅读 gin-vue-admin 代码 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/Go%20-%2002%20-%20%E9%98%85%E8%AF%BB%20gin-vue-admin%20%E4%BB%A3%E7%A0%81/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Go - 02 - 阅读 gin-vue-admin 代码</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-06-02</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-05-27</span></span></div></header><div class="post-body">
+        <h1 id="Go-02-阅读-gin-vue-admin-代码"   >
+          <a href="#Go-02-阅读-gin-vue-admin-代码" class="heading-link"><i class="fas fa-link"></i></a>Go - 02 - 阅读 gin-vue-admin 代码</h1>
+      <p>通过阅读一个功能齐全的 Curd 应用学习 gin 和 gorm 和 常用库</p>
+<span id="more"></span>
+
+        <h2 id="1-基础使用"   >
+          <a href="#1-基础使用" class="heading-link"><i class="fas fa-link"></i></a>1. 基础使用</h2>
+      <p>环境说明</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- node版本 &gt; v12.18.3</span><br><span class="line">- golang版本 &gt;= v1.16</span><br><span class="line">- Goland</span><br><span class="line">- vscode</span><br></pre></td></tr></table></div></figure>
+<p>项目官网：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.gin-vue-admin.com/" >自动化全栈开发基础平台 | Gin-Vue-Admin</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>点击右上角的 github 克隆源码下来</p>
+<p>项目地址:<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/flipped-aurora/gin-vue-admin" >flipped-aurora/gin-vue-admin: </a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:flipped-aurora/gin-vue-admin.git</span><br></pre></td></tr></table></div></figure>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151113056.png" alt=""></p>
+<p>然后使用 <code>vscode</code> 打开 web 目录(前端项目), 使用 <code>goland</code> 打开 server 目录(后端项目)。</p>
+<p>在 <code>goland</code> 中打开新终端 , 输入 <code>go generate</code> 同步依赖 , 然后 启动 <code>main.go</code> 中的 <code>main</code> 函数。</p>
+<p>在 <code>vscode</code> 打开新终端 , 输入 <code>npm install</code> 安装前端项目依赖 , 等待安装完成后 , 然后输入 <code>npm run serve</code> 启动控制台前端。</p>
+<p>然后点击 初始化 项目， 填写 mysql 的地址账号密码和 db 名。</p>
+<p>最后打开前端项目就可以使用了。</p>
+<p>详细使用可以参考官网的视频教程。</p>
+
+        <h2 id="2-启动入口代码"   >
+          <a href="#2-启动入口代码" class="heading-link"><i class="fas fa-link"></i></a>2. 启动入口代码</h2>
+      <p>现在分析下 <code>main.go</code> 里的内容</p>
+
+        <h3 id="2-1-go-generate-注释"   >
+          <a href="#2-1-go-generate-注释" class="heading-link"><i class="fas fa-link"></i></a>2.1 go:generate 注释</h3>
+      <p><code>go:generate</code> 注释在这里标识了一系列脚本</p>
+<p>在项目目录中使用 <code>go generate</code> 命令 会执行被 <code>go:generate</code> 注释的脚本</p>
+<p>这个脚本可以是任何内容 , 只要再当前环境中可以 执行 即可,一般为 shell script .</p>
+<p>按照推荐做法 , 使用了这个命令最好是生成了一些代码文件</p>
+<blockquote>
+<p> “to automate the running of tools to generate source code before compilation.” </p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://golang.org/doc/go1.4#gogenerate" >Go 1.4 Release Notes - The Go Programming Language (golang.org)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<p>但是, 在这里, 这个项目中, 使用这个命令的目的是通过命令行设置 go mod 的依赖源, 然后更新依赖.</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151354549.png" alt=""></p>
+<p>关于这个命令的更多用法可以参考这两篇文章 : 第一篇英文的 一定要看</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.carlmjohnson.net/post/2016-11-27-how-to-use-go-generate/" >How to Use //go:generate · The Ethically-Trained Programmer</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://coolshell.cn/articles/21179.html#Go_Generator" >Go 编程模式：Go Generation | 酷 壳 - CoolShell</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="2-2-全局包-global"   >
+          <a href="#2-2-全局包-global" class="heading-link"><i class="fas fa-link"></i></a>2.2 全局包 global</h3>
+      <blockquote>
+<p>在这项目中 GVA 是 gin-vue-admin 的缩写</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111151409100.png" alt=""></p>
+<p>先看第一行代码</p>
+<figure class="highlight go"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">global.GVA_VP = core.Viper()      <span class="comment">// 初始化Viper</span></span><br></pre></td></tr></table></div></figure>
+<p>这行代码中将 <code>global</code> 包 的 <code>GVA_VP</code> 设置为了 <code>core.Viper()</code> 的返回值</p>
+<p>这个 <code>global</code> 声明了一些全局配置变量, 以及 <code>model</code> 中通用的一些属性</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111170951599.png" alt="image-20211117095116510"></p>
+
+        <h3 id="2-3-模块管理和包管理"   >
+          <a href="#2-3-模块管理和包管理" class="heading-link"><i class="fas fa-link"></i></a>2.3 模块管理和包管理</h3>
+      <p>当我们使用 <code>import</code> 的时候, 我们从哪里 <code>import</code> 了这些代码? </p>
+<p>有三种方式引入包的来源, 我们从安装, 引入和使用三个角度认识这三种方式</p>
+<ol>
+<li>引入 <code>go sdk</code> 的包</li>
+<li>引入 网络上的 的包</li>
+<li>引入 当前项目 的包</li>
+</ol>
+
+        <h4 id="2-3-1-引入-go-sdk-的包"   >
+          <a href="#2-3-1-引入-go-sdk-的包" class="heading-link"><i class="fas fa-link"></i></a>2.3.1 引入 go sdk 的包</h4>
+      <p><strong>安装</strong></p>
+<p>随 go sdk 安装, 在 goland 中, 显示在这个位置</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171026435.png" alt=""></p>
+<p><strong>引入路径</strong></p>
+<p>引入路径在 <code>GOPATH/src/*</code></p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171009671.png" alt=""></p>
+<p>如图所示 <code>database/sql</code> 可以从这个位置引入</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171029793.png" alt=""></p>
+<p>里面有文档, 代码和单测. </p>
+<p><strong>使用</strong></p>
+<p>使用方式和引入方式有关</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/259392235" >30. Go 语言中关于包导入必学的 8 个知识点 - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>使用的时候通过 <code>包名 + 导出变量</code> 使用. </p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171036566.png" alt=""></p>
+
+        <h4 id="2-3-2-引入-网络上的-的包"   >
+          <a href="#2-3-2-引入-网络上的-的包" class="heading-link"><i class="fas fa-link"></i></a>2.3.2 引入 网络上的 的包</h4>
+      <p><strong>安装</strong></p>
+<p><code>go get -u 你的地址</code></p>
+<p><strong>引入路径</strong></p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171049787.png" alt=""></p>
+
+        <h4 id="2-3-3-引入-当前项目-的包"   >
+          <a href="#2-3-3-引入-当前项目-的包" class="heading-link"><i class="fas fa-link"></i></a>2.3.3 引入 当前项目 的包</h4>
+      <p><strong>声明</strong></p>
+<p>当前项目的名称可以声明在 <code>go mod</code> 中</p>
+<p><code>module xxx</code> 就是模块名, <code>go xxx</code> 是 <code>go sdk</code> 的版本号, <code>require xxx</code> 就是依赖列表</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171057295.png" alt=""></p>
+<p>包名声明在 <code>package xxx</code>, 不一定和文件名对应</p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171059580.png" alt=""></p>
+<p><strong>引入</strong></p>
+<p><img src="https://raw.githubusercontent.com/z-jeff953/picsBed/main/image/202111171059645.png" alt=""></p>
+
+        <h2 id="3-初始化-DB-代码"   >
+          <a href="#3-初始化-DB-代码" class="heading-link"><i class="fas fa-link"></i></a>3. 初始化 DB 代码</h2>
+      <p>为什么 可以 通过 web 页配置 db 的配置呢 ?</p>
+<p>他是生成了新的代码, 重写了配置文件吗.</p>
+<p>查看前端项目发现调用 <code>service</code> 名 <code>init/</code></p>
+
+        <h2 id="4-目录结构"   >
+          <a href="#4-目录结构" class="heading-link"><i class="fas fa-link"></i></a>4. 目录结构</h2>
+      
+        <h2 id="5-基础功能模块"   >
+          <a href="#5-基础功能模块" class="heading-link"><i class="fas fa-link"></i></a>5. 基础功能模块</h2>
+      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/Go%20-%2002%20-%20%E9%98%85%E8%AF%BB%20gin-vue-admin%20%E4%BB%A3%E7%A0%81/">http://zjeff-953.gitee.io/zjeff/2022/06/02/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/Go%20-%2002%20-%20%E9%98%85%E8%AF%BB%20gin-vue-admin%20%E4%BB%A3%E7%A0%81/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/Go/">Go</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/06/02/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/Web%E5%BC%80%E5%8F%91%E8%80%85%E5%B8%B8%E8%AF%86%20-%20Web%E7%BC%93%E5%AD%98(%E5%89%8D+%E5%90%8E)/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">标题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/06/02/%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20-%2001-%2004/"><span class="paginator-prev__text">计算机组成原理 - 01-04</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Go-02-%E9%98%85%E8%AF%BB-gin-vue-admin-%E4%BB%A3%E7%A0%81"><span class="toc-text">
+          Go - 02 - 阅读 gin-vue-admin 代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-text">
+          1. 基础使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%90%AF%E5%8A%A8%E5%85%A5%E5%8F%A3%E4%BB%A3%E7%A0%81"><span class="toc-text">
+          2. 启动入口代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-go-generate-%E6%B3%A8%E9%87%8A"><span class="toc-text">
+          2.1 go:generate 注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%85%A8%E5%B1%80%E5%8C%85-global"><span class="toc-text">
+          2.2 全局包 global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E5%92%8C%E5%8C%85%E7%AE%A1%E7%90%86"><span class="toc-text">
+          2.3 模块管理和包管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E5%BC%95%E5%85%A5-go-sdk-%E7%9A%84%E5%8C%85"><span class="toc-text">
+          2.3.1 引入 go sdk 的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E5%BC%95%E5%85%A5-%E7%BD%91%E7%BB%9C%E4%B8%8A%E7%9A%84-%E7%9A%84%E5%8C%85"><span class="toc-text">
+          2.3.2 引入 网络上的 的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-%E5%BC%95%E5%85%A5-%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE-%E7%9A%84%E5%8C%85"><span class="toc-text">
+          2.3.3 引入 当前项目 的包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96-DB-%E4%BB%A3%E7%A0%81"><span class="toc-text">
+          3. 初始化 DB 代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">
+          4. 目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="toc-text">
+          5. 基础功能模块</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">186</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">50</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

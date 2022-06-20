@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端视野 - 05 能干后端别干前端">
+<meta property="og:url" content="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2005%20%E8%83%BD%E5%B9%B2%E5%90%8E%E7%AB%AF%E5%88%AB%E5%B9%B2%E5%89%8D%E7%AB%AF/index.html">
+<meta property="og:site_name" content="Jeff&#39;s blog">
+<meta property="og:description" content="描述">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-02T07:24:09.680Z">
+<meta property="article:modified_time" content="2021-08-28T12:49:50.000Z">
+<meta property="article:author" content="Jeffords zuo">
+<meta property="article:tag" content="前端视野">
+<meta name="twitter:card" content="summary"><title>前端视野 - 05 能干后端别干前端 | Jeff's blog</title><link ref="canonical" href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2005%20%E8%83%BD%E5%B9%B2%E5%90%8E%E7%AB%AF%E5%88%AB%E5%B9%B2%E5%89%8D%E7%AB%AF/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":5},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jeff's blog" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-tie"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">前端视野 - 05 能干后端别干前端</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-06-02</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-28</span></span></div></header><div class="post-body">
+        <h1 id="前端视野-05-能干后端别干前端"   >
+          <a href="#前端视野-05-能干后端别干前端" class="heading-link"><i class="fas fa-link"></i></a>前端视野 - 05 能干后端别干前端</h1>
+      <p>少不更事爱前端，现在每天都想着转后端。</p>
+<span id="more"></span>
+
+        <h2 id="我的故事"   >
+          <a href="#我的故事" class="heading-link"><i class="fas fa-link"></i></a>我的故事</h2>
+      <p>我叫Jeff，是一个985软件专业学生，学习前端满打满算一年半了，大一下接触了三大件，当时是为了做工作室招新题写一个go的全栈项目才学的，当时看着视频做了个连起来的webapp，但是还是一知半解，后因为当时（2020.1）网络上没有啥go的资料，（学了gin和orm，当时也不想学java）我也找不到学习的方向，就跟着工作室学长做项目，因为被“区块链”三个字吓跑了，就做了flutter前端的一个登录页，后来又用vue写了工作室的官网，再后来觉得react更像flutter，api比vue少就学了react，之后在某老师的实验室做前端，react，老师很有想法，做的是实际项目，蛮累的，但是很有收获，老师也是思想开明，不像网上说的，科班老师都崇尚后端（但其实是网上错了），老师人不错，锻炼也是有的，后来我如愿在大二下拿到了鹅厂前端实习生offer，大二暑假入职，实习中leader和mentor都很照顾我，我也能胜任这份工作，也能获得一定的成就感，但是蜜月期一过，哪些光鲜亮丽的光环褪去，我看到了前端程序员发展前景残酷的真相。</p>
+<blockquote>
+<p>前端程序员发展空间很窄，不被领导重视，重要性不如产品。</p>
+</blockquote>
+
+        <h2 id="现实"   >
+          <a href="#现实" class="heading-link"><i class="fas fa-link"></i></a>现实</h2>
+      <p><strong>高级前端很少，t9以上前端就是风毛菱角</strong>，前端组长（t11），一般是某个后台组的组长兼任或者找个前端当副组长，总之，真正前端组长很少，在往上的管理者都是后端或者产品，前端真的见不到。我唯一看到的高级前端是做文档的，有且只有做文档这种真正重前端项目才有高级前端的晋升机会，其他做CMS系统的前端就很难晋升，做一个项目，1个产品，1个前端，5个后端，做完上线了，绩效不错，分功劳，后端5个中3个能升级，产品能升级，前端没有份。前端晋升难也就导致前端为了晋升需要做的更多，后端把项目高质量的完成，不出错就能晋升，前端不行，前端必须造轮子，这就导致了前端轮子多，但是能跑的不多，圆的轮子被造完了，就只能造方的轮子，还要吹方轮子比圆轮子跑的溜，晋升上去了，轮子就可以丢了，地位就很尴尬，一个组，10个人，就一两个人是正经造轮子的，正经造轮子的也升到高级的门口就有点升不动了，同年龄的senior开发者，做后端的一般比前端高。所以现在前端就很多用node抢后端工作的，不管合适不合适，造就完事了，前端也就图一乐，真要看技术还得写服务端（nodejs/Ts），redis集群，分层架构都搞起来。<strong>前端想晋升就得比谁更像后端</strong>，晋升卷不了的前端就去搞社区影响力和转行教课去了。</p>
+
+        <h2 id="原因"   >
+          <a href="#原因" class="heading-link"><i class="fas fa-link"></i></a>原因</h2>
+      <p>至于前端为什么会落到这步田地，我认为有如下原因</p>
+<ol>
+<li><strong>前端程序员离业务远。</strong>网上有讨论一说前端离业务远就一堆人出来说前端的发展快，难度不必后端低啥的，少不更事的我被这些花花言论迷住了眼。确实，前端难度不必后端低，但是，前端离业务远，这是前端最大的弊端，老板要的是业务，不是开发，会跟老板讨论流程和业务的会更得到老板的青睐，后端，产品，都是深入交流业务的角色，他们天生就带有“向上管理”的属性，只需要把工作做好就会得到赏识和认可，就是老板眼中的功臣，就可以升职加薪</li>
+<li><strong>前端程序员很多时间要做不属于自己琐事。</strong>产品的需求直接体现在前端，产品一般不懂前后端职责，一般都是指着页面说我要这个我要那个，前端在这里就承担了需求到技术评审的第一环节，需要沟通很多东西，更不要说产品很多时候没想清楚需求要改需求一般也是从页面入手，接口改的不多；客户和测试出了问题先找前端（除了接口压测），前端是现网问题的第一个经手者，你可能不需要onCall，但是出了问题，他们一定会先找你，你要定位问题，再周知各方；后端经常不管前端的需求，后端常常会随意修改api字段名，有很多问题也会抛给前端，比如让你查询列表项所有项目的详情来获取某些信息，比如从a接口和b接口查询不同的信息聚合在一起，你要做很多”服务聚合“的工作，即使这应该是后端的工作，还有的糟糕后端把树形结构化，很多计算问题都抛给前端，会给前端带来困扰，还有的时候你们定好了接口，你用mock数据做好了页面，但是后端说他要改实现，你那他没办法，闹到pm或者产品哪里，产品和pm不懂后端在干啥，知道前端在写页面，后端咬住说做不了的时候，就会让前端”辛苦辛苦“。前端来来回回这些时间都付出了，汇报的时候老板觉得这是你分内的，不是你的”功劳“，你得给我看点别的东西，比如你的”轮子“。（我听过🐕后端最离谱的理由：标签和查询是不一样”重要性“的服务，不能放到一起，你自己查询一下吧）</li>
+<li><strong>前端技术自动化水平不足，前端工作主要内容差别不大，不需要太复杂的设计。</strong>前端虽然有很多组件化之类的工作，也有很多公司专门分出UI前端开发，专门写样式，但是前端仍然摆脱不了原始的生产模式，组件的位置，组件的状态都是要仔细的一个一个放上去，这是一个脏活累活，前端其实很大的工作在这里，直到今天还是摆脱不了，前端很多工作其实还是写页面，一两年经验的前端和五六年经验的前端在主要工作上基本没有区别，多的是CI/CD工具使用，安全工具的接入方式，接入层部署的知识，node写服务的技能，所以前端其实很容易被替代，要换个人来，也能很快的通过调试工具找到各个代码写在哪里，上手没有什么问题，不想后端，写的不太直观，要一个一个接口找也有很大上手成本，所以换一个前端项目顶多推迟1个月，换一个后端项目可能要推迟3个月，老板更想留住这个后端，就会给他升职加薪。</li>
+<li><strong>前端程序员整体水平参差不齐，成为了团队推行新技术的阻力。</strong>前端很缺人，所以能会点就会往上赶，非科班，转行的，能用就行，这就导致前端程序员水平参差不齐，你要换技术栈，他得学半天，你要推行BFF写服务node接入层，他连sql和nginx都不懂，网络协议也只会背的那点，更他说rpc更是对牛弹琴，新技术推行阻力巨大。</li>
+<li><strong>前端变化太快导致前端代码包袱严重。</strong>前端模块化现在不说啥了，但是我看到很多项目都要要用CMD的，这只是很小的一部分，还有用react16导致和基于react17的库不兼容报错的，更有的是react15，需要单独拆分两个模块，更不要说Ts的问题了，以前没有Ts，代码维护起来真的是很困难，接口字段都没有定义，还有有的程序员代码写的真的不太讲究，各种不该混一起的混在一起用if/else进行分支，各种对象手动赋值，维护老项目常常心里憔悴。</li>
+<li><strong>老板在前端身上付出的成本低，得到的效益低。</strong>后端掌握的是数据，公司的服务器数据集群的开销主要是后端在用，后端就像老板的理财助理，投入在他身上的资金，流水更多，自然看他更顺眼，前端顶多用个cdn，老板在感情上就没有付出，就觉得这些回报都是后端赚来的，而且后端的东西就像老板的私有财产，前端的东西，别人一下子就能保存和拿到，自然感情上有意无意有所偏向。</li>
+<li><strong>终端技术大发展，前端性能瓶颈较少。</strong>前端的app工作在客户机上，现在客户机性能上去了，没啥性能问题了，性能主要是网络和后端，这就导致前端又少了kpi和贡献值了。</li>
+</ol>
+
+        <h2 id="破局"   >
+          <a href="#破局" class="heading-link"><i class="fas fa-link"></i></a>破局</h2>
+      <p>很多人研究图形学，研究跨端，研究交互，在我看来其实这些都没有真正达到真正摆脱前端困境，现在前端最主要的不是如何画的更好看，好看不好看是产品和UI/UX的工作和功劳，和你没太大关系，前端要破局只有两个方向：<strong>1. 亲近业务，成为业务的主导。2. 提升前端开发效率</strong>。</p>
+<ol>
+<li><strong>亲近业务：</strong>现在很多公司都是一个前端对接3-6个后端，前端活儿很碎，又因为上手新项目快，所以一个前端常常要支援其他项目，所以前端身上挂3-4个项目也很常见，在这种情况下，前端很难熟悉业务，产品后端跟一两个业务，搞明白业务和需求也够呛，更何况前端还有很多时间被其他人的事务挤占，前端想要亲近业务有两个路子<ol>
+<li>推行BFF，前端业务化，后端服务化，前端负责打通业务流程和逻辑，后端负责提供高性能存储，解决“存储”这个最大的性能瓶颈。<ol>
+<li>优点：开发更快了，接口都由你定，开发很顺畅；前端也能更熟悉业务，更能专注理解互联网运营和商业模式，更了解后端服务的知识，为以后转架构和管理做铺垫</li>
+<li>阻力：前后端开发者水平有限，后端往往不能很好的设计和划分服务，前端很多开发者对后端一窍不通，阻碍了架构的转型，让团队用个graphql都够呛，还要前端业务化，后端服务化。</li>
+<li>缺点：NodeJs终究扛不住很高的并发量啊，开发效率是高，运行效率一般，但是一般业务都够了。</li>
+</ol>
+</li>
+<li>做重前端业务，比如比如gis系统，数据大屏，WebGl，甚至转行做游戏。</li>
+</ol>
+</li>
+<li><strong>工具建设</strong>：前端也想少点“劳动密集型”的工作，老板也想少雇两个前端，你能通过工具建设能少几个前端还能把项目推进和完成，就是大功臣，现在前端主要目的不是交互，不是跨端，就是交付！交付！交付！你能按时上线，给产品变卦和后端拖延留足空间，你就是最靓的前端仔，所以浏览器插件，Mock平台，IDE插件，Webpack插件是造轮子的好方式</li>
+<li><strong>转后端</strong>：我要转后端了，等我背四个月八股文和算法题出去乱杀。</li>
+</ol>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://zjeff-953.gitee.io/zjeff">Jeffords zuo</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2005%20%E8%83%BD%E5%B9%B2%E5%90%8E%E7%AB%AF%E5%88%AB%E5%B9%B2%E5%89%8D%E7%AB%AF/">http://zjeff-953.gitee.io/zjeff/2022/06/02/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E%20-%2005%20%E8%83%BD%E5%B9%B2%E5%90%8E%E7%AB%AF%E5%88%AB%E5%B9%B2%E5%89%8D%E7%AB%AF/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://zjeff-953.gitee.io/zjeff/tags/%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E/">前端视野</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/06/02/%E5%A4%A7%E5%89%8D%E7%AB%AF/%E5%B7%A5%E5%85%B7%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%20-%2001%20-%20omit.js%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">工具源码阅读 - 01 - omit.js源码阅读</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/06/02/%E5%A4%A7%E5%89%8D%E7%AB%AF/Umi%203-%2001%20%E5%BC%80%E5%A7%8BUmi/"><span class="paginator-prev__text">Umi 3- 01 开始Umi</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%A7%86%E9%87%8E-05-%E8%83%BD%E5%B9%B2%E5%90%8E%E7%AB%AF%E5%88%AB%E5%B9%B2%E5%89%8D%E7%AB%AF"><span class="toc-text">
+          前端视野 - 05 能干后端别干前端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B"><span class="toc-text">
+          我的故事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E5%AE%9E"><span class="toc-text">
+          现实</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">
+          原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%B4%E5%B1%80"><span class="toc-text">
+          破局</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/zjeff-953/picsBed/raw/master/image/cat.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Keep Curious</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/github" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="1572754810" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="https://gitee.com/zjeff-953" target="_blank" rel="noopener" data-popover="码云" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-git"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">186</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">50</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jeffords zuo</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.1.1</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
